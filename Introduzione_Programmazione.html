@@ -35,6 +35,13 @@
   <div class="hero">
     <h1>Dai Problemi agli Algoritmi</h1>
     <p class="subtitle">Un percorso interattivo su problem solving, algoritmi, diagrammi a blocchi (flow chart) e cicli — con simulatori, giochi e verifiche.</p>
+    <div class="site-search">
+      <div class="site-search-box">
+        <input type="text" id="site-search-input" placeholder="Cerca una parola chiave su tutto il sito (es. &quot;ciclo infinito&quot;, &quot;puntatori&quot;, &quot;incapsulamento&quot;...)" autocomplete="off">
+        <button class="btn" id="site-search-btn">🔍 Cerca</button>
+      </div>
+      <div id="site-search-results" class="site-search-results"></div>
+    </div>
   </div>
 
   <div class="card-grid">
@@ -177,6 +184,51 @@
     <h2>Definizione</h2>
     <p>Trovata la strategia risolutiva, bisogna scrivere la sequenza delle singole istruzioni in modo <strong>formale e preciso</strong>.</p>
     <p class="definition">Si definisce <strong>algoritmo</strong> la sequenza delle singole istruzioni, scritte in modo formale e preciso, che si devono seguire per risolvere un problema.</p>
+    <p>In pratica un algoritmo è una <strong>"ricetta"</strong>: come una ricetta di cucina elenca gli ingredienti e i passaggi per ottenere un piatto, un algoritmo elenca i dati e i passaggi per ottenere un risultato. Anche le istruzioni di montaggio di un mobile, le indicazioni di un navigatore GPS o la procedura per cambiare una ruota forata sono algoritmi: qualunque procedura passo-passo, precisa e ripetibile, che porta a un risultato.</p>
+    <p>Non basta però scrivere <em>una qualsiasi</em> sequenza di istruzioni perché sia un buon algoritmo: devono essere rispettate alcune <strong>caratteristiche</strong> precise, che vediamo qui sotto.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Le caratteristiche di un algoritmo</h2>
+    <p>Perché una sequenza di istruzioni sia davvero un algoritmo — e non solo un elenco confuso di operazioni — deve rispettare queste caratteristiche:</p>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>⏱️ Finitezza</h4>
+        <p>Deve terminare dopo un <strong>numero finito di passi</strong>, in un tempo ragionevole. Un procedimento che continua all'infinito, senza mai arrivare a una conclusione, non è un algoritmo valido.</p>
+        <p class="note">Esempio: "continua a suonare il citofono finché non ti aprono" non è finito, se nessuno risponde mai! Serve un limite, es. "suona al massimo 3 volte, poi rinuncia".</p>
+      </div>
+      <div class="char-card">
+        <h4>🎯 Non ambiguità (determinismo)</h4>
+        <p>Ogni istruzione deve avere <strong>un solo significato</strong>, chiaro e preciso: chi (o cosa) la esegue non deve avere dubbi su cosa fare.</p>
+        <p class="note">Esempio: "cuoci finché non ti sembra pronto" è ambiguo, perché dipende da chi giudica; "cuoci per 9 minuti" no.</p>
+      </div>
+      <div class="char-card">
+        <h4>⚙️ Eseguibilità</h4>
+        <p>Ogni singola istruzione deve poter essere <strong>eseguita realmente</strong> da chi (o cosa) esegue l'algoritmo, con le risorse a disposizione.</p>
+        <p class="note">Esempio: "dividi il numero per zero" oppure "svuota una piscina con un cucchiaino" non sono istruzioni eseguibili.</p>
+      </div>
+      <div class="char-card">
+        <h4>🔢 Sequenzialità (ordine)</h4>
+        <p>Le istruzioni si eseguono <strong>una alla volta</strong>, in un ordine ben preciso stabilito dall'algoritmo (salvo salti espliciti, come nelle decisioni e nei cicli).</p>
+        <p class="note">Esempio: non puoi "condire la pizza" prima di "stendere l'impasto": l'ordine conta.</p>
+      </div>
+      <div class="char-card">
+        <h4>🌍 Generalità</h4>
+        <p>Deve risolvere <strong>non un solo caso specifico</strong>, ma tutti i casi possibili dello stesso tipo di problema: i dati possono cambiare, il procedimento resta valido.</p>
+        <p class="note">Esempio: lo vedremo tra poco con l'esempio della telefonata, dove un buon algoritmo deve prevedere anche il caso in cui Alice non risponda, non solo quello "fortunato".</p>
+      </div>
+      <div class="char-card">
+        <h4>⚡ Efficienza</h4>
+        <p>Tra più algoritmi corretti che risolvono lo stesso problema, alcuni usano <strong>meno risorse</strong> (tempo/CPU e memoria) di altri: l'efficienza misura questa "economia" di risorse.</p>
+        <p class="note">Esempio: lo ritroveremo più avanti in questa sezione, confrontando la selezione binaria e quella unaria per il calcolo del valore assoluto.</p>
+      </div>
+      <div class="char-card">
+        <h4>📥📤 Input e Output</h4>
+        <p>Un algoritmo riceve <strong>zero o più dati in ingresso</strong> (input) e produce <strong>almeno un risultato</strong> in uscita (output): altrimenti non servirebbe a nulla.</p>
+        <p class="note">Esempio: l'algoritmo del valore assoluto riceve in input un numero <code>n</code> e restituisce in output <code>ris</code>.</p>
+      </div>
+    </div>
+    <div class="callout">💡 <strong>Suggerimento per la spiegazione in classe:</strong> per rendere concreti questi concetti, usa analogie che gli studenti già conoscono, come le istruzioni di montaggio di un mobile, un navigatore GPS o una ricetta di cucina: su questi esempi è facile far notare finitezza, ambiguità, eseguibilità... Il gioco <strong>"Il Robot Umano"</strong> (sezione <button class="link-btn" data-goto="giochi">Giochi &amp; Cooperative Learning</button>) è pensato apposta per far sperimentare dal vivo cosa succede quando un'istruzione è ambigua o non eseguibile.</div>
   </div>
 
   <div class="lesson-block">
@@ -191,7 +243,6 @@
         <p>Il primo algoritmo documentato: oltre 3.500 anni fa, conteneva tabelle di frazioni e 84 problemi aritmetici, algebrici e geometrici con relative soluzioni.</p>
       </div>
     </div>
-    <p>La definizione di <em>efficienza</em> vista per i problemi si applica anche agli algoritmi: in informatica indica la capacità di un algoritmo di usare meno risorse possibili durante l'esecuzione.</p>
   </div>
 
   <div class="lesson-block">
@@ -237,6 +288,27 @@
       </ol>
     </details>
     <p>👉 Puoi mettere alla prova la tua memoria con il gioco <strong>"Riordina la ricetta"</strong> nella sezione <button class="link-btn" data-goto="giochi">Giochi &amp; Cooperative Learning</button>.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>🎯 Mettiti alla prova: quale caratteristica manca?</h2>
+    <p>Per ciascuna delle seguenti "non-istruzioni", individua quale caratteristica di un algoritmo viene violata, poi controlla la soluzione.</p>
+    <div class="exercise-card">
+      <p><strong>1.</strong> "Continua a far rimbalzare la palla contro il muro, senza mai fermarti."</p>
+      <details class="reveal"><summary>Mostra soluzione</summary><p>Manca la <strong>finitezza</strong>: un algoritmo deve terminare dopo un numero finito di passi. Qui non c'è nessuna condizione di arresto: è un ciclo infinito.</p></details>
+    </div>
+    <div class="exercise-card">
+      <p><strong>2.</strong> "Cuoci la pasta finché non ti sembra pronta."</p>
+      <details class="reveal"><summary>Mostra soluzione</summary><p>Manca la <strong>non ambiguità</strong>: "ti sembra pronta" è un giudizio soggettivo, non preciso. Un'istruzione corretta sarebbe, ad esempio, "cuoci per 9 minuti".</p></details>
+    </div>
+    <div class="exercise-card">
+      <p><strong>3.</strong> "Dividi il numero per zero e scrivi il risultato."</p>
+      <details class="reveal"><summary>Mostra soluzione</summary><p>Manca l'<strong>eseguibilità</strong>: la divisione per zero non è un'operazione definita/eseguibile, quindi l'istruzione non può essere portata a termine.</p></details>
+    </div>
+    <div class="exercise-card">
+      <p><strong>4.</strong> "Per sommare due numeri qualsiasi, fai 3 + 5."</p>
+      <details class="reveal"><summary>Mostra soluzione</summary><p>Manca la <strong>generalità</strong>: l'algoritmo funziona solo per quei due numeri specifici, non per una coppia qualsiasi come richiesto dal problema — esattamente come nell'esempio della telefonata, deve valere per ogni caso, non solo per quello "fortunato".</p></details>
+    </div>
   </div>
 
   <div class="lesson-block">
@@ -334,6 +406,7 @@ print(ris)</pre>
   <div class="lesson-block">
     <h2>Cos'è un Flow Chart?</h2>
     <p>Il <strong>Flow Chart</strong> (diagramma di flusso, diagramma a blocchi) è il modo più semplice e diffuso per rappresentare graficamente un algoritmo. È una rappresentazione intuitiva che permette di individuare "a colpo d'occhio" la struttura dell'algoritmo.</p>
+    <p>È come la <strong>cartina di un percorso</strong>: invece di descrivere a parole "vai dritto, poi al bivio scegli in base a una condizione...", il flow chart lo disegna. Ogni forma geometrica ha un significato preciso e convenzionale (uguale in tutto il mondo, indipendentemente dalla lingua o dal linguaggio di programmazione che si userà poi): per questo un flow chart si può tradurre in pseudocodice o in un qualsiasi linguaggio (C, C++, Python...) senza perdere informazioni.</p>
   </div>
 
   <div class="lesson-block">
@@ -357,6 +430,65 @@ print(ris)</pre>
       </div>
     </div>
     <p>I blocchi si collegano con <strong>frecce</strong> (indicano il verso di percorrenza) e <strong>nodi di congiunzione</strong> (dove due percorsi alternativi si ricongiungono).</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Le regole di un Flow Chart corretto</h2>
+    <p>Non basta usare le forme giuste: perché un flow chart sia davvero corretto e leggibile deve rispettare alcune regole precise, in gran parte legate alle caratteristiche di un algoritmo viste nella sezione <button class="link-btn" data-goto="algoritmi">Algoritmi</button>.</p>
+    <div class="char-grid">
+      <div class="char-card">
+        <h4>🚩 Un solo Inizio</h4>
+        <p>Deve esserci <strong>un solo blocco Inizio</strong>, punto di partenza univoco da cui parte tutto il diagramma.</p>
+        <p class="note">Esempio: due frecce che partono da due "Inizio" diversi e poi si uniscono non sono ammesse: da dove si comincia davvero?</p>
+      </div>
+      <div class="char-card">
+        <h4>🏁 Ogni percorso arriva a un Fine</h4>
+        <p>Da qualunque blocco si parta, seguendo le frecce si deve <strong>sempre raggiungere un blocco Fine</strong> dopo un numero finito di passi: è la <em>finitezza</em> dell'algoritmo, resa visibile nel disegno.</p>
+        <p class="note">Esempio: un ramo di un ciclo che torna indietro all'infinito, senza mai poter uscire verso Fine, rappresenta un errore (ciclo infinito).</p>
+      </div>
+      <div class="char-card">
+        <h4>◇ Decisione = due sole uscite</h4>
+        <p>Da ogni rombo devono partire <strong>esattamente due frecce</strong>, etichettate <span class="tag-v">V</span> e <span class="tag-f">F</span>: non ne può mancare una, né essercene una terza.</p>
+        <p class="note">Esempio: un rombo con tre frecce in uscita ("Vero", "Falso", "forse") non è un blocco di decisione valido.</p>
+      </div>
+      <div class="char-card">
+        <h4>🔗 Nessun blocco "orfano" o vicolo cieco</h4>
+        <p>Ogni blocco (tranne Inizio) deve avere <strong>almeno una freccia in entrata</strong>, ed ogni blocco (tranne Fine) deve avere <strong>almeno una freccia in uscita</strong>: niente parti isolate che non si raggiungono mai, niente blocchi da cui non si può proseguire.</p>
+        <p class="note">Esempio: un blocco di elaborazione disegnato "a lato" senza alcuna freccia che lo colleghi al resto non fa parte dell'algoritmo.</p>
+      </div>
+      <div class="char-card">
+        <h4>📦 Un blocco, un'azione</h4>
+        <p>Ogni blocco di elaborazione dovrebbe contenere <strong>una sola operazione elementare</strong> (o un piccolo gruppo coerente), non un intero paragrafo di istruzioni: aiuta a tracciare il diagramma passo-passo, come nel simulatore di tracciamento.</p>
+        <p class="note">Esempio: meglio due blocchi separati <code>ris = n * 2</code> e <code>ris = ris + 1</code> che un unico blocco con dentro tutto il procedimento.</p>
+      </div>
+      <div class="char-card">
+        <h4>⬇️ Flusso leggibile, dall'alto in basso</h4>
+        <p>Per convenzione il flusso principale scende <strong>dall'alto verso il basso</strong>; le frecce non dovrebbero incrociarsi inutilmente. I rami che "tornano indietro" (i cicli) sono l'eccezione e vanno segnalati chiaramente, ad es. con una freccia verso l'alto.</p>
+        <p class="note">Esempio: lo vedremo tra poco nei cicli while/do-while/for, dove una freccia risale al blocco di controllo della condizione.</p>
+      </div>
+    </div>
+    <div class="callout">💡 <strong>Suggerimento per la spiegazione in classe:</strong> per far notare questi errori "dal vivo", puoi usare il gioco <strong>"Flow Chart Umano"</strong> (sezione <button class="link-btn" data-goto="giochi">Giochi &amp; Cooperative Learning</button>): fai disporre gli studenti-blocco in un ordine sbagliato (es. due "Inizio", o un rombo con un solo ramo) e chiedi alla classe di individuare cosa non va.</div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>🔍 Mettiti alla prova: trova l'errore nel Flow Chart</h2>
+    <p>Ogni descrizione qui sotto corrisponde a un flow chart scorretto: individua quale regola viene violata, poi controlla la soluzione.</p>
+    <div class="exercise-card">
+      <p><strong>1.</strong> Il diagramma ha due blocchi ovali "Inizio", uno in alto a sinistra e uno in alto a destra, che poi confluiscono con delle frecce verso lo stesso blocco di elaborazione.</p>
+      <details class="reveal"><summary>Mostra soluzione</summary><p>Viola la regola dell'<strong>Inizio unico</strong>: un flow chart deve avere un solo punto di partenza univoco, non due.</p></details>
+    </div>
+    <div class="exercise-card">
+      <p><strong>2.</strong> Un rombo con dentro la condizione "voto &gt;= 6 ?" ha tre frecce in uscita: una etichettata "V", una "F" e una senza etichetta che va dritta a un blocco di output.</p>
+      <details class="reveal"><summary>Mostra soluzione</summary><p>Viola la regola delle <strong>due sole uscite etichettate V/F</strong>: da un blocco di decisione possono uscire esattamente due frecce, entrambe etichettate.</p></details>
+    </div>
+    <div class="exercise-card">
+      <p><strong>3.</strong> Un blocco di elaborazione "tot = tot + n" ha una freccia in entrata, ma nessuna freccia in uscita: il percorso si interrompe lì.</p>
+      <details class="reveal"><summary>Mostra soluzione</summary><p>Viola la regola del <strong>vicolo cieco</strong>: ogni blocco (tranne Fine) deve avere una freccia in uscita che porti, prima o poi, a un blocco Fine.</p></details>
+    </div>
+    <div class="exercise-card">
+      <p><strong>4.</strong> Nel ciclo while per stampare i numeri da 1 a 5, il ramo "Vero" del rombo esegue <code>output(i)</code> e poi torna direttamente al controllo della condizione, senza mai eseguire <code>i = i + 1</code>.</p>
+      <details class="reveal"><summary>Mostra soluzione</summary><p>Viola la <strong>finitezza</strong> (raggiungibilità del Fine): la condizione <code>i &lt;= 5</code> resterà sempre vera, generando un <strong>ciclo infinito</strong> che non arriva mai al blocco Fine.</p></details>
+    </div>
   </div>
 
   <div class="lesson-block">
@@ -1510,11 +1642,18 @@ int main()
   <h1 class="view-title">🎭 Giochi &amp; Cooperative Learning</h1>
 
   <div class="lesson-block">
-    <h2>🎲 Gioco 1 — Memory delle forme del Flow Chart</h2>
-    <p>Abbina ogni forma geometrica al suo significato. Trova tutte le coppie nel minor numero di mosse!</p>
+    <h2>🎲 Gioco 1 — Memory</h2>
+    <p>Abbina ogni carta al suo significato. Scegli l'argomento e trova tutte le coppie nel minor numero di mosse!</p>
     <div class="sim-controls">
+      <label>Argomento:
+        <select id="memory-topic">
+          <option value="flowchart">Forme del Flow Chart</option>
+          <option value="tipi">Tipi di dato C++</option>
+          <option value="oop">Termini OOP</option>
+        </select>
+      </label>
       <button class="btn" id="memory-restart">Nuova partita</button>
-      <span class="memory-stats">Mosse: <strong id="memory-moves">0</strong> · Coppie trovate: <strong id="memory-pairs">0</strong>/4</span>
+      <span class="memory-stats">Mosse: <strong id="memory-moves">0</strong> · Coppie trovate: <strong id="memory-pairs">0</strong>/<span id="memory-total">4</span></span>
     </div>
     <div class="memory-grid" id="memory-grid"></div>
   </div>
@@ -1531,12 +1670,38 @@ int main()
   </div>
 
   <div class="lesson-block">
-    <h2>⚡ Gioco 3 — Sfida rapida sugli operatori logici</h2>
-    <p>Ti verranno mostrati dei valori di A e B: rispondi il più velocemente possibile se la condizione è Vera o Falsa!</p>
+    <h2>⚡ Gioco 3 — Sfida a tempo: logica e output C++</h2>
+    <p>Scegli l'argomento e rispondi il più velocemente possibile!</p>
     <div class="sim-controls">
-      <button class="btn" id="logic-game-start">Inizia sfida (10 domande)</button>
+      <label>Argomento:
+        <select id="logic-game-mode">
+          <option value="logic">Operatori logici (Vero/Falso)</option>
+          <option value="output">Output Detective — cosa stampa questo codice C++?</option>
+        </select>
+      </label>
+      <button class="btn" id="logic-game-start">Inizia sfida</button>
     </div>
     <div id="logic-game-area" class="sim-output"></div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>🔢 Gioco 4 — Quante iterazioni?</h2>
+    <p>Osserva il ciclo (while, do-while o for) e indovina quante volte viene eseguito il suo corpo — occhio ai cicli infiniti!</p>
+    <div class="sim-controls">
+      <button class="btn" id="loopcount-start">Inizia sfida (10 domande)</button>
+    </div>
+    <div id="loopcount-area" class="sim-output"></div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>🔁 Gioco 5 — Ricostruisci la traccia del ciclo</h2>
+    <p>Il ciclo <code>i = 2; finché i &lt;= 6: stampa i; i = i + 2</code> viene eseguito passo dopo passo. Trascina le righe nell'ordine cronologico corretto, poi controlla.</p>
+    <div class="sim-controls">
+      <button class="btn" id="loop-trace-shuffle">Mescola</button>
+      <button class="btn btn-secondary" id="loop-trace-check">Controlla ordine</button>
+    </div>
+    <ol class="dragdrop-list" id="loop-trace-list"></ol>
+    <div id="loop-trace-result" class="sim-output"></div>
   </div>
 
   <div class="lesson-block">
@@ -1550,6 +1715,12 @@ int main()
       </div>
     </div>
     <div id="group-output" class="sim-output"></div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>🏆 Quiz a squadre</h2>
+    <p>Non serve altro sviluppo: puoi trasformare la sezione <button class="link-btn" data-goto="verifiche">Verifiche</button> in una sfida a squadre, gamificando la correzione immediata già presente.</p>
+    <div class="callout">💡 <strong>Come organizzarlo:</strong> dividi la classe con il <em>Generatore di gruppi</em> qui sopra, poi proietta la LIM con un quiz su "Tutti gli argomenti". Per ogni domanda lascia 15-20 secondi di confronto nel gruppo prima di far scegliere la risposta al portavoce. Assegna un punto per ogni risposta corretta e tieni il punteggio alla lavagna: la classe si sfida in tempo reale, con la spiegazione (💡) già pronta dopo ogni domanda.</div>
   </div>
 
   <div class="lesson-block">
@@ -1595,6 +1766,65 @@ int main()
         <p><strong>Individuale → coppie → classe.</strong></p>
         <p>Data una domanda (es. "quale delle due soluzioni per i numeri primi è più efficiente e perché?"), ogni studente pensa da solo, poi si confronta con un compagno, infine si condivide con tutta la classe.</p>
       </div>
+      <div class="activity-card">
+        <h4>📍 Il gioco dell'indirizzo (puntatori)</h4>
+        <p><strong>Due volontari, resto della classe osserva.</strong></p>
+        <p>Uno studente rappresenta una <strong>variabile</strong>: siede a un banco numerato (es. banco 5) e tiene in mano un cartellino con un valore (es. "7"). Un secondo studente rappresenta un <strong>puntatore</strong>: non ha il valore, ma solo un foglietto con scritto "punto al banco 5". Per <em>dereferenziare</em> il puntatore deve alzarsi, andare al banco 5 e leggere ad alta voce il valore lì scritto. Se il valore della variabile cambia, il puntatore continua a puntare correttamente, perché rilegge sempre il banco, non un valore fisso.</p>
+      </div>
+      <div class="activity-card">
+        <h4>🔢 La fila numerata (array e vettori)</h4>
+        <p><strong>Tutta la classe, in fila.</strong></p>
+        <p>Gli studenti si dispongono in fila, ciascuno con un cartellino-indice (0, 1, 2, 3...): rappresentano un array. Il docente chiama un indice a voce alta (es. "indice 3!") e solo lo studente corrispondente risponde. Poi si introduce il <code>vector</code>: un nuovo compagno può "entrare in fila" in un punto qualsiasi o "uscire", facendo notare che tutti gli indici successivi si aggiornano — impossibile con un array a dimensione fissa.</p>
+      </div>
+      <div class="activity-card">
+        <h4>📦 La scatola nera (funzioni)</h4>
+        <p><strong>Uno studente-funzione, un compagno-chiamante, la classe indovina.</strong></p>
+        <p>Lo studente-funzione riceve dei "parametri" (foglietti con numeri) dal compagno-chiamante ed esegue, senza farsi vedere, un calcolo scritto su un cartellino segreto (es. "raddoppia e sottrai 1"), restituendo solo il risultato. Dopo 2-3 chiamate con input diversi, la classe deve indovinare cosa fa la "funzione" osservando solo le coppie input-output: un modo concreto per capire cosa significa <em>restituire un valore</em> senza vedere l'implementazione.</p>
+      </div>
+      <div class="activity-card">
+        <h4>🪪 La carta d'identità (da struct a classe)</h4>
+        <p><strong>Individuale, poi condivisione a coppie.</strong></p>
+        <p>Ogni studente compila una "carta d'identità" di un oggetto reale a scelta (es. un cane), elencando solo attributi (nome, razza, età, colore...): è una <code>struct</code>. In un secondo giro aggiunge dei metodi, cioè azioni che l'oggetto sa fare (es. <code>abbaia()</code>, <code>corre()</code>): la carta d'identità diventa così il modello di una classe, e l'oggetto scelto ne è un'istanza.</p>
+      </div>
+      <div class="activity-card">
+        <h4>🔒 La cassaforte (incapsulamento)</h4>
+        <p><strong>Due squadre.</strong></p>
+        <p>La squadra A ha alcuni "attributi privati" scritti su foglietti che tiene nascosti. La squadra B può interagire con loro solo attraverso "metodi pubblici" concordati in anticipo (es. può chiedere "dammi il doppio del tuo valore segreto" ma non "dimmi il tuo valore segreto"). Si discute perché questa regola protegge i dati da modifiche scorrette dall'esterno.</p>
+      </div>
+      <div class="activity-card">
+        <h4>🌳 L'albero delle classi (ereditarietà)</h4>
+        <p><strong>Gruppi da 3-4.</strong></p>
+        <p>Ogni gruppo riceve una classe base scritta su un cartellone (es. "Veicolo": attributi velocità e colore, metodo <code>muovi()</code>). Su post-it il gruppo crea due classi derivate (es. "Auto" e "Moto"), scrivendo cosa ereditano automaticamente dalla base e cosa aggiungono o specializzano di proprio. In plenaria si confrontano gli alberi dei vari gruppi.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>🗝️ Escape Room finale dell'UDA</h2>
+    <p>Attività conclusiva cumulativa: gli studenti (singoli o in coppia) risolvono 5 indovinelli in ordine, uno per ogni argomento del percorso. Ogni risposta è un pezzo del <strong>codice di uscita</strong> finale: chi lo completa correttamente e lo consegna al/alla docente "evade" per primo!</p>
+    <div class="exercise-card">
+      <p><strong>Indizio 1 — Problemi:</strong> qual è il 7° numero della sequenza di Fibonacci (1, 1, 2, 3, 5, 8, ...)? Scrivi il numero completo: è il <strong>1° pezzo</strong> del codice.</p>
+      <details class="reveal"><summary>Soluzione (solo per il/la docente)</summary><p><strong>13</strong> — il settimo numero della sequenza.</p></details>
+    </div>
+    <div class="exercise-card">
+      <p><strong>Indizio 2 — Algoritmi e Flow Chart:</strong> nel flow chart che calcola il valore assoluto con selezione binaria, se <code>n = -4</code>, quale ramo del rombo <code>n &gt;= 0 ?</code> viene percorso: V o F? Scrivi la lettera maiuscola: è il <strong>2° pezzo</strong> del codice.</p>
+      <details class="reveal"><summary>Soluzione (solo per il/la docente)</summary><p><strong>F</strong> — con n = -4 la condizione n &gt;= 0 è falsa.</p></details>
+    </div>
+    <div class="exercise-card">
+      <p><strong>Indizio 3 — Cicli:</strong> <code>i = 1; finché i &lt;= 4: stampa i; i = i + 1</code>. Quante volte viene eseguito il corpo del ciclo? Scrivi la cifra: è il <strong>3° pezzo</strong> del codice.</p>
+      <details class="reveal"><summary>Soluzione (solo per il/la docente)</summary><p><strong>4</strong> — il corpo viene eseguito per i = 1, 2, 3, 4.</p></details>
+    </div>
+    <div class="exercise-card">
+      <p><strong>Indizio 4 — C++ procedurale:</strong> cosa stampa questo codice? <code>int n = 5; n++; n = n * 2; cout &lt;&lt; n;</code> Scrivi il numero: è il <strong>4° pezzo</strong> del codice.</p>
+      <details class="reveal"><summary>Soluzione (solo per il/la docente)</summary><p><strong>12</strong> — n diventa 6 con n++, poi 6 * 2 = 12.</p></details>
+    </div>
+    <div class="exercise-card">
+      <p><strong>Indizio 5 — C++ OOP:</strong> come si chiama il metodo speciale che inizializza automaticamente un oggetto quando viene creato? Scrivi la parola: è il <strong>5° e ultimo pezzo</strong> del codice.</p>
+      <details class="reveal"><summary>Soluzione (solo per il/la docente)</summary><p><strong>Costruttore</strong>.</p></details>
+    </div>
+    <div class="callout">
+      🗝️ <strong>Codice di uscita completo (solo per il/la docente):</strong> <code>13 - F - 4 - 12 - COSTRUTTORE</code><br>
+      Suggerimento organizzativo: distribuisci gli indizi uno alla volta (su carta, o sbloccandoli via via alla lavagna) così le squadre non possono saltare avanti. La prima squadra che consegna tutti e 5 i pezzi corretti, nell'ordine giusto, vince.
     </div>
   </div>
 </section>
@@ -1626,8 +1856,8 @@ int main()
     </div>
 
     <div id="quiz-area" class="quiz-area"></div>
-    <div id="quiz-print-area" class="print-area"></div>
   </div>
+  <div id="quiz-print-area" class="print-area"></div>
 </section>
 
 <!-- ============ ESERCIZI ============ -->
@@ -1711,5 +1941,6 @@ int main()
 <script src="js/games.js"></script>
 <script src="js/quiz.js"></script>
 <script src="js/exercises.js"></script>
+<script src="js/search.js"></script>
 </body>
 </html>

@@ -7,12 +7,18 @@ function shuffleArray(arr) {
   return a;
 }
 
+function escapeHtml(str) {
+  return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
 // ================= MEMORY GAME =================
 (function () {
   const grid = document.getElementById("memory-grid");
   const restartBtn = document.getElementById("memory-restart");
   const movesEl = document.getElementById("memory-moves");
   const pairsEl = document.getElementById("memory-pairs");
+  const totalEl = document.getElementById("memory-total");
+  const topicSel = document.getElementById("memory-topic");
   if (!grid) return;
 
   let cards = [];
@@ -20,12 +26,13 @@ function shuffleArray(arr) {
   let lock = false;
   let moves = 0;
   let matched = 0;
+  let currentPairs = [];
 
   function buildDeck() {
     let deck = [];
-    MEMORY_PAIRS.forEach((p) => {
-      deck.push({ pairId: p.id, type: "shape", display: p.shapeChar, label: p.label });
-      deck.push({ pairId: p.id, type: "label", display: p.label, label: p.label });
+    currentPairs.forEach((p) => {
+      deck.push({ pairId: p.id, display: p.a, big: p.iconSide === "a" });
+      deck.push({ pairId: p.id, display: p.b, big: p.iconSide === "b" });
     });
     return shuffleArray(deck);
   }
@@ -49,7 +56,7 @@ function shuffleArray(arr) {
 
     const data = cards[i];
     cardEl.classList.add("flipped");
-    cardEl.innerHTML = data.type === "shape" ? `<span class="shape-preview">${data.display}</span>` : data.display;
+    cardEl.innerHTML = data.big ? `<span class="shape-preview">${data.display}</span>` : data.display;
 
     if (!firstCard) {
       firstCard = { i, data, el: cardEl };
@@ -66,7 +73,7 @@ function shuffleArray(arr) {
       matched++;
       pairsEl.textContent = matched;
       firstCard = null;
-      if (matched === MEMORY_PAIRS.length) {
+      if (matched === currentPairs.length) {
         setTimeout(() => alert("🎉 Complimenti! Hai trovato tutte le coppie in " + moves + " mosse!"), 200);
       }
     } else {
@@ -83,6 +90,7 @@ function shuffleArray(arr) {
   }
 
   function restart() {
+    currentPairs = MEMORY_SETS[topicSel ? topicSel.value : "flowchart"].pairs;
     cards = buildDeck();
     firstCard = null;
     lock = false;
@@ -90,19 +98,21 @@ function shuffleArray(arr) {
     matched = 0;
     movesEl.textContent = "0";
     pairsEl.textContent = "0";
+    if (totalEl) totalEl.textContent = currentPairs.length;
     render();
   }
 
   restartBtn.addEventListener("click", restart);
+  if (topicSel) topicSel.addEventListener("change", restart);
   restart();
 })();
 
-// ================= PIZZA DRAG & DROP =================
-(function () {
-  const list = document.getElementById("pizza-list");
-  const shuffleBtn = document.getElementById("pizza-shuffle");
-  const checkBtn = document.getElementById("pizza-check");
-  const result = document.getElementById("pizza-result");
+// ================= DRAG & DROP: RIORDINA I PASSI (factory riusabile) =================
+function createReorderGame({ listId, shuffleBtnId, checkBtnId, resultId, steps }) {
+  const list = document.getElementById(listId);
+  const shuffleBtn = document.getElementById(shuffleBtnId);
+  const checkBtn = document.getElementById(checkBtnId);
+  const result = document.getElementById(resultId);
   if (!list) return;
 
   let dragEl = null;
@@ -113,7 +123,7 @@ function shuffleArray(arr) {
       const li = document.createElement("li");
       li.draggable = true;
       li.dataset.text = text;
-      li.innerHTML = `<span class="handle">⠿</span> ${text}`;
+      li.innerHTML = `<span class="handle">⠿</span> ${escapeHtml(text)}`;
       li.addEventListener("dragstart", () => {
         dragEl = li;
         setTimeout(() => li.classList.add("dragging"), 0);
@@ -161,36 +171,39 @@ function shuffleArray(arr) {
     const items = [...list.children];
     let correctCount = 0;
     items.forEach((li, i) => {
-      const isCorrect = li.dataset.text === PIZZA_STEPS[i];
+      const isCorrect = li.dataset.text === steps[i];
       li.classList.remove("correct", "wrong");
       li.classList.add(isCorrect ? "correct" : "wrong");
       if (isCorrect) correctCount++;
     });
-    result.innerHTML = correctCount === PIZZA_STEPS.length
+    result.innerHTML = correctCount === steps.length
       ? "🎉 <strong>Perfetto!</strong> L'ordine è corretto."
-      : `📌 Hai ${correctCount}/${PIZZA_STEPS.length} passaggi al posto giusto. Riprova a sistemare le righe evidenziate in rosso.`;
+      : `📌 Hai ${correctCount}/${steps.length} passaggi al posto giusto. Riprova a sistemare le righe evidenziate in rosso.`;
   }
 
   function doShuffle() {
-    render(shuffleArray(PIZZA_STEPS));
+    render(shuffleArray(steps));
     result.innerHTML = "";
   }
 
   shuffleBtn.addEventListener("click", doShuffle);
   checkBtn.addEventListener("click", check);
   doShuffle();
-})();
+}
 
-// ================= SFIDA LOGICA RAPIDA =================
+createReorderGame({ listId: "pizza-list", shuffleBtnId: "pizza-shuffle", checkBtnId: "pizza-check", resultId: "pizza-result", steps: PIZZA_STEPS });
+createReorderGame({ listId: "loop-trace-list", shuffleBtnId: "loop-trace-shuffle", checkBtnId: "loop-trace-check", resultId: "loop-trace-result", steps: LOOP_TRACE_STEPS });
+
+// ================= SFIDA A TEMPO: LOGICA / OUTPUT C++ =================
 (function () {
   const startBtn = document.getElementById("logic-game-start");
+  const modeSel = document.getElementById("logic-game-mode");
   const area = document.getElementById("logic-game-area");
   if (!startBtn) return;
 
-  const TOTAL = 10;
-  let round, score, current;
+  let round, score, current, queue, total;
 
-  function newQuestion() {
+  function newLogicQuestion() {
     const a = Math.random() < 0.5;
     const b = Math.random() < 0.5;
     const ops = ["AND", "OR", "NOT"];
@@ -208,7 +221,7 @@ function shuffleArray(arr) {
     }
     current = { answer };
     area.innerHTML = `
-      <p class="quiz-progress">Domanda ${round + 1} di ${TOTAL} — Punteggio: ${score}</p>
+      <p class="quiz-progress">Domanda ${round + 1} di ${total} — Punteggio: ${score}</p>
       <h3>${text}</h3>
       <div class="sim-controls">
         <button class="btn" id="lg-true">Vero</button>
@@ -216,28 +229,53 @@ function shuffleArray(arr) {
       </div>
       <div id="lg-feedback"></div>
     `;
-    document.getElementById("lg-true").addEventListener("click", () => answerQ(true));
-    document.getElementById("lg-false").addEventListener("click", () => answerQ(false));
+    document.getElementById("lg-true").addEventListener("click", () => answerBool(true));
+    document.getElementById("lg-false").addEventListener("click", () => answerBool(false));
   }
 
-  function answerQ(val) {
-    const correct = val === current.answer;
+  function answerBool(val) {
+    finishRound(val === current.answer, current.answer ? "Vero" : "Falso", null);
+  }
+
+  function newOutputQuestion() {
+    current = queue[round];
+    area.innerHTML = `
+      <p class="quiz-progress">Domanda ${round + 1} di ${total} — Punteggio: ${score}</p>
+      <pre class="code-panel active">${escapeHtml(current.snippet)}</pre>
+      <ul class="quiz-options" id="lg-options"></ul>
+      <div id="lg-feedback"></div>
+    `;
+    const optsEl = document.getElementById("lg-options");
+    current.options.forEach((opt, i) => {
+      const li = document.createElement("li");
+      li.textContent = opt;
+      li.addEventListener("click", () => answerOption(i));
+      optsEl.appendChild(li);
+    });
+  }
+
+  function answerOption(i) {
+    finishRound(i === current.correct, current.options[current.correct], current.explain);
+  }
+
+  function finishRound(correct, correctText, explain) {
     if (correct) score++;
     document.getElementById("lg-feedback").innerHTML = correct
-      ? `<p style="color:#166534;font-weight:700;">✔ Corretto!</p>`
-      : `<p style="color:#991b1b;font-weight:700;">✘ Sbagliato, la risposta era ${current.answer ? "Vero" : "Falso"}.</p>`;
+      ? `<p style="color:#166534;font-weight:700;">✔ Corretto!</p>${explain ? `<p class="note">${explain}</p>` : ""}`
+      : `<p style="color:#991b1b;font-weight:700;">✘ Sbagliato, la risposta era ${correctText}.</p>${explain ? `<p class="note">${explain}</p>` : ""}`;
     round++;
     setTimeout(() => {
-      if (round >= TOTAL) endGame();
-      else newQuestion();
-    }, 700);
+      if (round >= total) endGame();
+      else if (modeSel.value === "output") newOutputQuestion();
+      else newLogicQuestion();
+    }, explain ? 1500 : 700);
   }
 
   function endGame() {
     area.innerHTML = `
       <div class="quiz-result">
         <p>Hai risposto correttamente a</p>
-        <div class="score">${score} / ${TOTAL}</div>
+        <div class="score">${score} / ${total}</div>
         <button class="btn" id="lg-retry">Rigioca</button>
       </div>
     `;
@@ -247,6 +285,73 @@ function shuffleArray(arr) {
   function start() {
     round = 0;
     score = 0;
+    if (modeSel.value === "output") {
+      queue = shuffleArray(OUTPUT_QUESTIONS);
+      total = queue.length;
+      newOutputQuestion();
+    } else {
+      total = 10;
+      newLogicQuestion();
+    }
+  }
+
+  startBtn.addEventListener("click", start);
+})();
+
+// ================= QUANTE ITERAZIONI? =================
+(function () {
+  const startBtn = document.getElementById("loopcount-start");
+  const area = document.getElementById("loopcount-area");
+  if (!startBtn) return;
+
+  let round, score, queue, current;
+
+  function newQuestion() {
+    current = queue[round];
+    area.innerHTML = `
+      <p class="quiz-progress">Domanda ${round + 1} di ${queue.length} — Punteggio: ${score}</p>
+      <pre class="code-panel active">${escapeHtml(current.code)}</pre>
+      <p>Quante volte viene eseguito il corpo del ciclo?</p>
+      <ul class="quiz-options" id="lc-options"></ul>
+      <div id="lc-feedback"></div>
+    `;
+    const optsEl = document.getElementById("lc-options");
+    current.options.forEach((opt, i) => {
+      const li = document.createElement("li");
+      li.textContent = opt;
+      li.addEventListener("click", () => answer(i));
+      optsEl.appendChild(li);
+    });
+  }
+
+  function answer(i) {
+    const correct = i === current.correct;
+    if (correct) score++;
+    document.getElementById("lc-feedback").innerHTML = correct
+      ? `<p style="color:#166534;font-weight:700;">✔ Corretto!</p><p class="note">${current.explain}</p>`
+      : `<p style="color:#991b1b;font-weight:700;">✘ Sbagliato, la risposta era "${current.options[current.correct]}".</p><p class="note">${current.explain}</p>`;
+    round++;
+    setTimeout(() => {
+      if (round >= queue.length) endGame();
+      else newQuestion();
+    }, 1600);
+  }
+
+  function endGame() {
+    area.innerHTML = `
+      <div class="quiz-result">
+        <p>Hai risposto correttamente a</p>
+        <div class="score">${score} / ${queue.length}</div>
+        <button class="btn" id="lc-retry">Rigioca</button>
+      </div>
+    `;
+    document.getElementById("lc-retry").addEventListener("click", start);
+  }
+
+  function start() {
+    round = 0;
+    score = 0;
+    queue = shuffleArray(LOOP_COUNT_QUESTIONS);
     newQuestion();
   }
 

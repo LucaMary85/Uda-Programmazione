@@ -16,11 +16,80 @@ const PIZZA_STEPS = [
   "Disporre la pizza su un piatto"
 ];
 
-const MEMORY_PAIRS = [
-  { id: "start", label: "Inizio / Fine", shapeClass: "fc-oval", shapeChar: "⬭" },
-  { id: "io", label: "Input / Output", shapeClass: "fc-io", shapeChar: "▱" },
-  { id: "process", label: "Elaborazione", shapeClass: "fc-process", shapeChar: "▭" },
-  { id: "decision", label: "Decisione", shapeClass: "fc-decision-mini", shapeChar: "◇" }
+const MEMORY_SETS = {
+  flowchart: {
+    title: "Forme del Flow Chart",
+    pairs: [
+      { id: "start", a: "⬭", b: "Inizio / Fine", iconSide: "a" },
+      { id: "io", a: "▱", b: "Input / Output", iconSide: "a" },
+      { id: "process", a: "▭", b: "Elaborazione", iconSide: "a" },
+      { id: "decision", a: "◇", b: "Decisione", iconSide: "a" }
+    ]
+  },
+  tipi: {
+    title: "Tipi di dato C++",
+    pairs: [
+      { id: "int", a: "int", b: "42" },
+      { id: "double", a: "double", b: "3.14" },
+      { id: "char", a: "char", b: "'A'" },
+      { id: "bool", a: "bool", b: "true" },
+      { id: "string", a: "string", b: '"ciao"' }
+    ]
+  },
+  oop: {
+    title: "Termini OOP",
+    pairs: [
+      { id: "classe", a: "Classe", b: "il modello/progetto di un oggetto" },
+      { id: "oggetto", a: "Oggetto", b: "un'istanza concreta di una classe" },
+      { id: "costruttore", a: "Costruttore", b: "inizializza l'oggetto alla creazione" },
+      { id: "incapsulamento", a: "Incapsulamento", b: "nasconde i dati con private/public" },
+      { id: "ereditarieta", a: "Ereditarietà", b: "una classe riusa e specializza un'altra" },
+      { id: "this", a: "this", b: "puntatore all'oggetto corrente" }
+    ]
+  }
+};
+
+const LOOP_TRACE_STEPS = [
+  "i = 2",
+  "Verifico: i <= 6? → Vero",
+  "Stampo 2",
+  "i diventa 4",
+  "Verifico: i <= 6? → Vero",
+  "Stampo 4",
+  "i diventa 6",
+  "Verifico: i <= 6? → Vero",
+  "Stampo 6",
+  "i diventa 8",
+  "Verifico: i <= 6? → Falso",
+  "Il ciclo termina"
+];
+
+const OUTPUT_QUESTIONS = [
+  { snippet: "int n = 5;\nn++;\ncout << n;", options: ["4", "5", "6", "Errore"], correct: 2, explain: "n++ incrementa n di 1: 5 + 1 = 6." },
+  { snippet: "int a = 7, b = 2;\ncout << a % b;", options: ["3", "1", "0", "3.5"], correct: 1, explain: "% restituisce il resto della divisione intera: 7 diviso 2 fa 3 con resto 1." },
+  { snippet: "int x = 10;\nx = x * 2;\nx--;\ncout << x;", options: ["19", "20", "18", "21"], correct: 0, explain: "x diventa 20, poi x-- lo decrementa a 19." },
+  { snippet: "int a = 7, b = 2;\ndouble d = a / b;\ncout << d;", options: ["3.5", "3", "4", "Errore di compilazione"], correct: 1, explain: "a e b sono int: la divisione tra due int è intera e tronca a 3, anche se il risultato viene assegnato a un double." },
+  { snippet: "int n = (int)7.9;\ncout << n;", options: ["8", "7", "7.9", "Errore"], correct: 1, explain: "Il cast a int tronca la parte decimale (non arrotonda): 7.9 diventa 7." },
+  { snippet: "bool ok = (5 > 3);\ncout << ok;", options: ["true", "1", "5", "Errore"], correct: 1, explain: "Per default cout stampa i bool come 0/1, non come 'true'/'false'." },
+  { snippet: "string nome = \"Anna\";\ncout << nome + \"!\";", options: ["Anna!", "Anna", "\"Anna\"+\"!\"", "Errore"], correct: 0, explain: "L'operatore + tra stringhe le concatena." },
+  { snippet: "vector<int> v = {10, 20, 30};\ncout << v[1];", options: ["10", "20", "30", "Errore"], correct: 1, explain: "Gli indici partono da 0: v[1] è il secondo elemento, cioè 20." },
+  { snippet: "int n = 4;\nif (n % 2 == 0)\n    cout << \"pari\";\nelse\n    cout << \"dispari\";", options: ["pari", "dispari", "4", "Errore"], correct: 0, explain: "4 % 2 fa 0, quindi la condizione è vera: si stampa 'pari'." },
+  { snippet: "int n = -3;\ncout << (n >= 0 ? \"positivo\" : \"negativo\");", options: ["positivo", "negativo", "-3", "Errore"], correct: 1, explain: "n è minore di 0, quindi l'operatore ternario restituisce 'negativo'." },
+  { snippet: "int n = 3;\nn = n + 1;\nn = n - 1;\nn++;\ncout << n;", options: ["3", "4", "5", "2"], correct: 1, explain: "3+1=4, 4-1=3, poi n++ lo riporta a 4." },
+  { snippet: "char c = 'A';\ncout << c;", options: ["A", "'A'", "65", "Errore"], correct: 0, explain: "Un char stampato con cout mostra il carattere stesso, non il suo codice numerico." }
+];
+
+const LOOP_COUNT_QUESTIONS = [
+  { code: "i = 1\nfinché i <= 5:\n    stampa i\n    i = i + 1", options: ["4", "5", "6", "Non termina mai"], correct: 1, explain: "i vale 1,2,3,4,5: il corpo viene eseguito 5 volte, poi i diventa 6 e la condizione è falsa." },
+  { code: "i = 0\nfinché i < 3:\n    stampa i\n    i = i + 1", options: ["2", "3", "4", "Non termina mai"], correct: 1, explain: "i vale 0,1,2: 3 esecuzioni, poi i diventa 3 e i < 3 è falsa." },
+  { code: "i = 10\nfinché i > 0:\n    stampa i\n    i = i - 2", options: ["4", "5", "6", "Non termina mai"], correct: 1, explain: "i vale 10,8,6,4,2: 5 esecuzioni, poi i diventa 0 e i > 0 è falsa." },
+  { code: "i = 1\nfinché i <= 5:\n    stampa i", options: ["5", "6", "0", "Non termina mai"], correct: 3, explain: "Manca l'istruzione che modifica i: la condizione i <= 5 resterà sempre vera. È un ciclo infinito!" },
+  { code: "i = 1\nfinché i <= 0:\n    stampa i\n    i = i + 1", options: ["0", "1", "5", "Non termina mai"], correct: 0, explain: "La condizione i <= 0 è già falsa alla prima verifica: il corpo non viene mai eseguito." },
+  { code: "i = 0\nripeti:\n    stampa \"ciao\"\n    i = i + 1\nfinché i < 3", options: ["2", "3", "4", "Non termina mai"], correct: 1, explain: "Il do-while esegue il corpo e poi controlla: con i che parte da 0 il corpo viene eseguito 3 volte (i diventa 1, 2, 3)." },
+  { code: "i = 5\nripeti:\n    stampa i\n    i = i - 1\nfinché i > 10", options: ["0", "1", "2", "Non termina mai"], correct: 1, explain: "Il do-while esegue il corpo almeno una volta, anche se la condizione i > 10 è falsa fin dall'inizio." },
+  { code: "per i da 1 a 4:\n    stampa i", options: ["3", "4", "5", "Non termina mai"], correct: 1, explain: "Il for esegue il corpo per i = 1, 2, 3, 4: 4 volte." },
+  { code: "per i da 0 a 10 (passo 2):\n    stampa i", options: ["5", "6", "7", "Non termina mai"], correct: 1, explain: "i vale 0,2,4,6,8,10: 6 esecuzioni." },
+  { code: "i = 1\nfinché i <= 5:\n    stampa i\n    i = i - 1", options: ["5", "1", "0", "Non termina mai"], correct: 3, explain: "i diminuisce invece di aumentare: non raggiungerà mai un valore maggiore di 5 che renda falsa la condizione. È un ciclo infinito!" }
 ];
 
 const QUIZ_BANK = [
@@ -38,6 +107,11 @@ const QUIZ_BANK = [
   { cat: "problemi", q: "Dove si trova il primo algoritmo documentato nella storia?", options: ["Nel papiro di Ahmes (Egitto, ~1650 a.C.)", "In un manoscritto greco", "In un testo cinese", "In un libro romano"], correct: 0, explain: "Il papiro di Ahmes contiene tabelle e problemi aritmetici risolti circa 3500 anni fa." },
   { cat: "problemi", q: "Nell'esempio della telefonata, qual è il problema dell'algoritmo iniziale?", options: ["È troppo lungo", "Non generalizza il caso in cui Alice non risponda", "Usa troppe variabili", "Non ha un blocco di fine"], correct: 1, explain: "L'algoritmo iniziale non contemplava tutte le possibilità (Alice che non risponde)." },
   { cat: "problemi", q: "Cosa significa che un algoritmo deve essere 'generalizzabile'?", options: ["Deve funzionare solo per un caso specifico", "Deve contemplare tutte le possibili casistiche", "Deve essere il più corto possibile", "Deve usare solo numeri interi"], correct: 1, explain: "Un buon algoritmo copre tutti i casi possibili, non solo quello 'fortunato'." },
+  { cat: "problemi", q: "Cosa si intende per 'finitezza' di un algoritmo?", options: ["Deve usare poche variabili", "Deve terminare dopo un numero finito di passi", "Deve essere scritto in poche righe", "Deve avere un solo input"], correct: 1, explain: "Un algoritmo che non arriva mai a una conclusione (es. un ciclo senza condizione di arresto) non è valido." },
+  { cat: "problemi", q: "Perché l'istruzione 'cuoci finché non ti sembra pronto' non rispetta la 'non ambiguità'?", options: ["Perché è troppo lunga", "Perché il giudizio è soggettivo e non preciso", "Perché non contiene numeri", "Perché non è in italiano corretto"], correct: 1, explain: "Un'istruzione non ambigua deve avere un unico significato chiaro, non dipendere da un giudizio personale." },
+  { cat: "problemi", q: "Perché 'dividi un numero per zero' non è un'istruzione valida in un algoritmo?", options: ["Perché è troppo semplice", "Perché viola l'eseguibilità: non è un'operazione definita/eseguibile", "Perché richiede troppa memoria", "Perché non ha input"], correct: 1, explain: "Ogni istruzione deve poter essere concretamente eseguita: la divisione per zero non è definita." },
+  { cat: "problemi", q: "Cosa garantisce la 'sequenzialità' in un algoritmo?", options: ["Che le istruzioni si eseguano tutte insieme", "Che le istruzioni si eseguano una alla volta, in un ordine preciso", "Che non ci siano decisioni", "Che non servano variabili"], correct: 1, explain: "Le istruzioni vengono eseguite una alla volta, nell'ordine stabilito (salvo salti espliciti di decisioni e cicli)." },
+  { cat: "problemi", q: "Un algoritmo deve avere sempre almeno un input?", options: ["Sì, sempre", "No, può avere zero input, ma deve produrre almeno un output", "No, non servono né input né output", "Sì, e anche almeno un output obbligatorio in ingresso"], correct: 1, explain: "L'input può anche mancare (zero o più dati in ingresso), ma deve sempre esserci almeno un output, altrimenti l'algoritmo non servirebbe a nulla." },
   { cat: "problemi", q: "Cos'è la pseudocodifica?", options: ["La descrizione di un algoritmo in un linguaggio di programmazione", "La descrizione di un algoritmo in linguaggio naturale, comprensibile all'uomo", "Un errore di sintassi", "Un tipo di variabile"], correct: 1, explain: "La pseudocodifica usa il linguaggio naturale, non un linguaggio di programmazione." },
   { cat: "problemi", q: "Cos'è la codifica di un algoritmo?", options: ["La sua traduzione in un linguaggio comprensibile al computer", "La sua traduzione in un'altra lingua umana", "La sua rappresentazione grafica", "Il suo tempo di esecuzione"], correct: 0, explain: "La codifica è la stesura dell'algoritmo in un linguaggio di programmazione." },
   { cat: "problemi", q: "Cosa sono le variabili in un algoritmo?", options: ["Simboli decorativi", "Contenitori che permettono di memorizzare dati", "Solo numeri negativi", "Blocchi grafici del flow chart"], correct: 1, explain: "Le variabili sono 'scatole' che contengono i dati usati dall'algoritmo." },
@@ -63,6 +137,11 @@ const QUIZ_BANK = [
   { cat: "flowchart", q: "Quando è vera la condizione A || B (OR)?", options: ["Solo quando entrambe sono vere", "Quando almeno una delle due condizioni è vera", "Mai", "Solo quando entrambe sono false"], correct: 1, explain: "L'OR è vero se almeno una delle condizioni è vera." },
   { cat: "flowchart", q: "La condizione !(n==0) è falsa quando...", options: ["n è diverso da 0", "n è uguale a 0", "n è negativo", "n è positivo"], correct: 1, explain: "!(n==0) nega l'uguaglianza a 0: è falsa proprio quando n è 0." },
   { cat: "flowchart", q: "Per verificare se n è compreso tra 10 e 20 (estremi inclusi) quale condizione è corretta?", options: ["n>10 && n<20", "n>=10 && n<=20", "n>=10 || n<=20", "n==10 && n==20"], correct: 1, explain: "Servono entrambi i limiti con gli 'uguale', collegati da AND." },
+  { cat: "flowchart", q: "Quanti blocchi 'Inizio' può avere un flow chart corretto?", options: ["Uno solo", "Due, se poi confluiscono", "Tanti quanti i casi da gestire", "Nessuno, è facoltativo"], correct: 0, explain: "Il punto di partenza deve essere unico e univoco." },
+  { cat: "flowchart", q: "Quante frecce in uscita deve avere un blocco di decisione (rombo) in un flow chart corretto?", options: ["Una", "Esattamente due, etichettate V e F", "Tre o più, a seconda dei casi", "Nessuna"], correct: 1, explain: "Un rombo ha sempre esattamente due esiti: Vero e Falso, entrambi etichettati." },
+  { cat: "flowchart", q: "Cosa succede se un blocco di elaborazione non ha nessuna freccia in uscita (e non è il blocco Fine)?", options: ["È perfettamente valido", "È un 'vicolo cieco': il flow chart non è corretto", "Il programma si velocizza", "Diventa automaticamente un blocco Fine"], correct: 1, explain: "Ogni blocco, tranne Fine, deve avere una freccia in uscita che permetta di proseguire il flusso." },
+  { cat: "flowchart", q: "In un flow chart, cosa garantisce che ogni percorso arrivi prima o poi a un blocco Fine?", options: ["L'efficienza", "La finitezza dell'algoritmo rappresentato", "La presenza di input", "Il numero di variabili usate" ], correct: 1, explain: "È la stessa caratteristica di 'finitezza' vista per gli algoritmi, resa visibile nel disegno del flow chart." },
+  { cat: "flowchart", q: "Perché è preferibile che ogni blocco di elaborazione contenga una sola operazione elementare?", options: ["Perché il flow chart occupa meno spazio su carta", "Perché rende il diagramma più leggibile e facile da tracciare passo-passo", "Perché altrimenti il programma non compila", "Perché lo richiede la sintassi del C++" ], correct: 1, explain: "Un blocco con una sola azione è più facile da seguire e da tracciare, un po' come nel simulatore di tracciamento." },
 
   // ---- Cicli ----
   { cat: "cicli", q: "A cosa serve un ciclo (loop) in un algoritmo?", options: ["A terminare subito l'algoritmo", "A ripetere la stessa azione più volte", "A dichiarare le costanti", "A collegare due flow chart diversi"], correct: 1, explain: "Il ciclo permette di ripetere istruzioni finché una condizione lo richiede." },
