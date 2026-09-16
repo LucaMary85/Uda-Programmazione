@@ -26,7 +26,7 @@
     <h2>Dal flow chart al codice</h2>
     <p>Gli algoritmi visti come diagrammi di flusso nella sezione <a href="Introduzione_Programmazione.html">Flow Chart</a> del percorso principale possono essere tradotti in <strong>C++</strong> usando la <em>programmazione procedurale</em>: variabili semplici e funzioni che operano su di esse, senza classi.</p>
     <p>In particolare, i blocchi di ripetizione del flow chart (while, do-while, for) diventano i cicli omonimi del linguaggio C++.</p>
-    <p>Il percorso qui sotto è a <strong>difficoltà crescente</strong>: parte dalla sintassi di base (input/output), passa per selezione e cicli, introduce le funzioni e chiude con gli array. Il blocco sulle funzioni precede volutamente quello sugli array: passare un array a una funzione richiede di aver già capito la differenza tra passaggio per valore e per riferimento. Prova a risolvere ogni esercizio da solo prima di rivelare la soluzione.</p>
+    <p>Il percorso qui sotto è a <strong>difficoltà crescente</strong> e segue lo stesso ordine della sezione di teoria <a href="Introduzione_Programmazione.html">C++</a>: sintassi di base, operatori, selezione, cicli, funzioni, <strong>puntatori</strong>, array, <strong>vector</strong>, <strong>stringhe</strong>, <strong>casting</strong> e infine <strong>struct</strong> — l'ultimo passo prima della programmazione a oggetti. Il blocco sulle funzioni precede volutamente quello sui puntatori e sugli array: passare un dato a una funzione per modificarlo davvero richiede di aver già capito la differenza tra passaggio per valore e per riferimento. Prova a risolvere ogni esercizio da solo prima di rivelare la soluzione.</p>
   </div>
 
   <!-- ============ 1. INPUT/OUTPUT E SINTASSI BASE ============ -->
@@ -207,13 +207,64 @@ int main() {
     </div>
   </div>
 
+  <div class="lesson-block">
+    <h2>Esercizio 9 — Area e circonferenza con una costante</h2>
+    <p><strong>Consegna:</strong> chiedi il raggio di un cerchio e calcola area e circonferenza, usando una costante <code>PI</code> dichiarata con <code>const</code> (formule: area = π·r², circonferenza = 2·π·r).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    const double PI = 3.14159; // non deve mai cambiare: dichiararla const lo garantisce
+    double raggio;
+    cin &gt;&gt; raggio;
+
+    double area = PI * raggio * raggio;
+    double circonferenza = 2 * PI * raggio;
+
+    cout &lt;&lt; "Area: " &lt;&lt; area &lt;&lt; endl;
+    cout &lt;&lt; "Circonferenza: " &lt;&lt; circonferenza &lt;&lt; endl;
+
+    // PI = 3.0; // se scommentata: ERRORE DI COMPILAZIONE, non si puo' riassegnare una costante
+    return 0;
+}</pre>
+        <p class="note">Usare <code>const</code> non è solo una convenzione stilistica: se per errore in mezzo al codice si scrivesse <code>PI = 3.0;</code>, il compilatore lo segnalerebbe subito come errore, invece di lasciare che un bug del genere passi inosservato fino all'esecuzione.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 10 — Pre-incremento e post-incremento</h2>
+    <p><strong>Consegna:</strong> parti da due variabili uguali e mostra la differenza tra <code>++a</code> (pre-incremento) e <code>b++</code> (post-incremento) quando il risultato viene usato subito in un'assegnazione.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a = 5;
+    int b = 5;
+
+    int risultatoPre = ++a;  // PRE: a diventa 6 PRIMA di essere letto -> risultatoPre vale 6
+    int risultatoPost = b++; // POST: risultatoPost prende il valore ATTUALE (5) -> POI b diventa 6
+
+    cout &lt;&lt; "a = " &lt;&lt; a &lt;&lt; ", risultatoPre = " &lt;&lt; risultatoPre &lt;&lt; endl;   // a = 6, risultatoPre = 6
+    cout &lt;&lt; "b = " &lt;&lt; b &lt;&lt; ", risultatoPost = " &lt;&lt; risultatoPost &lt;&lt; endl; // b = 6, risultatoPost = 5
+    return 0;
+}</pre>
+        <p class="note">Alla fine <code>a</code> e <code>b</code> valgono entrambe 6: l'incremento avviene comunque. Cambia solo <strong>quale valore viene "fotografato"</strong> nella variabile di destinazione: quello già aggiornato (pre) o quello di un istante prima (post).</p>
+      </details>
+    </div>
+  </div>
+
   <!-- ============ 3. SELEZIONE ============ -->
   <div class="lesson-block">
     <h2>3. Selezione (if/else, switch)</h2>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 9 — Pari o dispari</h2>
+    <h2>Esercizio 11 — Pari o dispari</h2>
     <p><strong>Consegna:</strong> dato un numero, stabilisci se è pari o dispari.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -235,7 +286,31 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 10 — Massimo tra tre numeri</h2>
+    <h2>Esercizio 12 — Pari o dispari con l'operatore ternario</h2>
+    <p><strong>Consegna:</strong> riscrivi l'esercizio precedente usando l'<strong>operatore ternario</strong> <code>condizione ? valoreSeVero : valoreSeFalso</code> al posto dell'<code>if</code>/<code>else</code> completo.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    // equivalente compatto dell'if/else dell'esercizio 11
+    string esito = (n % 2 == 0) ? "pari" : "dispari";
+
+    cout &lt;&lt; n &lt;&lt; " e' " &lt;&lt; esito;
+    return 0;
+}</pre>
+        <p class="note">Il ternario conviene quando si deve solo <strong>scegliere un valore</strong> da assegnare o stampare, come qui. Per una logica più complessa (più di due strade, più istruzioni per ramo, oppure un <code>cin</code> dentro una delle due alternative) serve invece un vero <code>if</code>/<code>else</code>, come quello visto negli esercizi successivi.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 13 — Massimo tra tre numeri</h2>
     <p><strong>Consegna:</strong> dati tre numeri, trova il massimo.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -262,7 +337,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 11 — Calcolatrice semplice (switch)</h2>
+    <h2>Esercizio 14 — Calcolatrice semplice (switch)</h2>
     <p><strong>Consegna:</strong> leggi due numeri e un operatore (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>), poi calcola e stampa il risultato usando uno <code>switch</code>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -301,7 +376,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 12 — Giudizio da un voto</h2>
+    <h2>Esercizio 15 — Giudizio da un voto</h2>
     <p><strong>Consegna:</strong> dato un voto tra 0 e 10, stampa il giudizio: insufficiente (&lt; 6), sufficiente (6-7), buono (8), ottimo (9-10).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -328,7 +403,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 13 — Anno bisestile</h2>
+    <h2>Esercizio 16 — Anno bisestile</h2>
     <p><strong>Consegna:</strong> dato un anno, stabilisci se è bisestile (condizioni annidate/AND-OR: divisibile per 4 e non per 100, oppure divisibile per 400).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -358,7 +433,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 14 — Numeri da 1 a N</h2>
+    <h2>Esercizio 17 — Numeri da 1 a N</h2>
     <p><strong>Consegna:</strong> stampa i numeri da 1 a N.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -378,7 +453,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 15 — Somma dei numeri da 1 a N</h2>
+    <h2>Esercizio 18 — Somma dei numeri da 1 a N</h2>
     <p><strong>Consegna:</strong> calcola la somma dei numeri da 1 a N.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -402,7 +477,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 16 — Tabellina</h2>
+    <h2>Esercizio 19 — Tabellina</h2>
     <p><strong>Consegna:</strong> dato un numero, stampa la sua tabellina (da 1 a 10).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -422,7 +497,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 17 — Fattoriale</h2>
+    <h2>Esercizio 20 — Fattoriale</h2>
     <p><strong>Consegna:</strong> calcola il fattoriale di un numero <code>n</code> con un ciclo <code>for</code>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -446,7 +521,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 18 — Numero primo</h2>
+    <h2>Esercizio 21 — Numero primo</h2>
     <p><strong>Consegna:</strong> stabilisci se un numero è primo, usando la strategia efficiente vista nella sezione Problemi del percorso principale (dividi solo fino alla metà del numero).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -479,7 +554,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 19 — Sequenza di Fibonacci</h2>
+    <h2>Esercizio 22 — Sequenza di Fibonacci</h2>
     <p><strong>Consegna:</strong> stampa i primi N termini della sequenza di Fibonacci (0, 1, 1, 2, 3, 5, 8, ...).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -504,7 +579,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 20 — Menu ripetuto (do-while)</h2>
+    <h2>Esercizio 23 — Menu ripetuto (do-while)</h2>
     <p><strong>Consegna:</strong> realizza una piccola calcolatrice a menu che continua a chiedere l'operazione finché l'utente non sceglie "esci".</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -544,7 +619,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 21 — Tabella pitagorica</h2>
+    <h2>Esercizio 24 — Tabella pitagorica</h2>
     <p><strong>Consegna:</strong> stampa la tabella pitagorica, con le tabelline da 1 a 10.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -565,7 +640,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 22 — Triangolo di asterischi</h2>
+    <h2>Esercizio 25 — Triangolo di asterischi</h2>
     <p><strong>Consegna:</strong> dato un numero N, disegna un triangolo di asterischi con N righe (1 asterisco sulla prima riga, 2 sulla seconda, ecc.).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -589,7 +664,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 23 — Quanti primi tra 1 e N</h2>
+    <h2>Esercizio 26 — Quanti primi tra 1 e N</h2>
     <p><strong>Consegna:</strong> conta quanti numeri primi ci sono tra 1 e N (ciclo esterno sui numeri, ciclo interno per verificare se ciascuno è primo).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -626,8 +701,8 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 24 — Fattoriale come funzione</h2>
-    <p><strong>Consegna:</strong> riscrivi il calcolo del fattoriale (esercizio 17) come funzione riusabile.</p>
+    <h2>Esercizio 27 — Fattoriale come funzione</h2>
+    <p><strong>Consegna:</strong> riscrivi il calcolo del fattoriale (esercizio 20) come funzione riusabile.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
         <pre class="code-panel active">#include &lt;iostream&gt;
@@ -652,8 +727,8 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 25 — Funzione ePrimo, riusata nel conteggio</h2>
-    <p><strong>Consegna:</strong> scrivi una funzione che verifica se un numero è primo e riusala per contare i numeri primi tra 1 e N (esercizio 23), evitando di duplicare il codice.</p>
+    <h2>Esercizio 28 — Funzione ePrimo, riusata nel conteggio</h2>
+    <p><strong>Consegna:</strong> scrivi una funzione che verifica se un numero è primo e riusala per contare i numeri primi tra 1 e N (esercizio 26), evitando di duplicare il codice.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
         <pre class="code-panel active">#include &lt;iostream&gt;
@@ -683,13 +758,13 @@ int main() {
     cout &lt;&lt; "Numeri primi tra 1 e " &lt;&lt; n &lt;&lt; ": " &lt;&lt; conta;
     return 0;
 }</pre>
-        <p class="note">La stessa funzione <code>ePrimo</code> può essere richiamata anche per verificare un singolo numero, come nell'esercizio 18: <code>ePrimo(n)</code> restituisce direttamente <code>true</code> o <code>false</code>.</p>
+        <p class="note">La stessa funzione <code>ePrimo</code> può essere richiamata anche per verificare un singolo numero, come nell'esercizio 21: <code>ePrimo(n)</code> restituisce direttamente <code>true</code> o <code>false</code>.</p>
       </details>
     </div>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 26 — Area del triangolo (più parametri)</h2>
+    <h2>Esercizio 29 — Area del triangolo (più parametri)</h2>
     <p><strong>Consegna:</strong> scrivi una funzione con più parametri che calcola l'area di un triangolo dati base e altezza.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -711,7 +786,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 27 — Scambio per riferimento</h2>
+    <h2>Esercizio 30 — Scambio per riferimento</h2>
     <p><strong>Consegna:</strong> scrivi una funzione che scambia il valore di due variabili usando il passaggio per riferimento (<code>&amp;</code>).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -733,18 +808,82 @@ int main() {
     cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; ", y = " &lt;&lt; y;
     return 0;
 }</pre>
-        <p class="note">Passando <code>a</code> e <code>b</code> per riferimento (<code>&amp;</code>), la funzione modifica direttamente le variabili originali <code>x</code> e <code>y</code>. Se il parametro fosse passato per valore (senza <code>&amp;</code>), lo scambio avverrebbe solo su una copia locale e non avrebbe alcun effetto fuori dalla funzione.</p>
+        <p class="note">Passando <code>a</code> e <code>b</code> per riferimento (<code>&amp;</code>), la funzione modifica direttamente le variabili originali <code>x</code> e <code>y</code>. Se il parametro fosse passato per valore (senza <code>&amp;</code>), lo scambio avverrebbe solo su una copia locale e non avrebbe alcun effetto fuori dalla funzione. Nel prossimo blocco vedremo come ottenere lo stesso risultato con i <strong>puntatori</strong>, la tecnica "sotto al cofano" di cui i riferimenti sono una scorciatoia.</p>
       </details>
     </div>
   </div>
 
-  <!-- ============ 7. ARRAY MONODIMENSIONALI ============ -->
+  <!-- ============ 7. PUNTATORI ============ -->
   <div class="lesson-block">
-    <h2>7. Array monodimensionali</h2>
+    <h2>7. Puntatori</h2>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 28 — Riempi e stampa un array</h2>
+    <h2>Esercizio 31 — Primo contatto con i puntatori</h2>
+    <p><strong>Consegna:</strong> dichiara una variabile intera e un puntatore ad essa; stampa il valore della variabile, il suo indirizzo di memoria e il valore letto tramite il puntatore; infine modifica la variabile <strong>attraverso il puntatore</strong>.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int numero = 42;
+    int *ptr = nullptr; // dichiarazione: il puntatore non punta ancora a nulla
+
+    ptr = &amp;numero; // &amp; = "indirizzo di": ptr ora punta a numero
+
+    cout &lt;&lt; "Valore di numero: " &lt;&lt; numero &lt;&lt; endl;
+    cout &lt;&lt; "Indirizzo di numero: " &lt;&lt; &amp;numero &lt;&lt; endl;
+    cout &lt;&lt; "Contenuto di ptr (indirizzo): " &lt;&lt; ptr &lt;&lt; endl;
+    cout &lt;&lt; "Valore puntato da ptr (*ptr): " &lt;&lt; *ptr &lt;&lt; endl;
+
+    *ptr = 100; // scrivo ATTRAVERSO il puntatore: modifico davvero "numero"
+    cout &lt;&lt; "Nuovo valore di numero: " &lt;&lt; numero &lt;&lt; endl; // 100
+    return 0;
+}</pre>
+        <p class="note">L'indirizzo stampato (<code>&amp;numero</code> e <code>ptr</code>) sarà lo stesso: <code>ptr</code> non contiene un numero "a caso", ma proprio la posizione in memoria di <code>numero</code>. Per questo scrivere in <code>*ptr</code> equivale a scrivere direttamente in <code>numero</code>.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 32 — Raddoppia con un puntatore (confronto con il riferimento)</h2>
+    <p><strong>Consegna:</strong> scrivi due funzioni che raddoppiano un intero: una che riceve un <strong>puntatore</strong> (<code>int*</code>) e una che riceve un <strong>riferimento</strong> (<code>int&amp;</code>, come nell'esercizio 30). Confronta come si chiamano e come si scrivono.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+void raddoppiaConPuntatore(int *n) {
+    *n = *n * 2; // devo dereferenziare esplicitamente con * per leggere/scrivere il valore
+}
+
+void raddoppiaConRiferimento(int &amp;n) {
+    n = n * 2; // il riferimento nasconde la dereferenziazione: si usa "n" come una variabile normale
+}
+
+int main() {
+    int x = 10;
+    raddoppiaConPuntatore(&amp;x); // alla chiamata devo passare esplicitamente l'indirizzo con &amp;
+    cout &lt;&lt; "Dopo raddoppiaConPuntatore: " &lt;&lt; x &lt;&lt; endl; // 20
+
+    int y = 10;
+    raddoppiaConRiferimento(y); // alla chiamata basta passare "y": niente &amp; ne' *
+    cout &lt;&lt; "Dopo raddoppiaConRiferimento: " &lt;&lt; y &lt;&lt; endl; // 20
+    return 0;
+}</pre>
+        <p class="note">Le due funzioni ottengono <strong>esattamente lo stesso risultato</strong>: modificano davvero la variabile del chiamante, non una copia. Cambia solo la sintassi: con il puntatore l'indirizzo (<code>&amp;x</code>) e la dereferenziazione (<code>*n</code>) sono scritti a mano dal programmatore; con il riferimento li gestisce il compilatore "dietro le quinte". In C++ moderno si preferisce il riferimento quando è possibile, ma è importante conoscere anche i puntatori: molte librerie e codice più datato li usano ancora, e sono indispensabili in casi che il riferimento non copre (es. un puntatore che può valere <code>nullptr</code>, o che deve poter cambiare a quale variabile punta).</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 8. ARRAY MONODIMENSIONALI ============ -->
+  <div class="lesson-block">
+    <h2>8. Array monodimensionali</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 33 — Riempi e stampa un array</h2>
     <p><strong>Consegna:</strong> dichiara un array di 10 interi, riempilo con valori letti da input e poi stampalo.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -768,7 +907,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 29 — Massimo e minimo</h2>
+    <h2>Esercizio 34 — Massimo e minimo</h2>
     <p><strong>Consegna:</strong> trova il valore massimo e il valore minimo presenti in un array.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -800,7 +939,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 30 — Somma e media</h2>
+    <h2>Esercizio 35 — Somma e media</h2>
     <p><strong>Consegna:</strong> calcola la somma e la media degli elementi di un array.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -827,7 +966,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 31 — Conta gli elementi pari</h2>
+    <h2>Esercizio 36 — Conta gli elementi pari</h2>
     <p><strong>Consegna:</strong> conta quanti elementi di un array sono pari.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -855,7 +994,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 32 — Inverti un array</h2>
+    <h2>Esercizio 37 — Inverti un array</h2>
     <p><strong>Consegna:</strong> inverti l'ordine degli elementi di un array, senza crearne uno nuovo (scambia gli elementi "in place").</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -885,7 +1024,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 33 — Ricerca sequenziale</h2>
+    <h2>Esercizio 38 — Ricerca sequenziale</h2>
     <p><strong>Consegna:</strong> l'utente inserisce un valore: dì se è presente nell'array e, in caso affermativo, in che posizione.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -920,7 +1059,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 34 — Ordinamento a bolle (bubble sort)</h2>
+    <h2>Esercizio 39 — Ordinamento a bolle (bubble sort)</h2>
     <p><strong>Consegna:</strong> ordina un array in ordine crescente usando l'algoritmo a bolle.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -954,7 +1093,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 35 — Rimuovi i duplicati</h2>
+    <h2>Esercizio 40 — Rimuovi i duplicati</h2>
     <p><strong>Consegna:</strong> rimuovi i valori duplicati da un array, mantenendo solo la prima occorrenza di ciascun valore (usa un array ausiliario o una logica in-place).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -993,14 +1132,14 @@ int main() {
     </div>
   </div>
 
-  <!-- ============ 8. ARRAY E FUNZIONI INSIEME ============ -->
+  <!-- ============ 9. ARRAY E FUNZIONI INSIEME ============ -->
   <div class="lesson-block">
-    <h2>8. Array e funzioni insieme (chiusura del percorso)</h2>
+    <h2>9. Array e funzioni insieme (chiusura del percorso sugli array)</h2>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 36 — Massimo/minimo, somma/media e conteggio pari come funzioni</h2>
-    <p><strong>Consegna:</strong> riscrivi gli esercizi 29, 30 e 31 come funzioni che ricevono l'array e la sua dimensione come parametri, così da poterle riusare con array di grandezza diversa.</p>
+    <h2>Esercizio 41 — Massimo/minimo, somma/media e conteggio pari come funzioni</h2>
+    <p><strong>Consegna:</strong> riscrivi gli esercizi 34, 35 e 36 come funzioni che ricevono l'array e la sua dimensione come parametri, così da poterle riusare con array di grandezza diversa.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
         <pre class="code-panel active">#include &lt;iostream&gt;
@@ -1059,6 +1198,325 @@ int main() {
         <p class="note">In C++ un array passato a una funzione (<code>int v[]</code>) viaggia già "per riferimento": la funzione lavora direttamente sull'array originale, non su una copia. Per questo bisogna sempre passare anche la dimensione come parametro separato, dato che la funzione da sola non può conoscerla.</p>
       </details>
     </div>
+  </div>
+
+  <!-- ============ 10. VECTOR ============ -->
+  <div class="lesson-block">
+    <h2>10. Vector (array a dimensione dinamica)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 42 — Numeri letti finché l'utente non si ferma</h2>
+    <p><strong>Consegna:</strong> leggi numeri da input finché l'utente non digita <code>0</code>, memorizzandoli in un <code>vector&lt;int&gt;</code> (senza sapere in anticipo quanti saranno), poi stampali tutti insieme al loro conteggio.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    vector&lt;int&gt; numeri; // parte vuoto: a differenza di un array, non serve dichiarare una dimensione
+    int valore;
+
+    cout &lt;&lt; "Inserisci numeri (0 per terminare): " &lt;&lt; endl;
+    cin &gt;&gt; valore;
+    while (valore != 0) {
+        numeri.push_back(valore); // aggiunge in fondo: il vector cresce da solo
+        cin &gt;&gt; valore;
+    }
+
+    cout &lt;&lt; "Hai inserito " &lt;&lt; numeri.size() &lt;&lt; " numeri: ";
+    for (int i = 0; i &lt; numeri.size(); i++) {
+        cout &lt;&lt; numeri[i] &lt;&lt; " ";
+    }
+    return 0;
+}</pre>
+        <p class="note">Con un array questo esercizio sarebbe scomodo: bisognerebbe dichiarare in anticipo una dimensione "abbastanza grande" e tenere un contatore a parte per sapere quanti elementi sono stati davvero usati. Il <code>vector</code> risolve il problema alla radice: cresce esattamente di quanto serve, ed espone <code>size()</code> per sapere sempre quanti elementi contiene davvero.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 43 — Filtra i numeri pari in un nuovo vector</h2>
+    <p><strong>Consegna:</strong> dato un <code>vector&lt;int&gt;</code> già popolato, crea un secondo <code>vector</code> vuoto e riempilo solo con gli elementi pari del primo.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    vector&lt;int&gt; numeri = {3, 8, 15, 22, 7, 10, 1};
+    vector&lt;int&gt; pari; // vector vuoto, lo riempiremo via via con push_back
+
+    for (int i = 0; i &lt; numeri.size(); i++) {
+        if (numeri[i] % 2 == 0) {
+            pari.push_back(numeri[i]);
+        }
+    }
+
+    cout &lt;&lt; "Numeri pari trovati: " &lt;&lt; pari.size() &lt;&lt; endl;
+    for (int i = 0; i &lt; pari.size(); i++) {
+        cout &lt;&lt; pari[i] &lt;&lt; " ";
+    }
+    return 0;
+}</pre>
+        <p class="note">Questo pattern — "vector vuoto + <code>push_back</code> dentro un ciclo" — è uno degli usi più comuni del <code>vector</code>: costruire una nuova collezione, di dimensione non nota a priori, filtrando o trasformando una collezione di partenza.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 11. STRINGHE ============ -->
+  <div class="lesson-block">
+    <h2>11. Stringhe (metodi utili)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 44 — Conta le vocali</h2>
+    <p><strong>Consegna:</strong> leggi una frase intera (con <code>getline</code>) e conta quante vocali minuscole (<code>a e i o u</code>) contiene.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string frase;
+    cout &lt;&lt; "Scrivi una frase: ";
+    getline(cin, frase); // legge l'intera riga, spazi compresi (a differenza di cin &gt;&gt;)
+
+    int conta = 0;
+    for (int i = 0; i &lt; frase.length(); i++) {
+        char c = frase[i]; // una string si indicizza come un array di char
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+            conta++;
+        }
+    }
+
+    cout &lt;&lt; "Vocali minuscole trovate: " &lt;&lt; conta;
+    return 0;
+}</pre>
+        <p class="note">Usiamo <code>getline</code> e non <code>cin &gt;&gt; frase</code> perché una frase può contenere spazi: <code>cin &gt;&gt;</code> si sarebbe fermato alla prima parola.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 45 — Parola palindroma</h2>
+    <p><strong>Consegna:</strong> dì se una parola si legge allo stesso modo da sinistra a destra e da destra a sinistra (es. "otto", "anna").</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string parola;
+    cin &gt;&gt; parola;
+
+    bool palindroma = true;
+    int fine = parola.length() - 1;
+    for (int i = 0; i &lt; parola.length() / 2; i++) {
+        if (parola[i] != parola[fine - i]) { // confronto il carattere i-esimo con il suo "speculare"
+            palindroma = false;
+        }
+    }
+
+    if (palindroma) {
+        cout &lt;&lt; parola &lt;&lt; " e' palindroma";
+    } else {
+        cout &lt;&lt; parola &lt;&lt; " non e' palindroma";
+    }
+    return 0;
+}</pre>
+        <p class="note">Basta controllare metà stringa: si confronta il primo carattere con l'ultimo, il secondo con il penultimo, e così via — esattamente la stessa idea usata per invertire un array (esercizio 37).</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 46 — Trova e sostituisci una parola</h2>
+    <p><strong>Consegna:</strong> in un testo, trova la prima occorrenza di una parola data e sostituiscila con un'altra, usando <code>find</code> e <code>substr</code> (senza librerie apposite per la sostituzione).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string testo = "Il gatto insegue il topo nel giardino";
+    string daCercare = "topo";
+    string sostituto = "TOPO";
+
+    int posizione = testo.find(daCercare); // indice del carattere dove inizia "topo"
+
+    if (posizione != string::npos) { // npos = valore speciale che significa "non trovata"
+        string prima = testo.substr(0, posizione);                       // tutto cio' che precede
+        string dopo = testo.substr(posizione + daCercare.length());      // tutto cio' che segue
+        cout &lt;&lt; prima &lt;&lt; sostituto &lt;&lt; dopo &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; "Parola non trovata" &lt;&lt; endl;
+    }
+    return 0;
+}</pre>
+        <p class="note"><code>string::npos</code> è il valore speciale restituito da <code>find</code> quando la sottostringa cercata non esiste: va sempre controllato prima di usare il risultato di <code>find</code>, altrimenti si rischia di "tagliare" la stringa in un punto sbagliato.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 12. CASTING ============ -->
+  <div class="lesson-block">
+    <h2>12. Conversioni di tipo (casting)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 47 — Da stringa a numero e viceversa</h2>
+    <p><strong>Consegna:</strong> converti una stringa numerica in <code>int</code> con <code>stoi</code>, tronca un <code>double</code> con <code>static_cast&lt;int&gt;</code> e converti un codice numerico in un carattere con <code>static_cast&lt;char&gt;</code> (codifica ASCII).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string input = "27";
+    int eta = stoi(input); // "string to int": converte il testo "27" nell'intero 27
+
+    double mediaVoti = 7.8;
+    int mediaTroncata = static_cast&lt;int&gt;(mediaVoti); // il cast TRONCA, non arrotonda: diventa 7
+
+    char lettera = static_cast&lt;char&gt;(65 + eta % 26); // 65 = codice ASCII di 'A': mappo un numero su una lettera
+
+    cout &lt;&lt; "Eta' (da stringa): " &lt;&lt; eta &lt;&lt; endl;
+    cout &lt;&lt; "Media troncata: " &lt;&lt; mediaTroncata &lt;&lt; endl;
+    cout &lt;&lt; "Lettera corrispondente: " &lt;&lt; lettera &lt;&lt; endl;
+    return 0;
+}</pre>
+        <p class="note">Scrivere <code>static_cast&lt;...&gt;(...)</code> invece di affidarsi a una conversione implicita (come <code>int x = mediaVoti;</code>) rende <strong>esplicita e visibile</strong> l'intenzione del programmatore: chi legge il codice capisce subito che il troncamento è voluto, non un errore dimenticato.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 13. STRUTTURE ============ -->
+  <div class="lesson-block">
+    <h2>13. Le strutture (struct)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 48 — Prima struct: Persona</h2>
+    <p><strong>Consegna:</strong> definisci una <code>struct Persona</code> con nome, cognome ed età; crea un'istanza, stampane i campi, poi modifica il campo <code>eta</code>.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct Persona {
+    string nome;
+    string cognome;
+    int eta;
+};
+
+int main() {
+    Persona p1 = {"Luca", "Rossi", 25}; // inizializzazione diretta dei campi, nell'ordine di dichiarazione
+
+    cout &lt;&lt; "Nome: " &lt;&lt; p1.nome &lt;&lt; endl;      // accesso a un campo con il punto
+    cout &lt;&lt; "Cognome: " &lt;&lt; p1.cognome &lt;&lt; endl;
+    cout &lt;&lt; "Eta': " &lt;&lt; p1.eta &lt;&lt; endl;
+
+    p1.eta = p1.eta + 1; // i campi di una struct si leggono/scrivono come variabili normali
+    cout &lt;&lt; "L'anno prossimo avra' " &lt;&lt; p1.eta &lt;&lt; " anni" &lt;&lt; endl;
+    return 0;
+}</pre>
+        <p class="note">Una <code>struct</code> raggruppa dati di tipo diverso (qui due <code>string</code> e un <code>int</code>) sotto un unico nome: senza di essa, avremmo dovuto tenere tre variabili separate (<code>nome</code>, <code>cognome</code>, <code>eta</code>) senza nessun legame esplicito fra loro nel codice.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 49 — Array di struct: la media della classe</h2>
+    <p><strong>Consegna:</strong> definisci una <code>struct Studente</code> (nome, voto), crea un array di 3 studenti leggendone i dati da input, calcola la media dei voti e stampa i nomi degli studenti sopra la media.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+struct Studente {
+    string nome;
+    double voto;
+};
+
+int main() {
+    const int NUM_STUDENTI = 3;
+    Studente classe[NUM_STUDENTI]; // un array di struct: ogni elemento e' uno Studente completo
+
+    for (int i = 0; i &lt; NUM_STUDENTI; i++) {
+        cout &lt;&lt; "Nome dello studente " &lt;&lt; (i + 1) &lt;&lt; ": ";
+        cin &gt;&gt; classe[i].nome;
+        cout &lt;&lt; "Voto: ";
+        cin &gt;&gt; classe[i].voto;
+    }
+
+    double somma = 0;
+    for (int i = 0; i &lt; NUM_STUDENTI; i++) {
+        somma = somma + classe[i].voto; // accedo al campo voto di ogni struct nell'array
+    }
+    double media = somma / NUM_STUDENTI;
+
+    cout &lt;&lt; "Media della classe: " &lt;&lt; media &lt;&lt; endl;
+
+    for (int i = 0; i &lt; NUM_STUDENTI; i++) {
+        if (classe[i].voto &gt; media) {
+            cout &lt;&lt; classe[i].nome &lt;&lt; " e' sopra la media" &lt;&lt; endl;
+        }
+    }
+    return 0;
+}</pre>
+        <p class="note">Ogni elemento di <code>classe[]</code> non è un singolo numero come negli array visti finora, ma un intero <code>Studente</code> con i suoi campi: per questo si accede prima all'elemento con <code>[i]</code> e poi al campo con <code>.</code>, come in <code>classe[i].voto</code>.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 50 — Una struct come parametro di funzione</h2>
+    <p><strong>Consegna:</strong> definisci una <code>struct Rettangolo</code> (base, altezza); scrivi una funzione <code>area</code> che la riceve <strong>per valore</strong> e una funzione <code>raddoppiaBase</code> che la riceve <strong>per riferimento</strong>, e osserva la differenza.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+struct Rettangolo {
+    double base;
+    double altezza;
+};
+
+double area(Rettangolo r) { // "r" e' una COPIA: modificarla qui non cambierebbe l'originale
+    return r.base * r.altezza;
+}
+
+void raddoppiaBase(Rettangolo &amp;r) { // per riferimento: modifica DAVVERO l'originale
+    r.base = r.base * 2;
+}
+
+int main() {
+    Rettangolo rett = {4.0, 3.0};
+
+    cout &lt;&lt; "Area iniziale: " &lt;&lt; area(rett) &lt;&lt; endl;
+
+    raddoppiaBase(rett);
+    cout &lt;&lt; "Base dopo raddoppio: " &lt;&lt; rett.base &lt;&lt; endl;
+    cout &lt;&lt; "Area dopo raddoppio: " &lt;&lt; area(rett) &lt;&lt; endl;
+    return 0;
+}</pre>
+        <p class="note">Una <code>struct</code>, come qualunque altra variabile, viaggia <strong>per valore</strong> di default: <code>area(rett)</code> lavora su una copia di <code>rett</code>, quindi non lo modifica mai. Solo il simbolo <code>&amp;</code> nel parametro di <code>raddoppiaBase</code> permette alla funzione di toccare l'oggetto originale — esattamente la stessa regola già vista con le variabili semplici (esercizio 30) e con i puntatori (esercizio 32).</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Hai completato il percorso procedurale!</h2>
+    <p>Una <code>struct</code> è il primo passo verso la <strong>programmazione a oggetti</strong>: manca solo un pezzo, aggiungere <em>metodi</em> che operano sui dati invece di lasciarli sempre "in mano" a funzioni esterne. È esattamente da qui che riparte la pagina <a href="esercizi-cpp-oop.html">Esercizi → C++ OOP</a>.</p>
   </div>
 
 </section>
