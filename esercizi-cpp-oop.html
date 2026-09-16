@@ -28,13 +28,21 @@
     <p>Il percorso qui sotto è a <strong>difficoltà crescente</strong> e ricalca i quattro pilastri della OOP: incapsulamento, ereditarietà, polimorfismo e astrazione. Dal Livello 3 in poi useremo puntatori grezzi (<code>Tipo*</code>) con <code>new</code>/<code>delete</code> gestiti a mano, invece degli smart pointer — è più lavoro, ma è proprio la fatica di gestire la memoria manualmente a far capire, più avanti, perché gli smart pointer esistono. Prova a risolvere ogni esercizio da solo prima di rivelare la soluzione.</p>
   </div>
 
+  <div class="info-box">
+    <h3>Come leggere le etichette degli esercizi</h3>
+    <ul>
+      <li><span class="badge-proietta">📽️ Da proiettare</span> — introduce un meccanismo nuovo del linguaggio o un concetto-chiave della OOP (es. <code>this</code>, <code>virtual</code>, la transizione struct→class): conviene spiegarlo e risolverlo insieme alla classe.</li>
+      <li><span class="badge-solo">✏️ Autonomo</span> — riusa lo schema di un esercizio "da proiettare" già visto nello stesso blocco, con un problema diverso: adatto come esercitazione individuale, con la soluzione da rivelare solo dopo il tentativo.</li>
+    </ul>
+  </div>
+
   <!-- ============ 1. DAGLI ALGORITMI ALLE CLASSI ============ -->
   <div class="lesson-block">
     <h2>1. Dagli algoritmi alle classi (riscaldamento)</h2>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 1 — Classe Contatore</h2>
+    <h2>Esercizio 1 — Classe Contatore <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> crea una classe <code>Contatore</code> (come quello del simulatore "assegnamento &amp; incremento" visto nella sezione Flow Chart) che si può incrementare e leggere, poi usala in un ciclo <code>for</code> per contare da 0 a 4.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -67,7 +75,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 2 — Classe Numero (primo o no)</h2>
+    <h2>Esercizio 2 — Classe Numero (primo o no) <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> crea una classe <code>Numero</code> che sappia dire da sola se è primo, poi usala per controllare tutti i numeri da 2 a 20 con un ciclo <code>for</code>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -104,7 +112,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 3 — Classe Lettore (do-while)</h2>
+    <h2>Esercizio 3 — Classe Lettore (do-while) <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> crea una classe <code>Lettore</code> con un metodo <code>leggiPositivo()</code> che continui a chiedere un numero finché non ne riceve uno positivo, e lo restituisca.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -134,7 +142,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 4 — Dalla struct alla class: Libro ⭐</h2>
+    <h2>Esercizio 4 — Dalla struct alla class: Libro ⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> parti da una <code>struct LibroStruct</code> (solo dati: titolo, autore, anno) usata insieme a una funzione <em>esterna</em> <code>stampaScheda()</code>, come nella sezione di teoria "Dalla struct alla class". Trasformala in una <code>class Libro</code> che incapsuli lo stesso comportamento come <strong>metodo</strong>, aggiungendo anche <code>eClassico()</code> (vero se l'anno è precedente al 1990).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -188,7 +196,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 5 — Da funzione a classe: Automobile ⭐</h2>
+    <h2>Esercizio 5 — Da funzione a classe: Automobile ⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> trasforma una funzione libera che calcola il bollo di un'automobile in una vera classe <code>Automobile</code> con attributi <code>targa</code>, <code>prezzo</code> e <code>porte</code>, un costruttore e un metodo <code>calcolaBollo()</code>. Crea due oggetti con dati diversi e stampa il bollo di entrambi.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -223,7 +231,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 6 — Il puntatore <code>this</code>: rinominare una Persona ⭐</h2>
+    <h2>Esercizio 6 — Il puntatore <code>this</code>: rinominare una Persona ⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> crea una classe <code>Persona</code> con attributo <code>nome</code> e un metodo <code>rinomina(string nome)</code> il cui <strong>parametro si chiama esattamente come l'attributo</strong>. Usa <code>this-&gt;nome</code> per distinguere l'attributo dell'oggetto dal parametro locale.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -257,7 +265,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 7 — Overload del costruttore: Prodotto ⭐</h2>
+    <h2>Esercizio 7 — Overload del costruttore: Prodotto ⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> crea una classe <code>Prodotto</code> (nome, prezzo, scorta) con <strong>tre costruttori</strong> in overload: uno completo, uno senza scorta (che parte da magazzino vuoto) e uno di default (prodotto segnaposto). A differenza dell'esempio visto in teoria, ogni costruttore deve inizializzare <em>esplicitamente</em> tutti gli attributi, anche quando il chiamante non fornisce un valore.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -318,7 +326,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 8 — Getter e setter semplici: Rettangolo ⭐</h2>
+    <h2>Esercizio 8 — Getter e setter semplici: Rettangolo ⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> crea una classe <code>Rettangolo</code> con <code>base</code> e <code>altezza</code> <strong>private</strong>. Fornisci un <code>getBase()</code>/<code>getAltezza()</code> e un <code>setBase()</code>/<code>setAltezza()</code> che rifiutino valori non positivi (sostituendoli con <code>1</code>). Il costruttore deve richiamare i setter, non assegnare direttamente.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -374,7 +382,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 9 — ContoBancario con controlli e trasferimento ⭐⭐</h2>
+    <h2>Esercizio 9 — ContoBancario con controlli e trasferimento ⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> nella classe <code>ContoBancario</code>, correggi <code>deposita()</code> perché rifiuti importi non positivi (come già fa <code>preleva()</code>), poi aggiungi un metodo pubblico <code>trasferisci(ContoBancario&amp; destinatario, double importo)</code> che sposta denaro tra due conti usando solo i metodi pubblici già esistenti, senza mai accedere direttamente a <code>saldo</code> di un altro oggetto.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -441,7 +449,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 10 — Cassaforte con PIN ⭐⭐</h2>
+    <h2>Esercizio 10 — Cassaforte con PIN ⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> crea una classe <code>Cassaforte</code> con <code>pin</code> e <code>contenuto</code> privati. Il metodo pubblico <code>apri(int pinInserito)</code> deve restituire il contenuto solo se il PIN è corretto, altrimenti <code>"ACCESSO NEGATO"</code>. La classe non deve esporre in nessun modo il valore del PIN (niente <code>getPin()</code>).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -482,7 +490,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 11 — Famiglia di Dipendenti ⭐⭐</h2>
+    <h2>Esercizio 11 — Famiglia di Dipendenti ⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> crea una classe base <code>Dipendente</code> (nome, stipendioBase) con un metodo <code>stipendioNetto()</code>, poi due classi figlie <code>Manager</code> (con un bonus) e <code>Operaio</code> (con ore di straordinario) che richiamano il costruttore della base nella lista di inizializzazione, senza duplicare nulla.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -534,7 +542,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 12 — Progetto Camion: capire virtual ⭐⭐⭐</h2>
+    <h2>Esercizio 12 — Progetto Camion: capire virtual ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> costruisci da zero una mini-famiglia <code>Veicolo</code>/<code>Automobile</code>/<code>Camion</code> in cui ogni figlia ridefinisce <code>calcolaBollo()</code> con una propria formula. Prova a chiamare il metodo tramite un riferimento <code>Veicolo&amp; rif = automobile;</code>: senza <code>virtual</code> su <code>calcolaBollo()</code> in <code>Veicolo</code>, <code>rif.calcolaBollo()</code> restituisce il valore sbagliato (quello di <code>Veicolo</code>), anche se <code>rif</code> e l'oggetto originale sono la stessa cosa in memoria. Aggiungendo <code>virtual</code> il problema si risolve.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -601,7 +609,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 13 — Zoo polimorfico ⭐⭐⭐</h2>
+    <h2>Esercizio 13 — Zoo polimorfico ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> crea una classe astratta <code>Animale</code> con <code>virtual string verso() const = 0;</code> e un distruttore virtuale, poi due figlie concrete (es. <code>Cane</code>, <code>Gatto</code>). Riempi un <code>vector&lt;Animale*&gt;</code> con <code>new</code> di entrambi i tipi mescolati, stampa il verso di ognuno senza alcun <code>if</code> sul tipo, poi distruggi ogni oggetto con <code>delete</code>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -657,7 +665,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 14 — Forme geometriche astratte ⭐⭐</h2>
+    <h2>Esercizio 14 — Forme geometriche astratte ⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> crea una classe astratta <code>Forma</code> con due metodi virtuali puri, <code>area()</code> e <code>perimetro()</code>, e un distruttore virtuale. Implementale in <code>Rettangolo</code> e <code>Cerchio</code>, poi usale tramite un <code>vector&lt;Forma*&gt;</code>, distruggendo ogni oggetto con <code>delete</code> a fine programma.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -725,7 +733,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 15 — Virtuale puro vs virtuale normale ⭐⭐⭐</h2>
+    <h2>Esercizio 15 — Virtuale puro vs virtuale normale ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> in una famiglia <code>Veicolo</code>/<code>Automobile</code>/<code>Motocicletta</code> con <code>calcolaBollo()</code> virtuale <strong>puro</strong> in <code>Veicolo</code>, verifica cosa succede se una figlia non lo ridefinisce (resta astratta anche lei, errore di compilazione sulla figlia) e cosa succede se dimentichi solo la parola chiave <code>override</code> pur mantenendo la firma corretta (compila comunque, ma <code>override</code> resta la scelta giusta perché fa scoprire al compilatore eventuali errori di firma).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -792,7 +800,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 16 — La classe astratta Personaggio ⭐⭐⭐</h2>
+    <h2>Esercizio 16 — La classe astratta Personaggio ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> progetta la classe astratta <code>Personaggio</code>, il "contratto" comune a ogni ruolo del gioco: attributi <code>nome</code>, <code>puntiVita</code>, <code>puntiVitaMax</code>; metodi concreti <code>eVivo()</code> e <code>subisciDanno(int danno)</code> (che non deve mai far scendere <code>puntiVita</code> sotto zero); un metodo virtuale puro <code>attacca()</code>; un metodo virtuale <strong>non</strong> puro <code>stampaStato()</code> con un'implementazione di default; un distruttore virtuale.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -839,7 +847,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 17 — I primi due ruoli: Guerriero e Mago ⭐⭐⭐</h2>
+    <h2>Esercizio 17 — I primi due ruoli: Guerriero e Mago ⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> crea due ruoli concreti, <code>Guerriero</code> (tanti punti vita, danno fisico affidabile) e <code>Mago</code> (pochi punti vita, danno più alto), entrambi derivati da <code>Personaggio</code>. Nel <code>main</code>, crea un'istanza di ciascuno, stampa il loro stato e prova a farli attaccare.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -913,7 +921,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 18 — Il ciclo di combattimento a turni ⭐⭐⭐⭐</h2>
+    <h2>Esercizio 18 — Il ciclo di combattimento a turni ⭐⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> scrivi <code>void combatti(Personaggio&amp; p1, Personaggio&amp; p2)</code>: a turni alterni un personaggio attacca l'altro finché uno dei due non è più vivo, poi dichiara il vincitore. La funzione non deve mai sapere di che ruolo concreto siano <code>p1</code> e <code>p2</code> — deve funzionare con <strong>qualsiasi</strong> <code>Personaggio</code>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -1003,7 +1011,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 19 — Arciere e casualità ⭐⭐⭐</h2>
+    <h2>Esercizio 19 — Arciere e casualità ⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> aggiungi un terzo ruolo, <code>Arciere</code>, il cui <code>attacca()</code> genera un danno casuale (con <code>&lt;cstdlib&gt;</code>/<code>&lt;ctime&gt;</code>), con una probabilità di colpo critico. Verifica che <code>combatti()</code> (scritta all'esercizio precedente) funzioni con l'Arciere <strong>senza modificarla</strong>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -1112,7 +1120,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 20 — Duello interattivo ⭐⭐⭐⭐</h2>
+    <h2>Esercizio 20 — Duello interattivo ⭐⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> trasforma il duello automatico in una sfida interattiva: ogni giocatore sceglie il proprio ruolo da un menu testuale, i due <code>Personaggio</code> vengono creati con <code>new</code> e memorizzati in due puntatori <code>Personaggio*</code>, e a ogni turno il giocatore di turno decide se attaccare. A fine partita, distruggi entrambi i personaggi con <code>delete</code>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -1248,7 +1256,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 21 (stretch, facoltativo) — Torneo a squadre ⭐⭐⭐⭐</h2>
+    <h2>Esercizio 21 (stretch, facoltativo) — Torneo a squadre ⭐⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> crea una classe <code>Squadra</code> che possiede (composizione) un <code>vector&lt;Personaggio*&gt;</code> creato con <code>new</code>, e che nel proprio distruttore <code>~Squadra()</code> distrugge tutti i suoi membri con <code>delete</code>. Realizza un piccolo torneo a squadre in cui, a turno, ogni squadra attacca con il primo membro ancora vivo.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
