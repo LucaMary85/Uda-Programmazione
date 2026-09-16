@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esercizi C++ OOP – UDA Programmazione</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-icon">⌘</span>
+    <span class="brand-text">UDA Programmazione</span>
+  </div>
+  <nav class="mainnav">
+    <a class="navbtn" href="Introduzione_Programmazione.html#esercizi">← Torna agli esercizi</a>
+  </nav>
+</header>
+
+<main>
+<section class="view active">
+  <h1 class="view-title">🧱 Esercizi — C++, programmazione a oggetti (OOP)</h1>
+
+  <div class="lesson-block">
+    <h2>Dagli stessi algoritmi... agli oggetti</h2>
+    <p>Con la <strong>programmazione orientata agli oggetti</strong> i dati e le operazioni che li riguardano vengono racchiusi insieme in una <code>class</code>, invece di restare separati come nella programmazione procedurale (vedi la pagina <a href="esercizi-cpp-procedurale.html">Esercizi C++ procedurale</a>).</p>
+    <p>Il percorso qui sotto è a <strong>difficoltà crescente</strong> e ricalca i quattro pilastri della OOP: incapsulamento, ereditarietà, polimorfismo e astrazione. Dal Livello 3 in poi useremo puntatori grezzi (<code>Tipo*</code>) con <code>new</code>/<code>delete</code> gestiti a mano, invece degli smart pointer — è più lavoro, ma è proprio la fatica di gestire la memoria manualmente a far capire, più avanti, perché gli smart pointer esistono. Prova a risolvere ogni esercizio da solo prima di rivelare la soluzione.</p>
+  </div>
+
+  <!-- ============ 1. DAGLI ALGORITMI ALLE CLASSI ============ -->
+  <div class="lesson-block">
+    <h2>1. Dagli algoritmi alle classi (riscaldamento)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 1 — Classe Contatore</h2>
+    <p><strong>Consegna:</strong> crea una classe <code>Contatore</code> (come quello del simulatore "assegnamento &amp; incremento" visto nella sezione Flow Chart) che si può incrementare e leggere, poi usala in un ciclo <code>for</code> per contare da 0 a 4.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+class Contatore {
+    private:
+        int valore;
+    public:
+        Contatore() : valore(0) {}
+        void incrementa() {
+            valore = valore + 1;
+        }
+        int leggiValore() {
+            return valore;
+        }
+};
+
+int main() {
+    Contatore cont;
+    for (int i = 0; i &lt; 5; i++) {
+        cout &lt;&lt; cont.leggiValore() &lt;&lt; endl;
+        cont.incrementa();
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 2 — Classe Numero (primo o no)</h2>
+    <p><strong>Consegna:</strong> crea una classe <code>Numero</code> che sappia dire da sola se è primo, poi usala per controllare tutti i numeri da 2 a 20 con un ciclo <code>for</code>.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+class Numero {
+    private:
+        int valore;
+    public:
+        Numero(int v) : valore(v) {}
+        bool ePrimo() {
+            if (valore &lt; 2) return false;
+            for (int i = 2; i &lt;= valore / 2; i++) {
+                if (valore % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+};
+
+int main() {
+    for (int n = 2; n &lt;= 20; n++) {
+        Numero num(n);
+        if (num.ePrimo()) {
+            cout &lt;&lt; n &lt;&lt; " e' primo" &lt;&lt; endl;
+        }
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 3 — Classe Lettore (do-while)</h2>
+    <p><strong>Consegna:</strong> crea una classe <code>Lettore</code> con un metodo <code>leggiPositivo()</code> che continui a chiedere un numero finché non ne riceve uno positivo, e lo restituisca.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+class Lettore {
+    public:
+        int leggiPositivo() {
+            int n;
+            do {
+                cin &gt;&gt; n;
+            } while (n &lt;= 0);
+            return n;
+        }
+};
+
+int main() {
+    Lettore lettore;
+    int n = lettore.leggiPositivo();
+    cout &lt;&lt; "Hai inserito: " &lt;&lt; n;
+    return 0;
+}</pre>
+        <p class="note">Anche dentro un metodo di una classe, il ciclo <code>do-while</code> funziona esattamente come nella programmazione procedurale: esegue il corpo almeno una volta.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 4 — Da funzione a classe: Automobile ⭐</h2>
+    <p><strong>Consegna:</strong> trasforma una funzione libera che calcola il bollo di un'automobile in una vera classe <code>Automobile</code> con attributi <code>targa</code>, <code>prezzo</code> e <code>porte</code>, un costruttore e un metodo <code>calcolaBollo()</code>. Crea due oggetti con dati diversi e stampa il bollo di entrambi.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Automobile {
+    public:
+        string targa;
+        double prezzo;
+        int porte;
+
+        Automobile(string t, double p, int np) : targa(t), prezzo(p), porte(np) {}
+
+        double calcolaBollo() {
+            return prezzo * 0.03 + porte * 5.0;
+        }
+};
+
+int main() {
+    Automobile auto1("AB123CD", 15000.0, 5);
+    Automobile auto2("EF456GH", 22000.0, 3);
+
+    cout &lt;&lt; "Bollo " &lt;&lt; auto1.targa &lt;&lt; ": " &lt;&lt; auto1.calcolaBollo() &lt;&lt; " euro" &lt;&lt; endl;
+    cout &lt;&lt; "Bollo " &lt;&lt; auto2.targa &lt;&lt; ": " &lt;&lt; auto2.calcolaBollo() &lt;&lt; " euro" &lt;&lt; endl;
+    return 0;
+}</pre>
+        <p class="note">Per ora <code>targa</code>, <code>prezzo</code> e <code>porte</code> sono <code>public</code>: al livello successivo (incapsulamento) impareremo a proteggerli.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 2. INCAPSULAMENTO ============ -->
+  <div class="lesson-block">
+    <h2>2. Incapsulamento</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 5 — ContoBancario con controlli e trasferimento ⭐⭐</h2>
+    <p><strong>Consegna:</strong> nella classe <code>ContoBancario</code>, correggi <code>deposita()</code> perché rifiuti importi non positivi (come già fa <code>preleva()</code>), poi aggiungi un metodo pubblico <code>trasferisci(ContoBancario&amp; destinatario, double importo)</code> che sposta denaro tra due conti usando solo i metodi pubblici già esistenti, senza mai accedere direttamente a <code>saldo</code> di un altro oggetto.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class ContoBancario {
+    private:
+        string intestatario;
+        double saldo;
+    public:
+        ContoBancario(string nome, double saldoIniziale) : intestatario(nome), saldo(saldoIniziale) {}
+
+        void deposita(double importo) {
+            if (importo &gt; 0) {
+                saldo = saldo + importo;
+            } else {
+                cout &lt;&lt; "Importo non valido per il deposito" &lt;&lt; endl;
+            }
+        }
+
+        bool preleva(double importo) {
+            if (importo &gt; 0 &amp;&amp; importo &lt;= saldo) {
+                saldo = saldo - importo;
+                return true;
+            }
+            cout &lt;&lt; "Prelievo non valido" &lt;&lt; endl;
+            return false;
+        }
+
+        bool trasferisci(ContoBancario &amp;destinatario, double importo) {
+            if (preleva(importo)) {
+                destinatario.deposita(importo);
+                return true;
+            }
+            return false;
+        }
+
+        double getSaldo() const {
+            return saldo;
+        }
+};
+
+int main() {
+    ContoBancario conto1("Luca", 1000.0);
+    ContoBancario conto2("Anna", 200.0);
+
+    conto1.deposita(-500.0);
+    cout &lt;&lt; "Saldo conto1 dopo deposito negativo: " &lt;&lt; conto1.getSaldo() &lt;&lt; endl;
+
+    conto1.trasferisci(conto2, 300.0);
+    cout &lt;&lt; "Saldo conto1: " &lt;&lt; conto1.getSaldo() &lt;&lt; endl;
+    cout &lt;&lt; "Saldo conto2: " &lt;&lt; conto2.getSaldo() &lt;&lt; endl;
+
+    conto1.trasferisci(conto2, 5000.0);
+    conto1.trasferisci(conto2, -100.0);
+
+    return 0;
+}</pre>
+        <p class="note"><code>trasferisci</code> non ha bisogno di essere <code>friend</code> né di accedere a <code>saldo</code> di <code>destinatario</code> direttamente: <code>saldo</code> è <code>private</code>, ma stiamo chiamando <strong>metodi pubblici</strong> di un altro oggetto della stessa classe, ed è permesso.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 6 — Cassaforte con PIN ⭐⭐</h2>
+    <p><strong>Consegna:</strong> crea una classe <code>Cassaforte</code> con <code>pin</code> e <code>contenuto</code> privati. Il metodo pubblico <code>apri(int pinInserito)</code> deve restituire il contenuto solo se il PIN è corretto, altrimenti <code>"ACCESSO NEGATO"</code>. La classe non deve esporre in nessun modo il valore del PIN (niente <code>getPin()</code>).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Cassaforte {
+    private:
+        int pin;
+        string contenuto;
+    public:
+        Cassaforte(int pinIniziale, string contenutoIniziale) : pin(pinIniziale), contenuto(contenutoIniziale) {}
+
+        string apri(int pinInserito) const {
+            if (pinInserito == pin) {
+                return contenuto;
+            }
+            return "ACCESSO NEGATO";
+        }
+};
+
+int main() {
+    Cassaforte cassaforte(1234, "documenti importanti");
+
+    cout &lt;&lt; cassaforte.apri(1234) &lt;&lt; endl;
+    cout &lt;&lt; cassaforte.apri(9999) &lt;&lt; endl;
+    return 0;
+}</pre>
+        <p class="note">Differenza importante: <code>saldo</code> è un dato privato che <em>ha senso</em> leggere dall'esterno (ha un getter), mentre <code>pin</code> è un dato privato che non deve <em>mai</em> averne uno — l'unico modo per "usarlo" è passarlo come tentativo a <code>apri()</code>.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 3. EREDITARIETÀ ============ -->
+  <div class="lesson-block">
+    <h2>3. Ereditarietà</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 7 — Famiglia di Dipendenti ⭐⭐</h2>
+    <p><strong>Consegna:</strong> crea una classe base <code>Dipendente</code> (nome, stipendioBase) con un metodo <code>stipendioNetto()</code>, poi due classi figlie <code>Manager</code> (con un bonus) e <code>Operaio</code> (con ore di straordinario) che richiamano il costruttore della base nella lista di inizializzazione, senza duplicare nulla.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Dipendente {
+    protected:
+        string nome;
+        double stipendioBase;
+    public:
+        Dipendente(string n, double s) : nome(n), stipendioBase(s) {}
+
+        double stipendioNetto() const {
+            return stipendioBase;
+        }
+
+        string getNome() const {
+            return nome;
+        }
+};
+
+class Manager : public Dipendente {
+    private:
+        double bonus;
+    public:
+        Manager(string n, double s, double b) : Dipendente(n, s), bonus(b) {}
+};
+
+class Operaio : public Dipendente {
+    private:
+        int oreStraordinario;
+    public:
+        Operaio(string n, double s, int ore) : Dipendente(n, s), oreStraordinario(ore) {}
+};
+
+int main() {
+    Manager m("Giulia", 3000.0, 500.0);
+    Operaio o("Marco", 1800.0, 10);
+
+    cout &lt;&lt; m.getNome() &lt;&lt; " - stipendio base: " &lt;&lt; m.stipendioNetto() &lt;&lt; endl;
+    cout &lt;&lt; o.getNome() &lt;&lt; " - stipendio base: " &lt;&lt; o.stipendioNetto() &lt;&lt; endl;
+    return 0;
+}</pre>
+        <p class="note">Né <code>Manager</code> né <code>Operaio</code> ridefiniscono <code>getNome()</code> o <code>stipendioNetto()</code>: li ereditano così come sono da <code>Dipendente</code>. Nel costruttore, <code>: Dipendente(n, s)</code> è "la parte che eredita"; il resto del corpo è "la parte propria" della figlia.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 8 — Progetto Camion: capire virtual ⭐⭐⭐</h2>
+    <p><strong>Consegna:</strong> costruisci da zero una mini-famiglia <code>Veicolo</code>/<code>Automobile</code>/<code>Camion</code> in cui ogni figlia ridefinisce <code>calcolaBollo()</code> con una propria formula. Prova a chiamare il metodo tramite un riferimento <code>Veicolo&amp; rif = automobile;</code>: senza <code>virtual</code> su <code>calcolaBollo()</code> in <code>Veicolo</code>, <code>rif.calcolaBollo()</code> restituisce il valore sbagliato (quello di <code>Veicolo</code>), anche se <code>rif</code> e l'oggetto originale sono la stessa cosa in memoria. Aggiungendo <code>virtual</code> il problema si risolve.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Veicolo {
+    protected:
+        string targa;
+        double prezzoBase;
+    public:
+        Veicolo(string t, double p) : targa(t), prezzoBase(p) {}
+
+        virtual double calcolaBollo() const {
+            return prezzoBase * 0.03;
+        }
+};
+
+class Automobile : public Veicolo {
+    private:
+        int numeroPorte;
+    public:
+        Automobile(string t, double p, int porte) : Veicolo(t, p), numeroPorte(porte) {}
+
+        double calcolaBollo() const override {
+            return prezzoBase * 0.03 + numeroPorte * 5.0;
+        }
+};
+
+class Camion : public Veicolo {
+    private:
+        double portataTon;
+    public:
+        Camion(string t, double p, double portata) : Veicolo(t, p), portataTon(portata) {}
+
+        double calcolaBollo() const override {
+            return prezzoBase * 0.02 + portataTon * 8.0;
+        }
+};
+
+int main() {
+    Automobile a("AB123CD", 15000.0, 5);
+    Camion c("EF456GH", 40000.0, 12.0);
+
+    cout &lt;&lt; "Bollo (chiamata diretta): " &lt;&lt; a.calcolaBollo() &lt;&lt; endl;
+
+    Veicolo &amp;rif = a;
+    cout &lt;&lt; "Bollo (tramite Veicolo&amp;, con virtual): " &lt;&lt; rif.calcolaBollo() &lt;&lt; endl;
+
+    Veicolo &amp;rifCamion = c;
+    cout &lt;&lt; "Bollo camion (tramite Veicolo&amp;): " &lt;&lt; rifCamion.calcolaBollo() &lt;&lt; endl;
+
+    return 0;
+}</pre>
+        <p class="note">Senza <code>virtual</code>, il compilatore decide <em>a compile-time</em> quale <code>calcolaBollo()</code> chiamare guardando solo il tipo <em>dichiarato</em> di <code>rif</code> (<code>Veicolo&amp;</code>), ignorando il tipo reale dell'oggetto puntato. Con <code>virtual</code>, la scelta avviene <em>a runtime</em>, in base al tipo reale dell'oggetto: è il ponte fra "tipo dichiarato" e "tipo reale" di cui parla la teoria del polimorfismo.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 4. POLIMORFISMO ============ -->
+  <div class="lesson-block">
+    <h2>4. Polimorfismo (con puntatori grezzi)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 9 — Zoo polimorfico ⭐⭐⭐</h2>
+    <p><strong>Consegna:</strong> crea una classe astratta <code>Animale</code> con <code>virtual string verso() const = 0;</code> e un distruttore virtuale, poi due figlie concrete (es. <code>Cane</code>, <code>Gatto</code>). Riempi un <code>vector&lt;Animale*&gt;</code> con <code>new</code> di entrambi i tipi mescolati, stampa il verso di ognuno senza alcun <code>if</code> sul tipo, poi distruggi ogni oggetto con <code>delete</code>.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class Animale {
+    public:
+        virtual string verso() const = 0;
+        virtual ~Animale() {}
+};
+
+class Cane : public Animale {
+    public:
+        string verso() const override {
+            return "Bau!";
+        }
+};
+
+class Gatto : public Animale {
+    public:
+        string verso() const override {
+            return "Miao!";
+        }
+};
+
+int main() {
+    vector&lt;Animale*&gt; zoo;
+    zoo.push_back(new Cane());
+    zoo.push_back(new Gatto());
+    zoo.push_back(new Cane());
+
+    for (size_t i = 0; i &lt; zoo.size(); i++) {
+        cout &lt;&lt; zoo[i]-&gt;verso() &lt;&lt; endl;
+    }
+
+    for (size_t i = 0; i &lt; zoo.size(); i++) {
+        delete zoo[i];
+    }
+
+    return 0;
+}</pre>
+        <p class="note">Il puntatore in <code>vector&lt;Animale*&gt;</code> è "grezzo": nessuno lo distrugge al posto nostro, per questo serve il secondo ciclo con <code>delete</code>. Se <code>~Animale()</code> non fosse <code>virtual</code>, <code>delete zoo[i]</code> chiamerebbe solo il distruttore di <code>Animale</code>, ignorando quello di <code>Cane</code>/<code>Gatto</code> (rischio concreto se le figlie avessero risorse proprie da liberare).</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 5. ASTRAZIONE ============ -->
+  <div class="lesson-block">
+    <h2>5. Astrazione (con puntatori grezzi)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 10 — Forme geometriche astratte ⭐⭐</h2>
+    <p><strong>Consegna:</strong> crea una classe astratta <code>Forma</code> con due metodi virtuali puri, <code>area()</code> e <code>perimetro()</code>, e un distruttore virtuale. Implementale in <code>Rettangolo</code> e <code>Cerchio</code>, poi usale tramite un <code>vector&lt;Forma*&gt;</code>, distruggendo ogni oggetto con <code>delete</code> a fine programma.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class Forma {
+    public:
+        virtual double area() const = 0;
+        virtual double perimetro() const = 0;
+        virtual ~Forma() {}
+};
+
+class Rettangolo : public Forma {
+    private:
+        double base, altezza;
+    public:
+        Rettangolo(double b, double h) : base(b), altezza(h) {}
+
+        double area() const override {
+            return base * altezza;
+        }
+
+        double perimetro() const override {
+            return 2 * (base + altezza);
+        }
+};
+
+class Cerchio : public Forma {
+    private:
+        double raggio;
+    public:
+        Cerchio(double r) : raggio(r) {}
+
+        double area() const override {
+            return 3.14159 * raggio * raggio;
+        }
+
+        double perimetro() const override {
+            return 2 * 3.14159 * raggio;
+        }
+};
+
+int main() {
+    // Forma f; // ERRORE: non si puo' istanziare una classe astratta
+
+    vector&lt;Forma*&gt; forme;
+    forme.push_back(new Rettangolo(4.0, 3.0));
+    forme.push_back(new Cerchio(5.0));
+
+    for (size_t i = 0; i &lt; forme.size(); i++) {
+        cout &lt;&lt; "Area: " &lt;&lt; forme[i]-&gt;area() &lt;&lt; ", Perimetro: " &lt;&lt; forme[i]-&gt;perimetro() &lt;&lt; endl;
+    }
+
+    for (size_t i = 0; i &lt; forme.size(); i++) {
+        delete forme[i];
+    }
+
+    return 0;
+}</pre>
+        <p class="note">Qui servono <strong>due</strong> metodi virtuali puri (non uno solo come in <code>Veicolo</code>): "forma" non ha un unico comportamento comune da calcolare, ma due proprietà geometriche indipendenti che ogni figlia deve saper fornire con la propria formula.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 11 — Virtuale puro vs virtuale normale ⭐⭐⭐</h2>
+    <p><strong>Consegna:</strong> in una famiglia <code>Veicolo</code>/<code>Automobile</code>/<code>Motocicletta</code> con <code>calcolaBollo()</code> virtuale <strong>puro</strong> in <code>Veicolo</code>, verifica cosa succede se una figlia non lo ridefinisce (resta astratta anche lei, errore di compilazione sulla figlia) e cosa succede se dimentichi solo la parola chiave <code>override</code> pur mantenendo la firma corretta (compila comunque, ma <code>override</code> resta la scelta giusta perché fa scoprire al compilatore eventuali errori di firma).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Veicolo {
+    protected:
+        string targa;
+        double prezzoBase;
+    public:
+        Veicolo(string t, double p) : targa(t), prezzoBase(p) {}
+
+        virtual double calcolaBollo() const = 0; // virtuale PURO: obbliga le figlie a implementarlo
+};
+
+class Automobile : public Veicolo {
+    private:
+        int numeroPorte;
+    public:
+        Automobile(string t, double p, int porte) : Veicolo(t, p), numeroPorte(porte) {}
+
+        // Anche senza scrivere "override", questo metodo ridefinisce comunque
+        // calcolaBollo() perche' nome e firma coincidono: compila lo stesso.
+        double calcolaBollo() const {
+            return prezzoBase * 0.03 + numeroPorte * 5.0;
+        }
+};
+
+class Motocicletta : public Veicolo {
+    private:
+        int cilindrata;
+    public:
+        Motocicletta(string t, double p, int cc) : Veicolo(t, p), cilindrata(cc) {}
+
+        double calcolaBollo() const override {
+            return prezzoBase * 0.01 + cilindrata * 0.02;
+        }
+};
+
+/* Se si commenta l'override di calcolaBollo() in Motocicletta, la classe
+   resta con un metodo virtuale puro non implementato: diventa anch'essa
+   astratta, e "Motocicletta m(...)" nel main da' errore di compilazione.
+   L'errore riguarda Motocicletta, non Veicolo: e' lei che rompe il contratto. */
+
+int main() {
+    Automobile a("AB123CD", 15000.0, 5);
+    Motocicletta m("XY789ZZ", 8000.0, 600);
+
+    cout &lt;&lt; "Bollo auto: " &lt;&lt; a.calcolaBollo() &lt;&lt; endl;
+    cout &lt;&lt; "Bollo moto: " &lt;&lt; m.calcolaBollo() &lt;&lt; endl;
+    return 0;
+}</pre>
+        <p class="note"><code>override</code> non è obbligatorio, ma conviene scriverlo sempre: se per errore la firma della figlia non corrisponde esattamente a quella della base (es. un parametro <code>const</code> in meno), senza <code>override</code> il compilatore crea silenziosamente un metodo nuovo invece di segnalare l'errore; con <code>override</code> lo blocca subito.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 6. PROGETTO FINALE ============ -->
+  <div class="lesson-block">
+    <h2>6. Progetto finale — Duello dei Ruoli</h2>
+    <p>Un piccolo videogioco di ruolo a turni che usa insieme tutti i pilastri visti finora, costruito a pezzi come il Progetto Camion.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 12 — La classe astratta Personaggio ⭐⭐⭐</h2>
+    <p><strong>Consegna:</strong> progetta la classe astratta <code>Personaggio</code>, il "contratto" comune a ogni ruolo del gioco: attributi <code>nome</code>, <code>puntiVita</code>, <code>puntiVitaMax</code>; metodi concreti <code>eVivo()</code> e <code>subisciDanno(int danno)</code> (che non deve mai far scendere <code>puntiVita</code> sotto zero); un metodo virtuale puro <code>attacca()</code>; un metodo virtuale <strong>non</strong> puro <code>stampaStato()</code> con un'implementazione di default; un distruttore virtuale.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Personaggio {
+    protected:
+        string nome;
+        int puntiVita;
+        int puntiVitaMax;
+    public:
+        Personaggio(string n, int vita) : nome(n), puntiVita(vita), puntiVitaMax(vita) {}
+
+        bool eVivo() const {
+            return puntiVita &gt; 0;
+        }
+
+        void subisciDanno(int danno) {
+            puntiVita = puntiVita - danno;
+            if (puntiVita &lt; 0) {
+                puntiVita = 0;
+            }
+        }
+
+        virtual int attacca() const = 0;
+
+        virtual void stampaStato() const {
+            cout &lt;&lt; nome &lt;&lt; ": " &lt;&lt; puntiVita &lt;&lt; "/" &lt;&lt; puntiVitaMax &lt;&lt; " PV" &lt;&lt; endl;
+        }
+
+        virtual ~Personaggio() {}
+};
+
+int main() {
+    // Personaggio p("test", 10); // ERRORE: Personaggio e' astratta (attacca() e' virtuale puro)
+    cout &lt;&lt; "Personaggio e' una classe astratta: non si puo' istanziare direttamente." &lt;&lt; endl;
+    return 0;
+}</pre>
+        <p class="note">Non c'è un'unica scelta "giusta" per decidere quali metodi rendere virtuali puri: qui <code>attacca()</code> è puro perché ogni ruolo lo calcola in modo radicalmente diverso, mentre <code>stampaStato()</code> ha un comportamento di default sensato per tutti, quindi resta virtuale ma con un corpo.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 13 — I primi due ruoli: Guerriero e Mago ⭐⭐⭐</h2>
+    <p><strong>Consegna:</strong> crea due ruoli concreti, <code>Guerriero</code> (tanti punti vita, danno fisico affidabile) e <code>Mago</code> (pochi punti vita, danno più alto), entrambi derivati da <code>Personaggio</code>. Nel <code>main</code>, crea un'istanza di ciascuno, stampa il loro stato e prova a farli attaccare.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Personaggio {
+    protected:
+        string nome;
+        int puntiVita;
+        int puntiVitaMax;
+    public:
+        Personaggio(string n, int vita) : nome(n), puntiVita(vita), puntiVitaMax(vita) {}
+
+        bool eVivo() const {
+            return puntiVita &gt; 0;
+        }
+
+        void subisciDanno(int danno) {
+            puntiVita = puntiVita - danno;
+            if (puntiVita &lt; 0) {
+                puntiVita = 0;
+            }
+        }
+
+        virtual int attacca() const = 0;
+
+        virtual void stampaStato() const {
+            cout &lt;&lt; nome &lt;&lt; ": " &lt;&lt; puntiVita &lt;&lt; "/" &lt;&lt; puntiVitaMax &lt;&lt; " PV" &lt;&lt; endl;
+        }
+
+        virtual ~Personaggio() {}
+};
+
+class Guerriero : public Personaggio {
+    public:
+        Guerriero(string n) : Personaggio(n, 120) {}
+
+        int attacca() const override {
+            return 15; // danno fisico affidabile, sempre uguale
+        }
+};
+
+class Mago : public Personaggio {
+    public:
+        Mago(string n) : Personaggio(n, 70) {}
+
+        int attacca() const override {
+            return 25; // danno magico piu' alto, ma il personaggio e' fragile
+        }
+};
+
+int main() {
+    Guerriero guerriero("Thorin");
+    Mago mago("Elara");
+
+    guerriero.stampaStato();
+    mago.stampaStato();
+
+    int danno = guerriero.attacca();
+    cout &lt;&lt; "Il guerriero attacca e infligge " &lt;&lt; danno &lt;&lt; " danni" &lt;&lt; endl;
+
+    danno = mago.attacca();
+    cout &lt;&lt; "Il mago attacca e infligge " &lt;&lt; danno &lt;&lt; " danni" &lt;&lt; endl;
+
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 14 — Il ciclo di combattimento a turni ⭐⭐⭐⭐</h2>
+    <p><strong>Consegna:</strong> scrivi <code>void combatti(Personaggio&amp; p1, Personaggio&amp; p2)</code>: a turni alterni un personaggio attacca l'altro finché uno dei due non è più vivo, poi dichiara il vincitore. La funzione non deve mai sapere di che ruolo concreto siano <code>p1</code> e <code>p2</code> — deve funzionare con <strong>qualsiasi</strong> <code>Personaggio</code>.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Personaggio {
+    protected:
+        string nome;
+        int puntiVita;
+        int puntiVitaMax;
+    public:
+        Personaggio(string n, int vita) : nome(n), puntiVita(vita), puntiVitaMax(vita) {}
+
+        bool eVivo() const {
+            return puntiVita &gt; 0;
+        }
+
+        void subisciDanno(int danno) {
+            puntiVita = puntiVita - danno;
+            if (puntiVita &lt; 0) {
+                puntiVita = 0;
+            }
+        }
+
+        string getNome() const {
+            return nome;
+        }
+
+        virtual int attacca() const = 0;
+
+        virtual void stampaStato() const {
+            cout &lt;&lt; nome &lt;&lt; ": " &lt;&lt; puntiVita &lt;&lt; "/" &lt;&lt; puntiVitaMax &lt;&lt; " PV" &lt;&lt; endl;
+        }
+
+        virtual ~Personaggio() {}
+};
+
+class Guerriero : public Personaggio {
+    public:
+        Guerriero(string n) : Personaggio(n, 120) {}
+        int attacca() const override { return 15; }
+};
+
+class Mago : public Personaggio {
+    public:
+        Mago(string n) : Personaggio(n, 70) {}
+        int attacca() const override { return 25; }
+};
+
+void combatti(Personaggio &amp;p1, Personaggio &amp;p2) {
+    bool turnoDiP1 = true;
+
+    while (p1.eVivo() &amp;&amp; p2.eVivo()) {
+        Personaggio &amp;attaccante = turnoDiP1 ? p1 : p2;
+        Personaggio &amp;bersaglio = turnoDiP1 ? p2 : p1;
+
+        int danno = attaccante.attacca();
+        bersaglio.subisciDanno(danno);
+
+        cout &lt;&lt; attaccante.getNome() &lt;&lt; " attacca " &lt;&lt; bersaglio.getNome()
+             &lt;&lt; " e infligge " &lt;&lt; danno &lt;&lt; " danni." &lt;&lt; endl;
+        bersaglio.stampaStato();
+
+        turnoDiP1 = !turnoDiP1;
+    }
+
+    if (p1.eVivo()) {
+        cout &lt;&lt; p1.getNome() &lt;&lt; " vince il duello!" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; p2.getNome() &lt;&lt; " vince il duello!" &lt;&lt; endl;
+    }
+}
+
+int main() {
+    Guerriero guerriero("Thorin");
+    Mago mago("Elara");
+
+    combatti(guerriero, mago);
+
+    return 0;
+}</pre>
+        <p class="note"><code>combatti()</code> prende i parametri per riferimento a <code>Personaggio&amp;</code>, mai a un tipo concreto: chiama solo <code>eVivo()</code>, <code>attacca()</code>, <code>subisciDanno()</code> e <code>stampaStato()</code>, tutti metodi del "contratto" di <code>Personaggio</code>. Per questo funziona identica con qualsiasi ruolo, anche quelli non ancora scritti (vedi esercizio successivo).</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 15 — Arciere e casualità ⭐⭐⭐</h2>
+    <p><strong>Consegna:</strong> aggiungi un terzo ruolo, <code>Arciere</code>, il cui <code>attacca()</code> genera un danno casuale (con <code>&lt;cstdlib&gt;</code>/<code>&lt;ctime&gt;</code>), con una probabilità di colpo critico. Verifica che <code>combatti()</code> (scritta all'esercizio precedente) funzioni con l'Arciere <strong>senza modificarla</strong>.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;cstdlib&gt;
+#include &lt;ctime&gt;
+using namespace std;
+
+class Personaggio {
+    protected:
+        string nome;
+        int puntiVita;
+        int puntiVitaMax;
+    public:
+        Personaggio(string n, int vita) : nome(n), puntiVita(vita), puntiVitaMax(vita) {}
+
+        bool eVivo() const {
+            return puntiVita &gt; 0;
+        }
+
+        void subisciDanno(int danno) {
+            puntiVita = puntiVita - danno;
+            if (puntiVita &lt; 0) {
+                puntiVita = 0;
+            }
+        }
+
+        string getNome() const {
+            return nome;
+        }
+
+        virtual int attacca() const = 0;
+
+        virtual void stampaStato() const {
+            cout &lt;&lt; nome &lt;&lt; ": " &lt;&lt; puntiVita &lt;&lt; "/" &lt;&lt; puntiVitaMax &lt;&lt; " PV" &lt;&lt; endl;
+        }
+
+        virtual ~Personaggio() {}
+};
+
+class Guerriero : public Personaggio {
+    public:
+        Guerriero(string n) : Personaggio(n, 120) {}
+        int attacca() const override { return 15; }
+};
+
+class Mago : public Personaggio {
+    public:
+        Mago(string n) : Personaggio(n, 70) {}
+        int attacca() const override { return 25; }
+};
+
+class Arciere : public Personaggio {
+    public:
+        Arciere(string n) : Personaggio(n, 90) {}
+
+        int attacca() const override {
+            int danno = 10 + rand() % 16; // danno base tra 10 e 25
+            bool critico = (rand() % 100) &lt; 20; // 20% di probabilita' di colpo critico
+            if (critico) {
+                danno = danno * 2;
+                cout &lt;&lt; "Colpo critico! ";
+            }
+            return danno;
+        }
+};
+
+void combatti(Personaggio &amp;p1, Personaggio &amp;p2) {
+    bool turnoDiP1 = true;
+
+    while (p1.eVivo() &amp;&amp; p2.eVivo()) {
+        Personaggio &amp;attaccante = turnoDiP1 ? p1 : p2;
+        Personaggio &amp;bersaglio = turnoDiP1 ? p2 : p1;
+
+        int danno = attaccante.attacca();
+        bersaglio.subisciDanno(danno);
+
+        cout &lt;&lt; attaccante.getNome() &lt;&lt; " attacca " &lt;&lt; bersaglio.getNome()
+             &lt;&lt; " e infligge " &lt;&lt; danno &lt;&lt; " danni." &lt;&lt; endl;
+        bersaglio.stampaStato();
+
+        turnoDiP1 = !turnoDiP1;
+    }
+
+    if (p1.eVivo()) {
+        cout &lt;&lt; p1.getNome() &lt;&lt; " vince il duello!" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; p2.getNome() &lt;&lt; " vince il duello!" &lt;&lt; endl;
+    }
+}
+
+int main() {
+    srand(time(0));
+
+    Arciere arciere("Robin");
+    Guerriero guerriero("Thorin");
+
+    combatti(arciere, guerriero);
+
+    return 0;
+}</pre>
+        <p class="note"><code>combatti()</code> è identica a quella dell'esercizio precedente, carattere per carattere: se per farla funzionare con <code>Arciere</code> fosse servito toccarla, sarebbe stato il segnale che qualcosa nel design non andava.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 16 — Duello interattivo ⭐⭐⭐⭐</h2>
+    <p><strong>Consegna:</strong> trasforma il duello automatico in una sfida interattiva: ogni giocatore sceglie il proprio ruolo da un menu testuale, i due <code>Personaggio</code> vengono creati con <code>new</code> e memorizzati in due puntatori <code>Personaggio*</code>, e a ogni turno il giocatore di turno decide se attaccare. A fine partita, distruggi entrambi i personaggi con <code>delete</code>.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;cstdlib&gt;
+#include &lt;ctime&gt;
+using namespace std;
+
+class Personaggio {
+    protected:
+        string nome;
+        int puntiVita;
+        int puntiVitaMax;
+    public:
+        Personaggio(string n, int vita) : nome(n), puntiVita(vita), puntiVitaMax(vita) {}
+
+        bool eVivo() const {
+            return puntiVita &gt; 0;
+        }
+
+        void subisciDanno(int danno) {
+            puntiVita = puntiVita - danno;
+            if (puntiVita &lt; 0) {
+                puntiVita = 0;
+            }
+        }
+
+        string getNome() const {
+            return nome;
+        }
+
+        virtual int attacca() const = 0;
+
+        virtual void stampaStato() const {
+            cout &lt;&lt; nome &lt;&lt; ": " &lt;&lt; puntiVita &lt;&lt; "/" &lt;&lt; puntiVitaMax &lt;&lt; " PV" &lt;&lt; endl;
+        }
+
+        virtual ~Personaggio() {}
+};
+
+class Guerriero : public Personaggio {
+    public:
+        Guerriero(string n) : Personaggio(n, 120) {}
+        int attacca() const override { return 15; }
+};
+
+class Mago : public Personaggio {
+    public:
+        Mago(string n) : Personaggio(n, 70) {}
+        int attacca() const override { return 25; }
+};
+
+class Arciere : public Personaggio {
+    public:
+        Arciere(string n) : Personaggio(n, 90) {}
+        int attacca() const override {
+            int danno = 10 + rand() % 16;
+            if ((rand() % 100) &lt; 20) {
+                danno = danno * 2;
+                cout &lt;&lt; "Colpo critico! ";
+            }
+            return danno;
+        }
+};
+
+Personaggio* creaPersonaggio(string nome) {
+    int scelta;
+    cout &lt;&lt; "Scegli il ruolo per " &lt;&lt; nome &lt;&lt; ":" &lt;&lt; endl;
+    cout &lt;&lt; "1) Guerriero  2) Mago  3) Arciere" &lt;&lt; endl;
+    cin &gt;&gt; scelta;
+
+    if (scelta == 1) {
+        return new Guerriero(nome);
+    } else if (scelta == 2) {
+        return new Mago(nome);
+    } else {
+        return new Arciere(nome);
+    }
+}
+
+void combatti(Personaggio &amp;p1, Personaggio &amp;p2) {
+    bool turnoDiP1 = true;
+
+    while (p1.eVivo() &amp;&amp; p2.eVivo()) {
+        Personaggio &amp;attaccante = turnoDiP1 ? p1 : p2;
+        Personaggio &amp;bersaglio = turnoDiP1 ? p2 : p1;
+
+        cout &lt;&lt; endl &lt;&lt; "Turno di " &lt;&lt; attaccante.getNome() &lt;&lt; ". Premi 1 per attaccare: ";
+        int azione;
+        cin &gt;&gt; azione;
+
+        if (azione == 1) {
+            int danno = attaccante.attacca();
+            bersaglio.subisciDanno(danno);
+            cout &lt;&lt; attaccante.getNome() &lt;&lt; " infligge " &lt;&lt; danno &lt;&lt; " danni a "
+                 &lt;&lt; bersaglio.getNome() &lt;&lt; "." &lt;&lt; endl;
+            bersaglio.stampaStato();
+        }
+
+        turnoDiP1 = !turnoDiP1;
+    }
+
+    if (p1.eVivo()) {
+        cout &lt;&lt; endl &lt;&lt; p1.getNome() &lt;&lt; " vince il duello!" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; endl &lt;&lt; p2.getNome() &lt;&lt; " vince il duello!" &lt;&lt; endl;
+    }
+}
+
+int main() {
+    srand(time(0));
+
+    string nome1, nome2;
+    cout &lt;&lt; "Nome del giocatore 1: ";
+    cin &gt;&gt; nome1;
+    cout &lt;&lt; "Nome del giocatore 2: ";
+    cin &gt;&gt; nome2;
+
+    Personaggio *p1 = creaPersonaggio(nome1);
+    Personaggio *p2 = creaPersonaggio(nome2);
+
+    combatti(*p1, *p2);
+
+    delete p1;
+    delete p2;
+
+    return 0;
+}</pre>
+        <p class="note"><code>combatti()</code> continua a prendere <code>Personaggio&amp;</code>, quindi la chiamiamo come <code>combatti(*p1, *p2)</code> dereferenziando i puntatori. Chi crea gli oggetti con <code>new</code> (qui il <code>main</code>) è responsabile di distruggerli con <code>delete</code>, qualunque sia il vincitore: per questo <code>delete p1;</code> e <code>delete p2;</code> vengono eseguiti sempre, a fine partita.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 17 (stretch, facoltativo) — Torneo a squadre ⭐⭐⭐⭐</h2>
+    <p><strong>Consegna:</strong> crea una classe <code>Squadra</code> che possiede (composizione) un <code>vector&lt;Personaggio*&gt;</code> creato con <code>new</code>, e che nel proprio distruttore <code>~Squadra()</code> distrugge tutti i suoi membri con <code>delete</code>. Realizza un piccolo torneo a squadre in cui, a turno, ogni squadra attacca con il primo membro ancora vivo.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class Personaggio {
+    protected:
+        string nome;
+        int puntiVita;
+        int puntiVitaMax;
+    public:
+        Personaggio(string n, int vita) : nome(n), puntiVita(vita), puntiVitaMax(vita) {}
+        bool eVivo() const { return puntiVita &gt; 0; }
+        void subisciDanno(int danno) {
+            puntiVita -= danno;
+            if (puntiVita &lt; 0) puntiVita = 0;
+        }
+        string getNome() const { return nome; }
+        virtual int attacca() const = 0;
+        virtual void stampaStato() const {
+            cout &lt;&lt; nome &lt;&lt; ": " &lt;&lt; puntiVita &lt;&lt; "/" &lt;&lt; puntiVitaMax &lt;&lt; " PV" &lt;&lt; endl;
+        }
+        virtual ~Personaggio() {}
+};
+
+class Guerriero : public Personaggio {
+    public:
+        Guerriero(string n) : Personaggio(n, 120) {}
+        int attacca() const override { return 15; }
+};
+
+class Mago : public Personaggio {
+    public:
+        Mago(string n) : Personaggio(n, 70) {}
+        int attacca() const override { return 25; }
+};
+
+class Squadra {
+    private:
+        string nomeSquadra;
+        vector&lt;Personaggio*&gt; membri;
+    public:
+        Squadra(string n) : nomeSquadra(n) {}
+
+        // Distruttore: la squadra "possiede" i suoi personaggi
+        // (li ha creati lei con new), quindi tocca a lei distruggerli.
+        ~Squadra() {
+            for (size_t i = 0; i &lt; membri.size(); i++) {
+                delete membri[i];
+            }
+        }
+
+        void aggiungi(Personaggio *p) {
+            membri.push_back(p);
+        }
+
+        bool haSuperstiti() const {
+            for (size_t i = 0; i &lt; membri.size(); i++) {
+                if (membri[i]-&gt;eVivo()) return true;
+            }
+            return false;
+        }
+
+        Personaggio* primoVivo() {
+            for (size_t i = 0; i &lt; membri.size(); i++) {
+                if (membri[i]-&gt;eVivo()) return membri[i];
+            }
+            return nullptr;
+        }
+
+        string getNome() const { return nomeSquadra; }
+};
+
+int main() {
+    Squadra rossi("Squadra Rossa");
+    rossi.aggiungi(new Guerriero("Thorin"));
+    rossi.aggiungi(new Mago("Elara"));
+
+    Squadra blu("Squadra Blu");
+    blu.aggiungi(new Guerriero("Conan"));
+    blu.aggiungi(new Mago("Merlino"));
+
+    bool turnoRossi = true;
+    while (rossi.haSuperstiti() &amp;&amp; blu.haSuperstiti()) {
+        Squadra &amp;attaccanti = turnoRossi ? rossi : blu;
+        Squadra &amp;difensori = turnoRossi ? blu : rossi;
+
+        Personaggio *attaccante = attaccanti.primoVivo();
+        Personaggio *bersaglio = difensori.primoVivo();
+
+        int danno = attaccante-&gt;attacca();
+        bersaglio-&gt;subisciDanno(danno);
+        cout &lt;&lt; attaccante-&gt;getNome() &lt;&lt; " (" &lt;&lt; attaccanti.getNome() &lt;&lt; ") colpisce "
+             &lt;&lt; bersaglio-&gt;getNome() &lt;&lt; " (" &lt;&lt; difensori.getNome() &lt;&lt; ") per " &lt;&lt; danno &lt;&lt; " danni." &lt;&lt; endl;
+
+        turnoRossi = !turnoRossi;
+    }
+
+    if (rossi.haSuperstiti()) {
+        cout &lt;&lt; rossi.getNome() &lt;&lt; " vince il torneo!" &lt;&lt; endl;
+    } else {
+        cout &lt;&lt; blu.getNome() &lt;&lt; " vince il torneo!" &lt;&lt; endl;
+    }
+
+    // I distruttori di rossi e blu vengono chiamati automaticamente qui,
+    // ed eliminano a cascata tutti i Personaggio* creati con new.
+    return 0;
+}</pre>
+        <p class="note">Notate quanto lavoro ripetitivo serve per gestire a mano ogni singolo <code>delete</code> (qui e in tutti gli esercizi precedenti con puntatori grezzi): è esattamente il tipo di responsabilità che uno <code>unique_ptr</code> toglierebbe di mezzo automaticamente, occupandosi da solo della distruzione quando l'oggetto non serve più. È il passo naturale da studiare dopo questo percorso.</p>
+      </details>
+    </div>
+  </div>
+
+</section>
+</main>
+
+<footer class="footer">
+  <p>UDA Programmazione — Esercizi C++ OOP. <a href="Introduzione_Programmazione.html#esercizi">Torna agli esercizi</a>.</p>
+</footer>
+
+</body>
+</html>

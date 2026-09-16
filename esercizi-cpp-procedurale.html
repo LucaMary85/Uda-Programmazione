@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esercizi C++ procedurale – UDA Programmazione</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-icon">⌘</span>
+    <span class="brand-text">UDA Programmazione</span>
+  </div>
+  <nav class="mainnav">
+    <a class="navbtn" href="Introduzione_Programmazione.html#esercizi">← Torna agli esercizi</a>
+  </nav>
+</header>
+
+<main>
+<section class="view active">
+  <h1 class="view-title">💻 Esercizi — C++, programmazione procedurale</h1>
+
+  <div class="lesson-block">
+    <h2>Dal flow chart al codice</h2>
+    <p>Gli algoritmi visti come diagrammi di flusso nella sezione <a href="Introduzione_Programmazione.html">Flow Chart</a> del percorso principale possono essere tradotti in <strong>C++</strong> usando la <em>programmazione procedurale</em>: variabili semplici e funzioni che operano su di esse, senza classi.</p>
+    <p>In particolare, i blocchi di ripetizione del flow chart (while, do-while, for) diventano i cicli omonimi del linguaggio C++.</p>
+    <p>Il percorso qui sotto è a <strong>difficoltà crescente</strong>: parte dalla sintassi di base (input/output), passa per selezione e cicli, introduce le funzioni e chiude con gli array. Il blocco sulle funzioni precede volutamente quello sugli array: passare un array a una funzione richiede di aver già capito la differenza tra passaggio per valore e per riferimento. Prova a risolvere ogni esercizio da solo prima di rivelare la soluzione.</p>
+  </div>
+
+  <!-- ============ 1. INPUT/OUTPUT E SINTASSI BASE ============ -->
+  <div class="lesson-block">
+    <h2>1. Input/output e sintassi base (nessuna logica)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 1 — Ciao mondo</h2>
+    <p><strong>Consegna:</strong> stampa a schermo "Ciao mondo" e poi, su una riga separata, il tuo nome.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Ciao mondo" &lt;&lt; endl;
+    cout &lt;&lt; "Mi chiamo Luca" &lt;&lt; endl;
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 2 — Nome ed età</h2>
+    <p><strong>Consegna:</strong> chiedi nome ed età all'utente, poi stampa una frase che contenga entrambi.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    string nome;
+    int eta;
+    cout &lt;&lt; "Come ti chiami? ";
+    cin &gt;&gt; nome;
+    cout &lt;&lt; "Quanti anni hai? ";
+    cin &gt;&gt; eta;
+    cout &lt;&lt; "Ciao " &lt;&lt; nome &lt;&lt; ", hai " &lt;&lt; eta &lt;&lt; " anni." &lt;&lt; endl;
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 3 — Somma, differenza, prodotto</h2>
+    <p><strong>Consegna:</strong> chiedi due numeri e stampa la loro somma, differenza e prodotto.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    double a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+    cout &lt;&lt; "Somma: " &lt;&lt; (a + b) &lt;&lt; endl;
+    cout &lt;&lt; "Differenza: " &lt;&lt; (a - b) &lt;&lt; endl;
+    cout &lt;&lt; "Prodotto: " &lt;&lt; (a * b) &lt;&lt; endl;
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 4 — Celsius in Fahrenheit</h2>
+    <p><strong>Consegna:</strong> chiedi una temperatura in gradi Celsius e convertila in Fahrenheit (formula: F = C × 9/5 + 32).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    double celsius;
+    cin &gt;&gt; celsius;
+    double fahrenheit = celsius * 9.0 / 5.0 + 32;
+    cout &lt;&lt; celsius &lt;&lt; " C = " &lt;&lt; fahrenheit &lt;&lt; " F";
+    return 0;
+}</pre>
+        <p class="note">Attenzione a scrivere <code>9.0 / 5.0</code> e non <code>9 / 5</code>: con interi la divisione darebbe 1 invece di 1.8.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 5 — Area e perimetro del rettangolo</h2>
+    <p><strong>Consegna:</strong> dati base e altezza di un rettangolo, calcola area e perimetro.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    double base, altezza;
+    cin &gt;&gt; base &gt;&gt; altezza;
+    double area = base * altezza;
+    double perimetro = 2 * (base + altezza);
+    cout &lt;&lt; "Area: " &lt;&lt; area &lt;&lt; endl;
+    cout &lt;&lt; "Perimetro: " &lt;&lt; perimetro &lt;&lt; endl;
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 2. OPERATORI ED ESPRESSIONI ============ -->
+  <div class="lesson-block">
+    <h2>2. Operatori ed espressioni (ancora senza if)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 6 — Scambia due variabili</h2>
+    <p><strong>Consegna:</strong> scambia il contenuto di due variabili usando una terza variabile di appoggio. <em>Bonus:</em> prova a farlo senza variabile di appoggio.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a, b;
+    cin &gt;&gt; a &gt;&gt; b;
+
+    int temp = a;
+    a = b;
+    b = temp;
+
+    cout &lt;&lt; "a = " &lt;&lt; a &lt;&lt; ", b = " &lt;&lt; b;
+    return 0;
+}</pre>
+        <p class="note"><strong>Bonus senza terza variabile:</strong> <code>a = a + b; b = a - b; a = a - b;</code> (funziona anche con lo XOR: <code>a ^= b; b ^= a; a ^= b;</code> ma solo con interi).</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 7 — Ore, minuti e secondi</h2>
+    <p><strong>Consegna:</strong> dato un numero di secondi, calcola a quante ore, minuti e secondi corrisponde (usa <code>/</code> e <code>%</code> tra interi).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int totale;
+    cin &gt;&gt; totale;
+
+    int ore = totale / 3600;
+    int resto = totale % 3600;
+    int minuti = resto / 60;
+    int secondi = resto % 60;
+
+    cout &lt;&lt; ore &lt;&lt; "h " &lt;&lt; minuti &lt;&lt; "m " &lt;&lt; secondi &lt;&lt; "s";
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 8 — Divisione tra interi</h2>
+    <p><strong>Consegna:</strong> calcola il resto della divisione tra due numeri e spiega perché <code>7 / 2</code> non fa <code>3.5</code> in C++.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a = 7, b = 2;
+    cout &lt;&lt; a &lt;&lt; " / " &lt;&lt; b &lt;&lt; " = " &lt;&lt; (a / b) &lt;&lt; endl;
+    cout &lt;&lt; a &lt;&lt; " % " &lt;&lt; b &lt;&lt; " = " &lt;&lt; (a % b) &lt;&lt; endl;
+    return 0;
+}</pre>
+        <p class="note">Se entrambi gli operandi sono di tipo <code>int</code>, C++ esegue una <strong>divisione intera</strong>: il risultato è troncato (non arrotondato) alla parte intera, quindi <code>7 / 2</code> vale <code>3</code>, non <code>3.5</code>. Per ottenere il risultato decimale serve che almeno uno dei due operandi sia <code>double</code>, es. <code>7.0 / 2</code>.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 3. SELEZIONE ============ -->
+  <div class="lesson-block">
+    <h2>3. Selezione (if/else, switch)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 9 — Pari o dispari</h2>
+    <p><strong>Consegna:</strong> dato un numero, stabilisci se è pari o dispari.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    if (n % 2 == 0) {
+        cout &lt;&lt; n &lt;&lt; " e' pari";
+    } else {
+        cout &lt;&lt; n &lt;&lt; " e' dispari";
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 10 — Massimo tra tre numeri</h2>
+    <p><strong>Consegna:</strong> dati tre numeri, trova il massimo.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int a, b, c;
+    cin &gt;&gt; a &gt;&gt; b &gt;&gt; c;
+
+    int massimo = a;
+    if (b &gt; massimo) {
+        massimo = b;
+    }
+    if (c &gt; massimo) {
+        massimo = c;
+    }
+
+    cout &lt;&lt; "Il massimo e' " &lt;&lt; massimo;
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 11 — Calcolatrice semplice (switch)</h2>
+    <p><strong>Consegna:</strong> leggi due numeri e un operatore (<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>), poi calcola e stampa il risultato usando uno <code>switch</code>.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    double a, b;
+    char op;
+    cin &gt;&gt; a &gt;&gt; op &gt;&gt; b;
+
+    switch (op) {
+        case '+':
+            cout &lt;&lt; a + b;
+            break;
+        case '-':
+            cout &lt;&lt; a - b;
+            break;
+        case '*':
+            cout &lt;&lt; a * b;
+            break;
+        case '/':
+            if (b != 0) {
+                cout &lt;&lt; a / b;
+            } else {
+                cout &lt;&lt; "Errore: divisione per zero";
+            }
+            break;
+        default:
+            cout &lt;&lt; "Operatore non valido";
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 12 — Giudizio da un voto</h2>
+    <p><strong>Consegna:</strong> dato un voto tra 0 e 10, stampa il giudizio: insufficiente (&lt; 6), sufficiente (6-7), buono (8), ottimo (9-10).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int voto;
+    cin &gt;&gt; voto;
+
+    if (voto &lt; 6) {
+        cout &lt;&lt; "insufficiente";
+    } else if (voto &lt;= 7) {
+        cout &lt;&lt; "sufficiente";
+    } else if (voto == 8) {
+        cout &lt;&lt; "buono";
+    } else {
+        cout &lt;&lt; "ottimo";
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 13 — Anno bisestile</h2>
+    <p><strong>Consegna:</strong> dato un anno, stabilisci se è bisestile (condizioni annidate/AND-OR: divisibile per 4 e non per 100, oppure divisibile per 400).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int anno;
+    cin &gt;&gt; anno;
+
+    bool bisestile = (anno % 4 == 0 &amp;&amp; anno % 100 != 0) || (anno % 400 == 0);
+
+    if (bisestile) {
+        cout &lt;&lt; anno &lt;&lt; " e' bisestile";
+    } else {
+        cout &lt;&lt; anno &lt;&lt; " non e' bisestile";
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 4. CICLI ============ -->
+  <div class="lesson-block">
+    <h2>4. Cicli (for, while, do-while)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 14 — Numeri da 1 a N</h2>
+    <p><strong>Consegna:</strong> stampa i numeri da 1 a N.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    for (int i = 1; i &lt;= n; i++) {
+        cout &lt;&lt; i &lt;&lt; " ";
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 15 — Somma dei numeri da 1 a N</h2>
+    <p><strong>Consegna:</strong> calcola la somma dei numeri da 1 a N.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    int somma = 0;
+    for (int i = 1; i &lt;= n; i++) {
+        somma = somma + i;
+    }
+
+    cout &lt;&lt; "Somma: " &lt;&lt; somma;
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 16 — Tabellina</h2>
+    <p><strong>Consegna:</strong> dato un numero, stampa la sua tabellina (da 1 a 10).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    for (int i = 1; i &lt;= 10; i++) {
+        cout &lt;&lt; n &lt;&lt; " x " &lt;&lt; i &lt;&lt; " = " &lt;&lt; (n * i) &lt;&lt; endl;
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 17 — Fattoriale</h2>
+    <p><strong>Consegna:</strong> calcola il fattoriale di un numero <code>n</code> con un ciclo <code>for</code>.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    int ris = 1;
+    for (int i = 1; i &lt;= n; i++) {
+        ris = ris * i;
+    }
+
+    cout &lt;&lt; "Il fattoriale di " &lt;&lt; n &lt;&lt; " e' " &lt;&lt; ris;
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 18 — Numero primo</h2>
+    <p><strong>Consegna:</strong> stabilisci se un numero è primo, usando la strategia efficiente vista nella sezione Problemi del percorso principale (dividi solo fino alla metà del numero).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    bool primo = true;
+    if (n &lt; 2) {
+        primo = false;
+    }
+    for (int i = 2; i &lt;= n / 2 &amp;&amp; primo; i++) {
+        if (n % i == 0) {
+            primo = false;
+        }
+    }
+
+    if (primo) {
+        cout &lt;&lt; n &lt;&lt; " e' primo";
+    } else {
+        cout &lt;&lt; n &lt;&lt; " non e' primo";
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 19 — Sequenza di Fibonacci</h2>
+    <p><strong>Consegna:</strong> stampa i primi N termini della sequenza di Fibonacci (0, 1, 1, 2, 3, 5, 8, ...).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    int a = 0, b = 1;
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; a &lt;&lt; " ";
+        int successivo = a + b;
+        a = b;
+        b = successivo;
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 20 — Menu ripetuto (do-while)</h2>
+    <p><strong>Consegna:</strong> realizza una piccola calcolatrice a menu che continua a chiedere l'operazione finché l'utente non sceglie "esci".</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int scelta;
+    double a, b;
+
+    do {
+        cout &lt;&lt; "1) Somma  2) Prodotto  0) Esci" &lt;&lt; endl;
+        cin &gt;&gt; scelta;
+
+        if (scelta == 1) {
+            cout &lt;&lt; "Inserisci due numeri: ";
+            cin &gt;&gt; a &gt;&gt; b;
+            cout &lt;&lt; "Risultato: " &lt;&lt; (a + b) &lt;&lt; endl;
+        } else if (scelta == 2) {
+            cout &lt;&lt; "Inserisci due numeri: ";
+            cin &gt;&gt; a &gt;&gt; b;
+            cout &lt;&lt; "Risultato: " &lt;&lt; (a * b) &lt;&lt; endl;
+        }
+    } while (scelta != 0);
+
+    cout &lt;&lt; "Arrivederci!";
+    return 0;
+}</pre>
+        <p class="note">Con il <code>do-while</code> il menu viene mostrato sempre almeno una volta, prima ancora di leggere la scelta dell'utente.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 5. CICLI ANNIDATI ============ -->
+  <div class="lesson-block">
+    <h2>5. Cicli annidati (ponte verso le matrici)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 21 — Tabella pitagorica</h2>
+    <p><strong>Consegna:</strong> stampa la tabella pitagorica, con le tabelline da 1 a 10.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    for (int i = 1; i &lt;= 10; i++) {
+        for (int j = 1; j &lt;= 10; j++) {
+            cout &lt;&lt; (i * j) &lt;&lt; "\t";
+        }
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 22 — Triangolo di asterischi</h2>
+    <p><strong>Consegna:</strong> dato un numero N, disegna un triangolo di asterischi con N righe (1 asterisco sulla prima riga, 2 sulla seconda, ecc.).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    for (int riga = 1; riga &lt;= n; riga++) {
+        for (int col = 1; col &lt;= riga; col++) {
+            cout &lt;&lt; "*";
+        }
+        cout &lt;&lt; endl;
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 23 — Quanti primi tra 1 e N</h2>
+    <p><strong>Consegna:</strong> conta quanti numeri primi ci sono tra 1 e N (ciclo esterno sui numeri, ciclo interno per verificare se ciascuno è primo).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    int conta = 0;
+    for (int num = 2; num &lt;= n; num++) {
+        bool primo = true;
+        for (int i = 2; i &lt;= num / 2 &amp;&amp; primo; i++) {
+            if (num % i == 0) {
+                primo = false;
+            }
+        }
+        if (primo) {
+            conta++;
+        }
+    }
+
+    cout &lt;&lt; "Numeri primi tra 1 e " &lt;&lt; n &lt;&lt; ": " &lt;&lt; conta;
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 6. FUNZIONI ============ -->
+  <div class="lesson-block">
+    <h2>6. Funzioni</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 24 — Fattoriale come funzione</h2>
+    <p><strong>Consegna:</strong> riscrivi il calcolo del fattoriale (esercizio 17) come funzione riusabile.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int fattoriale(int n) {
+    int ris = 1;
+    for (int i = 1; i &lt;= n; i++) {
+        ris = ris * i;
+    }
+    return ris;
+}
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+    cout &lt;&lt; "Il fattoriale di " &lt;&lt; n &lt;&lt; " e' " &lt;&lt; fattoriale(n);
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 25 — Funzione ePrimo, riusata nel conteggio</h2>
+    <p><strong>Consegna:</strong> scrivi una funzione che verifica se un numero è primo e riusala per contare i numeri primi tra 1 e N (esercizio 23), evitando di duplicare il codice.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+bool ePrimo(int n) {
+    if (n &lt; 2) return false;
+    for (int i = 2; i &lt;= n / 2; i++) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    int conta = 0;
+    for (int num = 2; num &lt;= n; num++) {
+        if (ePrimo(num)) {
+            conta++;
+        }
+    }
+
+    cout &lt;&lt; "Numeri primi tra 1 e " &lt;&lt; n &lt;&lt; ": " &lt;&lt; conta;
+    return 0;
+}</pre>
+        <p class="note">La stessa funzione <code>ePrimo</code> può essere richiamata anche per verificare un singolo numero, come nell'esercizio 18: <code>ePrimo(n)</code> restituisce direttamente <code>true</code> o <code>false</code>.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 26 — Area del triangolo (più parametri)</h2>
+    <p><strong>Consegna:</strong> scrivi una funzione con più parametri che calcola l'area di un triangolo dati base e altezza.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+double areaTriangolo(double base, double altezza) {
+    return base * altezza / 2;
+}
+
+int main() {
+    double base, altezza;
+    cin &gt;&gt; base &gt;&gt; altezza;
+    cout &lt;&lt; "Area: " &lt;&lt; areaTriangolo(base, altezza);
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 27 — Scambio per riferimento</h2>
+    <p><strong>Consegna:</strong> scrivi una funzione che scambia il valore di due variabili usando il passaggio per riferimento (<code>&amp;</code>).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+void scambia(int &amp;a, int &amp;b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x, y;
+    cin &gt;&gt; x &gt;&gt; y;
+
+    scambia(x, y);
+
+    cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; ", y = " &lt;&lt; y;
+    return 0;
+}</pre>
+        <p class="note">Passando <code>a</code> e <code>b</code> per riferimento (<code>&amp;</code>), la funzione modifica direttamente le variabili originali <code>x</code> e <code>y</code>. Se il parametro fosse passato per valore (senza <code>&amp;</code>), lo scambio avverrebbe solo su una copia locale e non avrebbe alcun effetto fuori dalla funzione.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 7. ARRAY MONODIMENSIONALI ============ -->
+  <div class="lesson-block">
+    <h2>7. Array monodimensionali</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 28 — Riempi e stampa un array</h2>
+    <p><strong>Consegna:</strong> dichiara un array di 10 interi, riempilo con valori letti da input e poi stampalo.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int v[10];
+
+    for (int i = 0; i &lt; 10; i++) {
+        cin &gt;&gt; v[i];
+    }
+
+    for (int i = 0; i &lt; 10; i++) {
+        cout &lt;&lt; v[i] &lt;&lt; " ";
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 29 — Massimo e minimo</h2>
+    <p><strong>Consegna:</strong> trova il valore massimo e il valore minimo presenti in un array.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int v[10];
+    for (int i = 0; i &lt; 10; i++) {
+        cin &gt;&gt; v[i];
+    }
+
+    int massimo = v[0];
+    int minimo = v[0];
+    for (int i = 1; i &lt; 10; i++) {
+        if (v[i] &gt; massimo) {
+            massimo = v[i];
+        }
+        if (v[i] &lt; minimo) {
+            minimo = v[i];
+        }
+    }
+
+    cout &lt;&lt; "Massimo: " &lt;&lt; massimo &lt;&lt; ", Minimo: " &lt;&lt; minimo;
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 30 — Somma e media</h2>
+    <p><strong>Consegna:</strong> calcola la somma e la media degli elementi di un array.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int v[10];
+    for (int i = 0; i &lt; 10; i++) {
+        cin &gt;&gt; v[i];
+    }
+
+    int somma = 0;
+    for (int i = 0; i &lt; 10; i++) {
+        somma = somma + v[i];
+    }
+    double media = (double) somma / 10;
+
+    cout &lt;&lt; "Somma: " &lt;&lt; somma &lt;&lt; ", Media: " &lt;&lt; media;
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 31 — Conta gli elementi pari</h2>
+    <p><strong>Consegna:</strong> conta quanti elementi di un array sono pari.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int v[10];
+    for (int i = 0; i &lt; 10; i++) {
+        cin &gt;&gt; v[i];
+    }
+
+    int conta = 0;
+    for (int i = 0; i &lt; 10; i++) {
+        if (v[i] % 2 == 0) {
+            conta++;
+        }
+    }
+
+    cout &lt;&lt; "Elementi pari: " &lt;&lt; conta;
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 32 — Inverti un array</h2>
+    <p><strong>Consegna:</strong> inverti l'ordine degli elementi di un array, senza crearne uno nuovo (scambia gli elementi "in place").</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int v[10];
+    for (int i = 0; i &lt; 10; i++) {
+        cin &gt;&gt; v[i];
+    }
+
+    for (int i = 0; i &lt; 5; i++) {
+        int temp = v[i];
+        v[i] = v[9 - i];
+        v[9 - i] = temp;
+    }
+
+    for (int i = 0; i &lt; 10; i++) {
+        cout &lt;&lt; v[i] &lt;&lt; " ";
+    }
+    return 0;
+}</pre>
+        <p class="note">Basta scambiare a coppie il primo con l'ultimo, il secondo con il penultimo, e così via: per un array di 10 elementi servono solo 5 scambi (indici da 0 a 4).</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 33 — Ricerca sequenziale</h2>
+    <p><strong>Consegna:</strong> l'utente inserisce un valore: dì se è presente nell'array e, in caso affermativo, in che posizione.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int v[10];
+    for (int i = 0; i &lt; 10; i++) {
+        cin &gt;&gt; v[i];
+    }
+
+    int cercato;
+    cin &gt;&gt; cercato;
+
+    int posizione = -1;
+    for (int i = 0; i &lt; 10; i++) {
+        if (v[i] == cercato) {
+            posizione = i;
+        }
+    }
+
+    if (posizione != -1) {
+        cout &lt;&lt; cercato &lt;&lt; " trovato in posizione " &lt;&lt; posizione;
+    } else {
+        cout &lt;&lt; cercato &lt;&lt; " non presente nell'array";
+    }
+    return 0;
+}</pre>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 34 — Ordinamento a bolle (bubble sort)</h2>
+    <p><strong>Consegna:</strong> ordina un array in ordine crescente usando l'algoritmo a bolle.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int v[10];
+    for (int i = 0; i &lt; 10; i++) {
+        cin &gt;&gt; v[i];
+    }
+
+    for (int i = 0; i &lt; 10 - 1; i++) {
+        for (int j = 0; j &lt; 10 - 1 - i; j++) {
+            if (v[j] &gt; v[j + 1]) {
+                int temp = v[j];
+                v[j] = v[j + 1];
+                v[j + 1] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i &lt; 10; i++) {
+        cout &lt;&lt; v[i] &lt;&lt; " ";
+    }
+    return 0;
+}</pre>
+        <p class="note">Ad ogni passaggio esterno, il ciclo interno confronta coppie di elementi adiacenti e li scambia se sono nell'ordine sbagliato: così, come una bolla, il valore più grande "sale" verso la fine dell'array.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 35 — Rimuovi i duplicati</h2>
+    <p><strong>Consegna:</strong> rimuovi i valori duplicati da un array, mantenendo solo la prima occorrenza di ciascun valore (usa un array ausiliario o una logica in-place).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int v[10];
+    for (int i = 0; i &lt; 10; i++) {
+        cin &gt;&gt; v[i];
+    }
+
+    int risultato[10];
+    int n = 0;
+
+    for (int i = 0; i &lt; 10; i++) {
+        bool giaPresente = false;
+        for (int j = 0; j &lt; n; j++) {
+            if (risultato[j] == v[i]) {
+                giaPresente = true;
+            }
+        }
+        if (!giaPresente) {
+            risultato[n] = v[i];
+            n++;
+        }
+    }
+
+    for (int i = 0; i &lt; n; i++) {
+        cout &lt;&lt; risultato[i] &lt;&lt; " ";
+    }
+    return 0;
+}</pre>
+        <p class="note">L'array ausiliario <code>risultato</code> viene riempito solo con i valori non ancora incontrati; la variabile <code>n</code> tiene traccia di quanti elementi "unici" sono stati copiati finora.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 8. ARRAY E FUNZIONI INSIEME ============ -->
+  <div class="lesson-block">
+    <h2>8. Array e funzioni insieme (chiusura del percorso)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 36 — Massimo/minimo, somma/media e conteggio pari come funzioni</h2>
+    <p><strong>Consegna:</strong> riscrivi gli esercizi 29, 30 e 31 come funzioni che ricevono l'array e la sua dimensione come parametri, così da poterle riusare con array di grandezza diversa.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int trovaMassimo(int v[], int dim) {
+    int massimo = v[0];
+    for (int i = 1; i &lt; dim; i++) {
+        if (v[i] &gt; massimo) {
+            massimo = v[i];
+        }
+    }
+    return massimo;
+}
+
+int trovaMinimo(int v[], int dim) {
+    int minimo = v[0];
+    for (int i = 1; i &lt; dim; i++) {
+        if (v[i] &lt; minimo) {
+            minimo = v[i];
+        }
+    }
+    return minimo;
+}
+
+double calcolaMedia(int v[], int dim) {
+    int somma = 0;
+    for (int i = 0; i &lt; dim; i++) {
+        somma = somma + v[i];
+    }
+    return (double) somma / dim;
+}
+
+int contaPari(int v[], int dim) {
+    int conta = 0;
+    for (int i = 0; i &lt; dim; i++) {
+        if (v[i] % 2 == 0) {
+            conta++;
+        }
+    }
+    return conta;
+}
+
+int main() {
+    int v[10];
+    for (int i = 0; i &lt; 10; i++) {
+        cin &gt;&gt; v[i];
+    }
+
+    cout &lt;&lt; "Massimo: " &lt;&lt; trovaMassimo(v, 10) &lt;&lt; endl;
+    cout &lt;&lt; "Minimo: " &lt;&lt; trovaMinimo(v, 10) &lt;&lt; endl;
+    cout &lt;&lt; "Media: " &lt;&lt; calcolaMedia(v, 10) &lt;&lt; endl;
+    cout &lt;&lt; "Elementi pari: " &lt;&lt; contaPari(v, 10) &lt;&lt; endl;
+    return 0;
+}</pre>
+        <p class="note">In C++ un array passato a una funzione (<code>int v[]</code>) viaggia già "per riferimento": la funzione lavora direttamente sull'array originale, non su una copia. Per questo bisogna sempre passare anche la dimensione come parametro separato, dato che la funzione da sola non può conoscerla.</p>
+      </details>
+    </div>
+  </div>
+
+</section>
+</main>
+
+<footer class="footer">
+  <p>UDA Programmazione — Esercizi C++ procedurale. <a href="Introduzione_Programmazione.html#esercizi">Torna agli esercizi</a>.</p>
+</footer>
+
+</body>
+</html>

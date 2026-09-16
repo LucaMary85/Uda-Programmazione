@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UDA Programmazione – Problemi, Algoritmi, Flow Chart</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-icon">⌘</span>
+    <span class="brand-text">UDA Programmazione</span>
+  </div>
+  <nav class="mainnav" id="mainnav">
+    <button class="navbtn active" data-target="home">Home</button>
+    <button class="navbtn" data-target="problemi">Problemi</button>
+    <button class="navbtn" data-target="algoritmi">Algoritmi</button>
+    <button class="navbtn" data-target="flowchart">Flow Chart</button>
+    <button class="navbtn" data-target="cicli">Cicli</button>
+    <button class="navbtn" data-target="cpp">C++</button>
+    <button class="navbtn" data-target="cpp-oop">C++ OOP</button>
+    <button class="navbtn" data-target="giochi">Giochi &amp; Cooperative</button>
+    <button class="navbtn" data-target="verifiche">Verifiche</button>
+    <button class="navbtn" data-target="esercizi">Esercizi</button>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu">☰</button>
+</header>
+
+<main id="main">
+
+<!-- ============ HOME ============ -->
+<section class="view active" id="view-home">
+  <div class="hero">
+    <h1>Dai Problemi agli Algoritmi</h1>
+    <p class="subtitle">Un percorso interattivo su problem solving, algoritmi, diagrammi a blocchi (flow chart) e cicli — con simulatori, giochi e verifiche.</p>
+  </div>
+
+  <div class="card-grid">
+    <article class="topic-card" data-goto="problemi">
+      <div class="topic-icon">🧩</div>
+      <h3>I Problemi</h3>
+      <p>Cosa rende un problema facile o difficile? Strategie risolutive ed efficienza, con l'esempio dei numeri primi.</p>
+    </article>
+    <article class="topic-card" data-goto="algoritmi">
+      <div class="topic-icon">📜</div>
+      <h3>Gli Algoritmi</h3>
+      <p>Dal papiro di Ahmes ad Al-Khwarizmi: definizione, pseudocodifica, variabili e tracciamento passo-passo.</p>
+    </article>
+    <article class="topic-card" data-goto="flowchart">
+      <div class="topic-icon">◇</div>
+      <h3>Flow Chart</h3>
+      <p>I quattro blocchi, operatori aritmetici, relazionali e logici. Tavole di verità interattive.</p>
+    </article>
+    <article class="topic-card" data-goto="cicli">
+      <div class="topic-icon">🔁</div>
+      <h3>I Cicli</h3>
+      <p>Indice, iterazione, do-while e while-do: simulatore passo-passo di un ciclo reale.</p>
+    </article>
+    <article class="topic-card" data-goto="cpp">
+      <div class="topic-icon">💻</div>
+      <h3>C++</h3>
+      <p>Dalla teoria alla pratica: variabili, cicli, funzioni, puntatori, array, vettori e strutture nella programmazione procedurale in C++.</p>
+    </article>
+    <article class="topic-card" data-goto="cpp-oop">
+      <div class="topic-icon">🧱</div>
+      <h3>C++ OOP</h3>
+      <p>Classi, oggetti, incapsulamento, costruttori, modificatori di accesso ed ereditarietà: gli stessi concetti, ora organizzati a oggetti.</p>
+    </article>
+    <article class="topic-card" data-goto="giochi">
+      <div class="topic-icon">🎭</div>
+      <h3>Giochi &amp; Cooperative Learning</h3>
+      <p>Attività di ruolo, memory delle forme, riordino della pizza margherita e generatore di gruppi.</p>
+    </article>
+    <article class="topic-card" data-goto="verifiche">
+      <div class="topic-icon">✅</div>
+      <h3>Verifiche</h3>
+      <p>Quiz interattivi con correzione immediata, per categoria, più versione stampabile per la verifica in classe.</p>
+    </article>
+    <article class="topic-card" data-goto="esercizi">
+      <div class="topic-icon">✏️</div>
+      <h3>Esercizi</h3>
+      <p>Esercizi svolti e da svolgere, con soluzioni nascoste da rivelare quando vuoi.</p>
+    </article>
+  </div>
+
+  <div class="info-box">
+    <h3>Come usare questa pagina in classe</h3>
+    <ul>
+      <li>Usa la barra in alto per passare da un argomento all'altro senza ricaricare la pagina.</li>
+      <li>Ogni sezione contiene <strong>simulatori interattivi</strong>: prova a cambiare i valori e osserva cosa succede.</li>
+      <li>La sezione <strong>Giochi &amp; Cooperative Learning</strong> propone attività da fare in gruppo, anche senza computer.</li>
+      <li>La sezione <strong>Verifiche</strong> può essere usata sia come autovalutazione online, sia stampata come compito in classe.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ PROBLEMI ============ -->
+<section class="view" id="view-problemi">
+  <h1 class="view-title">🧩 I Problemi</h1>
+
+  <div class="lesson-block">
+    <h2>Cos'è un problema?</h2>
+    <p>In ogni ambito della vita dobbiamo risolvere problemi, eseguire compiti e prendere decisioni. Anche dividere il conto <em>"alla romana"</em> con gli amici al ristorante è un problema da risolvere.</p>
+    <p>Alcuni problemi sono <strong>semplici</strong>: li abbiamo già affrontati e li risolviamo con l'esperienza o l'aiuto di qualcuno. Altri sono <strong>difficili</strong>: la soluzione non è immediata, magari perché mancano dati o conoscenze.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esempio 1 — Quanti km posso fare con un pieno?</h2>
+    <p>Per risolvere questo problema servono <strong>dati</strong>: cilindrata, velocità, tipo di carburante, grandezza del serbatoio. Senza questi dati il problema non si può risolvere, anche conoscendo il "metodo".</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esempio 2 — La sequenza di Fibonacci</h2>
+    <p><strong>Definizione:</strong> la sequenza di Fibonacci è una successione di numeri interi i cui primi due numeri sono 1 e 1; ogni altro elemento è la somma dei due termini precedenti.</p>
+    <p>Qui il problema è diverso dal precedente: abbiamo il dato (quanti elementi vogliamo) ma <strong>mancava la conoscenza</strong> (la definizione della sequenza).</p>
+    <div class="sim-box">
+      <h4>🔢 Simulatore — calcola la sequenza di Fibonacci</h4>
+      <div class="sim-controls">
+        <label>Numero di elementi: <input type="number" id="fib-n" min="1" max="20" value="7"></label>
+        <button class="btn" id="fib-calc">Calcola</button>
+      </div>
+      <div id="fib-output" class="sim-output"></div>
+    </div>
+    <p class="curiosity"><strong>Curiosità:</strong> il rapporto fra due termini successivi della sequenza si avvicina alla <em>sezione aurea</em>, un rapporto che si ritrova spesso in natura, nell'arte e nell'architettura.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Tipologia e complessità</h2>
+    <p>I problemi non sono tutti uguali per tipologia né per complessità. Calcolare la distanza fra due punti è relativamente facile; calcolare la distanza Terra-Sole in un certo giorno dell'anno è relativamente difficile.</p>
+    <p><strong>Perché "relativamente"?</strong> Perché la difficoltà dipende anche da <em>chi</em> deve risolvere il problema:</p>
+    <div class="relative-grid">
+      <div class="rel-card"><span class="rel-who">👶 Un bambino</span><span class="rel-what">FACILE: distanza fra 2 punti</span><span class="rel-what hard">DIFFICILE: distanza Terra-Sole</span></div>
+      <div class="rel-card"><span class="rel-who">🎓 Uno studente</span><span class="rel-what">FACILE: distanza fra 2 punti</span><span class="rel-what hard">DIFFICILE: distanza Terra-Sole</span></div>
+      <div class="rel-card"><span class="rel-who">🔭 Margherita Hack</span><span class="rel-what">FACILE: distanza fra 2 punti</span><span class="rel-what easy2">FACILE: distanza Terra-Sole</span></div>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Strategia risolutiva</h2>
+    <p>Per i problemi difficili serve: <strong>1)</strong> comprendere bene il problema (analisi), <strong>2)</strong> individuare una <em>strategia risolutiva</em>, cioè l'idea con cui — sfruttando esperienza, intuito, fantasia e intelligenza — si trova la "chiave" della soluzione.</p>
+    <h3>Esempio: il valore assoluto</h3>
+    <p>Il valore assoluto di un numero <code>x</code> è: <code>x</code> stesso se <code>x</code> è non negativo, <code>-x</code> se <code>x</code> è negativo.</p>
+    <p>Esistono più strategie equivalenti:</p>
+    <div class="approach-grid">
+      <div class="approach"><h4>1° Approccio</h4><p>Se il numero è negativo, cambio segno. Se è positivo, lo lascio invariato.</p></div>
+      <div class="approach"><h4>2° Approccio</h4><p>Elevo il numero al quadrato, poi calcolo la radice quadrata del risultato.</p></div>
+    </div>
+    <p><strong>Attenzione:</strong> non esiste un'unica soluzione, ma alcune sono più <em>efficienti</em> di altre. Quando una soluzione è più efficiente di un'altra?</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Efficienza: il caso dei numeri primi</h2>
+    <p>Un numero è primo quando è divisibile solo per 1 e per se stesso. Confrontiamo due strategie per scoprirlo:</p>
+    <ul>
+      <li><strong>1° approccio:</strong> cerco tutti i divisori tra 1 e il numero stesso.</li>
+      <li><strong>2° approccio:</strong> cerco i divisori tra 1 e la metà intera del numero (oltre la metà non può esistere un divisore diverso dal numero stesso).</li>
+    </ul>
+    <div class="sim-box">
+      <h4>⚡ Simulatore — confronto di efficienza (numeri primi)</h4>
+      <div class="sim-controls">
+        <label>Numero da testare: <input type="number" id="prime-n" min="2" max="500" value="11"></label>
+        <button class="btn" id="prime-calc">Confronta i due approcci</button>
+      </div>
+      <div id="prime-output" class="sim-output"></div>
+    </div>
+    <p><strong>Definizione:</strong> con <em>efficienza</em> di una strategia risolutiva si intende la sua capacità di utilizzare meno risorse informatiche possibili, in termini di <strong>tempo</strong> (e uso della CPU) e di <strong>memoria</strong>.</p>
+  </div>
+</section>
+
+<!-- ============ ALGORITMI ============ -->
+<section class="view" id="view-algoritmi">
+  <h1 class="view-title">📜 Gli Algoritmi</h1>
+
+  <div class="lesson-block">
+    <h2>Definizione</h2>
+    <p>Trovata la strategia risolutiva, bisogna scrivere la sequenza delle singole istruzioni in modo <strong>formale e preciso</strong>.</p>
+    <p class="definition">Si definisce <strong>algoritmo</strong> la sequenza delle singole istruzioni, scritte in modo formale e preciso, che si devono seguire per risolvere un problema.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Origine e storia</h2>
+    <div class="history-grid">
+      <div class="history-card">
+        <h4>Al-Khwārizmī</h4>
+        <p>La parola <em>algoritmo</em> deriva dal nome di questo matematico, astronomo e geografo persiano, considerato il padre dell'algebra.</p>
+      </div>
+      <div class="history-card">
+        <h4>Papiro di Ahmes (~1650 a.C.)</h4>
+        <p>Il primo algoritmo documentato: oltre 3.500 anni fa, conteneva tabelle di frazioni e 84 problemi aritmetici, algebrici e geometrici con relative soluzioni.</p>
+      </div>
+    </div>
+    <p>La definizione di <em>efficienza</em> vista per i problemi si applica anche agli algoritmi: in informatica indica la capacità di un algoritmo di usare meno risorse possibili durante l'esecuzione.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esempio: la telefonata (l'importanza di generalizzare)</h2>
+    <p>Scriviamo l'algoritmo che Bob deve seguire per telefonare ad Alice:</p>
+    <ol class="algo-steps">
+      <li>Leggi il numero telefonico</li>
+      <li>Digita il numero sul telefono</li>
+      <li>Conversa con Alice</li>
+      <li>Chiudi la comunicazione</li>
+    </ol>
+    <p class="warn">⚠️ Problema: <strong>e se Alice non risponde?</strong> Questa versione non contempla tutte le possibilità!</p>
+    <p>Versione corretta e generalizzata:</p>
+    <ol class="algo-steps">
+      <li>Leggi il numero telefonico</li>
+      <li>Digita il numero sul telefono</li>
+      <li>Se Alice non risponde, salta al punto 5</li>
+      <li>Se Alice risponde, conversa con Alice</li>
+      <li>Chiudi la comunicazione</li>
+    </ol>
+    <p>Un algoritmo deve essere il più <strong>generalizzabile</strong> possibile: deve contemplare tutte le casistiche, non solo il caso "fortunato". La stessa idea si può codificare con parole o sequenze diverse: <strong>la codifica non è univoca</strong>.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio guidato: la pizza margherita</h2>
+    <p><em>Scrivi la procedura per preparare e cuocere una pizza margherita, indicando ogni singola operazione, una per riga.</em></p>
+    <details class="reveal">
+      <summary>Mostra una possibile soluzione</summary>
+      <ol class="algo-steps">
+        <li>Procurarsi la ricetta</li>
+        <li>Leggere la ricetta</li>
+        <li>Controllare gli ingredienti in casa</li>
+        <li>Se manca un ingrediente, comprarlo; altrimenti saltare al punto successivo</li>
+        <li>Preparare l'impasto e lasciarlo lievitare</li>
+        <li>Stendere l'impasto</li>
+        <li>Disporre pomodoro, mozzarella e basilico sull'impasto</li>
+        <li>Accendere il forno</li>
+        <li>Portarlo alla giusta temperatura</li>
+        <li>Inserire la pizza nel forno</li>
+        <li>Ruotare la pizza ogni 30 secondi</li>
+        <li>Estrarre la pizza dopo 90 secondi</li>
+        <li>Disporre la pizza su un piatto</li>
+      </ol>
+    </details>
+    <p>👉 Puoi mettere alla prova la tua memoria con il gioco <strong>"Riordina la ricetta"</strong> nella sezione <button class="link-btn" data-goto="giochi">Giochi &amp; Cooperative Learning</button>.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Pseudocodifica e codifica</h2>
+    <p>Descrivere un algoritmo in linguaggio naturale (comprensibile all'uomo) si chiama <strong>pseudocodifica</strong>. Scrivere l'algoritmo in un linguaggio comprensibile al computer si chiama <strong>codifica</strong>, e può avvenire in linguaggi di programmazione diversi.</p>
+    <div class="code-tabs">
+      <div class="code-tab-buttons">
+        <button class="code-tab-btn active" data-code="pseudo">Pseudocodice</button>
+        <button class="code-tab-btn" data-code="c">C</button>
+        <button class="code-tab-btn" data-code="cpp">C++</button>
+        <button class="code-tab-btn" data-code="python">Python</button>
+      </div>
+      <pre class="code-panel active" id="code-pseudo">Dato un numero n
+Se n > 0
+    il risultato è n
+Altrimenti (se n &lt; 0)
+    il risultato è n * (-1)</pre>
+      <pre class="code-panel" id="code-c">#include &lt;stdio.h&gt;
+int main() {
+    int n, ris;
+    scanf("%d", &amp;n);
+    if (n > 0) {
+        ris = n;
+    } else {
+        ris = n * (-1);
+    }
+    printf("%d", ris);
+    return 0;
+}</pre>
+      <pre class="code-panel" id="code-cpp">#include &lt;iostream&gt;
+using namespace std;
+int main() {
+    int n, ris;
+    cin &gt;&gt; n;
+    if (n > 0) {
+        ris = n;
+    } else {
+        ris = n * (-1);
+    }
+    cout &lt;&lt; ris;
+    return 0;
+}</pre>
+      <pre class="code-panel" id="code-python">n = int(input())
+if n > 0:
+    ris = n
+else:
+    ris = n * (-1)
+print(ris)</pre>
+    </div>
+    <p class="note">Tutte queste codifiche fanno la stessa cosa! Cambia il linguaggio, non l'idea.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Le variabili</h2>
+    <p>Le variabili sono <strong>contenitori</strong> che permettono di memorizzare dati: senza dati non può esistere elaborazione. Possiamo immaginarle come <em>scatole</em> a disposizione del programmatore, ciascuna con un nome (identificatore) <strong>univoco</strong> ed <strong>evocativo</strong> (es. <code>num</code>, <code>ris</code>, <code>div</code>). Non c'è nessun vincolo formale sul nome, ma un buon nome rende il codice comprensibile.</p>
+    <p>⚠️ Una variabile occupa spazio in memoria (di più o di meno a seconda del tipo e della dimensione), e viene salvata nella <strong>RAM</strong>, la memoria che contiene i dati necessari al programma durante l'esecuzione.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Tracciamento di un algoritmo: il valore assoluto passo-passo</h2>
+    <p>Vediamo cosa succede alle variabili istruzione per istruzione. Confrontiamo due versioni: quella con la <strong>selezione binaria</strong> (due variabili, <code>n</code> e <code>ris</code>) e quella ottimizzata con la <strong>selezione unaria</strong> (una sola variabile, <code>n</code>).</p>
+
+    <div class="sim-box">
+      <h4>🧮 Simulatore di tracciamento variabili</h4>
+      <div class="sim-controls">
+        <label>Versione:
+          <select id="trace-version">
+            <option value="binary">Selezione binaria (con n e ris)</option>
+            <option value="unary">Selezione unaria (ottimizzata, solo n)</option>
+          </select>
+        </label>
+        <label>Valore di input (n): <input type="number" id="trace-n" value="-10"></label>
+        <button class="btn" id="trace-reset">Avvia / Reset</button>
+        <button class="btn btn-secondary" id="trace-next">Passo successivo ▶</button>
+      </div>
+      <div class="trace-view">
+        <pre id="trace-code" class="trace-code"></pre>
+        <div class="trace-boxes" id="trace-boxes"></div>
+      </div>
+      <div id="trace-log" class="sim-output"></div>
+    </div>
+
+    <div class="callout-grid">
+      <div class="callout"><strong>Costante:</strong> il valore <code>-1</code> usato nel calcolo non è contenuto in nessuna variabile: è una <em>costante</em>, una porzione di memoria il cui valore non cambia durante l'esecuzione.</div>
+      <div class="callout"><strong>Selezione binaria:</strong> la struttura che fa scegliere all'algoritmo fra due "strade" alternative (Se... Altrimenti...).</div>
+      <div class="callout"><strong>Selezione unaria:</strong> esegue un'istruzione solo se una condizione è vera, senza alternativa. Usarla al posto della binaria, riusando la stessa variabile <code>n</code> invece di crearne una nuova (<code>ris</code>), <strong>risparmia memoria</strong>: è un esempio concreto di efficienza.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLOW CHART ============ -->
+<section class="view" id="view-flowchart">
+  <h1 class="view-title">◇ Flow Chart</h1>
+
+  <div class="lesson-block">
+    <h2>Cos'è un Flow Chart?</h2>
+    <p>Il <strong>Flow Chart</strong> (diagramma di flusso, diagramma a blocchi) è il modo più semplice e diffuso per rappresentare graficamente un algoritmo. È una rappresentazione intuitiva che permette di individuare "a colpo d'occhio" la struttura dell'algoritmo.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>I quattro blocchi</h2>
+    <div class="blocks-grid">
+      <div class="block-demo">
+        <div class="fc fc-oval">inizio / fine</div>
+        <p><strong>Inizio / Fine</strong> — forma ovale, senza spigoli. Usato solo come primo e ultimo blocco dell'algoritmo.</p>
+      </div>
+      <div class="block-demo">
+        <div class="fc fc-io">input / output</div>
+        <p><strong>Input / Output</strong> — parallelogramma. Comunica informazioni all'utente o riceve dati (lettura/scrittura).</p>
+      </div>
+      <div class="block-demo">
+        <div class="fc fc-process">elaborazione</div>
+        <p><strong>Elaborazione</strong> — rettangolo. Contiene istruzioni che trasformano i dati (calcoli, assegnamenti).</p>
+      </div>
+      <div class="block-demo">
+        <div class="fc fc-decision"><span>condizione?</span></div>
+        <p><strong>Decisione</strong> — rombo. Contiene un confronto (test) che dà solo due esiti: <span class="tag-v">Vero</span> / <span class="tag-f">Falso</span>.</p>
+      </div>
+    </div>
+    <p>I blocchi si collegano con <strong>frecce</strong> (indicano il verso di percorrenza) e <strong>nodi di congiunzione</strong> (dove due percorsi alternativi si ricongiungono).</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Assegnamento e inizializzazione</h2>
+    <p>Per assegnare un valore a una variabile si usa l'operatore <code>=</code>. Quando all'inizio dell'algoritmo si assegna un primo valore a una variabile si parla di <strong>inizializzazione</strong>.</p>
+    <div class="sim-box">
+      <h4>➕ Simulatore — contatore (assegnamento &amp; incremento)</h4>
+      <div class="fc-diagram">
+        <div class="fc fc-oval">inizio</div>
+        <div class="fc-arrow">↓</div>
+        <div class="fc fc-process" id="counter-init-block">cont = 0</div>
+        <div class="fc-arrow">↓</div>
+        <div class="fc fc-process" id="counter-inc-block">cont = cont + 1</div>
+        <div class="fc-arrow">↓</div>
+        <div class="fc fc-oval">fine</div>
+      </div>
+      <div class="sim-controls">
+        <button class="btn" id="counter-reset">Reset</button>
+        <button class="btn btn-secondary" id="counter-step">Esegui passo ▶</button>
+      </div>
+      <div class="counter-display">cont = <span id="counter-value">?</span></div>
+    </div>
+    <p class="warn">⚠️ Errore comune: se non inizializzo <code>cont</code> prima di incrementarlo, l'algoritmo non sa a che valore sommare 1!</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Operatori aritmetici</h2>
+    <p>Operatori base: <code>+ - * /</code>. Esiste anche l'operatore <strong>modulo</strong> <code>%</code>, che restituisce il resto della divisione intera tra due numeri (es. <code>20 % 3 = 2</code>, perché 20 diviso 3 fa 6 con resto 2).</p>
+    <div class="exercise-card">
+      <p><strong>Esercizio:</strong> Rappresenta l'algoritmo per calcolare il doppio di un numero ricevuto in input.</p>
+      <details class="reveal"><summary>Mostra soluzione</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">ris = n * 2</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output(ris)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Operatori relazionali</h2>
+    <p>Per confrontare due valori si usa l'operatore <code>==</code> (uguale a). Attenzione a non confonderlo con l'assegnamento <code>=</code>! Altri operatori: <code>&gt; &lt; &gt;= &lt;= !=</code>.</p>
+    <div class="exercise-card">
+      <p><strong>Esercizio:</strong> verifica se un numero inserito in input è pari.</p>
+      <details class="reveal"><summary>Mostra soluzione</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>n % 2 == 0 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-io">output("Il numero è pari")</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-io">output("Il numero non è pari")</div></div>
+          </div>
+          <div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+        <p class="note">Indica sempre l'etichetta V/F sulle frecce di selezione!</p>
+      </details>
+    </div>
+    <div class="exercise-card">
+      <p><strong>Esercizio:</strong> calcola il valore assoluto di un numero, con selezione binaria.</p>
+      <details class="reveal"><summary>Mostra soluzione</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>n &gt;= 0 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">ris = n</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">ris = n * (-1)</div></div>
+          </div>
+          <div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output(ris)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Operatori di incremento / decremento</h2>
+    <p><code>n++</code> equivale a <code>n = n + 1</code> (incremento). <code>n--</code> equivale a <code>n = n - 1</code> (decremento).</p>
+    <div class="exercise-card">
+      <p><strong>Esercizio:</strong> qual è l'output del seguente flow chart? <code>n = 4</code> → <code>n = n+1</code> → <code>n = n*n</code> → <code>n = n-1</code> → <code>output(n)</code></p>
+      <div class="sim-box">
+        <div class="sim-controls">
+          <label>Valore iniziale di n: <input type="number" id="pipe-n" value="4"></label>
+          <button class="btn" id="pipe-reset">Avvia / Reset</button>
+          <button class="btn btn-secondary" id="pipe-step">Passo successivo ▶</button>
+        </div>
+        <div id="pipe-view" class="sim-output"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Operatori logici: NOT, AND, OR</h2>
+    <p><strong>NOT (!)</strong> nega una condizione. <strong>AND (&amp;&amp;)</strong> è vero solo se entrambe le condizioni sono vere. <strong>OR (||)</strong> è vero se almeno una condizione è vera.</p>
+    <div class="sim-box">
+      <h4>🔬 Calcolatore di tavole di verità</h4>
+      <div class="sim-controls">
+        <label>A: <select id="logic-a"><option value="1">Vero</option><option value="0">Falso</option></select></label>
+        <label>B: <select id="logic-b"><option value="1">Vero</option><option value="0">Falso</option></select></label>
+      </div>
+      <div class="logic-results" id="logic-results"></div>
+      <table class="truth-table">
+        <thead><tr><th>A</th><th>B</th><th>!A</th><th>A &amp;&amp; B</th><th>A || B</th></tr></thead>
+        <tbody>
+          <tr><td>F</td><td>F</td><td>V</td><td>F</td><td>F</td></tr>
+          <tr><td>F</td><td>V</td><td>V</td><td>F</td><td>V</td></tr>
+          <tr><td>V</td><td>F</td><td>F</td><td>F</td><td>V</td></tr>
+          <tr><td>V</td><td>V</td><td>F</td><td>V</td><td>V</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="exercise-card">
+      <p><strong>Esempio divertente:</strong> quale musicista è <strong>chitarrista E ha i capelli lunghi</strong> (AND)? Quale è <strong>chitarrista O ha i capelli lunghi</strong> (OR)?</p>
+      <table class="mini-table">
+        <thead><tr><th>Musicista</th><th>Chitarrista</th><th>Capelli lunghi</th></tr></thead>
+        <tbody>
+          <tr><td>John</td><td>Vero</td><td>Vero</td></tr>
+          <tr><td>Dave</td><td>Vero</td><td>Falso</td></tr>
+          <tr><td>Gregg</td><td>Falso</td><td>Vero</td></tr>
+          <tr><td>Justin</td><td>Falso</td><td>Falso</td></tr>
+        </tbody>
+      </table>
+      <p class="note">Con AND solo John soddisfa entrambe le condizioni. Con OR, John, Dave e Gregg soddisfano almeno una condizione.</p>
+    </div>
+    <div class="exercise-card">
+      <p><strong>Esercizio:</strong> stabilisci se un numero ricevuto in input è compreso tra 10 e 20 (estremi compresi).</p>
+      <details class="reveal"><summary>Mostra soluzione</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>(n&gt;=10 &amp;&amp; n&lt;=20) ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-io">output("compreso")</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-io">output("non compreso")</div></div>
+          </div>
+          <div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Il blocco di ripetizione: cicli for, while, do-while</h2>
+    <p>Nei quattro blocchi di base non esiste una forma speciale per la "ripetizione": un <strong>ciclo (loop)</strong> si costruisce combinando un blocco di <strong>decisione</strong> con un percorso che, se la condizione lo permette, ritorna a un punto precedente dell'algoritmo invece di proseguire verso la fine.</p>
+    <p>Esistono tre modi equivalenti — ma con differenze importanti — per costruire questa struttura:</p>
+    <div class="compare-grid">
+      <div class="compare-card"><h4>WHILE (pre-test)</h4><p>La condizione si controlla <strong>prima</strong> di ogni iterazione. Se è falsa da subito, il corpo del ciclo non viene mai eseguito.</p></div>
+      <div class="compare-card"><h4>DO-WHILE (post-test)</h4><p>La condizione si controlla <strong>dopo</strong> ogni iterazione. Il corpo del ciclo viene eseguito <strong>sempre almeno una volta</strong>.</p></div>
+      <div class="compare-card"><h4>FOR (a contatore)</h4><p>Caso particolare del while: pensato per i cicli in cui si conosce già <em>quante volte</em> ripetere, racchiude in un solo punto inizializzazione, condizione e incremento.</p></div>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h3>Ciclo WHILE — esempio: stampa i numeri da 1 a 5</h3>
+    <div class="fc-diagram small">
+      <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+      <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+      <div class="fc fc-decision"><span>i &lt;= 5 ?</span></div>
+      <div class="fc-branch">
+        <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+          <div class="fc fc-io">output(i)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = i + 1</div>
+          <div class="fc-arrow">↑ torna al controllo</div>
+        </div>
+        <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-oval">fine</div></div>
+      </div>
+    </div>
+    <p><strong>Pseudocodice:</strong></p>
+    <pre class="code-panel active">i = 1
+finché i &lt;= 5
+    stampa i
+    i = i + 1</pre>
+    <p><strong>C++:</strong></p>
+    <pre class="code-panel active">int i = 1;
+while (i &lt;= 5) {
+    cout &lt;&lt; i &lt;&lt; endl;
+    i++;
+}</pre>
+    <p class="warn">⚠️ Se scordo <code>i = i + 1</code>, la condizione <code>i &lt;= 5</code> resterà sempre vera: è un <strong>ciclo infinito</strong>!</p>
+  </div>
+
+  <div class="lesson-block">
+    <h3>Ciclo DO-WHILE — esempio: richiedi un numero positivo</h3>
+    <p>Con il do-while il corpo viene eseguito <strong>prima</strong> di controllare la condizione: è utile quando l'istruzione va comunque fatta almeno una volta, ad esempio per leggere un dato dall'utente.</p>
+    <div class="fc-diagram small">
+      <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+      <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+      <div class="fc fc-decision"><span>n &lt;= 0 ?</span></div>
+      <div class="fc-branch">
+        <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc-arrow">↑ torna a input(n)</div></div>
+        <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-oval">fine</div></div>
+      </div>
+    </div>
+    <p><strong>Pseudocodice:</strong></p>
+    <pre class="code-panel active">ripeti
+    leggi n
+finché n &gt; 0</pre>
+    <p><strong>C++:</strong></p>
+    <pre class="code-panel active">int n;
+do {
+    cin &gt;&gt; n;
+} while (n &lt;= 0);</pre>
+    <p class="note">Con il <strong>while</strong> classico, se la prima condizione fosse già falsa, l'input non verrebbe mai richiesto. Con il <strong>do-while</strong>, la richiesta avviene sempre almeno una volta.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h3>Ciclo FOR — esempio: somma dei primi N numeri</h3>
+    <p>Il <code>for</code> è un ciclo "a contatore": si usa quando si conosce già quante iterazioni servono. È equivalente a un while, ma inizializzazione, condizione e incremento sono scritte in un'unica intestazione.</p>
+    <div class="fc-diagram small">
+      <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+      <div class="fc fc-io">input(N)</div><div class="fc-arrow">↓</div>
+      <div class="fc fc-process">somma = 0</div><div class="fc-arrow">↓</div>
+      <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+      <div class="fc fc-decision"><span>i &lt;= N ?</span></div>
+      <div class="fc-branch">
+        <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+          <div class="fc fc-process">somma = somma + i</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = i + 1</div>
+          <div class="fc-arrow">↑ torna al controllo</div>
+        </div>
+        <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+          <div class="fc fc-io">output(somma)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+      </div>
+    </div>
+    <p><strong>Pseudocodice:</strong></p>
+    <pre class="code-panel active">leggi N
+somma = 0
+per i da 1 a N
+    somma = somma + i
+stampa somma</pre>
+    <p><strong>C++:</strong></p>
+    <pre class="code-panel active">int N, somma = 0;
+cin &gt;&gt; N;
+for (int i = 1; i &lt;= N; i++) {
+    somma = somma + i;
+}
+cout &lt;&lt; somma;</pre>
+    <div class="callout-grid">
+      <div class="callout">Le tre parti <code>i = 1</code> (inizializzazione), <code>i &lt;= N</code> (condizione) e <code>i++</code> (incremento) sono esattamente le stesse operazioni del ciclo while: il <code>for</code> le raccoglie solo in un unico punto, rendendo il codice più compatto e più difficile da "scordare" (ad es. non si rischia di dimenticare l'incremento).</div>
+    </div>
+
+    <div class="exercise-card">
+      <p><strong>Esercizio:</strong> disegna il flow chart e scrivi il codice C++ per calcolare la <strong>media</strong> di N numeri inseriti dall'utente (usa un ciclo <code>for</code>).</p>
+      <details class="reveal"><summary>Mostra soluzione</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(N)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">somma = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= N ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">somma = somma + n</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = i + 1</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-process">media = somma / N</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-io">output(media)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+        <pre class="code-panel active">int N, somma = 0;
+cin &gt;&gt; N;
+for (int i = 1; i &lt;= N; i++) {
+    int n;
+    cin &gt;&gt; n;
+    somma = somma + n;
+}
+cout &lt;&lt; (double)somma / N;</pre>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CICLI ============ -->
+<section class="view" id="view-cicli">
+  <h1 class="view-title">🔁 I Cicli</h1>
+
+  <div class="lesson-block">
+    <h2>Perché servono i cicli?</h2>
+    <p>Quando in un algoritmo bisogna ripetere la stessa azione più volte, si usa un <strong>ciclo (loop)</strong>. Serve una variabile, di solito chiamata <strong>indice</strong>, e una <strong>condizione</strong> che stabilisce se entrare (o rientrare) nel ciclo. Ogni volta che si entra nel ciclo si compie una <strong>iterazione</strong>.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Simulatore — "stampa 3 volte ciao, poi arrivederci"</h2>
+    <p>Osserviamo un flow chart che stampa "ciao" finché l'indice <code>i</code> è minore di 3, poi stampa "arrivederci":</p>
+    <div class="sim-box">
+      <div class="fc-diagram">
+        <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+        <div class="fc fc-process" id="loop-init-block">i = 0</div><div class="fc-arrow">↓</div>
+        <div class="fc fc-decision" id="loop-cond-block"><span>i &lt; 3 ?</span></div>
+        <div class="fc-branch">
+          <div class="fc-branch-item"><span class="tag-v">V</span>
+            <div class="fc fc-io" id="loop-ciao-block">output("ciao")</div>
+            <div class="fc-arrow">↓</div>
+            <div class="fc fc-process" id="loop-inc-block">i = i + 1</div>
+          </div>
+          <div class="fc-branch-item"><span class="tag-f">F</span><div class="fc fc-io" id="loop-bye-block">output("arrivederci")</div></div>
+        </div>
+        <div class="fc-arrow">↓</div>
+        <div class="fc fc-oval">fine</div>
+      </div>
+      <div class="sim-controls">
+        <button class="btn" id="loop-reset">Reset</button>
+        <button class="btn btn-secondary" id="loop-step">Esegui passo ▶</button>
+      </div>
+      <div class="loop-status">
+        <span>Indice i = <strong id="loop-i-val">–</strong></span>
+        <span>Condizione i&lt;3: <strong id="loop-cond-val">–</strong></span>
+      </div>
+      <div id="loop-output" class="sim-output console-output"></div>
+    </div>
+    <p>Le iterazioni sono "scandite" dal cambio di valore dell'indice. Quando <code>i</code> arriva a 3, la condizione <code>i &lt; 3</code> diventa falsa: si esce dal ciclo.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Do-while vs While-do</h2>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h4>DO-WHILE</h4>
+        <p>Il controllo della condizione avviene <strong>in coda</strong> all'iterazione. <br>L'iterazione viene <strong>sempre eseguita almeno una volta</strong>.</p>
+      </div>
+      <div class="compare-card">
+        <h4>WHILE-DO</h4>
+        <p>Il controllo della condizione avviene <strong>in testa</strong> all'iterazione. <br>Non è detto che venga mai eseguita.</p>
+      </div>
+    </div>
+    <div class="sim-box">
+      <h4>🔀 Simulatore — confronto con condizione inizialmente falsa</h4>
+      <p class="note">Proviamo con una condizione che è <em>falsa fin dall'inizio</em>: qual è la differenza tra le due strutture?</p>
+      <div class="sim-controls">
+        <button class="btn" id="dw-run">Esegui DO-WHILE</button>
+        <button class="btn btn-secondary" id="wd-run">Esegui WHILE-DO</button>
+      </div>
+      <div class="compare-grid">
+        <div><h4>Output DO-WHILE</h4><div id="dw-output" class="sim-output console-output"></div></div>
+        <div><h4>Output WHILE-DO</h4><div id="wd-output" class="sim-output console-output"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ C++ (PROGRAMMAZIONE PROCEDURALE) ============ -->
+<section class="view" id="view-cpp">
+  <h1 class="view-title">💻 C++ — Programmazione Procedurale</h1>
+
+  <div class="lesson-block">
+    <h2>Cos'è la programmazione procedurale?</h2>
+    <p class="definition">Si definisce <strong>programmazione procedurale</strong> lo stile di programmazione in cui il codice è organizzato come una <strong>sequenza di istruzioni</strong> eseguite in ordine, raggruppate in <strong>procedure</strong> (in C++ chiamate <em>funzioni</em>) che possono essere richiamate più volte.</p>
+    <p>È l'applicazione diretta di tutto ciò che abbiamo visto finora: un algoritmo, scritto in pseudocodice o rappresentato con un flow chart, viene <strong>codificato</strong> in C++ traducendo blocco per blocco: elaborazioni, input/output, decisioni e cicli. Ogni blocco del flow chart ha un corrispondente diretto in C++: il rettangolo di elaborazione diventa un'istruzione di assegnamento, il rombo di decisione diventa un <code>if</code>, il ciclo diventa un <code>while</code>/<code>for</code>, e così via — lo vedremo passo passo in questa sezione.</p>
+    <p>Nella programmazione procedurale i <strong>dati</strong> (variabili, array, strutture) e le <strong>operazioni</strong> che li elaborano (le funzioni) restano concettualmente separati: sono le funzioni a "prendere in mano" i dati e trasformarli, passo dopo passo. Questo la distingue dalla <strong>programmazione a oggetti (OOP)</strong>, dove dati e comportamenti vengono invece racchiusi insieme dentro le classi — vedi la sezione <button class="link-btn" data-goto="cpp-oop">C++ OOP</button>.</p>
+    <p class="note">🎓 <strong>Per chi guida la lezione:</strong> è utile far notare fin da subito che il codice C++ non viene eseguito direttamente. Un programma chiamato <strong>compilatore</strong> legge il file sorgente (es. <code>main.cpp</code>) e lo traduce in <strong>linguaggio macchina</strong>, producendo un file eseguibile (su Windows, <code>.exe</code>). Se il codice contiene un errore di <strong>sintassi</strong> (es. un punto e virgola dimenticato, una parentesi non chiusa), la compilazione fallisce e il programma non parte nemmeno: il compilatore segnala la riga incriminata. Questo è molto diverso da un errore <strong>logico</strong> (il programma compila e gira, ma dà un risultato sbagliato) — distinguere le due categorie di errore aiuta molto gli studenti a "debuggare" con metodo.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Anatomia di un programma C++</h2>
+    <p>Ogni programma C++ parte da una struttura fissa. Vediamola su un primo esempio pratico:</p>
+    <pre class="code-panel active">#include &lt;iostream&gt;
+
+int main()
+{
+    int eta;
+    eta = 25;
+
+    int eta_padre = 50; // inizializzazione: dichiarazione + primo valore insieme
+
+    std::cout &lt;&lt; "Ciao, ho 25 anni" &lt;&lt; std::endl;
+    std::cout &lt;&lt; "ho 25 anni da maggio" &lt;&lt; std::endl;
+
+    return 0; // 0 = il programma è terminato senza errori
+}</pre>
+    <div class="callout-grid">
+      <div class="callout"><strong><code>#include &lt;iostream&gt;</code>:</strong> importa la libreria standard che fornisce <code>std::cout</code> (output) e <code>std::cin</code> (input). Senza questa riga, il compilatore non saprebbe nemmeno cosa sia <code>cout</code>.</div>
+      <div class="callout"><strong><code>int main()</code>:</strong> è il <em>punto di ingresso</em> del programma: l'esecuzione parte sempre da qui, istruzione dopo istruzione, dall'alto verso il basso. Ogni programma C++ ha esattamente <strong>una</strong> funzione <code>main</code>.</div>
+      <div class="callout"><strong><code>std::cout &lt;&lt; ... &lt;&lt; std::endl;</code>:</strong> stampa a video il contenuto a destra di <code>&lt;&lt;</code>; <code>std::endl</code> va a capo. Si possono concatenare più valori con più <code>&lt;&lt;</code> sulla stessa riga.</div>
+      <div class="callout"><strong><code>return 0;</code>:</strong> chiude la funzione <code>main</code> restituendo al sistema operativo un codice (0 = tutto ok, un valore diverso da 0 segnala convenzionalmente un errore).</div>
+    </div>
+    <p>Alcuni dettagli "sintattici" che sembrano piccoli, ma che per chi inizia sono la fonte più comune di errori di compilazione:</p>
+    <ul>
+      <li><strong>Il punto e virgola <code>;</code></strong> chiude ogni singola istruzione (una dichiarazione, un assegnamento, una chiamata a funzione...). Dimenticarlo è probabilmente l'errore più frequente in assoluto per chi comincia.</li>
+      <li><strong>Le parentesi graffe <code>{ }</code></strong> delimitano un <strong>blocco</strong> di istruzioni, cioè un insieme di righe che il linguaggio tratta come un'unica unità (il corpo di <code>main</code>, di un <code>if</code>, di un ciclo...).</li>
+      <li><strong>Il C++ è <em>case-sensitive</em></strong>: <code>main</code> e <code>Main</code> sono due nomi completamente diversi, così come <code>eta</code> ed <code>Eta</code>.</li>
+      <li><strong>I commenti</strong> — <code>// commento su una riga</code> oppure <code>/* commento su più righe */</code> — vengono ignorati dal compilatore: servono solo a chi legge il codice (compreso l'autore stesso, mesi dopo!). Non sostituiscono nomi di variabili chiari, ma li completano.</li>
+      <li><strong>L'indentazione</strong> (gli spazi/tab a inizio riga per "far rientrare" il codice dentro i blocchi) è ignorata dal compilatore, ma è una convenzione essenziale per la leggibilità umana: un editor come Visual Studio Code la applica quasi in automatico.</li>
+    </ul>
+    <p class="note">Il prefisso <code>std::</code> indica che <code>cout</code>/<code>endl</code> appartengono al <em>namespace</em> standard della libreria (un "spazio dei nomi" che evita conflitti fra nomi definiti da librerie diverse). In alternativa si può scrivere una volta sola <code>using namespace std;</code> subito dopo gli <code>#include</code>, e poi usare <code>cout</code> ed <code>endl</code> senza prefisso in tutto il file.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Variabili e tipi di dati</h2>
+    <p>Come visto in generale nella sezione <button class="link-btn" data-goto="algoritmi">Algoritmi</button>, le variabili sono contenitori di dati. In C++ ogni variabile ha un <strong>tipo</strong>, che determina che valori può contenere e quanto spazio occupa in memoria:</p>
+    <table class="mini-table">
+      <thead><tr><th>Tipo</th><th>Contiene</th><th>Esempio</th></tr></thead>
+      <tbody>
+        <tr><td><code>int</code></td><td>numeri interi</td><td><code>int eta = 25;</code></td></tr>
+        <tr><td><code>double</code></td><td>numeri con la virgola</td><td><code>double altezza = 1.78;</code></td></tr>
+        <tr><td><code>char</code></td><td>un singolo carattere</td><td><code>char sesso = 'M';</code></td></tr>
+        <tr><td><code>bool</code></td><td>vero/falso</td><td><code>bool isOnline = true;</code></td></tr>
+        <tr><td><code>string</code></td><td>una sequenza di caratteri (testo)</td><td><code>string nome = "Mario";</code></td></tr>
+      </tbody>
+    </table>
+    <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using std::string;
+
+int main()
+{
+    double eta = 28.5;
+    char sesso = 'M';
+    bool isOnline = true;
+    string nome = "Mario";
+
+    std::cout &lt;&lt; "Ciao, mi chiamo " &lt;&lt; nome
+               &lt;&lt; " e ho " &lt;&lt; eta &lt;&lt; " anni" &lt;&lt; std::endl;
+    return 0;
+}</pre>
+    <p class="note"><code>using std::string;</code> permette di scrivere <code>string</code> invece di <code>std::string</code> ogni volta, senza importare l'intero namespace <code>std</code> come farebbe <code>using namespace std;</code>.</p>
+    <p class="warn">⚠️ Attenzione al <strong>troncamento</strong>: <code>int x = 10.3;</code> è sintatticamente valido, ma <code>x</code> memorizzerà <code>10</code>! Assegnare un valore "più preciso" (double) a un contenitore "meno preciso" (int) fa perdere la parte decimale, <strong>senza generare un errore</strong> di compilazione (al massimo un avviso/warning) — per questo è un bug subdolo, facile da non notare.</p>
+
+    <h3>Perché <code>int</code> si scrive da solo, ma <code>string</code> ha bisogno di <code>std::</code>?</h3>
+    <p>Guardando gli esempi sopra, sorge una domanda naturale: perché scriviamo semplicemente <code>int</code>, <code>double</code>, <code>char</code>, <code>bool</code>, ma per il testo dobbiamo scrivere <code>std::string</code> (o, dopo un <code>using std::string;</code>, almeno includere <code>&lt;string&gt;</code>)? La risposta è che <strong><code>int</code>, <code>double</code>, <code>char</code> e <code>bool</code> non sono la stessa "categoria di cosa" di <code>string</code></strong>:</p>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <h4>int, double, char, bool</h4>
+        <p><strong>Tipi primitivi (o fondamentali)</strong>: fanno parte del <em>nucleo del linguaggio</em> C++ stesso, esattamente come le parole chiave <code>if</code> o <code>while</code>. Il compilatore li conosce "di fabbrica": non servono <code>#include</code> né prefissi di namespace, perché non appartengono a nessuna libreria — sono il linguaggio.</p>
+      </div>
+      <div class="compare-card">
+        <h4>string</h4>
+        <p><strong>Non è un tipo primitivo: è una <code>class</code></strong>, cioè un tipo di dato <em>definito nella libreria standard</em> del C++ (la stessa libreria che fornisce anche <code>cout</code>, <code>cin</code> e <code>vector</code>), non incorporato nel linguaggio. Per questo va prima <em>importata</em> con <code>#include &lt;string&gt;</code>, e per questo vive dentro il <em>namespace</em> <code>std</code> insieme a tutto il resto della libreria standard — da cui <code>std::string</code>.</p>
+      </div>
+    </div>
+    <p>In altre parole, quando scriviamo <code>string nome = "Mario";</code> stiamo già, senza saperlo, <strong>creando un oggetto</strong>: un'istanza della classe <code>string</code>, che "sotto al cofano" incapsula al suo interno la sequenza di caratteri e mette a disposizione dei metodi per manipolarla (li vedremo più avanti in questa sezione: <code>.length()</code>, <code>.find()</code>, <code>.substr()</code>...). Il fatto che si possa dichiarare e usare in modo così simile a un <code>int</code> è voluto: i progettisti del C++ hanno costruito <code>string</code> apposta per "sembrare" un tipo built-in, anche se tecnicamente è una classe come quelle che scriveremo noi stessi nella sezione <button class="link-btn" data-goto="cpp-oop">C++ OOP</button>.</p>
+    <p class="note">🎓 <strong>Stesso identico motivo per <code>cout</code> e <code>cin</code>:</strong> anche loro non sono parole chiave del linguaggio, ma oggetti definiti nella libreria standard (dentro <code>&lt;iostream&gt;</code>) — per questo si scrivono <code>std::cout</code> e <code>std::cin</code>, con lo stesso prefisso <code>std::</code> di <code>std::string</code>. La regola generale, valida in tutto C++, è: <strong>"fa parte del linguaggio stesso" → nessun prefisso</strong> (come <code>int</code>, <code>if</code>, <code>for</code>); <strong>"lo fornisce la libreria standard" → richiede <code>std::</code></strong> (o un <code>using</code> che lo renda implicito), come <code>string</code>, <code>cout</code>, <code>cin</code>, <code>vector</code>.</p>
+
+    <h3>Tre operazioni diverse, spesso confuse</h3>
+    <p>È importante distinguere con precisione tre concetti che si assomigliano:</p>
+    <div class="compare-grid">
+      <div class="compare-card"><h4>Dichiarazione</h4><p><code>int eta;</code><br>Crea la variabile e le riserva spazio in memoria, ma non le assegna ancora un valore utile: contiene "spazzatura" (un valore residuo casuale già presente in quella cella di memoria).</p></div>
+      <div class="compare-card"><h4>Assegnamento</h4><p><code>eta = 25;</code><br>Scrive (o sovrascrive) un valore in una variabile che <strong>esiste già</strong>. Si può fare tante volte quante si vuole nel corso del programma.</p></div>
+      <div class="compare-card"><h4>Inizializzazione</h4><p><code>int eta = 25;</code><br>Dichiarazione e primo assegnamento <strong>nella stessa istruzione</strong>. È buona pratica inizializzare sempre una variabile quando la si dichiara, per evitare di leggerla per errore prima di averle dato un valore.</p></div>
+    </div>
+
+    <h3>Regole per i nomi delle variabili (identificatori)</h3>
+    <ul>
+      <li>Possono contenere lettere, cifre e underscore (<code>_</code>), ma <strong>non possono iniziare con una cifra</strong> (<code>2voti</code> non è valido, <code>voti2</code> sì).</li>
+      <li><strong>Non possono contenere spazi</strong> né simboli come <code>-</code>, <code>%</code>, <code>@</code>.</li>
+      <li>Sono <strong>case-sensitive</strong>: <code>voto</code> e <code>Voto</code> sono due variabili diverse.</li>
+      <li>Non possono coincidere con una <strong>parola riservata</strong> del linguaggio (es. <code>int</code>, <code>return</code>, <code>if</code>, <code>class</code>...).</li>
+      <li>Per convenzione (non obbligo del compilatore) in C++ si usa spesso il <strong>camelCase</strong> per variabili e funzioni: <code>numeroTentativi</code>, <code>calcolaMedia</code>.</li>
+    </ul>
+    <p class="warn">⚠️ Occhio agli apici: un <strong>singolo carattere</strong> (<code>char</code>) si scrive fra apici <strong>singoli</strong>, <code>'M'</code>; una <strong>stringa</strong> (<code>string</code>), anche se lunga un solo carattere, si scrive fra apici <strong>doppi</strong>, <code>"M"</code>. Scambiarli è un errore di compilazione molto comune per chi inizia.</p>
+
+    <h3>Le costanti: valori che non devono cambiare</h3>
+    <p>Quando un valore non deve mai essere modificato durante l'esecuzione (es. il valore di π, l'età massima ammessa in un modulo), si dichiara con la parola chiave <code>const</code>: qualunque tentativo di riassegnarlo in seguito diventa un <strong>errore di compilazione</strong>, non un bug silenzioso da scoprire a runtime.</p>
+    <pre class="code-panel active">const double PI = 3.14159;      // attenzione al tipo: PI ha bisogno dei decimali, quindi double, non int!
+const int ETA_MASSIMA = 120;
+
+std::cout &lt;&lt; "L'area di un cerchio si calcola con PI = " &lt;&lt; PI &lt;&lt; std::endl;
+// PI = 3.20;  // ERRORE DI COMPILAZIONE: non si può riassegnare una costante</pre>
+    <p class="note">Per convenzione i nomi delle costanti si scrivono spesso in <strong>MAIUSCOLO_CON_UNDERSCORE</strong> (es. <code>ETA_MASSIMA</code>): non è una regola del compilatore, ma un modo per farle riconoscere a colpo d'occhio nel codice, distinguendole dalle variabili "normali".</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Operatori aritmetici e di assegnazione</h2>
+    <p>Gli operatori aritmetici <code>+ - * /</code> e l'operatore <strong>modulo</strong> <code>%</code> (resto della divisione intera) sono già stati introdotti nella sezione <button class="link-btn" data-goto="flowchart">Flow Chart</button>: in C++ si usano esattamente con la stessa sintassi.</p>
+    <pre class="code-panel active">int x = 10;
+int y = 6;
+int risultato = x % y; // resto della divisione intera 10 / 6 → risultato vale 4</pre>
+    <p>Quando si vuole aggiornare una variabile combinando il suo valore attuale con un'operazione, invece di riscriverla due volte si può usare un <strong>operatore di assegnazione composta</strong>:</p>
+    <table class="mini-table">
+      <thead><tr><th>Forma composta</th><th>Equivalente a</th></tr></thead>
+      <tbody>
+        <tr><td><code>eta += 5;</code></td><td><code>eta = eta + 5;</code></td></tr>
+        <tr><td><code>eta -= 5;</code></td><td><code>eta = eta - 5;</code></td></tr>
+        <tr><td><code>eta *= 2;</code></td><td><code>eta = eta * 2;</code></td></tr>
+        <tr><td><code>eta /= 2;</code></td><td><code>eta = eta / 2;</code></td></tr>
+      </tbody>
+    </table>
+    <p>Un caso particolare, già incontrato nei cicli, è l'<strong>incremento</strong> (<code>++</code>) e il <strong>decremento</strong> (<code>--</code>) di 1: <code>eta++;</code> equivale a <code>eta += 1;</code>. Esistono però due varianti, che si comportano diversamente quando il risultato viene usato subito in un'altra espressione:</p>
+    <pre class="code-panel active">int eta = 20;
+eta += 5;              // eta diventa 25
+
+int a = ++eta;          // PRE-incremento: eta diventa 26 PRIMA di essere letto → a vale 26
+int b = eta++;          // POST-incremento: b prende il valore ATTUALE (26) → POI eta diventa 27
+
+std::cout &lt;&lt; "a = " &lt;&lt; a &lt;&lt; std::endl;   // 26
+std::cout &lt;&lt; "b = " &lt;&lt; b &lt;&lt; std::endl;   // 26
+std::cout &lt;&lt; "eta finale = " &lt;&lt; eta &lt;&lt; std::endl; // 27</pre>
+    <div class="compare-grid">
+      <div class="compare-card"><h4>Pre-incremento <code>++eta</code></h4><p>Incrementa <strong>prima</strong>, poi restituisce il nuovo valore già aggiornato.</p></div>
+      <div class="compare-card"><h4>Post-incremento <code>eta++</code></h4><p>Restituisce il valore <strong>attuale</strong> (non ancora aggiornato), <strong>e solo dopo</strong> incrementa la variabile.</p></div>
+    </div>
+    <p class="note">Quando l'incremento è l'unica cosa scritta sulla riga (come <code>i++;</code> nell'intestazione di un <code>for</code>), la differenza fra pre e post non ha alcun effetto visibile: conta solo quando il risultato dell'incremento viene <strong>usato subito</strong>, come nell'esempio sopra.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Operatori relazionali e logici: il tipo <code>bool</code></h2>
+    <p>Gli operatori relazionali (<code>== != &gt; &lt; &gt;= &lt;=</code>) e logici (<code>! &amp;&amp; ||</code>), già visti concettualmente nella sezione <button class="link-btn" data-goto="flowchart">Flow Chart</button> con le tavole di verità, in C++ producono sempre un valore di tipo <code>bool</code>: <code>true</code> oppure <code>false</code>. Nulla vieta di <strong>memorizzare</strong> questo risultato in una variabile <code>bool</code>, invece di usarlo subito dentro un <code>if</code>:</p>
+    <pre class="code-panel active">bool condizione1 = (10 != 11);              // true
+bool condizione2 = (10 &lt; 11) &amp;&amp; (10 &gt; 9);   // true && true → true
+bool condizione3 = (10 &gt; 11);               // false
+
+std::cout &lt;&lt; std::boolalpha; // da qui in poi stampa "true"/"false" invece di 1/0
+std::cout &lt;&lt; condizione1 &lt;&lt; std::endl; // true
+std::cout &lt;&lt; condizione2 &lt;&lt; std::endl; // true
+std::cout &lt;&lt; condizione3 &lt;&lt; std::endl; // false</pre>
+    <p class="note">Senza <code>std::boolalpha</code>, <code>cout</code> stamperebbe i <code>bool</code> come numeri: <code>1</code> per <code>true</code> e <code>0</code> per <code>false</code>. Internamente, del resto, un <code>bool</code> <em>è</em> un numero (0 o 1): <code>std::boolalpha</code> serve solo a renderlo più leggibile a video.</p>
+    <p class="note">🎓 <strong>Dettaglio utile da sapere:</strong> gli operatori <code>&amp;&amp;</code> e <code>||</code> in C++ sono <em>"a corto circuito"</em> (<em>short-circuit</em>): in <code>a &amp;&amp; b</code>, se <code>a</code> è già <code>false</code>, <code>b</code> non viene nemmeno valutato (il risultato è comunque <code>false</code>); allo stesso modo, in <code>a || b</code>, se <code>a</code> è già <code>true</code>, <code>b</code> non viene valutato. Non è solo un'ottimizzazione: è anche un meccanismo usato spesso di proposito, ad esempio per evitare di valutare un'espressione "pericolosa" quando la prima condizione la rende superflua.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>L'operatore ternario</h2>
+    <p>Per scegliere fra due valori in base a una condizione, quando la scelta serve <strong>dentro un'espressione</strong> (es. per assegnare una variabile o per stampare direttamente un risultato), C++ offre una scorciatoia più compatta di un <code>if</code>/<code>else</code> completo: l'<strong>operatore ternario</strong> <code>condizione ? valoreSeVero : valoreSeFalso</code>.</p>
+    <pre class="code-panel active">int numero1 = 51;
+
+// 51 è dispari (51 % 2 vale 1, non 0), quindi la condizione è falsa
+string tipoNumero = (numero1 % 2 == 0) ? "pari" : "dispari";
+
+std::cout &lt;&lt; tipoNumero &lt;&lt; std::endl; // dispari</pre>
+    <p>È equivalente a scrivere:</p>
+    <pre class="code-panel active">string tipoNumero;
+if (numero1 % 2 == 0) {
+    tipoNumero = "pari";
+} else {
+    tipoNumero = "dispari";
+}</pre>
+    <p class="warn">⚠️ Il ternario funziona bene per <strong>assegnare un valore a una variabile</strong> o per <strong>produrre direttamente un output</strong>, ma <strong>non</strong> si può usare per eseguire un'istruzione di input come <code>std::cin</code>: per una logica che coinvolge la lettura di dati serve un <code>if</code>/<code>else</code> vero e proprio.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Input e output: <code>cin</code> e <code>cout</code></h2>
+    <p>Per leggere dati inseriti dall'utente da tastiera si usa <code>std::cin &gt;&gt; variabile;</code> (nota il verso delle frecce, opposto a quello di <code>cout</code>).</p>
+    <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using std::string;
+
+int main()
+{
+    string nome, cognome;
+    int eta;
+
+    std::cout &lt;&lt; "Scrivi il nome: ";
+    std::cin &gt;&gt; nome;
+    std::cout &lt;&lt; "Scrivi il cognome: ";
+    std::cin &gt;&gt; cognome;
+    std::cout &lt;&lt; "Scrivi l'età: ";
+    std::cin &gt;&gt; eta;
+
+    std::cout &lt;&lt; "Ciao " &lt;&lt; nome &lt;&lt; " " &lt;&lt; cognome
+               &lt;&lt; ", hai " &lt;&lt; eta &lt;&lt; " anni!" &lt;&lt; std::endl;
+    return 0;
+}</pre>
+    <p class="warn">⚠️ <code>std::cin &gt;&gt; variabile;</code> legge <strong>una sola "parola"</strong>: si ferma al primo spazio, tabulazione o "a capo". Se l'utente scrivesse un nome composto come <code>"Anna Maria"</code>, <code>cin &gt;&gt; nome</code> leggerebbe solo <code>"Anna"</code>, lasciando <code>"Maria"</code> in attesa di essere letto dalla prossima istruzione di input! Per leggere una riga intera, spazi compresi, si usa invece <code>std::getline(std::cin, nome);</code>.</p>
+    <p class="note">Anche gli output si possono concatenare in un'unica istruzione, mettendo più <code>&lt;&lt;</code> in fila come nell'esempio: il compilatore li esegue da sinistra a destra, uno dopo l'altro, sullo stesso flusso di output.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Selezione in C++: <code>if</code> / <code>else</code> e <code>switch</code></h2>
+    <p>Il blocco di decisione del flow chart diventa in C++ un <code>if</code> (eventualmente con <code>else</code>), oppure — quando si confronta una stessa variabile con tanti valori possibili — uno <code>switch</code>:</p>
+    <pre class="code-panel active">int x = 10, y = 11;
+
+if (x &gt; y) {
+    std::cout &lt;&lt; "x è maggiore di y" &lt;&lt; std::endl;
+} else {
+    std::cout &lt;&lt; "x non è maggiore di y" &lt;&lt; std::endl;
+}
+
+int giorno;
+std::cin &gt;&gt; giorno;
+
+switch (giorno) {
+    case 1:
+        std::cout &lt;&lt; "Lunedì" &lt;&lt; std::endl;
+        break;
+    case 2:
+        std::cout &lt;&lt; "Martedì" &lt;&lt; std::endl;
+        break;
+    // ... casi 3-7 ...
+    default:
+        std::cout &lt;&lt; "Numero non valido" &lt;&lt; std::endl;
+        break;
+}</pre>
+    <p class="warn">⚠️ <strong>L'errore più insidioso della selezione:</strong> confondere l'operatore di confronto <code>==</code> con quello di assegnamento <code>=</code>. Scrivere <code>if (x = 5)</code> invece di <code>if (x == 5)</code> è sintatticamente valido (!): assegna <code>5</code> a <code>x</code> e poi valuta il risultato dell'assegnamento (<code>5</code>, che C++ considera "vero" perché diverso da zero) — quindi quell'<code>if</code> risulterà <strong>sempre vero</strong>, qualunque fosse il valore originale di <code>x</code>, che nel frattempo è stato silenziosamente sovrascritto. È un bug classico, difficile da individuare a occhio perché il codice "sembra giusto".</p>
+    <p class="note">Le parentesi graffe <code>{ }</code> dopo un <code>if</code> sono <strong>obbligatorie solo se il blocco contiene più di un'istruzione</strong>: con una singola istruzione si possono omettere. È comunque buona norma metterle sempre: se in futuro si aggiunge una seconda riga dimenticando di aggiungere le graffe, quella riga finirebbe per essere eseguita <strong>sempre</strong>, indipendentemente dalla condizione, generando un bug molto difficile da individuare.</p>
+    <p>Ogni <code>case</code> dovrebbe terminare con <code>break;</code>, altrimenti l'esecuzione "cade" nel case successivo (comportamento chiamato <em>fall-through</em>): dimenticarlo per errore è un bug comune. Lo stesso comportamento, però, può essere usato <strong>di proposito</strong> per raggruppare più casi che devono eseguire lo stesso codice, semplicemente non mettendo istruzioni fra un <code>case</code> e l'altro:</p>
+    <pre class="code-panel active">int giorno;
+std::cin &gt;&gt; giorno;
+
+switch (giorno) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        std::cout &lt;&lt; "vai a lavorare" &lt;&lt; std::endl; // eseguito per 1, 2, 3, 4 o 5
+        break;
+    case 6:
+    case 7:
+        std::cout &lt;&lt; "vai a divertirti" &lt;&lt; std::endl; // eseguito per 6 o 7
+        break;
+    default:
+        std::cout &lt;&lt; "Il numero inserito non rappresenta un giorno della settimana" &lt;&lt; std::endl;
+        break;
+}</pre>
+    <p class="note">Qui i <code>case 1</code>...<code>case 5</code> non hanno un <code>break</code> fra loro: "cadono" tutti nello stesso blocco di codice, che viene eseguito una sola volta indipendentemente da quale dei cinque valori sia stato inserito. È lo stesso meccanismo di prima (il fall-through), ma usato consapevolmente come strumento, non subito come errore.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>I cicli in C++: <code>while</code>, <code>do-while</code>, <code>for</code></h2>
+    <p>Ritroviamo qui, in sintassi C++, le tre strutture di ripetizione già viste nella sezione <button class="link-btn" data-goto="flowchart">Flow Chart</button>.</p>
+
+    <h3>while — pre-test</h3>
+    <pre class="code-panel active">int count = 1; // variabile contatore
+
+while (count &lt;= 5) {
+    std::cout &lt;&lt; count &lt;&lt; std::endl;
+    count++; // fondamentale: senza incremento il ciclo è infinito
+}</pre>
+    <p class="warn">⚠️ Se si dimenticasse <code>count++;</code>, la condizione <code>count &lt;= 5</code> resterebbe sempre vera e il programma entrerebbe in un <strong>ciclo infinito</strong>, restando "bloccato" per sempre (fino a essere interrotto a forza dall'utente).</p>
+
+    <h3>do-while — post-test</h3>
+    <pre class="code-panel active">int count = 1;
+
+do {
+    std::cout &lt;&lt; count &lt;&lt; std::endl;
+    count++;
+} while (count &lt;= 5);</pre>
+    <p class="note">Come una persona che entra in palestra, fa l'allenamento e solo dopo controlla se rientrarci: il corpo del <code>do-while</code> è sempre eseguito almeno una volta, a differenza del <code>while</code>. Da notare anche un dettaglio di sintassi: il <code>do-while</code>, a differenza del <code>while</code>, termina con un punto e virgola dopo la condizione — <code>} while (...);</code>.</p>
+
+    <h3>for — classico e "range-based"</h3>
+    <pre class="code-panel active">// for classico: utile quando il numero di iterazioni è noto
+for (int x = 0; x &lt;= 5; x++) {
+    std::cout &lt;&lt; "iterazione numero: " &lt;&lt; x &lt;&lt; std::endl;
+}
+
+// range-based for: scorre direttamente ogni elemento di una collezione
+string nome = "pippo";
+for (char carattere : nome) {
+    std::cout &lt;&lt; carattere &lt;&lt; std::endl;
+}</pre>
+    <p>L'intestazione <code>for (int x = 0; x &lt;= 5; x++)</code> racchiude in un solo punto le tre parti che nel <code>while</code> sarebbero sparse: <strong>inizializzazione</strong> (<code>int x = 0</code>, eseguita una sola volta all'inizio), <strong>condizione</strong> (<code>x &lt;= 5</code>, controllata prima di ogni iterazione) e <strong>incremento</strong> (<code>x++</code>, eseguito alla fine di ogni iterazione, prima di ricontrollare la condizione).</p>
+    <p class="note">Il <em>range-based for</em> (<code>for (char c : nome)</code>) è una forma compatta del <code>for</code> pensata per scorrere stringhe, array e vettori senza dover gestire manualmente un indice: ad ogni iterazione, la variabile (<code>carattere</code>) assume il valore dell'elemento successivo della collezione, finché questa non è terminata.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2><code>break</code> e <code>continue</code></h2>
+    <p>All'interno di un ciclo, due istruzioni speciali alterano il flusso normale:</p>
+    <div class="compare-grid">
+      <div class="compare-card"><h4>break</h4><p>Esce <strong>subito</strong> dal ciclo, interrompendolo del tutto.</p></div>
+      <div class="compare-card"><h4>continue</h4><p>Salta <strong>solo l'iterazione corrente</strong> e passa a quella successiva.</p></div>
+    </div>
+    <pre class="code-panel active">for (int i = 0; i &lt; 10; i++) {
+    if (i == 5) {
+        break; // esce dal ciclo quando i vale 5
+    }
+    std::cout &lt;&lt; "iterazione numero: " &lt;&lt; i &lt;&lt; std::endl; // stampa 0,1,2,3,4
+}
+
+for (int i = 0; i &lt; 10; i++) {
+    if (i == 5) {
+        continue; // salta solo l'iterazione con i == 5
+    }
+    std::cout &lt;&lt; "iterazione numero: " &lt;&lt; i &lt;&lt; std::endl; // stampa 0,1,2,3,4,6,7,8,9
+}</pre>
+    <p class="note">Sia <code>break</code> che <code>continue</code> agiscono solo sul ciclo <strong>più interno</strong> in cui si trovano: dentro un ciclo annidato in un altro, non hanno effetto su quello esterno.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Le funzioni</h2>
+    <p>Le <strong>funzioni</strong> sono blocchi di codice riutilizzabili, richiamabili più volte nel programma. Possono ricevere dei <strong>parametri</strong> in ingresso e restituire un <strong>valore</strong> in uscita (o nessuno, se dichiarate <code>void</code>). Usare le funzioni evita di ripetere lo stesso codice più volte (principio del "non ripeterti", <em>DRY</em>) e rende il programma più facile da leggere e correggere: un problema complesso si scompone in sotto-problemi più piccoli, ciascuno risolto da una funzione dedicata.</p>
+    <p>Per usare una funzione prima di definirla (o per usarla in più file <code>.cpp</code>), se ne scrive il <strong>prototipo</strong> — di solito in un file header <code>.hpp</code>:</p>
+    <pre class="code-panel active">// 21_main.hpp — prototipi (dichiarazioni) delle funzioni
+#pragma once
+
+int calcolaSecondiInAnni(int anni);
+void scriviCiao();</pre>
+    <pre class="code-panel active">// 21_funzioni.cpp
+#include &lt;iostream&gt;
+#include "21_main.hpp"
+
+int main()
+{
+    scriviCiao();
+
+    int secondiInAnno    = calcolaSecondiInAnni(1);
+    int secondiInDueAnni = calcolaSecondiInAnni(2);
+
+    std::cout &lt;&lt; secondiInAnno &lt;&lt; std::endl;
+    std::cout &lt;&lt; secondiInDueAnni &lt;&lt; std::endl;
+    return 0;
+}
+
+void scriviCiao() // funzione senza parametri e senza valore restituito
+{
+    std::cout &lt;&lt; "ciao" &lt;&lt; std::endl;
+}
+
+int calcolaSecondiInAnni(int anni) // riceve un parametro, restituisce un int
+{
+    int secondiInUnAnno = 60 * 60 * 24 * 365 * anni;
+    return secondiInUnAnno;
+}</pre>
+    <div class="callout-grid">
+      <div class="callout"><strong><code>#pragma once</code>:</strong> dice al compilatore di includere il contenuto di questo header <strong>una sola volta</strong>, anche se più file lo includono: evita errori di "doppia dichiarazione".</div>
+      <div class="callout"><strong>Prototipo vs definizione:</strong> il prototipo (<code>int calcolaSecondiInAnni(int anni);</code>) dice al compilatore "questa funzione esiste, con questa firma", senza ancora dirgli <em>come</em> è fatta; la definizione (con il corpo <code>{ ... }</code>) arriva più avanti nel file.</div>
+    </div>
+    <p class="warn">⚠️ <strong>Passaggio dei parametri "per valore":</strong> in C++, per default, quando si chiama una funzione passandole un parametro (es. <code>calcolaSecondiInAnni(anni)</code>), la funzione riceve una <strong>copia</strong> del valore, non la variabile originale. Se il corpo della funzione modifica il parametro, <strong>la variabile del chiamante non cambia</strong>: la modifica ha effetto solo sulla copia locale, che smette di esistere alla fine della funzione. (Vedremo tra poco, con i puntatori, come si può invece permettere a una funzione di modificare davvero la variabile originale.)</p>
+
+    <h3>Overload (sovraccarico) delle funzioni</h3>
+    <p>In C++ più funzioni possono avere <strong>lo stesso nome</strong>, purché si distinguano per numero e/o tipo dei parametri: è il compilatore a scegliere quale versione chiamare in base agli argomenti passati, già al momento della compilazione (non durante l'esecuzione).</p>
+    <pre class="code-panel active">int somma(int x, int y)            { return x + y; }
+int somma(double x, double y)      { return x + y; }
+int somma(int x, int y, double z)  { return x + y + z; }
+
+int main() {
+    int risultato = somma(1, 2, 5.5); // usa la versione con 3 parametri
+    std::cout &lt;&lt; risultato &lt;&lt; std::endl;
+    return 0;
+}</pre>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Scope delle variabili</h2>
+    <p>Lo <strong>scope</strong> (visibilità) di una variabile è la porzione di codice in cui quella variabile esiste ed è utilizzabile. Una variabile dichiarata dentro una funzione è <strong>locale</strong>: vive solo lì, anche se una variabile con lo stesso nome esiste in un'altra funzione. Più in generale, una variabile locale nasce quando l'esecuzione raggiunge la sua dichiarazione e "muore" quando l'esecuzione esce dal blocco <code>{ }</code> in cui è stata dichiarata (anche un semplice blocco <code>if</code> o un ciclo, non solo una funzione).</p>
+    <pre class="code-panel active">int somma(int x, int y) {
+    int variabileFunzione = 5; // locale a somma(): non esiste fuori da qui
+    return variabileFunzione;
+}
+
+int main() {
+    int variabileFunzione = 30; // locale a main(): è una variabile diversa!
+    return 0;
+}</pre>
+    <p class="note">Le due variabili <code>variabileFunzione</code> non hanno nulla in comune: stesso nome, ma <em>scope</em> diversi, quindi non interferiscono tra loro. Anche i <strong>parametri</strong> di una funzione (come <code>x</code> e <code>y</code>) sono variabili locali a quella funzione.</p>
+    <p>Esiste anche il caso opposto: una variabile dichiarata <strong>fuori da ogni funzione</strong> (di solito all'inizio del file) è una <strong>variabile globale</strong>, visibile e modificabile da tutte le funzioni del file. È comodo, ma va usato con parsimonia: più funzioni condividono e modificano lo stesso dato globale, più diventa difficile prevedere "chi ha cambiato cosa e quando" — uno dei motivi per cui, in generale, si preferiscono parametri e valori di ritorno alle variabili globali.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>I puntatori</h2>
+    <p>Ogni variabile occupa una cella di memoria con un proprio <strong>indirizzo</strong>. Un <strong>puntatore</strong> è una variabile speciale che, invece di contenere un dato "normale", contiene l'indirizzo di un'altra variabile.</p>
+    <pre class="code-panel active">int prova = 5;
+int *ptr_prova = nullptr; // puntatore non ancora inizializzato
+
+ptr_prova = &amp;prova; // &amp; = "indirizzo di": ptr_prova ora punta a prova
+
+std::cout &lt;&lt; ptr_prova  &lt;&lt; std::endl; // stampa l'indirizzo di memoria (es. 0x61fe14)
+std::cout &lt;&lt; *ptr_prova &lt;&lt; std::endl; // * = "dereferenziazione": stampa 5</pre>
+    <div class="callout-grid">
+      <div class="callout"><strong><code>int *ptr;</code></strong> dichiara un puntatore a intero: può contenere solo indirizzi di variabili di tipo <code>int</code>.</div>
+      <div class="callout"><strong><code>&amp;variabile</code></strong> restituisce l'indirizzo di memoria di <code>variabile</code> (operatore "indirizzo di").</div>
+      <div class="callout"><strong><code>*puntatore</code></strong> "dereferenzia" il puntatore, cioè legge (o scrive) il valore contenuto nell'indirizzo a cui punta (operatore "valore puntato da").</div>
+      <div class="callout"><strong><code>nullptr</code></strong> è il valore convenzionale che indica "il puntatore non punta a nulla". Dereferenziare un puntatore che vale <code>nullptr</code> (o che non è mai stato inizializzato) è un errore grave a runtime, tipicamente il crash del programma.</div>
+    </div>
+    <p>🔗 <strong>Perché sono utili, in pratica:</strong> abbiamo appena visto che una funzione riceve normalmente <em>copie</em> dei suoi parametri, e quindi non può modificare le variabili originali del chiamante. Passando invece <strong>l'indirizzo</strong> di una variabile (un puntatore ad essa), la funzione può usare l'operatore <code>*</code> per raggiungere e modificare <strong>davvero</strong> la variabile originale, non una sua copia:</p>
+    <pre class="code-panel active">void raddoppia(int *numero) {
+    *numero = *numero * 2; // modifica il valore ALL'INDIRIZZO ricevuto
+}
+
+int main() {
+    int valore = 10;
+    raddoppia(&amp;valore); // passo l'indirizzo di valore, non una sua copia
+    std::cout &lt;&lt; valore &lt;&lt; std::endl; // 20: la variabile originale è stata modificata!
+    return 0;
+}</pre>
+    <p class="note">Questo è un concetto avanzato ma centrale: senza puntatori (o, in alternativa, i <em>riferimenti</em> <code>&amp;</code> nei parametri, una sintassi più semplice che fa la stessa cosa "sotto al cofano"), una funzione può solo <em>restituire</em> un risultato con <code>return</code>, non modificare direttamente le variabili di chi l'ha chiamata.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Array e vettori</h2>
+    <p>Quando servono <strong>più valori dello stesso tipo</strong> raggruppati insieme, si usano array o vettori.</p>
+    <h3>Array — dimensione fissa</h3>
+    <p>Un <strong>array</strong> ha una lunghezza decisa alla creazione e non può più cambiare: non si possono aggiungere o togliere elementi. Gli elementi si numerano a partire da <strong>0</strong> (non da 1): in un array di 5 elementi, gli indici validi vanno da <code>0</code> a <code>4</code>.</p>
+    <pre class="code-panel active">double voti_storia[] = {8.5, 9, 8.2, 10, 7};
+
+// scorrimento con for classico (indice esplicito)
+for (int i = 0; i &lt; 5; i++) {
+    std::cout &lt;&lt; voti_storia[i] &lt;&lt; std::endl;
+}
+
+// scorrimento con range-based for
+for (double voto : voti_storia) {
+    std::cout &lt;&lt; voto &lt;&lt; std::endl;
+}</pre>
+    <p class="warn">⚠️ C++ <strong>non controlla</strong> automaticamente se un indice è valido: scrivere <code>voti_storia[10]</code> su un array di 5 elementi non dà necessariamente un errore evidente, ma legge (o scrive!) una zona di memoria che non appartiene all'array, con effetti imprevedibili. È un errore subdolo, diverso da altri linguaggi più "protettivi" da questo punto di vista.</p>
+    <h3>Vector — dimensione dinamica</h3>
+    <p>Un <code>std::vector</code> è come un array, ma può <strong>crescere o ridursi</strong> durante l'esecuzione del programma: è la struttura da preferire quando non si conosce in anticipo quanti elementi serviranno.</p>
+    <pre class="code-panel active">#include &lt;vector&gt;
+using std::vector;
+
+vector&lt;int&gt; numeri = {10, 20, 30};
+numeri[0] = 100;          // modifica un elemento esistente
+numeri.push_back(50);     // aggiunge un elemento in fondo → {100, 20, 30, 50}
+numeri.pop_back();        // rimuove l'ultimo elemento    → {100, 20, 30}
+
+for (int i = 0; i &lt; numeri.size(); i++) {
+    std::cout &lt;&lt; numeri[i] &lt;&lt; std::endl;
+}</pre>
+    <p class="note"><code>numeri.size()</code> restituisce il numero di elementi attualmente presenti nel vettore: utile come condizione del ciclo, dato che — a differenza dell'array — può cambiare durante l'esecuzione. Altri metodi utili: <code>numeri.insert(posizione, valore)</code> per inserire in un punto preciso, <code>numeri.erase(posizione)</code> per rimuovere un elemento specifico, <code>numeri.clear()</code> per svuotarlo del tutto.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Le stringhe: operazioni utili</h2>
+    <p>Una <code>string</code> non è solo "del testo": la libreria standard mette a disposizione diversi <strong>metodi</strong> per lavorarci, molto usati nella pratica:</p>
+    <pre class="code-panel active">#include &lt;string&gt;
+using std::string;
+
+string nome = "Luca";
+string cognome = "Rossi";
+string nomeCompleto = nome + " " + cognome; // concatenazione con "+": "Luca Rossi"
+
+std::cout &lt;&lt; nomeCompleto &lt;&lt; std::endl;              // Luca Rossi
+std::cout &lt;&lt; nomeCompleto.length() &lt;&lt; std::endl;      // 10 (numero di caratteri, spazio incluso)
+std::cout &lt;&lt; nome[nome.length() - 1] &lt;&lt; std::endl;    // 'a' (ultimo carattere di "Luca": indici da 0 a length()-1)
+std::cout &lt;&lt; nomeCompleto.find("Rossi") &lt;&lt; std::endl;  // 5 (indice del carattere dove inizia "Rossi")
+std::cout &lt;&lt; nomeCompleto.substr(5) &lt;&lt; std::endl;      // "Rossi" (sottostringa dal carattere 5 fino alla fine)
+std::cout &lt;&lt; nomeCompleto.empty() &lt;&lt; std::endl;        // 0 → false, la stringa non è vuota
+
+nomeCompleto.append(" Jr.");                            // modifica nomeCompleto: ora vale "Luca Rossi Jr."
+std::cout &lt;&lt; nomeCompleto &lt;&lt; std::endl;                // Luca Rossi Jr.</pre>
+    <table class="mini-table">
+      <thead><tr><th>Metodo/operatore</th><th>Cosa fa</th></tr></thead>
+      <tbody>
+        <tr><td><code>a + b</code></td><td>concatena due stringhe (o una stringa e un carattere) in una nuova stringa</td></tr>
+        <tr><td><code>s.length()</code></td><td>numero di caratteri contenuti in <code>s</code></td></tr>
+        <tr><td><code>s[i]</code></td><td>il carattere alla posizione <code>i</code> (indici da 0)</td></tr>
+        <tr><td><code>s.find(sottostringa)</code></td><td>indice della prima occorrenza, oppure un valore speciale se non trovata</td></tr>
+        <tr><td><code>s.substr(inizio)</code></td><td>sottostringa dalla posizione <code>inizio</code> fino alla fine</td></tr>
+        <tr><td><code>s.append(altro)</code></td><td>aggiunge <code>altro</code> in fondo a <code>s</code>, modificandola</td></tr>
+        <tr><td><code>s.empty()</code></td><td><code>true</code> se la stringa non contiene nessun carattere</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Una <code>string</code> è, concettualmente, una sequenza di <code>char</code> indicizzabile come un array (ecco perché <code>nome[nome.length() - 1]</code> funziona): a differenza di un array però gestisce da sola la propria dimensione, che può cambiare (come con <code>append</code>).</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Conversioni di tipo (casting)</h2>
+    <p>Abbiamo già incontrato una conversione <strong>implicita</strong> parlando del troncamento (<code>int x = 10.3;</code>): il compilatore converte automaticamente il <code>double</code> in <code>int</code>, senza che sia stato chiesto esplicitamente, e senza avvisare in modo evidente. Quando invece si vuole essere <strong>chiari ed espliciti</strong> su una conversione voluta, si usa <code>static_cast&lt;NuovoTipo&gt;(espressione)</code>:</p>
+    <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using std::string;
+
+string x = "65";
+float y = 3.99;
+
+std::cout &lt;&lt; x &lt;&lt; std::endl;                              // 65
+std::cout &lt;&lt; static_cast&lt;int&gt;(y) &lt;&lt; std::endl;             // 3  (il cast TRONCA, non arrotonda: 3.99 → 3)
+std::cout &lt;&lt; static_cast&lt;char&gt;(std::stoi(x)) &lt;&lt; std::endl;  // A</pre>
+    <div class="callout-grid">
+      <div class="callout"><strong><code>static_cast&lt;int&gt;(y)</code>:</strong> converte esplicitamente <code>y</code> (un <code>float</code>) in <code>int</code>, troncando la parte decimale — stesso effetto del troncamento implicito, ma dichiarato apertamente nel codice: chi legge capisce subito che è voluto.</div>
+      <div class="callout"><strong><code>std::stoi(x)</code>:</strong> ("string to int") converte una <code>string</code> che rappresenta un numero (qui <code>"65"</code>) nel corrispondente valore <code>int</code> (<code>65</code>). Richiede <code>#include &lt;string&gt;</code>.</div>
+      <div class="callout"><strong><code>static_cast&lt;char&gt;(65)</code>:</strong> interpreta il numero 65 come <strong>codice ASCII</strong> e lo converte nel carattere corrispondente: il codice ASCII 65 corrisponde alla lettera <code>'A'</code>. Un buon momento per mostrare (o far cercare) una tabella ASCII in classe!</div>
+    </div>
+    <p class="note">🎓 <strong>Perché insegnarlo:</strong> il casting esplicito rende visibile un'operazione che altrimenti avverrebbe "di nascosto" (come nel troncamento). Abituare gli studenti a scrivere <code>static_cast&lt;...&gt;(...)</code> quando una conversione è intenzionale è una buona pratica che previene molti bug legati a conversioni implicite indesiderate.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Le strutture (<code>struct</code>)</h2>
+    <p>Una <strong>struttura</strong> permette di creare un <strong>tipo di dato personalizzato</strong>, raggruppando più variabili (anche di tipo diverso) sotto un unico nome.</p>
+    <pre class="code-panel active">struct Persona
+{
+    string nome;
+    string cognome;
+    int eta;
+};
+
+int main()
+{
+    Persona persona1 = {"luca", "rossi", 25};
+    std::cout &lt;&lt; persona1.nome &lt;&lt; std::endl; // accesso a un campo con il punto
+    return 0;
+}</pre>
+    <p class="note">Una <code>struct</code> è il primo passo verso la <strong>programmazione a oggetti</strong>: una <code>class</code> in C++ è concettualmente una struttura a cui si aggiungono anche le funzioni (i "metodi") che operano sui suoi dati — vedi la sezione <button class="link-btn" data-goto="cpp-oop">C++ OOP</button>.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Mettiamo tutto insieme</h2>
+    <p>Ora che abbiamo visto variabili, costanti, operatori, input/output, selezioni, cicli, funzioni, scope, puntatori, array/vettori, stringhe, casting e strutture, possiamo scrivere in C++ qualunque algoritmo già progettato con pseudocodice o flow chart nelle sezioni precedenti.</p>
+    <p>👉 Per esercitarti risolvendo in C++ procedurale gli stessi problemi già visti come flow chart, vai alla pagina <a href="esercizi-cpp-procedurale.html">Esercizi → C++ procedurale</a>.</p>
+  </div>
+</section>
+
+<!-- ============ C++ OOP (PROGRAMMAZIONE A OGGETTI) ============ -->
+<section class="view" id="view-cpp-oop">
+  <h1 class="view-title">🧱 C++ OOP — Programmazione a Oggetti</h1>
+
+  <div class="lesson-block">
+    <h2>Cos'è la programmazione a oggetti (OOP)?</h2>
+    <p class="definition">La <strong>programmazione orientata agli oggetti</strong> (Object Oriented Programming, OOP) è uno stile di programmazione in cui dati e comportamenti che li riguardano vengono <strong>racchiusi insieme</strong> in un'unica entità chiamata <strong>classe</strong>, invece di restare separati come nella <button class="link-btn" data-goto="cpp">programmazione procedurale</button>.</p>
+    <p>L'idea di fondo è modellare il programma sugli <strong>oggetti del mondo reale</strong> (o del dominio del problema): una persona, un libro, una cartella di file, un contatore. Ogni oggetto ha:</p>
+    <ul>
+      <li><strong>proprietà</strong> (detti anche <em>attributi</em> o <em>campi</em>): es. un libro ha titolo, autore, anno;</li>
+      <li><strong>azioni</strong> che può compiere o che si possono compiere su di lui (detti <em>metodi</em>): es. una cartella si può rinominare o spostare.</li>
+    </ul>
+    <p>Una <strong>classe</strong> è la "descrizione formale" di un tipo di oggetto: definisce quali proprietà e quali metodi avranno tutti gli oggetti costruiti a partire da essa. Un <strong>oggetto</strong> (o <em>istanza</em>) è invece un esemplare concreto costruito seguendo quella descrizione: <code>persona1</code> è un'istanza della classe <code>Persona</code>, così come <code>persona2</code> — stessa "forma", dati diversi.</p>
+    <p>Tutta la OOP si regge su quattro idee cardine, che incontreremo una per una in questa sezione con un esempio concreto ciascuna: <strong>incapsulamento</strong>, <strong>astrazione</strong>, <strong>ereditarietà</strong> e <strong>polimorfismo</strong>. Li ritroverai riassunti in una tabella alla fine della sezione.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Dalla <code>struct</code> alla <code>class</code></h2>
+    <p>Abbiamo già incontrato la <code>struct</code> nella sezione <button class="link-btn" data-goto="cpp">C++</button>: raggruppa più variabili sotto un unico tipo, ma resta un contenitore "passivo" di soli dati. In C++ una <code>struct</code> può in realtà contenere anche funzioni proprie — ma per convenzione si usa <code>struct</code> per i dati puri, e <code>class</code> quando si vogliono aggiungere anche i <strong>metodi</strong>, cioè le azioni collegate a quei dati:</p>
+    <pre class="code-panel active">struct Persona   // solo dati: nome, cognome, età
+{
+    string nome;
+    string cognome;
+    int eta;
+};
+
+struct Libro      // altro esempio di solo dati
+{
+    string titolo;
+    string descrizione;
+    int anno;
+    string autore;
+    int valutazione;
+};
+
+class Cartella    // dati + azioni (metodi) che operano su quei dati
+{
+    string titolo;
+    string percorso;
+    int data;
+    string modifica;
+
+    void cambiaPercorsoCartella();
+    void rinominaCartella();
+};</pre>
+    <p class="note"><strong>Unica differenza tecnica</strong> tra <code>struct</code> e <code>class</code> in C++: i membri di una <code>struct</code> sono <strong>pubblici di default</strong>, quelli di una <code>class</code> sono <strong>privati di default</strong> (vedremo tra poco cosa significa "pubblico" e "privato"). A parte questo dettaglio, sono la stessa cosa: la differenza d'uso è solo una convenzione che comunica l'intento — "questo è un semplice contenitore di dati" contro "questa è una classe con un comportamento".</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Attributi, metodi e il puntatore <code>this</code></h2>
+    <p>Definiamo ora una classe <code>Persona</code> completa di metodo, e creiamo due <strong>istanze</strong> (oggetti) da essa:</p>
+    <pre class="code-panel active">class Persona   // in una classe, dati e metodi sono "incapsulati" insieme
+{
+public:
+    string nome;
+    string cognome;
+    int eta;
+
+    void saluta(string nome)
+    {
+        std::cout &lt;&lt; "Ciao sono " &lt;&lt; this-&gt;nome &lt;&lt; " tu sei " &lt;&lt; nome &lt;&lt; std::endl;
+    }
+};
+
+int main()
+{
+    Persona persona1 = {"luca", "rossi", 25};   // istanza 1
+    Persona persona2 = {"marco", "verdi", 28};  // istanza 2
+
+    std::cout &lt;&lt; persona1.nome &lt;&lt; std::endl;  // "luca"
+    std::cout &lt;&lt; persona2.nome &lt;&lt; std::endl;  // "marco"
+
+    persona1.saluta("x");  // "Ciao sono luca tu sei x"
+    persona2.saluta("y");  // "Ciao sono marco tu sei y"
+    return 0;
+}</pre>
+    <p>Il metodo <code>saluta</code> riceve un parametro che si chiama, non a caso, <strong>anch'esso</strong> <code>nome</code>: è lo stesso nome dell'attributo della classe. Questo crea un'ambiguità che C++ risolve con una regola precisa: <strong>dentro il corpo del metodo, il nome più "vicino" vince</strong>, quindi scrivendo semplicemente <code>nome</code> otterremmo il parametro, non l'attributo.</p>
+    <p>Per riferirsi <em>esplicitamente</em> all'attributo dell'oggetto corrente (e non al parametro locale), si usa <code>this</code>: un puntatore speciale, disponibile automaticamente dentro ogni metodo, che punta sempre <strong>all'oggetto su cui il metodo è stato chiamato</strong> (<code>this-&gt;nome</code> nel caso di <code>persona1.saluta("x")</code> punta ai dati di <code>persona1</code>). Ecco perché l'output riporta correttamente il nome dell'istanza (<code>luca</code>, poi <code>marco</code>) e non il valore passato come argomento (<code>x</code>, poi <code>y</code>).</p>
+    <p class="note">Se il metodo non avesse un parametro con lo stesso nome dell'attributo, scrivere <code>this-&gt;</code> sarebbe superfluo (anche se sempre corretto): si scrive per abitudine solo quando serve a togliere l'ambiguità, oppure per chiarezza quando si vuole rendere esplicito "sto leggendo/scrivendo un dato di questo oggetto".</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Il costruttore: inizializzare un oggetto in automatico</h2>
+    <p>Un <strong>costruttore</strong> è un metodo speciale che viene eseguito <strong>automaticamente</strong> nell'istante in cui un oggetto viene creato, e serve tipicamente a inizializzarne gli attributi. Due regole fisse: ha <strong>sempre lo stesso nome della classe</strong>, e <strong>non ha un tipo di ritorno</strong> (nemmeno <code>void</code>).</p>
+    <pre class="code-panel active">class Persona
+{
+public:
+    string nome;
+    string cognome;
+    int eta;
+
+    // costruttore "completo": riceve tutti e tre i valori
+    Persona(string nome, string cognome, int eta) {
+        this-&gt;nome = nome;
+        this-&gt;cognome = cognome;
+        this-&gt;eta = eta;
+    }
+
+    // costruttore "di default": nessun parametro, valori precompilati
+    Persona() {
+        nome = "pippo";
+        cognome = "pallino";
+        eta = 1000;
+    }
+
+    // altri due costruttori, con meno parametri
+    Persona(string nome, string cognome) {
+        this-&gt;nome = nome;
+        this-&gt;cognome = cognome;
+    }
+    Persona(string nome) {
+        this-&gt;nome = nome;
+    }
+
+    void saluta() {
+        std::cout &lt;&lt; "Ciao sono " &lt;&lt; nome &lt;&lt; std::endl;
+    }
+};
+
+int main()
+{
+    Persona persona1;                      // usa il costruttore senza parametri
+    Persona persona2("marco", "verdi", 30); // usa il costruttore con 3 parametri
+    Persona persona3("luca", "rossi");      // usa il costruttore con 2 parametri
+    Persona persona4("anna");               // usa il costruttore con 1 parametro
+
+    persona1.saluta(); // Ciao sono pippo
+    persona2.saluta(); // Ciao sono marco
+    persona3.saluta(); // Ciao sono luca
+    persona4.saluta(); // Ciao sono anna
+    return 0;
+}</pre>
+    <p>Qui la classe ha <strong>quattro costruttori diversi</strong>, tutti con lo stesso nome (<code>Persona</code>) ma con un numero diverso di parametri: questo si chiama <strong>overload (sovraccarico) del costruttore</strong>, lo stesso meccanismo di overload già visto per le funzioni nella sezione <button class="link-btn" data-goto="cpp">C++ procedurale</button>. È il compilatore, guardando quanti argomenti (e di che tipo) vengono passati alla creazione dell'oggetto, a scegliere quale dei quattro costruttori eseguire.</p>
+    <p class="warn">⚠️ Attenzione: <code>persona3</code> e <code>persona4</code> vengono create senza specificare <code>eta</code> (e <code>persona4</code> anche senza <code>cognome</code>). Quei costruttori non assegnano alcun valore a quegli attributi: <code>eta</code> resterà <strong>non inizializzata</strong>, cioè conterrà un valore "spazzatura" imprevedibile già presente in memoria, non automaticamente <code>0</code>! È buona norma che <em>ogni</em> costruttore inizializzi <em>tutti</em> gli attributi, anche con un valore di default esplicito.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Modificatori di accesso: l'incapsulamento in pratica</h2>
+    <p>L'<strong>incapsulamento</strong> non è solo "mettere dati e metodi nella stessa classe": è anche <strong>decidere quali parti della classe sono visibili dall'esterno</strong> e quali restano un dettaglio interno, non accessibile né modificabile direttamente da chi usa la classe. In C++ questo si controlla con tre parole chiave, dette <strong>modificatori di accesso</strong>:</p>
+    <table class="mini-table">
+      <thead><tr><th>Modificatore</th><th>Chi può accedere al membro</th></tr></thead>
+      <tbody>
+        <tr><td><code>public</code></td><td>chiunque: anche codice esterno alla classe (es. <code>main</code>)</td></tr>
+        <tr><td><code>private</code></td><td>solo il codice scritto dentro la classe stessa</td></tr>
+        <tr><td><code>protected</code></td><td>il codice della classe <strong>e</strong> delle sue classi derivate (vedi Ereditarietà, sotto)</td></tr>
+      </tbody>
+    </table>
+    <pre class="code-panel active">class Persona
+{
+public:  // tutto ciò che segue, fino a un eventuale altro modificatore, è pubblico
+    string nome;
+    string cognome;
+    int eta;
+
+    Persona(string nome, string cognome, int eta) {
+        this-&gt;nome = nome;
+        this-&gt;cognome = cognome;
+        this-&gt;eta = eta;
+    }
+
+    void saluta() {
+        std::cout &lt;&lt; "Ciao sono " &lt;&lt; nome &lt;&lt; std::endl;
+    }
+};
+
+int main()
+{
+    Persona persona1("marco", "verdi", 30);
+    persona1.saluta();          // OK: saluta() è public
+    std::cout &lt;&lt; persona1.nome; // OK: nome è public
+    return 0;
+}</pre>
+    <p class="warn">⚠️ Se il metodo <code>saluta()</code> (o l'attributo <code>nome</code>) fosse dichiarato sotto un'etichetta <code>private:</code>, la riga <code>persona1.saluta();</code> scritta in <code>main</code> non compilerebbe più: il compilatore darebbe un <strong>errore di accesso</strong>, perché <code>main</code> è codice "esterno" alla classe <code>Persona</code>.</p>
+    <p>Perché nascondere qualcosa? Perché rendere <code>private</code> gli attributi "delicati" (ad esempio un saldo di conto corrente, o una password) e permettere di leggerli/modificarli solo tramite metodi <code>public</code> dedicati (i classici <em>getter</em> e <em>setter</em>) dà alla classe il controllo totale su <strong>come</strong> quei dati possono cambiare: un metodo <code>setEta(int e)</code> può, ad esempio, rifiutare un'età negativa, cosa impossibile da impedire se chiunque potesse scrivere direttamente <code>persona1.eta = -5;</code>.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Ereditarietà: riutilizzare e specializzare una classe</h2>
+    <p>L'<strong>ereditarietà</strong> permette di creare una nuova classe (detta <strong>classe derivata</strong> o <em>figlia</em>) a partire da una classe già esistente (la <strong>classe base</strong> o <em>madre</em>), <strong>riutilizzandone</strong> attributi e metodi ed <strong>aggiungendone</strong> — o ridefinendone — altri. È il modo in cui la OOP evita di riscrivere codice già scritto per concetti che sono "casi particolari" di uno più generale: uno <em>Studente</em> è, prima di tutto, <em>una Persona</em>.</p>
+    <pre class="code-panel active">class Persona
+{
+public:
+    string nome;
+    string cognome;
+
+    // ": nome(n), cognome(c)" è la "lista di inizializzazione":
+    // inizializza direttamente gli attributi con i valori ricevuti
+    Persona(string n, string c) : nome(n), cognome(c) {}
+
+    void saluta() {
+        std::cout &lt;&lt; "Ciao sono " &lt;&lt; nome &lt;&lt; std::endl;
+    }
+};
+
+// ": public Persona" significa "Studente eredita da Persona"
+class Studente : public Persona
+{
+public:
+    string classe;
+
+    // il costruttore di Studente richiama esplicitamente
+    // il costruttore di Persona per inizializzare nome e cognome
+    Studente(string nome, string cognome, string classe)
+        : Persona(nome, cognome), classe(classe) {}
+
+    // ridefinisce (sovrascrive) il metodo saluta() ereditato da Persona
+    void saluta() {
+        std::cout &lt;&lt; "Ciao sono " &lt;&lt; nome &lt;&lt; " della " &lt;&lt; classe &lt;&lt; std::endl;
+    }
+
+    void diClasse() {
+        std::cout &lt;&lt; "La mia classe è " &lt;&lt; classe &lt;&lt; std::endl;
+    }
+};
+
+int main()
+{
+    Studente studente1("luca", "rossi", "4A");
+    studente1.saluta();    // "Ciao sono luca della 4A" (versione di Studente)
+    studente1.diClasse();  // "La mia classe è 4A"
+    return 0;
+}</pre>
+    <div class="callout-grid">
+      <div class="callout"><strong><code>class Studente : public Persona</code>:</strong> dichiara che <code>Studente</code> eredita pubblicamente da <code>Persona</code>. Ogni oggetto <code>Studente</code> possiede automaticamente anche <code>nome</code> e <code>cognome</code>, senza doverli ridichiarare.</div>
+      <div class="callout"><strong>Lista di inizializzazione (<code>: Persona(nome, cognome), classe(classe)</code>):</strong> prima ancora di eseguire il corpo <code>{ }</code> del costruttore di <code>Studente</code>, viene chiamato il costruttore di <code>Persona</code> per inizializzare la parte "ereditata", poi si inizializza <code>classe</code>.</div>
+      <div class="callout"><strong>diClasse():</strong> è un metodo <em>nuovo</em>, presente solo in <code>Studente</code>, non ereditato da nessuno: aggiunge comportamento specifico alla classe derivata.</div>
+    </div>
+    <p><strong>Overload</strong> (visto sopra per i costruttori) e <strong>override</strong> (visto ora con <code>saluta()</code>) si confondono spesso: sono due cose diverse.</p>
+    <div class="compare-grid">
+      <div class="compare-card"><h4>Overload (sovraccarico)</h4><p>Più metodi/costruttori <strong>nella stessa classe</strong>, <strong>stesso nome</strong> ma <strong>parametri diversi</strong> (per numero o tipo). Il compilatore sceglie quale eseguire guardando gli argomenti passati alla chiamata.</p></div>
+      <div class="compare-card"><h4>Override (sovrascrittura)</h4><p>Una classe derivata <strong>ridefinisce</strong> un metodo <strong>già esistente nella classe base</strong>, con lo <strong>stesso nome e la stessa "forma"</strong>: sostituisce il comportamento ereditato con uno specifico per la classe figlia.</p></div>
+    </div>
+    <p class="note">🔎 <strong>Approfondimento per chi vuole andare oltre</strong> (argomento avanzato, non necessario per iniziare): nell'esempio sopra, <code>studente1.saluta()</code> funziona correttamente perché <code>studente1</code> è dichiarato direttamente come <code>Studente</code>. Se però si usasse un puntatore o riferimento dichiarato di tipo <code>Persona</code> per contenere "in realtà" un oggetto <code>Studente</code>, chiamando <code>saluta()</code> su di esso si otterrebbe — senza ulteriori accorgimenti — la versione di <code>Persona</code>, non quella di <code>Studente</code>. Per ottenere invece il comportamento "giusto" in base al tipo effettivo dell'oggetto (il cosiddetto <strong>polimorfismo dinamico</strong>, il quarto pilastro della OOP), in <code>Persona</code> il metodo andrebbe dichiarato <code>virtual void saluta()</code>. È un meccanismo potente ma che richiede più esperienza: utile sapere fin d'ora che esiste, per non stupirsi il giorno in cui lo si incontra.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>I quattro pilastri della OOP, in sintesi</h2>
+    <table class="mini-table">
+      <thead><tr><th>Pilastro</th><th>Cosa significa</th><th>Dove l'abbiamo visto</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Incapsulamento</strong></td><td>Dati e metodi uniti in una classe; l'accesso ai dettagli interni è controllato con <code>public</code>/<code>private</code>/<code>protected</code>.</td><td>Classe <code>Persona</code> con attributi e <code>saluta()</code>; tabella dei modificatori di accesso.</td></tr>
+        <tr><td><strong>Astrazione</strong></td><td>Chi usa una classe (es. chiama <code>persona1.saluta()</code>) vede solo <em>cosa</em> fa un metodo, non ha bisogno di sapere <em>come</em> è implementato internamente.</td><td>In ogni esempio: in <code>main</code> non serve sapere come <code>saluta()</code> è scritta dentro, basta chiamarla.</td></tr>
+        <tr><td><strong>Ereditarietà</strong></td><td>Una classe derivata riusa attributi e metodi di una classe base, e ne aggiunge o ridefinisce altri.</td><td><code>Studente : public Persona</code>.</td></tr>
+        <tr><td><strong>Polimorfismo</strong></td><td>Oggetti di classi derivate diverse possono rispondere in modo diverso a "la stessa richiesta" (es. <code>saluta()</code>), ciascuno a modo proprio.</td><td>Override di <code>saluta()</code> in <code>Studente</code>; la forma "dinamica" completa richiede <code>virtual</code> (vedi nota sopra).</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Continua con gli esercizi</h2>
+    <p>Il percorso guidato di esercizi in C++ OOP riprende — a difficoltà crescente — proprio questi concetti: dalle prime classi molto semplici fino a incapsulamento, ereditarietà, polimorfismo e astrazione applicati a problemi già visti come flow chart.</p>
+    <p>👉 Vai alla pagina <a href="esercizi-cpp-oop.html">Esercizi → C++ OOP</a> per mettere in pratica quanto visto qui.</p>
+  </div>
+</section>
+
+<!-- ============ GIOCHI & COOPERATIVE LEARNING ============ -->
+<section class="view" id="view-giochi">
+  <h1 class="view-title">🎭 Giochi &amp; Cooperative Learning</h1>
+
+  <div class="lesson-block">
+    <h2>🎲 Gioco 1 — Memory delle forme del Flow Chart</h2>
+    <p>Abbina ogni forma geometrica al suo significato. Trova tutte le coppie nel minor numero di mosse!</p>
+    <div class="sim-controls">
+      <button class="btn" id="memory-restart">Nuova partita</button>
+      <span class="memory-stats">Mosse: <strong id="memory-moves">0</strong> · Coppie trovate: <strong id="memory-pairs">0</strong>/4</span>
+    </div>
+    <div class="memory-grid" id="memory-grid"></div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>🍕 Gioco 2 — Riordina la ricetta della pizza margherita</h2>
+    <p>Trascina le istruzioni nell'ordine corretto per completare l'algoritmo, poi controlla la soluzione.</p>
+    <div class="sim-controls">
+      <button class="btn" id="pizza-shuffle">Mescola</button>
+      <button class="btn btn-secondary" id="pizza-check">Controlla ordine</button>
+    </div>
+    <ol class="dragdrop-list" id="pizza-list"></ol>
+    <div id="pizza-result" class="sim-output"></div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>⚡ Gioco 3 — Sfida rapida sugli operatori logici</h2>
+    <p>Ti verranno mostrati dei valori di A e B: rispondi il più velocemente possibile se la condizione è Vera o Falsa!</p>
+    <div class="sim-controls">
+      <button class="btn" id="logic-game-start">Inizia sfida (10 domande)</button>
+    </div>
+    <div id="logic-game-area" class="sim-output"></div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>👥 Generatore di gruppi per il cooperative learning</h2>
+    <p>Incolla l'elenco degli studenti (uno per riga) e scegli la dimensione dei gruppi: verranno creati gruppi casuali, pronti per un'attività cooperativa.</p>
+    <div class="sim-controls group-gen">
+      <textarea id="group-names" rows="6" placeholder="Es:&#10;Marco&#10;Giulia&#10;Luca&#10;Sara&#10;..."></textarea>
+      <div class="group-gen-controls">
+        <label>Studenti per gruppo: <input type="number" id="group-size" min="2" max="10" value="3"></label>
+        <button class="btn" id="group-gen-btn">Genera gruppi</button>
+      </div>
+    </div>
+    <div id="group-output" class="sim-output"></div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>🎭 Attività di ruolo e cooperative learning (da fare in classe)</h2>
+    <div class="activity-grid">
+      <div class="activity-card">
+        <h4>🤖 Il Robot Umano</h4>
+        <p><strong>Ruoli:</strong> Programmatore, Robot (CPU), Osservatore.</p>
+        <p>Il Programmatore scrive su carta un algoritmo (es. "vai alla porta e aprila") con istruzioni semplicissime. Il Robot deve eseguire <em>alla lettera</em>, senza usare il buon senso, esattamente ciò che è scritto. L'Osservatore annota dove l'algoritmo fallisce per mancanza di precisione o di casi non previsti (collegamento con l'esempio della telefonata: "e se Alice non risponde?").</p>
+      </div>
+      <div class="activity-card">
+        <h4>🍝 Il Ristorante Algoritmico</h4>
+        <p><strong>Gruppi da 3-4.</strong></p>
+        <p>Un gruppo scrive l'algoritmo per dividere il conto "alla romana" tra amici. Un altro gruppo lo deve eseguire "alla lettera" senza fare supposizioni. Si discute insieme dove l'algoritmo era incompleto o ambiguo.</p>
+      </div>
+      <div class="activity-card">
+        <h4>🧍 Flow Chart Umano</h4>
+        <p><strong>Tutta la classe, a turni.</strong></p>
+        <p>Ogni studente rappresenta fisicamente un blocco (Inizio, Input, Elaborazione, Decisione, Output, Fine) tenendo un cartello con la forma disegnata. La classe deve disporsi nell'ordine corretto per rappresentare un algoritmo assegnato dall'insegnante, "camminando" il flusso passo dopo passo.</p>
+      </div>
+      <div class="activity-card">
+        <h4>🗣️ Dibattito sull'efficienza</h4>
+        <p><strong>Due squadre.</strong></p>
+        <p>Una squadra sostiene i pregi del 1° approccio per trovare i numeri primi, l'altra il 2° approccio. Ogni squadra deve argomentare in termini di tempo, CPU e memoria, portando esempi numerici. Si conclude con una votazione della classe.</p>
+      </div>
+      <div class="activity-card">
+        <h4>🔢 Fibonacci vivente</h4>
+        <p><strong>Fila di studenti.</strong></p>
+        <p>In cerchio o in fila, ogni studente deve dire ad alta voce la somma degli ultimi due numeri detti dai compagni precedenti (si parte da 1, 1). Chi sbaglia o esita troppo viene aiutato dal gruppo: è cooperative learning puro!</p>
+      </div>
+      <div class="activity-card">
+        <h4>🧩 Jigsaw sui cicli</h4>
+        <p><strong>Gruppi esperti + gruppi misti.</strong></p>
+        <p>Dividi la classe in gruppi "esperti": uno studia il do-while, uno il while-do, uno il concetto di indice/iterazione. Poi si ricompongono gruppi misti in cui ogni esperto spiega agli altri la propria parte, fino a ricostruire il quadro completo dei cicli.</p>
+      </div>
+      <div class="activity-card">
+        <h4>🔍 Caccia al bug (peer review)</h4>
+        <p><strong>Coppie.</strong></p>
+        <p>Ogni studente scrive un piccolo flow chart con un errore nascosto (es. variabile non inizializzata, condizione sbagliata, ciclo infinito). Scambia il foglio con il compagno, che deve trovare e correggere l'errore, poi si confrontano.</p>
+      </div>
+      <div class="activity-card">
+        <h4>🎴 Pensa, Confrontati, Condividi</h4>
+        <p><strong>Individuale → coppie → classe.</strong></p>
+        <p>Data una domanda (es. "quale delle due soluzioni per i numeri primi è più efficiente e perché?"), ogni studente pensa da solo, poi si confronta con un compagno, infine si condivide con tutta la classe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VERIFICHE ============ -->
+<section class="view" id="view-verifiche">
+  <h1 class="view-title">✅ Verifiche</h1>
+  <div class="lesson-block">
+    <p>Metti alla prova le tue conoscenze con un quiz a correzione immediata, oppure genera una versione stampabile per una verifica in classe.</p>
+    <div class="quiz-setup" id="quiz-setup">
+      <label>Argomento:
+        <select id="quiz-category">
+          <option value="all">Tutti gli argomenti</option>
+          <option value="problemi">Problemi &amp; Algoritmi</option>
+          <option value="flowchart">Flow Chart</option>
+          <option value="cicli">Cicli</option>
+        </select>
+      </label>
+      <label>Numero di domande:
+        <select id="quiz-count">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+          <option value="all">Tutte</option>
+        </select>
+      </label>
+      <button class="btn" id="quiz-start">Inizia verifica</button>
+      <button class="btn btn-secondary" id="quiz-print">Genera versione stampabile</button>
+    </div>
+
+    <div id="quiz-area" class="quiz-area"></div>
+    <div id="quiz-print-area" class="print-area"></div>
+  </div>
+</section>
+
+<!-- ============ ESERCIZI ============ -->
+<section class="view" id="view-esercizi">
+  <h1 class="view-title">✏️ Esercizi</h1>
+  <div class="lesson-block">
+    <p>Esercizi pratici tratti dagli argomenti trattati. Prova a risolverli da solo, poi confrontati con la soluzione.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>📚 Pagine di esercizi dedicate</h2>
+    <p>Oltre agli esercizi qui sotto, sono disponibili tre pagine dedicate che riprendono la teoria vista nella sezione <button class="link-btn" data-goto="flowchart">Flow Chart</button> (compresi i cicli <code>for</code>, <code>while</code>, <code>do-while</code>) e la applicano con strumenti diversi:</p>
+    <div class="card-grid">
+      <a class="topic-card" href="esercizi-flowgorithm.html" style="display:block; text-decoration:none; color:inherit;">
+        <div class="topic-icon">📘</div>
+        <h3>Flowgorithm</h3>
+        <p>Esercizi da svolgere, con soluzione mostrata come schema a blocchi da riprodurre in Flowgorithm.</p>
+      </a>
+      <a class="topic-card" href="esercizi-cpp-procedurale.html" style="display:block; text-decoration:none; color:inherit;">
+        <div class="topic-icon">💻</div>
+        <h3>C++ procedurale</h3>
+        <p>Gli stessi algoritmi risolti in C++ con funzioni e variabili, senza classi.</p>
+      </a>
+      <a class="topic-card" href="esercizi-cpp-oop.html" style="display:block; text-decoration:none; color:inherit;">
+        <div class="topic-icon">🧱</div>
+        <h3>C++ OOP</h3>
+        <p>Gli stessi algoritmi risolti in C++ organizzando dati e operazioni in classi.</p>
+      </a>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>✍️ Esercizi rapidi con soluzione</h2>
+    <p>Esercizi brevi da svolgere direttamente qui: prova a rispondere, poi apri la soluzione per il confronto.</p>
+  </div>
+
+  <div class="exercises-grid" id="exercises-grid"></div>
+
+  <div class="lesson-block">
+    <h2>🧪 Calcolatrice "verifica-tu-stesso"</h2>
+    <p>Hai risolto un esercizio a mano? Verifica il risultato con questi mini-strumenti:</p>
+    <div class="mini-tools-grid">
+      <div class="mini-tool">
+        <h4>Valore assoluto</h4>
+        <input type="number" id="tool-abs-n" placeholder="numero">
+        <button class="btn" id="tool-abs-btn">Calcola</button>
+        <span class="tool-result" id="tool-abs-result"></span>
+      </div>
+      <div class="mini-tool">
+        <h4>Pari o dispari?</h4>
+        <input type="number" id="tool-parity-n" placeholder="numero">
+        <button class="btn" id="tool-parity-btn">Calcola</button>
+        <span class="tool-result" id="tool-parity-result"></span>
+      </div>
+      <div class="mini-tool">
+        <h4>Compreso tra 10 e 20?</h4>
+        <input type="number" id="tool-range-n" placeholder="numero">
+        <button class="btn" id="tool-range-btn">Calcola</button>
+        <span class="tool-result" id="tool-range-result"></span>
+      </div>
+      <div class="mini-tool">
+        <h4>Modulo (n % m)</h4>
+        <input type="number" id="tool-mod-n" placeholder="n" style="width:60px">
+        <input type="number" id="tool-mod-m" placeholder="m" style="width:60px">
+        <button class="btn" id="tool-mod-btn">Calcola</button>
+        <span class="tool-result" id="tool-mod-result"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <p>UDA Programmazione — Problemi, Algoritmi, Flow Chart e Cicli. Materiale didattico interattivo.</p>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/simulators.js"></script>
+<script src="js/games.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/exercises.js"></script>
+</body>
+</html>

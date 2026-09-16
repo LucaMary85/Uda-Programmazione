@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esercizi con soluzione in Flowgorithm – UDA Programmazione</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-icon">⌘</span>
+    <span class="brand-text">UDA Programmazione</span>
+  </div>
+  <nav class="mainnav">
+    <a class="navbtn" href="Introduzione_Programmazione.html#esercizi">← Torna agli esercizi</a>
+  </nav>
+</header>
+
+<main>
+<section class="view active">
+  <h1 class="view-title">📘 Esercizi — soluzione in Flowgorithm</h1>
+
+  <div class="lesson-block">
+    <h2>Cos'è Flowgorithm?</h2>
+    <p><strong>Flowgorithm</strong> è un programma gratuito che permette di disegnare un diagramma di flusso con il mouse e di <em>eseguirlo</em> davvero, per controllare se l'algoritmo funziona. È un ottimo modo per verificare le soluzioni ai flow chart visti nella sezione <a href="Introduzione_Programmazione.html">Flow Chart</a> del percorso principale, prima di tradurli in un linguaggio di programmazione.</p>
+    <p>Per ogni esercizio: provate a risolverlo da soli su carta, poi costruite il diagramma in Flowgorithm per verificarlo. Qui sotto trovate lo schema della soluzione, da riprodurre con i blocchi del programma (inizio/fine, input/output, elaborazione, decisione).</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 1 — Il maggiore tra due numeri</h2>
+    <p><strong>Consegna:</strong> leggi due numeri e stampa il maggiore dei due.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(a)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(b)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>a &gt; b ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-io">output(a)</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-io">output(b)</div></div>
+          </div>
+          <div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 2 — Triangolo equilatero</h2>
+    <p><strong>Consegna:</strong> leggi la lunghezza dei tre lati di un triangolo e stabilisci se è equilatero (tutti i lati uguali).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(l1, l2, l3)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>(l1==l2 &amp;&amp; l2==l3) ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-io">output("equilatero")</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-io">output("non equilatero")</div></div>
+          </div>
+          <div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 3 — Somma e media di 10 numeri (ciclo)</h2>
+    <p><strong>Consegna:</strong> leggi 10 numeri (uno alla volta, con un ciclo <code>for</code>) e calcola la loro somma e la media.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">somma = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= 10 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">somma = somma + n</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = i + 1</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-process">media = somma / 10</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-io">output(somma, media)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 4 — Numero positivo garantito (do-while)</h2>
+    <p><strong>Consegna:</strong> chiedi ripetutamente un numero all'utente, finché non ne inserisce uno positivo (maggiore di zero).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>n &lt;= 0 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc-arrow">↑ torna a input(n)</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-io">output(n)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">In Flowgorithm questa struttura corrisponde al blocco <strong>Do-While</strong> (controllo in coda): il corpo viene eseguito sempre almeno una volta.</p>
+      </details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <p>UDA Programmazione — Esercizi con soluzione in Flowgorithm. <a href="Introduzione_Programmazione.html#esercizi">Torna agli esercizi</a>.</p>
+</footer>
+
+</body>
+</html>
