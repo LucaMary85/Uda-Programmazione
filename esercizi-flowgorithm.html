@@ -51,10 +51,10 @@
           <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(nome)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(eta)</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-io">output("Ciao " + nome + ", hai " + eta + " anni")</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output("Ciao " &amp; nome &amp; ", hai " &amp; eta &amp; " anni")</div><div class="fc-arrow">↓</div>
           <div class="fc fc-oval">fine</div>
         </div>
-        <p class="note">In Flowgorithm ogni variabile va dichiarata con un tipo (Stringa, Intero, Reale...) prima di usarla: <code>nome</code> è una Stringa, <code>eta</code> un Intero. Il blocco Output può concatenare testo e numeri con <code>+</code>.</p>
+        <p class="note">In Flowgorithm ogni variabile va dichiarata con un tipo (Stringa, Intero, Reale...) prima di usarla: <code>nome</code> è una Stringa, <code>eta</code> un Intero. Il blocco Output può concatenare testo e numeri con <code>&amp;</code> (non <code>+</code>, che in Flowgorithm resta riservato all'addizione numerica).</p>
       </details>
     </div>
   </div>
@@ -68,7 +68,7 @@
           <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(nomeProdotto)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(prezzo)</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-io">output("Il prodotto " + nomeProdotto + " costa " + prezzo + " euro")</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output("Il prodotto " &amp; nomeProdotto &amp; " costa " &amp; prezzo &amp; " euro")</div><div class="fc-arrow">↓</div>
           <div class="fc fc-oval">fine</div>
         </div>
       </details>
@@ -85,7 +85,7 @@
           <div class="fc fc-io">input(titolo)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(autore)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(anno)</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-io">output(titolo + " di " + autore + ", pubblicato nel " + anno)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output(titolo &amp; " di " &amp; autore &amp; ", pubblicato nel " &amp; anno)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-oval">fine</div>
         </div>
       </details>
@@ -377,7 +377,7 @@
               <div class="fc fc-decision"><span>j &lt;= i ?</span></div>
               <div class="fc-branch">
                 <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
-                  <div class="fc fc-process">riga = riga + "*"</div><div class="fc-arrow">↓</div>
+                  <div class="fc fc-process">riga = riga &amp; "*"</div><div class="fc-arrow">↓</div>
                   <div class="fc fc-process">j = j + 1</div>
                   <div class="fc-arrow">↑ torna al controllo su j</div>
                 </div>
@@ -590,8 +590,8 @@
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
         <div class="fc-diagram small">
           <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-decision"><span>i &lt;= 5 ?</span></div>
+          <div class="fc fc-process">i = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= 4 ?</span></div>
           <div class="fc-branch">
             <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
               <div class="fc fc-io">input(v[i])</div><div class="fc-arrow">↓</div>
@@ -599,9 +599,9 @@
               <div class="fc-arrow">↑ torna al controllo</div>
             </div>
             <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
-              <div class="fc fc-process">massimo = v[1]</div><div class="fc-arrow">↓</div>
-              <div class="fc fc-process">i = 2</div><div class="fc-arrow">↓</div>
-              <div class="fc fc-decision"><span>i &lt;= 5 ?</span></div>
+              <div class="fc fc-process">massimo = v[0]</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-decision"><span>i &lt;= 4 ?</span></div>
               <div class="fc-branch">
                 <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
                   <div class="fc fc-decision"><span>v[i] &gt; massimo ?</span></div>
@@ -621,7 +621,7 @@
             </div>
           </div>
         </div>
-        <p class="note">Il minimo si ottiene allo stesso modo, invertendo il confronto: <code>v[i] &lt; minimo ?</code>. In Flowgorithm un array va dichiarato con una dimensione fissa (qui 5) prima di poterlo riempire con <code>v[i]</code>.</p>
+        <p class="note">Il minimo si ottiene allo stesso modo, invertendo il confronto: <code>v[i] &lt; minimo ?</code>. In Flowgorithm, come in C++, un array di 5 elementi ha indici da <strong>0 a 4</strong> (non da 1 a 5): per questo il riempimento parte da <code>i = 0</code> e la scansione del resto dell'array da <code>i = 1</code>, fermandosi a <code>4</code>.</p>
       </details>
     </div>
   </div>
@@ -634,8 +634,8 @@
         <div class="fc-diagram small">
           <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
           <div class="fc fc-process">somma = 0</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-decision"><span>i &lt;= 5 ?</span></div>
+          <div class="fc fc-process">i = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= 4 ?</span></div>
           <div class="fc-branch">
             <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
               <div class="fc fc-io">input(v[i])</div><div class="fc-arrow">↓</div>
@@ -650,7 +650,7 @@
             </div>
           </div>
         </div>
-        <p class="note">Basta accumulare <code>v[i]</code> in <code>somma</code> mentre si riempie l'array, invece di fare un secondo ciclo separato di scansione: lo stesso array serve sia per il riempimento sia per il calcolo.</p>
+        <p class="note">Array di 5 elementi = indici da 0 a 4: il ciclo va da <code>i = 0</code> a <code>i &lt;= 4</code>. Basta accumulare <code>v[i]</code> in <code>somma</code> mentre si riempie l'array, invece di fare un secondo ciclo separato di scansione: lo stesso array serve sia per il riempimento sia per il calcolo.</p>
       </details>
     </div>
   </div>
@@ -663,8 +663,8 @@
         <div class="fc-diagram small">
           <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
           <div class="fc fc-process">conta = 0</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-decision"><span>i &lt;= 5 ?</span></div>
+          <div class="fc fc-process">i = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= 4 ?</span></div>
           <div class="fc-branch">
             <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
               <div class="fc fc-io">input(v[i])</div><div class="fc-arrow">↓</div>
@@ -711,11 +711,11 @@
           <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(testo)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-process">contatore = 0</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-decision"><span>i &lt;= Length(testo) ?</span></div>
+          <div class="fc fc-process">i = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt; Len(testo) ?</span></div>
           <div class="fc-branch">
             <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
-              <div class="fc fc-process">c = Mid(testo, i, 1)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">c = Char(testo, i)</div><div class="fc-arrow">↓</div>
               <div class="fc fc-decision"><span>c è una vocale ?</span></div>
               <div class="fc-branch">
                 <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">contatore = contatore + 1</div></div>
@@ -731,7 +731,7 @@
             </div>
           </div>
         </div>
-        <p class="note"><code>Length(testo)</code> restituisce il numero di caratteri della stringa; <code>Mid(testo, i, 1)</code> estrae il singolo carattere in posizione <code>i</code>. La condizione "c è una vocale" si traduce con più OR: <code>c=="a" || c=="e" || c=="i" || c=="o" || c=="u"</code>.</p>
+        <p class="note"><code>Len(testo)</code> restituisce il numero di caratteri della stringa; <code>Char(testo, i)</code> estrae il singolo carattere in posizione <code>i</code> — come gli array, anche le stringhe in Flowgorithm sono indicizzate a partire da <strong>0</strong>. La condizione "c è una vocale" si traduce con più OR: <code>c=="a" || c=="e" || c=="i" || c=="o" || c=="u"</code>.</p>
       </details>
     </div>
   </div>
@@ -745,11 +745,11 @@
           <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(parola)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-process">palindroma = Vero</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-decision"><span>i &lt;= Length(parola) / 2 ?</span></div>
+          <div class="fc fc-process">i = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt; Len(parola) / 2 ?</span></div>
           <div class="fc-branch">
             <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
-              <div class="fc fc-decision"><span>Mid(parola,i,1) &lt;&gt; Mid(parola, Length(parola)-i+1, 1) ?</span></div>
+              <div class="fc fc-decision"><span>Char(parola,i) &lt;&gt; Char(parola, Len(parola)-1-i) ?</span></div>
               <div class="fc-branch">
                 <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">palindroma = Falso</div></div>
                 <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">(nessuna modifica)</div></div>
@@ -764,7 +764,7 @@
             </div>
           </div>
         </div>
-        <p class="note">Stessa idea del confronto "a specchio" usata per invertire un array: si confronta il carattere <code>i</code>-esimo con il suo speculare, <code>Mid(parola, Length(parola)-i+1, 1)</code>, fermandosi a metà parola.</p>
+        <p class="note">Stessa idea del confronto "a specchio" usata per invertire un array: si confronta il carattere <code>i</code>-esimo con il suo speculare, <code>Char(parola, Len(parola)-1-i)</code>, fermandosi a metà parola. Gli indici partono da 0, quindi l'ultimo carattere è in posizione <code>Len(parola)-1</code>, non <code>Len(parola)</code>.</p>
       </details>
     </div>
   </div>
@@ -779,11 +779,11 @@
           <div class="fc fc-io">input(parola)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(lettera)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-process">conta = 0</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-decision"><span>i &lt;= Length(parola) ?</span></div>
+          <div class="fc fc-process">i = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt; Len(parola) ?</span></div>
           <div class="fc-branch">
             <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
-              <div class="fc fc-decision"><span>Mid(parola,i,1) == lettera ?</span></div>
+              <div class="fc fc-decision"><span>Char(parola,i) == lettera ?</span></div>
               <div class="fc-branch">
                 <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">conta = conta + 1</div></div>
                 <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">(nessuna modifica)</div></div>
@@ -815,13 +815,13 @@
         <div class="fc-diagram small">
           <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(testo)</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-process">n = ToNumber(testo)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">n = ToInteger(testo)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-process">doppio = n * 2</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-process">messaggio = "Il doppio di " + testo + " è " + ToString(doppio)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">messaggio = "Il doppio di " &amp; testo &amp; " è " &amp; ToString(doppio)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">output(messaggio)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-oval">fine</div>
         </div>
-        <p class="note">Per fare calcoli su un valore letto come testo bisogna prima convertirlo in numero (qui <code>ToNumber</code>); per poi riunirlo a del testo in output bisogna riconvertirlo in stringa (<code>ToString</code>). I nomi esatti di queste funzioni cambiano leggermente a seconda della versione di Flowgorithm, ma il concetto — lo stesso <em>casting</em> visto in C++ tra <code>string</code> e <code>int</code>/<code>double</code> — è identico.</p>
+        <p class="note">Per fare calcoli su un valore letto come testo bisogna prima convertirlo in numero: <code>ToInteger</code> per un intero, <code>ToReal</code> per un numero con la virgola (non esiste un generico "ToNumber"). Per poi riunire un numero a del testo in output bisogna riconvertirlo in stringa con <code>ToString</code> — lo stesso <em>casting</em> visto in C++ tra <code>string</code> e <code>int</code>/<code>double</code>.</p>
       </details>
     </div>
   </div>
@@ -835,11 +835,11 @@
           <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(voto1Testo)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(voto2Testo)</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-process">media = (ToNumber(voto1Testo) + ToNumber(voto2Testo)) / 2</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-io">output("La media e' " + ToString(media))</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">media = (ToReal(voto1Testo) + ToReal(voto2Testo)) / 2</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output("La media e' " &amp; ToString(media))</div><div class="fc-arrow">↓</div>
           <div class="fc fc-oval">fine</div>
         </div>
-        <p class="note">Entrambi i voti vanno convertiti in numero <strong>prima</strong> di poterli sommare e dividere; il risultato va poi riconvertito in testo per essere concatenato al messaggio finale, esattamente come nell'esempio del doppio.</p>
+        <p class="note">Entrambi i voti vanno convertiti in numero <strong>prima</strong> di poterli sommare e dividere; qui si usa <code>ToReal</code> (non <code>ToInteger</code>) perché una media può avere la virgola, es. 7.5. Il risultato va poi riconvertito in testo con <code>ToString</code> per essere concatenato al messaggio finale, esattamente come nell'esempio del doppio.</p>
       </details>
     </div>
   </div>
@@ -853,10 +853,11 @@
           <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(prezzoTesto)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(quantitaTesto)</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-process">totale = ToNumber(prezzoTesto) * ToNumber(quantitaTesto)</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-io">output("Totale da pagare: " + ToString(totale))</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">totale = ToReal(prezzoTesto) * ToInteger(quantitaTesto)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output("Totale da pagare: " &amp; ToString(totale))</div><div class="fc-arrow">↓</div>
           <div class="fc fc-oval">fine</div>
         </div>
+        <p class="note">Il prezzo è convertito con <code>ToReal</code> (può avere i decimali), la quantità con <code>ToInteger</code> (si comprano unità intere): non tutte le conversioni testo→numero usano la stessa funzione, dipende dal tipo di dato che serve.</p>
       </details>
     </div>
   </div>
