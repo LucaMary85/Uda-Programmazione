@@ -587,7 +587,82 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 23 — Menu ripetuto (do-while) <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 23 — Somma con valore sentinella (while) <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <p><strong>Consegna:</strong> leggi numeri interi e sommali finché l'utente non inserisce 0 (che non va sommato), poi stampa il totale.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, somma = 0;
+    cin &gt;&gt; n;
+
+    while (n != 0) {
+        somma = somma + n;
+        cin &gt;&gt; n;
+    }
+
+    cout &lt;&lt; "Somma: " &lt;&lt; somma;
+    return 0;
+}</pre>
+        <p class="note">A differenza del <code>for</code>, qui non sappiamo in anticipo quante volte si ripeterà il ciclo: si continua finché la condizione resta vera. Notate la lettura "di apertura" prima del <code>while</code> e quella "di chiusura" alla fine del corpo: se il primo numero inserito è già 0, il ciclo non parte nemmeno una volta, a differenza del <code>do-while</code> che vedremo tra poco.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 24 — Conta le cifre di un numero (while) <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> leggi un numero intero positivo e conta quante cifre ha, dividendolo ripetutamente per 10.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    cin &gt;&gt; n;
+
+    int cifre = 0;
+    while (n != 0) {
+        cifre = cifre + 1;
+        n = n / 10;
+    }
+
+    cout &lt;&lt; "Numero di cifre: " &lt;&lt; cifre;
+    return 0;
+}</pre>
+        <p class="note">Qui il <code>while</code> non serve a leggere input ripetutamente, ma a ridurre <code>n</code> un pezzo alla volta finché non arriva a zero: un caso classico in cui, non conoscendo a priori il numero di cifre, un <code>for</code> non si potrebbe scrivere altrettanto naturalmente.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 25 — Raddoppia finché non superi un limite (while) <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> leggi un numero e un limite, poi stampa il numero e i suoi raddoppi successivi finché restano minori o uguali al limite.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n, limite;
+    cin &gt;&gt; n &gt;&gt; limite;
+
+    while (n &lt;= limite) {
+        cout &lt;&lt; n &lt;&lt; " ";
+        n = n * 2;
+    }
+
+    return 0;
+}</pre>
+        <p class="note">Se <code>n</code> è già maggiore del limite, il corpo del ciclo non viene eseguito nemmeno una volta e non viene stampato nulla: è la stessa caratteristica "controllo in testa" vista nell'esercizio 23.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 26 — Menu ripetuto (do-while) <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> realizza una piccola calcolatrice a menu che continua a chiedere l'operazione finché l'utente non sceglie "esci".</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -627,7 +702,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 24 — Tabella pitagorica <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 27 — Tabella pitagorica <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> stampa la tabella pitagorica, con le tabelline da 1 a 10.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -648,7 +723,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 25 — Triangolo di asterischi <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 28 — Triangolo di asterischi <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> dato un numero N, disegna un triangolo di asterischi con N righe (1 asterisco sulla prima riga, 2 sulla seconda, ecc.).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -672,7 +747,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 26 — Quanti primi tra 1 e N <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 29 — Quanti primi tra 1 e N <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> conta quanti numeri primi ci sono tra 1 e N (ciclo esterno sui numeri, ciclo interno per verificare se ciascuno è primo).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -709,7 +784,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 27 — Fattoriale come funzione <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 30 — Fattoriale come funzione <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> riscrivi il calcolo del fattoriale (esercizio 20) come funzione riusabile.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -735,8 +810,8 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 28 — Funzione ePrimo, riusata nel conteggio <span class="badge-solo">✏️ Autonomo</span></h2>
-    <p><strong>Consegna:</strong> scrivi una funzione che verifica se un numero è primo e riusala per contare i numeri primi tra 1 e N (esercizio 26), evitando di duplicare il codice.</p>
+    <h2>Esercizio 31 — Funzione ePrimo, riusata nel conteggio <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> scrivi una funzione che verifica se un numero è primo e riusala per contare i numeri primi tra 1 e N (esercizio 29), evitando di duplicare il codice.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
         <pre class="code-panel active">#include &lt;iostream&gt;
@@ -772,7 +847,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 29 — Area del triangolo (più parametri) <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 32 — Area del triangolo (più parametri) <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> scrivi una funzione con più parametri che calcola l'area di un triangolo dati base e altezza.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -794,7 +869,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 30 — Scambio per riferimento <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 33 — Scambio per riferimento <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> scrivi una funzione che scambia il valore di due variabili usando il passaggio per riferimento (<code>&amp;</code>).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -827,7 +902,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 31 — Primo contatto con i puntatori <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 34 — Primo contatto con i puntatori <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> dichiara una variabile intera e un puntatore ad essa; stampa il valore della variabile, il suo indirizzo di memoria e il valore letto tramite il puntatore; infine modifica la variabile <strong>attraverso il puntatore</strong>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -855,8 +930,8 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 32 — Raddoppia con un puntatore (confronto con il riferimento) <span class="badge-proietta">📽️ Da proiettare</span></h2>
-    <p><strong>Consegna:</strong> scrivi due funzioni che raddoppiano un intero: una che riceve un <strong>puntatore</strong> (<code>int*</code>) e una che riceve un <strong>riferimento</strong> (<code>int&amp;</code>, come nell'esercizio 30). Confronta come si chiamano e come si scrivono.</p>
+    <h2>Esercizio 35 — Raddoppia con un puntatore (confronto con il riferimento) <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <p><strong>Consegna:</strong> scrivi due funzioni che raddoppiano un intero: una che riceve un <strong>puntatore</strong> (<code>int*</code>) e una che riceve un <strong>riferimento</strong> (<code>int&amp;</code>, come nell'esercizio 33). Confronta come si chiamano e come si scrivono.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
         <pre class="code-panel active">#include &lt;iostream&gt;
@@ -891,7 +966,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 33 — Riempi e stampa un array <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 36 — Riempi e stampa un array <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> dichiara un array di 10 interi, riempilo con valori letti da input e poi stampalo.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -915,7 +990,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 34 — Massimo e minimo <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 37 — Massimo e minimo <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> trova il valore massimo e il valore minimo presenti in un array.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -947,7 +1022,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 35 — Somma e media <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 38 — Somma e media <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> calcola la somma e la media degli elementi di un array.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -974,7 +1049,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 36 — Conta gli elementi pari <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 39 — Conta gli elementi pari <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> conta quanti elementi di un array sono pari.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1002,7 +1077,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 37 — Inverti un array <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 40 — Inverti un array <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> inverti l'ordine degli elementi di un array, senza crearne uno nuovo (scambia gli elementi "in place").</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1032,7 +1107,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 38 — Ricerca sequenziale <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 41 — Ricerca sequenziale <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> l'utente inserisce un valore: dì se è presente nell'array e, in caso affermativo, in che posizione.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1067,7 +1142,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 39 — Ordinamento a bolle (bubble sort) <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 42 — Ordinamento a bolle (bubble sort) <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> ordina un array in ordine crescente usando l'algoritmo a bolle.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1101,7 +1176,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 40 — Rimuovi i duplicati <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 43 — Rimuovi i duplicati <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> rimuovi i valori duplicati da un array, mantenendo solo la prima occorrenza di ciascun valore (usa un array ausiliario o una logica in-place).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1146,7 +1221,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 41 — Massimo/minimo, somma/media e conteggio pari come funzioni <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 44 — Massimo/minimo, somma/media e conteggio pari come funzioni <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> riscrivi gli esercizi 34, 35 e 36 come funzioni che ricevono l'array e la sua dimensione come parametri, così da poterle riusare con array di grandezza diversa.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1214,7 +1289,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 42 — Numeri letti finché l'utente non si ferma <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 45 — Numeri letti finché l'utente non si ferma <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> leggi numeri da input finché l'utente non digita <code>0</code>, memorizzandoli in un <code>vector&lt;int&gt;</code> (senza sapere in anticipo quanti saranno), poi stampali tutti insieme al loro conteggio.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1245,7 +1320,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 43 — Filtra i numeri pari in un nuovo vector <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 46 — Filtra i numeri pari in un nuovo vector <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> dato un <code>vector&lt;int&gt;</code> già popolato, crea un secondo <code>vector</code> vuoto e riempilo solo con gli elementi pari del primo.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1280,7 +1355,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 44 — Conta le vocali <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 47 — Conta le vocali <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> leggi una frase intera (con <code>getline</code>) e conta quante vocali minuscole (<code>a e i o u</code>) contiene.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1310,7 +1385,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 45 — Parola palindroma <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 48 — Parola palindroma <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> dì se una parola si legge allo stesso modo da sinistra a destra e da destra a sinistra (es. "otto", "anna").</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1337,13 +1412,13 @@ int main() {
     }
     return 0;
 }</pre>
-        <p class="note">Basta controllare metà stringa: si confronta il primo carattere con l'ultimo, il secondo con il penultimo, e così via — esattamente la stessa idea usata per invertire un array (esercizio 37).</p>
+        <p class="note">Basta controllare metà stringa: si confronta il primo carattere con l'ultimo, il secondo con il penultimo, e così via — esattamente la stessa idea usata per invertire un array (esercizio 40).</p>
       </details>
     </div>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 46 — Trova e sostituisci una parola <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 49 — Trova e sostituisci una parola <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> in un testo, trova la prima occorrenza di una parola data e sostituiscila con un'altra, usando <code>find</code> e <code>substr</code> (senza librerie apposite per la sostituzione).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1378,7 +1453,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 47 — Da stringa a numero e viceversa <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 50 — Da stringa a numero e viceversa <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> converti una stringa numerica in <code>int</code> con <code>stoi</code>, tronca un <code>double</code> con <code>static_cast&lt;int&gt;</code> e converti un codice numerico in un carattere con <code>static_cast&lt;char&gt;</code> (codifica ASCII).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1411,7 +1486,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 48 — Prima struct: Persona <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 51 — Prima struct: Persona <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> definisci una <code>struct Persona</code> con nome, cognome ed età; crea un'istanza, stampane i campi, poi modifica il campo <code>eta</code>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1442,7 +1517,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 49 — Array di struct: la media della classe <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 52 — Array di struct: la media della classe <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> definisci una <code>struct Studente</code> (nome, voto), crea un array di 3 studenti leggendone i dati da input, calcola la media dei voti e stampa i nomi degli studenti sopra la media.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1487,7 +1562,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 50 — Una struct come parametro di funzione <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 53 — Una struct come parametro di funzione <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> definisci una <code>struct Rettangolo</code> (base, altezza); scrivi una funzione <code>area</code> che la riceve <strong>per valore</strong> e una funzione <code>raddoppiaBase</code> che la riceve <strong>per riferimento</strong>, e osserva la differenza.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++</summary>
@@ -1517,7 +1592,7 @@ int main() {
     cout &lt;&lt; "Area dopo raddoppio: " &lt;&lt; area(rett) &lt;&lt; endl;
     return 0;
 }</pre>
-        <p class="note">Una <code>struct</code>, come qualunque altra variabile, viaggia <strong>per valore</strong> di default: <code>area(rett)</code> lavora su una copia di <code>rett</code>, quindi non lo modifica mai. Solo il simbolo <code>&amp;</code> nel parametro di <code>raddoppiaBase</code> permette alla funzione di toccare l'oggetto originale — esattamente la stessa regola già vista con le variabili semplici (esercizio 30) e con i puntatori (esercizio 32).</p>
+        <p class="note">Una <code>struct</code>, come qualunque altra variabile, viaggia <strong>per valore</strong> di default: <code>area(rett)</code> lavora su una copia di <code>rett</code>, quindi non lo modifica mai. Solo il simbolo <code>&amp;</code> nel parametro di <code>raddoppiaBase</code> permette alla funzione di toccare l'oggetto originale — esattamente la stessa regola già vista con le variabili semplici (esercizio 33) e con i puntatori (esercizio 35).</p>
       </details>
     </div>
   </div>
