@@ -154,7 +154,7 @@
 
   <!-- ============ 3. SELEZIONE ============ -->
   <div class="lesson-block">
-    <h2>3. Selezione (If, Case)</h2>
+    <h2>3. Selezione (If, If annidati)</h2>
   </div>
 
   <div class="lesson-block">
@@ -199,7 +199,7 @@
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 9 — Calcolatrice semplice (blocco Case) <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 9 — Calcolatrice semplice (If annidati) <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> leggi due numeri <code>a</code> e <code>b</code> e un carattere <code>op</code> (<code>+</code>, <code>-</code>, <code>*</code> o <code>/</code>), poi stampa il risultato dell'operazione richiesta.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -208,18 +208,33 @@
           <div class="fc fc-io">input(a)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(op)</div><div class="fc-arrow">↓</div>
           <div class="fc fc-io">input(b)</div><div class="fc-arrow">↓</div>
-          <div class="fc fc-decision"><span>Case op</span></div>
+          <div class="fc fc-decision"><span>op == "+" ?</span></div>
           <div class="fc-branch">
-            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-case">'+'</span><div class="fc fc-io">output(a + b)</div></div>
-            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-case">'-'</span><div class="fc fc-io">output(a - b)</div></div>
-            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-case">'*'</span><div class="fc fc-io">output(a * b)</div></div>
-            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-case">'/'</span><div class="fc fc-io">output(a / b)</div></div>
-            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-case">default</span><div class="fc fc-io">output("operazione non valida")</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-io">output(a + b)</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-decision"><span>op == "-" ?</span></div>
+              <div class="fc-branch">
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-io">output(a - b)</div></div>
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+                  <div class="fc fc-decision"><span>op == "*" ?</span></div>
+                  <div class="fc-branch">
+                    <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-io">output(a * b)</div></div>
+                    <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+                      <div class="fc fc-decision"><span>op == "/" ?</span></div>
+                      <div class="fc-branch">
+                        <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-io">output(a / b)</div></div>
+                        <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-io">output("operazione non valida")</div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="fc-arrow">↓</div>
           <div class="fc fc-oval">fine</div>
         </div>
-        <p class="note">Il blocco <strong>Case</strong> di Flowgorithm è l'equivalente grafico dello <code>switch</code> del C++: al posto di un unico rombo Vero/Falso, ha un ramo per ogni valore possibile della variabile controllata, più un ramo "default" per tutti gli altri casi.</p>
+        <p class="note">Flowgorithm non ha un blocco Case/Switch: l'unico blocco per le decisioni è <strong>If</strong>. Un confronto tra più valori si ottiene mettendo un nuovo If dentro il ramo <span class="tag-f">F</span> di quello precedente, a catena — esattamente come si scriverebbe in C++ con <code>if</code>/<code>else if</code>/<code>else if</code>/<code>else</code> prima di conoscere lo <code>switch</code> (visto nell'esercizio 14 della sezione <a href="esercizi-cpp-procedurale.html">C++ procedurale</a>, che in Flowgorithm non ha un equivalente diretto).</p>
       </details>
     </div>
   </div>
