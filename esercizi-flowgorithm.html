@@ -59,13 +59,46 @@
     </div>
   </div>
 
+  <div class="lesson-block">
+    <h2>Esercizio 2 — Scheda prodotto <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> chiedi il nome di un prodotto e il suo prezzo, poi stampa una frase che li contenga entrambi.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(nomeProdotto)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(prezzo)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output("Il prodotto " + nomeProdotto + " costa " + prezzo + " euro")</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 3 — Scheda di un libro <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> chiedi titolo, autore e anno di pubblicazione di un libro, poi stampa una frase che li riassuma tutti e tre.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(titolo)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(autore)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(anno)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output(titolo + " di " + autore + ", pubblicato nel " + anno)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
   <!-- ============ 2. OPERATORI ED ESPRESSIONI ============ -->
   <div class="lesson-block">
     <h2>2. Operatori ed espressioni (ancora senza if)</h2>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 2 — Area e perimetro del rettangolo <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 4 — Area e perimetro del rettangolo <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> dati base e altezza di un rettangolo, calcola area e perimetro.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -83,13 +116,49 @@
     </div>
   </div>
 
+  <div class="lesson-block">
+    <h2>Esercizio 5 — Celsius in Fahrenheit <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> chiedi una temperatura in gradi Celsius e convertila in Fahrenheit (formula: F = C × 9/5 + 32).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(celsius)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">fahrenheit = celsius * 9 / 5 + 32</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output(fahrenheit)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 6 — Ore, minuti e secondi <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> dato un numero di secondi totali, calcola a quante ore, minuti e secondi corrisponde.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(totale)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">ore = totale / 3600</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">resto = totale Mod 3600</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">minuti = resto / 60</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">secondi = resto Mod 60</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output(ore, minuti, secondi)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+        <p class="note">In Flowgorithm il resto della divisione intera si ottiene con la funzione <code>Mod</code> (equivalente all'operatore <code>%</code> del C++): <code>totale Mod 3600</code> restituisce ciò che resta di <code>totale</code> dopo aver tolto tutte le ore intere.</p>
+      </details>
+    </div>
+  </div>
+
   <!-- ============ 3. SELEZIONE ============ -->
   <div class="lesson-block">
     <h2>3. Selezione (If, Case)</h2>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 3 — Il maggiore tra due numeri <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 7 — Il maggiore tra due numeri <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> leggi due numeri e stampa il maggiore dei due.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -110,7 +179,7 @@
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 4 — Triangolo equilatero <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 8 — Triangolo equilatero <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> leggi la lunghezza dei tre lati di un triangolo e stabilisci se è equilatero (tutti i lati uguali).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -130,7 +199,7 @@
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 5 — Calcolatrice semplice (blocco Case) <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 9 — Calcolatrice semplice (blocco Case) <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> leggi due numeri <code>a</code> e <code>b</code> e un carattere <code>op</code> (<code>+</code>, <code>-</code>, <code>*</code> o <code>/</code>), poi stampa il risultato dell'operazione richiesta.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -161,7 +230,7 @@
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 6 — Somma e media di 10 numeri (ciclo For) <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 10 — Somma e media di 10 numeri (ciclo For) <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> leggi 10 numeri (uno alla volta, con un ciclo <code>for</code>) e calcola la loro somma e la media.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -189,7 +258,34 @@
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 7 — Numero positivo garantito (Do-While) <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 11 — Somma con valore sentinella (While) <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <p><strong>Consegna:</strong> leggi numeri e sommali finché l'utente non inserisce 0 (che non va sommato), poi stampa il totale.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">somma = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>n != 0 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-process">somma = somma + n</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-io">input(n)</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-io">output(somma)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">In Flowgorithm questa struttura corrisponde al blocco <strong>While</strong> (controllo in testa): la condizione viene verificata <em>prima</em> di eseguire il corpo, quindi se il primo numero inserito è già 0 il corpo non viene eseguito nemmeno una volta. È la differenza chiave con il <strong>Do-While</strong> dell'esercizio successivo, dove il corpo gira sempre almeno una volta.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 12 — Numero positivo garantito (Do-While) <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> chiedi ripetutamente un numero all'utente, finché non ne inserisce uno positivo (maggiore di zero).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -216,7 +312,7 @@
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 8 — Tabella pitagorica <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 13 — Tabella pitagorica <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> stampa la tabellina di moltiplicazione da 1 a 10, cioè tutti i prodotti <code>i * j</code> con <code>i</code> e <code>j</code> da 1 a 10.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -250,13 +346,100 @@
     </div>
   </div>
 
+  <div class="lesson-block">
+    <h2>Esercizio 14 — Triangolo di asterischi <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> stampa un triangolo di asterischi con 5 righe: la riga <code>i</code> deve contenere <code>i</code> asterischi.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= 5 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-process">riga = ""</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">j = 1</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-decision"><span>j &lt;= i ?</span></div>
+              <div class="fc-branch">
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+                  <div class="fc fc-process">riga = riga + "*"</div><div class="fc-arrow">↓</div>
+                  <div class="fc fc-process">j = j + 1</div>
+                  <div class="fc-arrow">↑ torna al controllo su j</div>
+                </div>
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+                  <div class="fc fc-io">output(riga)</div><div class="fc-arrow">↓</div>
+                  <div class="fc fc-process">i = i + 1</div>
+                  <div class="fc-arrow">↑ torna al controllo su i</div>
+                </div>
+              </div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">Il ciclo interno costruisce la riga carattere per carattere in una variabile Stringa (<code>riga</code>); solo quando è completa viene stampata con un unico blocco Output, esattamente come nel ciclo esterno-interno della tabella pitagorica.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 15 — Quanti primi tra 1 e N <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> leggi un numero N e conta quanti numeri primi ci sono tra 2 e N.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">conta = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">num = 2</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>num &lt;= n ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-process">primo = Vero</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = 2</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-decision"><span>i &lt;= num / 2 ?</span></div>
+              <div class="fc-branch">
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+                  <div class="fc fc-decision"><span>num Mod i == 0 ?</span></div>
+                  <div class="fc-branch">
+                    <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">primo = Falso</div></div>
+                    <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">(nessuna modifica)</div></div>
+                  </div>
+                  <div class="fc-arrow">↓</div>
+                  <div class="fc fc-process">i = i + 1</div>
+                  <div class="fc-arrow">↑ torna al controllo su i</div>
+                </div>
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+                  <div class="fc fc-decision"><span>primo ?</span></div>
+                  <div class="fc-branch">
+                    <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">conta = conta + 1</div></div>
+                    <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">(nessuna modifica)</div></div>
+                  </div>
+                  <div class="fc-arrow">↓</div>
+                  <div class="fc fc-process">num = num + 1</div>
+                  <div class="fc-arrow">↑ torna al controllo su num</div>
+                </div>
+              </div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-io">output(conta)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">Il ciclo interno (su <code>i</code>) verifica se <code>num</code> è primo, esattamente come già visto; il ciclo esterno (su <code>num</code>) lo ripete per ogni numero da 2 a N, accumulando il conteggio in <code>conta</code>.</p>
+      </details>
+    </div>
+  </div>
+
   <!-- ============ 6. FUNZIONI ============ -->
   <div class="lesson-block">
     <h2>6. Funzioni</h2>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 9 — Fattoriale come funzione <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 16 — Fattoriale come funzione <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> scrivi una funzione che calcola il fattoriale di un numero <code>n</code> e richiamala dal programma principale.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -290,6 +473,86 @@
     </div>
   </div>
 
+  <div class="lesson-block">
+    <h2>Esercizio 17 — Funzione EPrimo <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> scrivi una funzione <code>EPrimo(num)</code> che restituisce Vero/Falso, poi richiamala per contare quanti numeri primi ci sono tra 2 e N.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <p><strong>Programma principale:</strong></p>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">conta = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">num = 2</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>num &lt;= n ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-process">primo = EPrimo(num)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-decision"><span>primo ?</span></div>
+              <div class="fc-branch">
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">conta = conta + 1</div></div>
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">(nessuna modifica)</div></div>
+              </div>
+              <div class="fc-arrow">↓</div>
+              <div class="fc fc-process">num = num + 1</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-io">output(conta)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+        <p><strong>Funzione EPrimo(num):</strong></p>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio funzione</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 2</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= num / 2 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-decision"><span>num Mod i == 0 ?</span></div>
+              <div class="fc-branch">
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">Return Falso</div></div>
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">(nessuna modifica)</div></div>
+              </div>
+              <div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = i + 1</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-process">Return Vero</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">La stessa logica di controllo già vista nell'esercizio sui numeri primi tra 1 e N, ma incapsulata in una funzione che restituisce un Booleano: il programma principale non deve più sapere <em>come</em> si stabilisce se un numero è primo, gli basta chiamare <code>EPrimo(num)</code>.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 18 — Area del triangolo come funzione <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> scrivi una funzione con due parametri, <code>base</code> e <code>altezza</code>, che calcola e restituisce l'area di un triangolo.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <p><strong>Programma principale:</strong></p>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(base)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(altezza)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">area = AreaTriangolo(base, altezza)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output(area)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+        <p><strong>Funzione AreaTriangolo(base, altezza):</strong></p>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio funzione</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">Return base * altezza / 2</div>
+        </div>
+        <p class="note">A differenza di <code>Fattoriale(n)</code>, questa funzione ha <strong>due</strong> parametri: in Flowgorithm si dichiarano entrambi nell'intestazione del diagramma della funzione, esattamente come i parametri di una funzione C++ tra parentesi.</p>
+      </details>
+    </div>
+  </div>
+
   <!-- ============ 7. PUNTATORI (non rappresentabile) ============ -->
   <div class="lesson-block">
     <h2>7. Puntatori</h2>
@@ -306,7 +569,7 @@
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 10 — Massimo di un array di 5 numeri <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 19 — Massimo di un array di 5 numeri <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> leggi 5 numeri in un array e stampa il valore massimo.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -348,6 +611,67 @@
     </div>
   </div>
 
+  <div class="lesson-block">
+    <h2>Esercizio 20 — Somma e media di un array <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> leggi 5 numeri in un array e stampa la loro somma e la media.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">somma = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= 5 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-io">input(v[i])</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">somma = somma + v[i]</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = i + 1</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-process">media = somma / 5</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-io">output(somma, media)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">Basta accumulare <code>v[i]</code> in <code>somma</code> mentre si riempie l'array, invece di fare un secondo ciclo separato di scansione: lo stesso array serve sia per il riempimento sia per il calcolo.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 21 — Conta gli elementi pari di un array <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> leggi 5 numeri in un array e conta quanti sono pari.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">conta = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= 5 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-io">input(v[i])</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-decision"><span>v[i] Mod 2 == 0 ?</span></div>
+              <div class="fc-branch">
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">conta = conta + 1</div></div>
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">(nessuna modifica)</div></div>
+              </div>
+              <div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = i + 1</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-io">output(conta)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
   <!-- ============ 10. VECTOR (non rappresentabile) ============ -->
   <div class="lesson-block">
     <h2>10. Vector (array a dimensione dinamica)</h2>
@@ -364,7 +688,7 @@
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 11 — Conta le vocali <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 22 — Conta le vocali <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> leggi una parola e conta quante vocali contiene.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -397,13 +721,79 @@
     </div>
   </div>
 
+  <div class="lesson-block">
+    <h2>Esercizio 23 — Parola palindroma <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> leggi una parola e stabilisci se è palindroma (si legge uguale da sinistra a destra e da destra a sinistra).</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(parola)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">palindroma = Vero</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= Length(parola) / 2 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-decision"><span>Mid(parola,i,1) &lt;&gt; Mid(parola, Length(parola)-i+1, 1) ?</span></div>
+              <div class="fc-branch">
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">palindroma = Falso</div></div>
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">(nessuna modifica)</div></div>
+              </div>
+              <div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = i + 1</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-io">output(palindroma)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">Stessa idea del confronto "a specchio" usata per invertire un array: si confronta il carattere <code>i</code>-esimo con il suo speculare, <code>Mid(parola, Length(parola)-i+1, 1)</code>, fermandosi a metà parola.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 24 — Conta quante volte compare una lettera <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> leggi una parola e una lettera, e conta quante volte quella lettera compare nella parola.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(parola)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(lettera)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">conta = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= Length(parola) ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-decision"><span>Mid(parola,i,1) == lettera ?</span></div>
+              <div class="fc-branch">
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">conta = conta + 1</div></div>
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">(nessuna modifica)</div></div>
+              </div>
+              <div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = i + 1</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-io">output(conta)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
   <!-- ============ 12. CASTING ============ -->
   <div class="lesson-block">
     <h2>12. Conversioni di tipo (casting)</h2>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 12 — Da testo a numero e viceversa <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 25 — Da testo a numero e viceversa <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> leggi un numero come testo, calcolane il doppio e stampa un messaggio che unisca testo originale e risultato.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -417,6 +807,41 @@
           <div class="fc fc-oval">fine</div>
         </div>
         <p class="note">Per fare calcoli su un valore letto come testo bisogna prima convertirlo in numero (qui <code>ToNumber</code>); per poi riunirlo a del testo in output bisogna riconvertirlo in stringa (<code>ToString</code>). I nomi esatti di queste funzioni cambiano leggermente a seconda della versione di Flowgorithm, ma il concetto — lo stesso <em>casting</em> visto in C++ tra <code>string</code> e <code>int</code>/<code>double</code> — è identico.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 26 — Media di due voti letti come testo <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> leggi due voti come testo, convertili in numero, calcola la media e stampa un messaggio che la contenga.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(voto1Testo)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(voto2Testo)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">media = (ToNumber(voto1Testo) + ToNumber(voto2Testo)) / 2</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output("La media e' " + ToString(media))</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+        <p class="note">Entrambi i voti vanno convertiti in numero <strong>prima</strong> di poterli sommare e dividere; il risultato va poi riconvertito in testo per essere concatenato al messaggio finale, esattamente come nell'esempio del doppio.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 27 — Prezzo totale con testo <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> leggi come testo il prezzo unitario e la quantità di un prodotto, calcola il totale e stampalo in un messaggio.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(prezzoTesto)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(quantitaTesto)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">totale = ToNumber(prezzoTesto) * ToNumber(quantitaTesto)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output("Totale da pagare: " + ToString(totale))</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
       </details>
     </div>
   </div>
