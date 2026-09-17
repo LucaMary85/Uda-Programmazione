@@ -542,7 +542,55 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 12 — Progetto Camion: capire virtual ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 12 — Libreria multimediale: Film e Podcast ⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> crea una classe base <code>Media</code> (titolo, durataMinuti) con un metodo <code>stampaInfo()</code>, poi due classi figlie <code>Film</code> (con un regista) e <code>Podcast</code> (con un numero di episodio) che richiamano il costruttore della base nella lista di inizializzazione, senza duplicare nulla.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+class Media {
+    protected:
+        string titolo;
+        int durataMinuti;
+    public:
+        Media(string t, int d) : titolo(t), durataMinuti(d) {}
+
+        void stampaInfo() const {
+            cout &lt;&lt; titolo &lt;&lt; " (" &lt;&lt; durataMinuti &lt;&lt; " min)" &lt;&lt; endl;
+        }
+};
+
+class Film : public Media {
+    private:
+        string regista;
+    public:
+        Film(string t, int d, string r) : Media(t, d), regista(r) {}
+};
+
+class Podcast : public Media {
+    private:
+        int numeroEpisodio;
+    public:
+        Podcast(string t, int d, int ep) : Media(t, d), numeroEpisodio(ep) {}
+};
+
+int main() {
+    Film f("Inception", 148, "Christopher Nolan");
+    Podcast p("Storie di Codice", 35, 12);
+
+    f.stampaInfo();
+    p.stampaInfo();
+    return 0;
+}</pre>
+        <p class="note">Stesso schema dell'esercizio 11: né <code>Film</code> né <code>Podcast</code> ridefiniscono <code>stampaInfo()</code>, lo ereditano così com'è da <code>Media</code>. Ognuna aggiunge solo il proprio attributo specifico e lo inizializza dopo aver richiamato il costruttore della base.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 13 — Progetto Camion: capire virtual ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> costruisci da zero una mini-famiglia <code>Veicolo</code>/<code>Automobile</code>/<code>Camion</code> in cui ogni figlia ridefinisce <code>calcolaBollo()</code> con una propria formula. Prova a chiamare il metodo tramite un riferimento <code>Veicolo&amp; rif = automobile;</code>: senza <code>virtual</code> su <code>calcolaBollo()</code> in <code>Veicolo</code>, <code>rif.calcolaBollo()</code> restituisce il valore sbagliato (quello di <code>Veicolo</code>), anche se <code>rif</code> e l'oggetto originale sono la stessa cosa in memoria. Aggiungendo <code>virtual</code> il problema si risolve.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -609,7 +657,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 13 — Zoo polimorfico ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 14 — Zoo polimorfico ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> crea una classe astratta <code>Animale</code> con <code>virtual string verso() const = 0;</code> e un distruttore virtuale, poi due figlie concrete (es. <code>Cane</code>, <code>Gatto</code>). Riempi un <code>vector&lt;Animale*&gt;</code> con <code>new</code> di entrambi i tipi mescolati, stampa il verso di ognuno senza alcun <code>if</code> sul tipo, poi distruggi ogni oggetto con <code>delete</code>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -659,13 +707,150 @@ int main() {
     </div>
   </div>
 
+  <div class="lesson-block">
+    <h2>Esercizio 15 — Busta paga polimorfica ⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> riprendi la famiglia <code>Dipendente</code>/<code>Manager</code>/<code>Operaio</code> dell'esercizio 11, rendi <code>stipendioNetto()</code> virtuale e falla ridefinire a ciascuna figlia con la propria formula (bonus per il manager, straordinari per l'operaio). Metti tre dipendenti in un <code>vector&lt;Dipendente*&gt;</code> e stampa lo stipendio di ognuno senza alcun <code>if</code> sul tipo.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class Dipendente {
+    protected:
+        string nome;
+        double stipendioBase;
+    public:
+        Dipendente(string n, double s) : nome(n), stipendioBase(s) {}
+
+        virtual double stipendioNetto() const {
+            return stipendioBase;
+        }
+
+        string getNome() const {
+            return nome;
+        }
+
+        virtual ~Dipendente() {}
+};
+
+class Manager : public Dipendente {
+    private:
+        double bonus;
+    public:
+        Manager(string n, double s, double b) : Dipendente(n, s), bonus(b) {}
+
+        double stipendioNetto() const override {
+            return stipendioBase + bonus;
+        }
+};
+
+class Operaio : public Dipendente {
+    private:
+        int oreStraordinario;
+    public:
+        Operaio(string n, double s, int ore) : Dipendente(n, s), oreStraordinario(ore) {}
+
+        double stipendioNetto() const override {
+            return stipendioBase + oreStraordinario * 12.0;
+        }
+};
+
+int main() {
+    vector&lt;Dipendente*&gt; azienda;
+    azienda.push_back(new Manager("Giulia", 3000.0, 500.0));
+    azienda.push_back(new Operaio("Marco", 1800.0, 10));
+    azienda.push_back(new Dipendente("Luca", 1500.0));
+
+    for (size_t i = 0; i &lt; azienda.size(); i++) {
+        cout &lt;&lt; azienda[i]-&gt;getNome() &lt;&lt; ": " &lt;&lt; azienda[i]-&gt;stipendioNetto() &lt;&lt; " euro" &lt;&lt; endl;
+    }
+
+    for (size_t i = 0; i &lt; azienda.size(); i++) {
+        delete azienda[i];
+    }
+
+    return 0;
+}</pre>
+        <p class="note">Stesso schema dello Zoo polimorfico: un <code>vector</code> di puntatori alla classe base, un ciclo che chiama lo stesso metodo su tutti senza sapere il tipo reale, un secondo ciclo di <code>delete</code>. Qui però <code>Dipendente</code> non è astratta (può essere istanziata anche da sola, come "Luca"): la differenza con <code>Animale</code> è che non è obbligatorio ridefinire <code>stipendioNetto()</code>, perché non è virtuale <strong>puro</strong>.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 16 — Calcolatrice polimorfica ⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> crea una classe astratta <code>Operazione</code> con <code>virtual double esegui(double a, double b) const = 0;</code> e <code>virtual string simbolo() const = 0;</code>, poi quattro figlie concrete (<code>Somma</code>, <code>Sottrazione</code>, <code>Moltiplicazione</code>, <code>Divisione</code>). Riempi un <code>vector&lt;Operazione*&gt;</code> e applica ciascuna operazione agli stessi due numeri, stampando <code>a simbolo b = risultato</code>.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class Operazione {
+    public:
+        virtual double esegui(double a, double b) const = 0;
+        virtual string simbolo() const = 0;
+        virtual ~Operazione() {}
+};
+
+class Somma : public Operazione {
+    public:
+        double esegui(double a, double b) const override { return a + b; }
+        string simbolo() const override { return "+"; }
+};
+
+class Sottrazione : public Operazione {
+    public:
+        double esegui(double a, double b) const override { return a - b; }
+        string simbolo() const override { return "-"; }
+};
+
+class Moltiplicazione : public Operazione {
+    public:
+        double esegui(double a, double b) const override { return a * b; }
+        string simbolo() const override { return "*"; }
+};
+
+class Divisione : public Operazione {
+    public:
+        double esegui(double a, double b) const override { return a / b; }
+        string simbolo() const override { return "/"; }
+};
+
+int main() {
+    double a = 10, b = 3;
+
+    vector&lt;Operazione*&gt; operazioni;
+    operazioni.push_back(new Somma());
+    operazioni.push_back(new Sottrazione());
+    operazioni.push_back(new Moltiplicazione());
+    operazioni.push_back(new Divisione());
+
+    for (size_t i = 0; i &lt; operazioni.size(); i++) {
+        cout &lt;&lt; a &lt;&lt; " " &lt;&lt; operazioni[i]-&gt;simbolo() &lt;&lt; " " &lt;&lt; b
+             &lt;&lt; " = " &lt;&lt; operazioni[i]-&gt;esegui(a, b) &lt;&lt; endl;
+    }
+
+    for (size_t i = 0; i &lt; operazioni.size(); i++) {
+        delete operazioni[i];
+    }
+
+    return 0;
+}</pre>
+        <p class="note">A differenza dello Zoo e della Busta paga, qui il metodo polimorfico (<code>esegui</code>) prende <strong>parametri</strong>: il meccanismo non cambia, ogni oggetto nel <code>vector</code> risponde alla stessa chiamata <code>esegui(a, b)</code> con la propria formula, decisa a runtime in base al tipo reale.</p>
+      </details>
+    </div>
+  </div>
+
   <!-- ============ 5. ASTRAZIONE ============ -->
   <div class="lesson-block">
     <h2>5. Astrazione (con puntatori grezzi)</h2>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 14 — Forme geometriche astratte ⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 17 — Forme geometriche astratte ⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> crea una classe astratta <code>Forma</code> con due metodi virtuali puri, <code>area()</code> e <code>perimetro()</code>, e un distruttore virtuale. Implementale in <code>Rettangolo</code> e <code>Cerchio</code>, poi usale tramite un <code>vector&lt;Forma*&gt;</code>, distruggendo ogni oggetto con <code>delete</code> a fine programma.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -733,7 +918,64 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 15 — Virtuale puro vs virtuale normale ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 18 — Elettrodomestici: un metodo puro e uno con comportamento di default ⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <p><strong>Consegna:</strong> crea una classe astratta <code>Elettrodomestico</code> (attributo <code>modello</code>) con un metodo virtuale <strong>puro</strong> <code>consumoWatt()</code> e un metodo virtuale <strong>non</strong> puro <code>stampaScheda()</code>, che stampa modello e consumo richiamando <code>consumoWatt()</code> al proprio interno. Implementa <code>Lavatrice</code> e <code>Frigorifero</code> (ognuna ridefinisce solo <code>consumoWatt()</code>), poi usale tramite un <code>vector&lt;Elettrodomestico*&gt;</code> chiamando solo <code>stampaScheda()</code>.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
+        <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class Elettrodomestico {
+    protected:
+        string modello;
+    public:
+        Elettrodomestico(string m) : modello(m) {}
+
+        virtual double consumoWatt() const = 0; // puro: ogni elettrodomestico ha il suo consumo
+
+        virtual void stampaScheda() const { // non puro: comportamento di default condiviso da tutti
+            cout &lt;&lt; modello &lt;&lt; " - consumo: " &lt;&lt; consumoWatt() &lt;&lt; " W" &lt;&lt; endl;
+        }
+
+        virtual ~Elettrodomestico() {}
+};
+
+class Lavatrice : public Elettrodomestico {
+    public:
+        Lavatrice(string m) : Elettrodomestico(m) {}
+        double consumoWatt() const override { return 2200.0; }
+};
+
+class Frigorifero : public Elettrodomestico {
+    public:
+        Frigorifero(string m) : Elettrodomestico(m) {}
+        double consumoWatt() const override { return 150.0; }
+};
+
+int main() {
+    vector&lt;Elettrodomestico*&gt; elettrodomestici;
+    elettrodomestici.push_back(new Lavatrice("LG F4WV5"));
+    elettrodomestici.push_back(new Frigorifero("Samsung RB34"));
+
+    for (size_t i = 0; i &lt; elettrodomestici.size(); i++) {
+        elettrodomestici[i]-&gt;stampaScheda(); // nessuna figlia ridefinisce stampaScheda()
+    }
+
+    for (size_t i = 0; i &lt; elettrodomestici.size(); i++) {
+        delete elettrodomestici[i];
+    }
+
+    return 0;
+}</pre>
+        <p class="note">Né <code>Lavatrice</code> né <code>Frigorifero</code> ridefiniscono <code>stampaScheda()</code>: usano quello ereditato da <code>Elettrodomestico</code>, che a sua volta chiama <code>consumoWatt()</code> — e quella chiamata resta polimorfica anche se avviene <strong>dentro</strong> la classe base, restituendo sempre il valore della figlia reale. Questo schema (un metodo concreto che si appoggia a uno astratto) è esattamente quello che userà <code>stampaStato()</code> nel progetto finale.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 19 — Virtuale puro vs virtuale normale ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> in una famiglia <code>Veicolo</code>/<code>Automobile</code>/<code>Motocicletta</code> con <code>calcolaBollo()</code> virtuale <strong>puro</strong> in <code>Veicolo</code>, verifica cosa succede se una figlia non lo ridefinisce (resta astratta anche lei, errore di compilazione sulla figlia) e cosa succede se dimentichi solo la parola chiave <code>override</code> pur mantenendo la firma corretta (compila comunque, ma <code>override</code> resta la scelta giusta perché fa scoprire al compilatore eventuali errori di firma).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -800,7 +1042,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 16 — La classe astratta Personaggio ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 20 — La classe astratta Personaggio ⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> progetta la classe astratta <code>Personaggio</code>, il "contratto" comune a ogni ruolo del gioco: attributi <code>nome</code>, <code>puntiVita</code>, <code>puntiVitaMax</code>; metodi concreti <code>eVivo()</code> e <code>subisciDanno(int danno)</code> (che non deve mai far scendere <code>puntiVita</code> sotto zero); un metodo virtuale puro <code>attacca()</code>; un metodo virtuale <strong>non</strong> puro <code>stampaStato()</code> con un'implementazione di default; un distruttore virtuale.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -847,7 +1089,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 17 — I primi due ruoli: Guerriero e Mago ⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 21 — I primi due ruoli: Guerriero e Mago ⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> crea due ruoli concreti, <code>Guerriero</code> (tanti punti vita, danno fisico affidabile) e <code>Mago</code> (pochi punti vita, danno più alto), entrambi derivati da <code>Personaggio</code>. Nel <code>main</code>, crea un'istanza di ciascuno, stampa il loro stato e prova a farli attaccare.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -921,7 +1163,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 18 — Il ciclo di combattimento a turni ⭐⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <h2>Esercizio 22 — Il ciclo di combattimento a turni ⭐⭐⭐⭐ <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> scrivi <code>void combatti(Personaggio&amp; p1, Personaggio&amp; p2)</code>: a turni alterni un personaggio attacca l'altro finché uno dei due non è più vivo, poi dichiara il vincitore. La funzione non deve mai sapere di che ruolo concreto siano <code>p1</code> e <code>p2</code> — deve funzionare con <strong>qualsiasi</strong> <code>Personaggio</code>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -1011,7 +1253,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 19 — Arciere e casualità ⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 23 — Arciere e casualità ⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> aggiungi un terzo ruolo, <code>Arciere</code>, il cui <code>attacca()</code> genera un danno casuale (con <code>&lt;cstdlib&gt;</code>/<code>&lt;ctime&gt;</code>), con una probabilità di colpo critico. Verifica che <code>combatti()</code> (scritta all'esercizio precedente) funzioni con l'Arciere <strong>senza modificarla</strong>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -1120,7 +1362,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 20 — Duello interattivo ⭐⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 24 — Duello interattivo ⭐⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> trasforma il duello automatico in una sfida interattiva: ogni giocatore sceglie il proprio ruolo da un menu testuale, i due <code>Personaggio</code> vengono creati con <code>new</code> e memorizzati in due puntatori <code>Personaggio*</code>, e a ogni turno il giocatore di turno decide se attaccare. A fine partita, distruggi entrambi i personaggi con <code>delete</code>.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
@@ -1256,7 +1498,7 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 21 (stretch, facoltativo) — Torneo a squadre ⭐⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
+    <h2>Esercizio 25 (stretch, facoltativo) — Torneo a squadre ⭐⭐⭐⭐ <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> crea una classe <code>Squadra</code> che possiede (composizione) un <code>vector&lt;Personaggio*&gt;</code> creato con <code>new</code>, e che nel proprio distruttore <code>~Squadra()</code> distrugge tutti i suoi membri con <code>delete</code>. Realizza un piccolo torneo a squadre in cui, a turno, ogni squadra attacca con il primo membro ancora vivo.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione in C++ (OOP)</summary>
