@@ -25,11 +25,71 @@
   <div class="lesson-block">
     <h2>Cos'è Flowgorithm?</h2>
     <p><strong>Flowgorithm</strong> è un programma gratuito che permette di disegnare un diagramma di flusso con il mouse e di <em>eseguirlo</em> davvero, per controllare se l'algoritmo funziona. È un ottimo modo per verificare le soluzioni ai flow chart visti nella sezione <a href="Introduzione_Programmazione.html">Flow Chart</a> del percorso principale, prima di tradurli in un linguaggio di programmazione.</p>
-    <p>Per ogni esercizio: provate a risolverlo da soli su carta, poi costruite il diagramma in Flowgorithm per verificarlo. Qui sotto trovate lo schema della soluzione, da riprodurre con i blocchi del programma (inizio/fine, input/output, elaborazione, decisione).</p>
+    <p>Per ogni esercizio: provate a risolverlo da soli su carta, poi costruite il diagramma in Flowgorithm per verificarlo. Qui sotto trovate lo schema della soluzione, da riprodurre con i blocchi del programma (inizio/fine, input/output, elaborazione, decisione, ciclo, funzione).</p>
+    <p>Il percorso segue lo <strong>stesso ordine e gli stessi argomenti</strong> della sezione <a href="esercizi-cpp-procedurale.html">C++ procedurale</a>: sintassi di base, operatori, selezione, cicli, cicli annidati, funzioni, array e stringhe. Flowgorithm, però, è uno strumento pensato per la <em>programmazione procedurale</em> più semplice: non ha blocchi per puntatori, vector, struct né, tanto meno, per le classi. Dove il confronto non è possibile lo segnaliamo chiaramente, con un rimando all'esercizio corrispondente scritto in C++.</p>
+  </div>
+
+  <div class="info-box">
+    <h3>Come leggere le etichette degli esercizi</h3>
+    <ul>
+      <li><span class="badge-proietta">📽️ Da proiettare</span> — introduce un blocco di Flowgorithm mai usato prima (o un modo nuovo di comporlo): conviene costruirlo insieme alla classe, prima di lasciare spazio all'esercitazione autonoma.</li>
+      <li><span class="badge-solo">✏️ Autonomo</span> — riusa uno schema già visto in un esercizio "da proiettare" della stessa sezione, cambiando solo il problema.</li>
+    </ul>
+  </div>
+
+  <!-- ============ 1. INPUT/OUTPUT E SINTASSI BASE ============ -->
+  <div class="lesson-block">
+    <h2>1. Input/output e sintassi base (nessuna logica)</h2>
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 1 — Il maggiore tra due numeri</h2>
+    <h2>Esercizio 1 — Nome ed età <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <p><strong>Consegna:</strong> chiedi nome ed età all'utente, poi stampa una frase che contenga entrambi.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(nome)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(eta)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output("Ciao " + nome + ", hai " + eta + " anni")</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+        <p class="note">In Flowgorithm ogni variabile va dichiarata con un tipo (Stringa, Intero, Reale...) prima di usarla: <code>nome</code> è una Stringa, <code>eta</code> un Intero. Il blocco Output può concatenare testo e numeri con <code>+</code>.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 2. OPERATORI ED ESPRESSIONI ============ -->
+  <div class="lesson-block">
+    <h2>2. Operatori ed espressioni (ancora senza if)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 2 — Area e perimetro del rettangolo <span class="badge-solo">✏️ Autonomo</span></h2>
+    <p><strong>Consegna:</strong> dati base e altezza di un rettangolo, calcola area e perimetro.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(base)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(altezza)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">area = base * altezza</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">perimetro = 2 * (base + altezza)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output(area, perimetro)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+        <p class="note">Il blocco <strong>Assegnazione</strong> (rettangolo verde) è quello che in C++ corrisponde a una riga come <code>area = base * altezza;</code>: calcola un'espressione e la salva in una variabile, senza input né output.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 3. SELEZIONE ============ -->
+  <div class="lesson-block">
+    <h2>3. Selezione (If, Case)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 3 — Il maggiore tra due numeri <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> leggi due numeri e stampa il maggiore dei due.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -50,7 +110,7 @@
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 2 — Triangolo equilatero</h2>
+    <h2>Esercizio 4 — Triangolo equilatero <span class="badge-solo">✏️ Autonomo</span></h2>
     <p><strong>Consegna:</strong> leggi la lunghezza dei tre lati di un triangolo e stabilisci se è equilatero (tutti i lati uguali).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -70,7 +130,38 @@
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 3 — Somma e media di 10 numeri (ciclo)</h2>
+    <h2>Esercizio 5 — Calcolatrice semplice (blocco Case) <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <p><strong>Consegna:</strong> leggi due numeri <code>a</code> e <code>b</code> e un carattere <code>op</code> (<code>+</code>, <code>-</code>, <code>*</code> o <code>/</code>), poi stampa il risultato dell'operazione richiesta.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(a)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(op)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(b)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>Case op</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-case">'+'</span><div class="fc fc-io">output(a + b)</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-case">'-'</span><div class="fc fc-io">output(a - b)</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-case">'*'</span><div class="fc fc-io">output(a * b)</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-case">'/'</span><div class="fc fc-io">output(a / b)</div></div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-case">default</span><div class="fc fc-io">output("operazione non valida")</div></div>
+          </div>
+          <div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+        <p class="note">Il blocco <strong>Case</strong> di Flowgorithm è l'equivalente grafico dello <code>switch</code> del C++: al posto di un unico rombo Vero/Falso, ha un ramo per ogni valore possibile della variabile controllata, più un ramo "default" per tutti gli altri casi.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 4. CICLI ============ -->
+  <div class="lesson-block">
+    <h2>4. Cicli (For, While, Do-While)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 6 — Somma e media di 10 numeri (ciclo For) <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> leggi 10 numeri (uno alla volta, con un ciclo <code>for</code>) e calcola la loro somma e la media.</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -98,7 +189,7 @@
   </div>
 
   <div class="lesson-block">
-    <h2>Esercizio 4 — Numero positivo garantito (do-while)</h2>
+    <h2>Esercizio 7 — Numero positivo garantito (Do-While) <span class="badge-proietta">📽️ Da proiettare</span></h2>
     <p><strong>Consegna:</strong> chiedi ripetutamente un numero all'utente, finché non ne inserisce uno positivo (maggiore di zero).</p>
     <div class="exercise-card">
       <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
@@ -116,6 +207,238 @@
         </div>
         <p class="note">In Flowgorithm questa struttura corrisponde al blocco <strong>Do-While</strong> (controllo in coda): il corpo viene eseguito sempre almeno una volta.</p>
       </details>
+    </div>
+  </div>
+
+  <!-- ============ 5. CICLI ANNIDATI ============ -->
+  <div class="lesson-block">
+    <h2>5. Cicli annidati (ponte verso le matrici)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 8 — Tabella pitagorica <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <p><strong>Consegna:</strong> stampa la tabellina di moltiplicazione da 1 a 10, cioè tutti i prodotti <code>i * j</code> con <code>i</code> e <code>j</code> da 1 a 10.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= 10 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-process">j = 1</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-decision"><span>j &lt;= 10 ?</span></div>
+              <div class="fc-branch">
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+                  <div class="fc fc-io">output(i * j)</div><div class="fc-arrow">↓</div>
+                  <div class="fc fc-process">j = j + 1</div>
+                  <div class="fc-arrow">↑ torna al controllo su j</div>
+                </div>
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+                  <div class="fc fc-process">i = i + 1</div>
+                  <div class="fc-arrow">↑ torna al controllo su i</div>
+                </div>
+              </div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">Un ciclo <strong>dentro</strong> un altro ciclo: per ogni valore di <code>i</code> (ciclo esterno), il ciclo su <code>j</code> gira per intero da 1 a 10. È lo stesso schema del doppio <code>for</code> annidato in C++.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 6. FUNZIONI ============ -->
+  <div class="lesson-block">
+    <h2>6. Funzioni</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 9 — Fattoriale come funzione <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <p><strong>Consegna:</strong> scrivi una funzione che calcola il fattoriale di un numero <code>n</code> e richiamala dal programma principale.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <p><strong>Programma principale:</strong></p>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(n)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">risultato = Fattoriale(n)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output(risultato)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+        <p><strong>Funzione Fattoriale(n):</strong></p>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio funzione</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">f = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= n ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-process">f = f * i</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = i + 1</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-process">Return f</div>
+            </div>
+          </div>
+        </div>
+        <p class="note">In Flowgorithm ogni funzione è un <strong>diagramma separato</strong>, con la propria icona nell'albero del progetto. Si richiama da un altro diagramma con un blocco <strong>Call Function</strong> che restituisce un valore, esattamente come <code>risultato = Fattoriale(n)</code> qui sopra.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 7. PUNTATORI (non rappresentabile) ============ -->
+  <div class="lesson-block">
+    <h2>7. Puntatori</h2>
+    <div class="info-box">
+      <h3>⚠️ Argomento non rappresentabile in Flowgorithm</h3>
+      <p>Flowgorithm non ha un blocco per gestire puntatori o indirizzi di memoria: le variabili in un diagramma di flusso sono sempre nomi simbolici, mai indirizzi. Il concetto di puntatore (e la sua sintassi con <code>*</code> e <code>&amp;</code>) è specifico di linguaggi come C++ e non si può disegnare in un flow chart.</p>
+      <p>Per esercitarti su questo argomento, vai direttamente agli esercizi 31 e 32 della sezione <a href="esercizi-cpp-procedurale.html">C++ procedurale</a>.</p>
+    </div>
+  </div>
+
+  <!-- ============ 8-9. ARRAY ============ -->
+  <div class="lesson-block">
+    <h2>8-9. Array monodimensionali (anche con funzioni)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 10 — Massimo di un array di 5 numeri <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <p><strong>Consegna:</strong> leggi 5 numeri in un array e stampa il valore massimo.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= 5 ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-io">input(v[i])</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = i + 1</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-process">massimo = v[1]</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = 2</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-decision"><span>i &lt;= 5 ?</span></div>
+              <div class="fc-branch">
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+                  <div class="fc fc-decision"><span>v[i] &gt; massimo ?</span></div>
+                  <div class="fc-branch">
+                    <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">massimo = v[i]</div></div>
+                    <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">(nessuna modifica)</div></div>
+                  </div>
+                  <div class="fc-arrow">↓</div>
+                  <div class="fc fc-process">i = i + 1</div>
+                  <div class="fc-arrow">↑ torna al controllo</div>
+                </div>
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+                  <div class="fc fc-io">output(massimo)</div><div class="fc-arrow">↓</div>
+                  <div class="fc fc-oval">fine</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="note">Il minimo si ottiene allo stesso modo, invertendo il confronto: <code>v[i] &lt; minimo ?</code>. In Flowgorithm un array va dichiarato con una dimensione fissa (qui 5) prima di poterlo riempire con <code>v[i]</code>.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 10. VECTOR (non rappresentabile) ============ -->
+  <div class="lesson-block">
+    <h2>10. Vector (array a dimensione dinamica)</h2>
+    <div class="info-box">
+      <h3>⚠️ Argomento non rappresentabile in Flowgorithm</h3>
+      <p>Anche i vector — array che possono crescere o restringersi durante l'esecuzione — non hanno un blocco dedicato in Flowgorithm: gli array del programma hanno sempre una dimensione decisa all'inizio. La logica di riempimento e scansione è la stessa vista nella sezione Array qui sopra; manca solo la parte di ridimensionamento dinamico.</p>
+      <p>Per esercitarti su questo argomento, vai agli esercizi 42 e 43 della sezione <a href="esercizi-cpp-procedurale.html">C++ procedurale</a>.</p>
+    </div>
+  </div>
+
+  <!-- ============ 11. STRINGHE ============ -->
+  <div class="lesson-block">
+    <h2>11. Stringhe (metodi utili)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 11 — Conta le vocali <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <p><strong>Consegna:</strong> leggi una parola e conta quante vocali contiene.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(testo)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">contatore = 0</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">i = 1</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-decision"><span>i &lt;= Length(testo) ?</span></div>
+          <div class="fc-branch">
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span>
+              <div class="fc fc-process">c = Mid(testo, i, 1)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-decision"><span>c è una vocale ?</span></div>
+              <div class="fc-branch">
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-v">V</span><div class="fc fc-process">contatore = contatore + 1</div></div>
+                <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span><div class="fc fc-process">(nessuna modifica)</div></div>
+              </div>
+              <div class="fc-arrow">↓</div>
+              <div class="fc fc-process">i = i + 1</div>
+              <div class="fc-arrow">↑ torna al controllo</div>
+            </div>
+            <div class="fc-branch-item"><div class="fc-arrow">↓</div><span class="tag-f">F</span>
+              <div class="fc fc-io">output(contatore)</div><div class="fc-arrow">↓</div>
+              <div class="fc fc-oval">fine</div>
+            </div>
+          </div>
+        </div>
+        <p class="note"><code>Length(testo)</code> restituisce il numero di caratteri della stringa; <code>Mid(testo, i, 1)</code> estrae il singolo carattere in posizione <code>i</code>. La condizione "c è una vocale" si traduce con più OR: <code>c=="a" || c=="e" || c=="i" || c=="o" || c=="u"</code>.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 12. CASTING ============ -->
+  <div class="lesson-block">
+    <h2>12. Conversioni di tipo (casting)</h2>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Esercizio 12 — Da testo a numero e viceversa <span class="badge-proietta">📽️ Da proiettare</span></h2>
+    <p><strong>Consegna:</strong> leggi un numero come testo, calcolane il doppio e stampa un messaggio che unisca testo originale e risultato.</p>
+    <div class="exercise-card">
+      <details class="reveal"><summary>Mostra soluzione (schema Flowgorithm)</summary>
+        <div class="fc-diagram small">
+          <div class="fc fc-oval">inizio</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">input(testo)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">n = ToNumber(testo)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">doppio = n * 2</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-process">messaggio = "Il doppio di " + testo + " è " + ToString(doppio)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-io">output(messaggio)</div><div class="fc-arrow">↓</div>
+          <div class="fc fc-oval">fine</div>
+        </div>
+        <p class="note">Per fare calcoli su un valore letto come testo bisogna prima convertirlo in numero (qui <code>ToNumber</code>); per poi riunirlo a del testo in output bisogna riconvertirlo in stringa (<code>ToString</code>). I nomi esatti di queste funzioni cambiano leggermente a seconda della versione di Flowgorithm, ma il concetto — lo stesso <em>casting</em> visto in C++ tra <code>string</code> e <code>int</code>/<code>double</code> — è identico.</p>
+      </details>
+    </div>
+  </div>
+
+  <!-- ============ 13. STRUCT (non rappresentabile) ============ -->
+  <div class="lesson-block">
+    <h2>13. Le strutture (struct)</h2>
+    <div class="info-box">
+      <h3>⚠️ Argomento non rappresentabile in Flowgorithm</h3>
+      <p>Una struct raggruppa più dati diversi (ad esempio nome ed età di una persona) sotto un unico nome: è già un piccolo passo verso gli oggetti. Flowgorithm è pensato per algoritmi con dati semplici (numeri, testo, array) e non ha un blocco per definire un nuovo tipo di dato composto.</p>
+      <p>Per vedere come si passa da singole variabili a una struct, e poi da una struct a una classe, prosegui con gli esercizi 48-50 della sezione <a href="esercizi-cpp-procedurale.html">C++ procedurale</a> e con l'esercizio 4 della sezione <a href="esercizi-cpp-oop.html">C++ OOP</a>.</p>
+    </div>
+  </div>
+
+  <!-- ============ 14. OOP (non rappresentabile) ============ -->
+  <div class="lesson-block">
+    <h2>14. Programmazione a oggetti (classi, ereditarietà, polimorfismo, astrazione)</h2>
+    <div class="info-box">
+      <h3>⚠️ Argomento non rappresentabile in Flowgorithm</h3>
+      <p>Un diagramma di flusso descrive i passi di <strong>un</strong> algoritmo, dall'inizio alla fine: è lo strumento giusto per rappresentare il comportamento di una funzione, ma non può rappresentare una <strong>classe</strong> — cioè un insieme di dati e funzioni raggruppati in un tipo che può generare più oggetti diversi.</p>
+      <p>Incapsulamento, ereditarietà, polimorfismo e astrazione riguardano il modo in cui più classi collegate tra loro organizzano il codice, non i passi di un singolo algoritmo: per questo non hanno un equivalente disegnabile in Flowgorithm.</p>
+      <p>L'intero percorso di programmazione a oggetti, con gli stessi tipi di esempio (Contatore, Libro, ContoBancario, Zoo polimorfico, il progetto finale "Duello dei ruoli"...) lo trovi nella sezione <a href="esercizi-cpp-oop.html">C++ OOP</a>.</p>
     </div>
   </div>
 </section>
