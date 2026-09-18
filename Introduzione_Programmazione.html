@@ -871,6 +871,10 @@ cout &lt;&lt; (double)somma / N;</pre>
 
   <div class="lesson-block">
     <h2>Cos'è la programmazione procedurale?</h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-procedurale-catena-montaggio.jpg" alt="Catena di montaggio industriale con operai a stazioni di lavoro in sequenza" title="Fonte: Yinan Chen, goodfreephotos.com - Wikimedia Commons (pubblico dominio)" loading="lazy">
+      <figcaption>Come una catena di montaggio: i dati passano di stazione in stazione (le funzioni), e ciascuna esegue un passo preciso sul prodotto (i dati).</figcaption>
+    </figure>
     <p class="definition">Si definisce <strong>programmazione procedurale</strong> lo stile di programmazione in cui il codice è organizzato come una <strong>sequenza di istruzioni</strong> eseguite in ordine, raggruppate in <strong>procedure</strong> (in C++ chiamate <em>funzioni</em>) che possono essere richiamate più volte.</p>
     <p>È l'applicazione diretta di tutto ciò che abbiamo visto finora: un algoritmo, scritto in pseudocodice o rappresentato con un flow chart, viene <strong>codificato</strong> in C++ traducendo blocco per blocco: elaborazioni, input/output, decisioni e cicli. Ogni blocco del flow chart ha un corrispondente diretto in C++: il rettangolo di elaborazione diventa un'istruzione di assegnamento, il rombo di decisione diventa un <code>if</code>, il ciclo diventa un <code>while</code>/<code>for</code>, e così via — lo vedremo passo passo in questa sezione.</p>
     <p>Nella programmazione procedurale i <strong>dati</strong> (variabili, array, strutture) e le <strong>operazioni</strong> che li elaborano (le funzioni) restano concettualmente separati: sono le funzioni a "prendere in mano" i dati e trasformarli, passo dopo passo. Questo la distingue dalla <strong>programmazione a oggetti (OOP)</strong>, dove dati e comportamenti vengono invece racchiusi insieme dentro le classi — vedi la sezione <button class="link-btn" data-goto="cpp-oop">C++ OOP</button>.</p>
@@ -879,6 +883,10 @@ cout &lt;&lt; (double)somma / N;</pre>
 
   <div class="lesson-block">
     <h2>Anatomia di un programma C++</h2>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-main-porta.svg" alt="Disegno stilizzato di una casa con un'unica porta d'ingresso etichettata main()" loading="lazy">
+      <figcaption>int main() è la porta d'ingresso del programma: l'esecuzione entra sempre da lì, per quante altre "stanze" (funzioni) la casa contenga.</figcaption>
+    </figure>
     <p>Ogni programma C++ parte da una struttura fissa. Vediamola su un primo esempio pratico:</p>
     <pre class="code-panel active">#include &lt;iostream&gt;
 
@@ -913,6 +921,10 @@ int main()
 
   <div class="lesson-block">
     <h2>Variabili e tipi di dati</h2>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-tipi-contenitori.svg" alt="Contenitori di forma e dimensione diverse per ogni tipo di dato: scatolina per char, interruttore per bool, scatola media per int, scatola grande per double, cassetto per string" loading="lazy">
+      <figcaption>Ogni tipo è un contenitore di forma e capacità diversa: char è una scatolina per un solo carattere, double una scatola più ampia per numeri con molti decimali.</figcaption>
+    </figure>
     <p>Come visto in generale nella sezione <button class="link-btn" data-goto="algoritmi">Algoritmi</button>, le variabili sono contenitori di dati. In C++ ogni variabile ha un <strong>tipo</strong>, che determina che valori può contenere e quanto spazio occupa in memoria:</p>
     <table class="mini-table">
       <thead><tr><th>Tipo</th><th>Contiene</th><th>Esempio</th></tr></thead>
@@ -944,6 +956,10 @@ int main()
     <p class="warn">⚠️ Attenzione al <strong>troncamento</strong>: <code>int x = 10.3;</code> è sintatticamente valido, ma <code>x</code> memorizzerà <code>10</code>! Assegnare un valore "più preciso" (double) a un contenitore "meno preciso" (int) fa perdere la parte decimale, <strong>senza generare un errore</strong> di compilazione (al massimo un avviso/warning) — per questo è un bug subdolo, facile da non notare.</p>
 
     <h3><code>float</code> vs <code>double</code>: qual è la differenza?</h3>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-float-double-righelli.svg" alt="Due righelli affiancati: quello etichettato float ha poche tacche larghe, quello etichettato double ha molte tacche fitte" loading="lazy">
+      <figcaption>float e double sono due righelli: uno segna solo pochi valori (meno preciso, meno spazio), l'altro molti di più, più fitti (più preciso, più spazio).</figcaption>
+    </figure>
     <p>Entrambi memorizzano numeri con la virgola (in gergo, <strong>numeri in virgola mobile</strong>), ma non sono la stessa cosa: differiscono per <strong>quanto spazio occupano in memoria</strong> e, di conseguenza, per <strong>quanto sono precisi</strong>.</p>
     <table class="mini-table">
       <thead><tr><th>Tipo</th><th>Spazio in memoria</th><th>Cifre decimali affidabili</th></tr></thead>
@@ -989,6 +1005,10 @@ int main()
     <p class="warn">⚠️ Occhio agli apici: un <strong>singolo carattere</strong> (<code>char</code>) si scrive fra apici <strong>singoli</strong>, <code>'M'</code>; una <strong>stringa</strong> (<code>string</code>), anche se lunga un solo carattere, si scrive fra apici <strong>doppi</strong>, <code>"M"</code>. Scambiarli è un errore di compilazione molto comune per chi inizia.</p>
 
     <h3>Le costanti: valori che non devono cambiare</h3>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-costanti-lucchetto.png" alt="Icona di un lucchetto chiuso" title="Fonte: jasu, Wikimedia Commons (CC BY-SA 3.0)" loading="lazy">
+      <figcaption>const è un lucchetto sul valore: una volta chiuso, nessuno può più cambiare cosa c'è dentro.</figcaption>
+    </figure>
     <p>Quando un valore non deve mai essere modificato durante l'esecuzione (es. il valore di π, l'età massima ammessa in un modulo), si dichiara con la parola chiave <code>const</code>: qualunque tentativo di riassegnarlo in seguito diventa un <strong>errore di compilazione</strong>, non un bug silenzioso da scoprire a runtime.</p>
     <pre class="code-panel active">const double PI = 3.14159;      // attenzione al tipo: PI ha bisogno dei decimali, quindi double, non int!
 const int ETA_MASSIMA = 120;
@@ -1000,6 +1020,10 @@ std::cout &lt;&lt; "L'area di un cerchio si calcola con PI = " &lt;&lt; PI &lt;&
 
   <div class="lesson-block">
     <h2>Operatori aritmetici e di assegnazione</h2>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-incremento-pre-post.svg" alt="Diagramma: pre-incremento incrementa e poi legge, post-incremento legge e poi incrementa" loading="lazy">
+      <figcaption>Pre-incremento: prima scatta il contatore, poi si legge il numero. Post-incremento: prima si legge il numero, poi scatta il contatore — come timbrare il cartellino prima o dopo aver controllato l'ora.</figcaption>
+    </figure>
     <p>Gli operatori aritmetici <code>+ - * /</code> e l'operatore <strong>modulo</strong> <code>%</code> (resto della divisione intera) sono già stati introdotti nella sezione <button class="link-btn" data-goto="flowchart">Flow Chart</button>: in C++ si usano esattamente con la stessa sintassi.</p>
     <pre class="code-panel active">int x = 10;
 int y = 6;
@@ -1033,6 +1057,10 @@ std::cout &lt;&lt; "eta finale = " &lt;&lt; eta &lt;&lt; std::endl; // 27</pre>
 
   <div class="lesson-block">
     <h2>Operatori relazionali e logici: il tipo <code>bool</code></h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-bool-interruttore.jpg" alt="Interruttore della luce a parete, bianco" title="Fonte: Santeri Viinamäki, Wikimedia Commons (CC BY-SA 4.0)" loading="lazy">
+      <figcaption>Un'espressione booleana è un interruttore: può stare solo in una di due posizioni, true (acceso) o false (spento), mai a metà.</figcaption>
+    </figure>
     <p>Gli operatori relazionali (<code>== != &gt; &lt; &gt;= &lt;=</code>) e logici (<code>! &amp;&amp; ||</code>), già visti concettualmente nella sezione <button class="link-btn" data-goto="flowchart">Flow Chart</button> con le tavole di verità, in C++ producono sempre un valore di tipo <code>bool</code>: <code>true</code> oppure <code>false</code>. Nulla vieta di <strong>memorizzare</strong> questo risultato in una variabile <code>bool</code>, invece di usarlo subito dentro un <code>if</code>:</p>
     <pre class="code-panel active">bool condizione1 = (10 != 11);              // true
 bool condizione2 = (10 &lt; 11) &amp;&amp; (10 &gt; 9);   // true && true → true
@@ -1048,6 +1076,10 @@ std::cout &lt;&lt; condizione3 &lt;&lt; std::endl; // false</pre>
 
   <div class="lesson-block">
     <h2>L'operatore ternario</h2>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-ternario-scorciatoia.svg" alt="Diagramma: un blocco if/else esteso si comprime in un'unica riga cond ? A : B" loading="lazy">
+      <figcaption>Il ternario è un bivio compresso in una riga sola: chiede la direzione e sceglie subito, senza fermarsi a scrivere un cartello if/else per esteso.</figcaption>
+    </figure>
     <p>Per scegliere fra due valori in base a una condizione, quando la scelta serve <strong>dentro un'espressione</strong> (es. per assegnare una variabile o per stampare direttamente un risultato), C++ offre una scorciatoia più compatta di un <code>if</code>/<code>else</code> completo: l'<strong>operatore ternario</strong> <code>condizione ? valoreSeVero : valoreSeFalso</code>.</p>
     <pre class="code-panel active">int numero1 = 51;
 
@@ -1067,6 +1099,10 @@ if (numero1 % 2 == 0) {
 
   <div class="lesson-block">
     <h2>Input e output: <code>cin</code> e <code>cout</code></h2>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-cin-cout-tubi.svg" alt="Diagramma: un tubo verde etichettato cin entra nel programma da sinistra, un tubo arancione etichettato cout esce a destra" loading="lazy">
+      <figcaption>cin e cout sono due tubi in direzioni opposte: cin fa entrare dati da tastiera nel programma, cout li fa uscire verso lo schermo — le doppie frecce puntano proprio nel verso del flusso.</figcaption>
+    </figure>
     <p>Per leggere dati inseriti dall'utente da tastiera si usa <code>std::cin &gt;&gt; variabile;</code> (nota il verso delle frecce, opposto a quello di <code>cout</code>).</p>
     <pre class="code-panel active">#include &lt;iostream&gt;
 #include &lt;string&gt;
@@ -1094,6 +1130,10 @@ int main()
 
   <div class="lesson-block">
     <h2>Selezione in C++: <code>if</code> / <code>else</code> e <code>switch</code></h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-ifelse-bivio.jpg" alt="Bivio stradale con due strade che si dividono in mezzo alla campagna" title="Fonte: Jonathan Billinger, geograph.org.uk - Wikimedia Commons (CC BY-SA 2.0)" loading="lazy">
+      <figcaption>if/else è un bivio: in base alla condizione, l'esecuzione prende una strada o l'altra, mai entrambe.</figcaption>
+    </figure>
     <p>Il blocco di decisione del flow chart diventa in C++ un <code>if</code> (eventualmente con <code>else</code>), oppure — quando si confronta una stessa variabile con tanti valori possibili — uno <code>switch</code>:</p>
     <pre class="code-panel active">int x = 10, y = 11;
 
@@ -1120,6 +1160,10 @@ switch (giorno) {
 }</pre>
     <p class="warn">⚠️ <strong>L'errore più insidioso della selezione:</strong> confondere l'operatore di confronto <code>==</code> con quello di assegnamento <code>=</code>. Scrivere <code>if (x = 5)</code> invece di <code>if (x == 5)</code> è sintatticamente valido (!): assegna <code>5</code> a <code>x</code> e poi valuta il risultato dell'assegnamento (<code>5</code>, che C++ considera "vero" perché diverso da zero) — quindi quell'<code>if</code> risulterà <strong>sempre vero</strong>, qualunque fosse il valore originale di <code>x</code>, che nel frattempo è stato silenziosamente sovrascritto. È un bug classico, difficile da individuare a occhio perché il codice "sembra giusto".</p>
     <p class="note">Le parentesi graffe <code>{ }</code> dopo un <code>if</code> sono <strong>obbligatorie solo se il blocco contiene più di un'istruzione</strong>: con una singola istruzione si possono omettere. È comunque buona norma metterle sempre: se in futuro si aggiunge una seconda riga dimenticando di aggiungere le graffe, quella riga finirebbe per essere eseguita <strong>sempre</strong>, indipendentemente dalla condizione, generando un bug molto difficile da individuare.</p>
+    <figure class="concept-fig">
+      <img src="img/cpp-switch-scambio-ferroviario.jpg" alt="Scambio ferroviario abbandonato che devia i binari in due direzioni diverse" title="Fonte: Wikimedia Commons (CC BY-SA 4.0)" loading="lazy">
+      <figcaption>Uno switch funziona come uno scambio ferroviario: in base al valore della variabile, il "treno" dell'esecuzione viene deviato su un binario diverso (un case).</figcaption>
+    </figure>
     <p>Ogni <code>case</code> dovrebbe terminare con <code>break;</code>, altrimenti l'esecuzione "cade" nel case successivo (comportamento chiamato <em>fall-through</em>): dimenticarlo per errore è un bug comune. Lo stesso comportamento, però, può essere usato <strong>di proposito</strong> per raggruppare più casi che devono eseguire lo stesso codice, semplicemente non mettendo istruzioni fra un <code>case</code> e l'altro:</p>
     <pre class="code-panel active">int giorno;
 std::cin &gt;&gt; giorno;
@@ -1145,6 +1189,10 @@ switch (giorno) {
 
   <div class="lesson-block">
     <h2>I cicli in C++: <code>while</code>, <code>do-while</code>, <code>for</code></h2>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-cicli-pista-atletica.svg" alt="Schema di una pista di atletica ovale" title="Fonte: Wikimedia Commons (CC BY-SA 3.0)" loading="lazy">
+      <figcaption>Un ciclo è una pista: si continua a percorrere lo stesso giro finché non si verifica la condizione di uscita (fine gara).</figcaption>
+    </figure>
     <p>Ritroviamo qui, in sintassi C++, le tre strutture di ripetizione già viste nella sezione <button class="link-btn" data-goto="flowchart">Flow Chart</button>.</p>
 
     <h3>while — pre-test</h3>
@@ -1182,6 +1230,10 @@ for (char carattere : nome) {
 
   <div class="lesson-block">
     <h2><code>break</code> e <code>continue</code></h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-break-continue-ostacoli.jpg" alt="Atleta che salta un ostacolo durante una gara di corsa a ostacoli, 1923" title="Fonte: Wikimedia Commons (nessuna restrizione nota)" loading="lazy">
+      <figcaption>break è abbandonare la gara e uscire dalla pista; continue è saltare un solo ostacolo e continuare a correre il giro.</figcaption>
+    </figure>
     <p>All'interno di un ciclo, due istruzioni speciali alterano il flusso normale:</p>
     <div class="compare-grid">
       <div class="compare-card"><h4>break</h4><p>Esce <strong>subito</strong> dal ciclo, interrompendolo del tutto.</p></div>
@@ -1205,6 +1257,10 @@ for (int i = 0; i &lt; 10; i++) {
 
   <div class="lesson-block">
     <h2>Le funzioni</h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-funzioni-distributore.jpg" alt="Distributore automatico di snack con pulsanti di selezione" title="Fonte: Wikimedia Commons (pubblico dominio)" loading="lazy">
+      <figcaption>Una funzione è un distributore automatico: dai dei parametri in ingresso (soldi + selezione), lei elabora dentro, e restituisce un risultato in uscita — senza che tu debba sapere cosa succede all'interno.</figcaption>
+    </figure>
     <p>Le <strong>funzioni</strong> sono blocchi di codice riutilizzabili, richiamabili più volte nel programma. Possono ricevere dei <strong>parametri</strong> in ingresso e restituire un <strong>valore</strong> in uscita (o nessuno, se dichiarate <code>void</code>). Usare le funzioni evita di ripetere lo stesso codice più volte (principio del "non ripeterti", <em>DRY</em>) e rende il programma più facile da leggere e correggere: un problema complesso si scompone in sotto-problemi più piccoli, ciascuno risolto da una funzione dedicata.</p>
     <p>Per usare una funzione prima di definirla (o per usarla in più file <code>.cpp</code>), se ne scrive il <strong>prototipo</strong> — di solito in un file header <code>.hpp</code>:</p>
     <pre class="code-panel active">// 21_main.hpp — prototipi (dichiarazioni) delle funzioni
@@ -1245,6 +1301,10 @@ int calcolaSecondiInAnni(int anni) // riceve un parametro, restituisce un int
     <p class="warn">⚠️ <strong>Passaggio dei parametri "per valore":</strong> in C++, per default, quando si chiama una funzione passandole un parametro (es. <code>calcolaSecondiInAnni(anni)</code>), la funzione riceve una <strong>copia</strong> del valore, non la variabile originale. Se il corpo della funzione modifica il parametro, <strong>la variabile del chiamante non cambia</strong>: la modifica ha effetto solo sulla copia locale, che smette di esistere alla fine della funzione. (Vedremo tra poco, con i puntatori, come si può invece permettere a una funzione di modificare davvero la variabile originale.)</p>
 
     <h3>Overload (sovraccarico) delle funzioni</h3>
+    <figure class="concept-fig">
+      <img src="img/cpp-overload-coltellino.jpg" alt="Coltellino svizzero multiuso aperto con diverse lame e strumenti visibili" title="Fonte: Wikimedia Commons (pubblico dominio)" loading="lazy">
+      <figcaption>L'overload è un coltellino multiuso: lo stesso "nome" (l'attrezzo) offre più lame diverse, e chi lo usa (il compilatore) sceglie quella giusta in base al lavoro da fare (i parametri passati).</figcaption>
+    </figure>
     <p>In C++ più funzioni possono avere <strong>lo stesso nome</strong>, purché si distinguano per numero e/o tipo dei parametri: è il compilatore a scegliere quale versione chiamare in base agli argomenti passati, già al momento della compilazione (non durante l'esecuzione).</p>
     <pre class="code-panel active">int somma(int x, int y)            { return x + y; }
 int somma(double x, double y)      { return x + y; }
@@ -1259,6 +1319,10 @@ int main() {
 
   <div class="lesson-block">
     <h2>Scope delle variabili</h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-scope-matrioska.jpg" alt="Serie di bambole matrioska russe, una dentro l'altra, di dimensioni decrescenti" title="Fonte: Wikimedia Commons (CC BY-SA 3.0)" loading="lazy">
+      <figcaption>Lo scope è come le matrioske: ogni blocco { } è una bambola dentro l'altra. Una variabile dichiarata in una bambola interna smette di esistere appena si torna a quella esterna.</figcaption>
+    </figure>
     <p>Lo <strong>scope</strong> (visibilità) di una variabile è la porzione di codice in cui quella variabile esiste ed è utilizzabile. Una variabile dichiarata dentro una funzione è <strong>locale</strong>: vive solo lì, anche se una variabile con lo stesso nome esiste in un'altra funzione. Più in generale, una variabile locale nasce quando l'esecuzione raggiunge la sua dichiarazione e "muore" quando l'esecuzione esce dal blocco <code>{ }</code> in cui è stata dichiarata (anche un semplice blocco <code>if</code> o un ciclo, non solo una funzione).</p>
     <pre class="code-panel active">int somma(int x, int y) {
     int variabileFunzione = 5; // locale a somma(): non esiste fuori da qui
@@ -1275,6 +1339,10 @@ int main() {
 
   <div class="lesson-block">
     <h2>I puntatori</h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-puntatori-cartello.jpg" alt="Cartello segnaletico stradale sul ciglio della strada" title="Fonte: Wikimedia Commons (pubblico dominio)" loading="lazy">
+      <figcaption>Un puntatore è un cartello stradale: non contiene la destinazione in sé, ma l'indirizzo che dice dove si trova — seguendolo (dereferenziando, *) si arriva al valore vero.</figcaption>
+    </figure>
     <p>Ogni variabile occupa una cella di memoria con un proprio <strong>indirizzo</strong>. Un <strong>puntatore</strong> è una variabile speciale che, invece di contenere un dato "normale", contiene l'indirizzo di un'altra variabile.</p>
     <pre class="code-panel active">int prova = 5;
 int *ptr_prova = nullptr; // puntatore non ancora inizializzato
@@ -1307,6 +1375,10 @@ int main() {
     <h2>Array e vettori</h2>
     <p>Quando servono <strong>più valori dello stesso tipo</strong> raggruppati insieme, si usano array o vettori.</p>
     <h3>Array — dimensione fissa</h3>
+    <figure class="concept-fig">
+      <img src="img/cpp-array-scatola-uova.jpg" alt="Scatola di uova di quaglia aperta, con gli scomparti fissi ben visibili" title="Fonte: Wikimedia Commons (CC0)" loading="lazy">
+      <figcaption>Un array è una scatola di uova: un numero fisso di scomparti, numerati, deciso una volta per tutte alla creazione.</figcaption>
+    </figure>
     <p>Un <strong>array</strong> ha una lunghezza decisa alla creazione e non può più cambiare: non si possono aggiungere o togliere elementi. Gli elementi si numerano a partire da <strong>0</strong> (non da 1): in un array di 5 elementi, gli indici validi vanno da <code>0</code> a <code>4</code>.</p>
     <pre class="code-panel active">double voti_storia[] = {8.5, 9, 8.2, 10, 7};
 
@@ -1321,6 +1393,10 @@ for (double voto : voti_storia) {
 }</pre>
     <p class="warn">⚠️ C++ <strong>non controlla</strong> automaticamente se un indice è valido: scrivere <code>voti_storia[10]</code> su un array di 5 elementi non dà necessariamente un errore evidente, ma legge (o scrive!) una zona di memoria che non appartiene all'array, con effetti imprevedibili. È un errore subdolo, diverso da altri linguaggi più "protettivi" da questo punto di vista.</p>
     <h3>Vector — dimensione dinamica</h3>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-vector-cartella-soffietto.svg" alt="Disegno stilizzato di una cartella a soffietto espandibile" loading="lazy">
+      <figcaption>Un vector è una cartella a soffietto estensibile: puoi continuare ad aggiungere scomparti (push_back) o toglierne (pop_back) mentre lo usi.</figcaption>
+    </figure>
     <p>Un <code>std::vector</code> è come un array, ma può <strong>crescere o ridursi</strong> durante l'esecuzione del programma: è la struttura da preferire quando non si conosce in anticipo quanti elementi serviranno.</p>
     <pre class="code-panel active">#include &lt;vector&gt;
 using std::vector;
@@ -1338,6 +1414,10 @@ for (int i = 0; i &lt; numeri.size(); i++) {
 
   <div class="lesson-block">
     <h2>Le stringhe: operazioni utili</h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-stringhe-collana-lettere.jpg" alt="Tessere del gioco Scrabble allineate una dopo l'altra a formare una parola" title="Fonte: Wikimedia Commons (CC BY-SA 3.0)" loading="lazy">
+      <figcaption>Una string è una fila di tessere (i caratteri) allineate una dietro l'altra: length() conta le tessere, substr() ne stacca un pezzo, find() cerca dove inizia una sequenza uguale a un'altra.</figcaption>
+    </figure>
     <p>Una <code>string</code> non è solo "del testo": la libreria standard mette a disposizione diversi <strong>metodi</strong> per lavorarci, molto usati nella pratica:</p>
     <pre class="code-panel active">#include &lt;string&gt;
 using std::string;
@@ -1372,6 +1452,10 @@ std::cout &lt;&lt; nomeCompleto &lt;&lt; std::endl;                // Luca Rossi
 
   <div class="lesson-block">
     <h2>Conversioni di tipo (casting)</h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-cast-cambio-valuta.jpg" alt="Cartello con i tassi di cambio valuta esposto a uno sportello" title="Fonte: Wikimedia Commons (CC BY-SA 4.0)" loading="lazy">
+      <figcaption>Il cast è cambiare valuta a uno sportello: static_cast&lt;...&gt; è farlo dichiarando consapevolmente cosa vuoi ottenere; una conversione implicita avviene da sola, senza che tu te ne accorga — a volte perdendoci qualcosa, come nel troncamento.</figcaption>
+    </figure>
     <p>Abbiamo già incontrato una conversione <strong>implicita</strong> parlando del troncamento (<code>int x = 10.3;</code>): il compilatore converte automaticamente il <code>double</code> in <code>int</code>, senza che sia stato chiesto esplicitamente, e senza avvisare in modo evidente. Quando invece si vuole essere <strong>chiari ed espliciti</strong> su una conversione voluta, si usa <code>static_cast&lt;NuovoTipo&gt;(espressione)</code>:</p>
     <pre class="code-panel active">#include &lt;iostream&gt;
 #include &lt;string&gt;
@@ -1393,6 +1477,10 @@ std::cout &lt;&lt; static_cast&lt;char&gt;(std::stoi(x)) &lt;&lt; std::endl;  //
 
   <div class="lesson-block">
     <h2>Le strutture (<code>struct</code>)</h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-struct-scheda-anagrafica.jpg" alt="Vista interna di uno schedario a cassetti con schede catalografiche" title="Fonte: Wikimedia Commons (CC BY-SA 4.0)" loading="lazy">
+      <figcaption>Una struct è una scheda prestampata: campi diversi (nome, cognome, età) raggruppati sotto un'unica scheda, pronta da compilare per ogni persona.</figcaption>
+    </figure>
     <p>Una <strong>struttura</strong> permette di creare un <strong>tipo di dato personalizzato</strong>, raggruppando più variabili (anche di tipo diverso) sotto un unico nome.</p>
     <pre class="code-panel active">struct Persona
 {
@@ -1423,6 +1511,10 @@ int main()
 
   <div class="lesson-block">
     <h2>Cos'è la programmazione a oggetti (OOP)?</h2>
+    <figure class="concept-fig">
+      <img src="img/oop-classe-stampino-biscotti.jpg" alt="Stampini per biscotti di forme diverse, appoggiati su un ripiano" title="Fonte: Wikimedia Commons (CC BY 2.0)" loading="lazy">
+      <figcaption>Una classe è uno stampino per biscotti: definisce la forma. Ogni oggetto (istanza) è un biscotto concreto ritagliato con quello stampino — stessa forma, ma ognuno è un pezzo a sé, che puoi valorizzare in modo diverso.</figcaption>
+    </figure>
     <p class="definition">La <strong>programmazione orientata agli oggetti</strong> (Object Oriented Programming, OOP) è uno stile di programmazione in cui dati e comportamenti che li riguardano vengono <strong>racchiusi insieme</strong> in un'unica entità chiamata <strong>classe</strong>, invece di restare separati come nella <button class="link-btn" data-goto="cpp">programmazione procedurale</button>.</p>
     <p>L'idea di fondo è modellare il programma sugli <strong>oggetti del mondo reale</strong> (o del dominio del problema): una persona, un libro, una cartella di file, un contatore. Ogni oggetto ha:</p>
     <ul>
@@ -1435,6 +1527,10 @@ int main()
 
   <div class="lesson-block">
     <h2>Dalla <code>struct</code> alla <code>class</code></h2>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/oop-struct-vs-class.svg" alt="Confronto: in una struct i dati stanno in una scatola e la funzione resta fuori collegata da una freccia; in una class dati e metodo stanno insieme dentro la stessa scatola" loading="lazy">
+      <figcaption>Con la struct, dati e "attrezzo" (la funzione che li usa) restano separati, come pezzi sciolti fuori dalla scatola. Con la class, l'attrezzo entra dentro la scatola stessa: lo trovi già incluso ogni volta che apri l'oggetto.</figcaption>
+    </figure>
     <p>Abbiamo già incontrato la <code>struct</code> nella sezione <button class="link-btn" data-goto="cpp">C++</button>: raggruppa più variabili sotto un unico tipo, ma resta un contenitore "passivo" di soli dati. In C++ una <code>struct</code> può in realtà contenere anche funzioni proprie — ma per convenzione si usa <code>struct</code> per i dati puri, e <code>class</code> quando si vogliono aggiungere anche i <strong>metodi</strong>, cioè le azioni collegate a quei dati:</p>
     <pre class="code-panel active">struct Persona   // solo dati: nome, cognome, età
 {
@@ -1503,6 +1599,10 @@ int main() {
 
   <div class="lesson-block">
     <h2>Attributi, metodi e il puntatore <code>this</code></h2>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/oop-this-autoindicazione.svg" alt="Sagoma stilizzata di una persona che si indica il petto, con un fumetto che dice this->" loading="lazy">
+      <figcaption>this è come dire "io" indicandosi il petto: dentro un metodo, serve per essere sicuri di parlare dei dati DI QUESTO oggetto, e non di un parametro esterno che per caso si chiama allo stesso modo.</figcaption>
+    </figure>
     <p>Definiamo ora una classe <code>Persona</code> completa di metodo, e creiamo due <strong>istanze</strong> (oggetti) da essa:</p>
     <pre class="code-panel active">class Persona   // in una classe, dati e metodi sono "incapsulati" insieme
 {
@@ -1536,6 +1636,10 @@ int main()
 
   <div class="lesson-block">
     <h2>Il costruttore: inizializzare un oggetto in automatico</h2>
+    <figure class="concept-fig">
+      <img src="img/oop-costruttore-timbro.jpg" alt="Timbro di gomma appoggiato accanto al suo cuscinetto inchiostrato" title="Fonte: Wikimedia Commons (CC BY 4.0)" loading="lazy">
+      <figcaption>Il costruttore è un timbro che scatta automaticamente nell'istante in cui nasce un nuovo oggetto: non va chiamato a mano, i valori iniziali vengono impressi subito, appena l'oggetto viene creato.</figcaption>
+    </figure>
     <p>Un <strong>costruttore</strong> è un metodo speciale che viene eseguito <strong>automaticamente</strong> nell'istante in cui un oggetto viene creato, e serve tipicamente a inizializzarne gli attributi. Due regole fisse: ha <strong>sempre lo stesso nome della classe</strong>, e <strong>non ha un tipo di ritorno</strong> (nemmeno <code>void</code>).</p>
     <pre class="code-panel active">class Persona
 {
@@ -1591,6 +1695,10 @@ int main()
 
   <div class="lesson-block">
     <h2>Modificatori di accesso: l'incapsulamento in pratica</h2>
+    <figure class="concept-fig">
+      <img src="img/oop-incapsulamento-porta-chiusa.jpg" alt="Serratura antica con chiave inserita su un mobile in legno" title="Fonte: Wikimedia Commons (CC BY-SA 4.0)" loading="lazy">
+      <figcaption>public è una porta aperta: chiunque passi in corridoio (il codice esterno) può entrare. private è una porta chiusa a chiave: solo chi è già dentro la classe ha la chiave per accedere a quella stanza.</figcaption>
+    </figure>
     <p>L'<strong>incapsulamento</strong> non è solo "mettere dati e metodi nella stessa classe": è anche <strong>decidere quali parti della classe sono visibili dall'esterno</strong> e quali restano un dettaglio interno, non accessibile né modificabile direttamente da chi usa la classe. In C++ questo si controlla con tre parole chiave, dette <strong>modificatori di accesso</strong>:</p>
     <table class="mini-table">
       <thead><tr><th>Modificatore</th><th>Chi può accedere al membro</th></tr></thead>
@@ -1631,6 +1739,10 @@ int main()
 
   <div class="lesson-block">
     <h2>Ereditarietà: riutilizzare e specializzare una classe</h2>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/oop-ereditarieta-albero-genealogico.svg" alt="Schema ad albero: la classe Persona in alto collegata da una freccia alla classe Studente in basso, che ne eredita attributi e metodi" loading="lazy">
+      <figcaption>L'ereditarietà è un albero genealogico: Studente eredita automaticamente i "tratti" (attributi e metodi) della classe madre Persona, e può poi aggiungerne di propri o ridefinirli (override) senza ripartire da zero.</figcaption>
+    </figure>
     <p>L'<strong>ereditarietà</strong> permette di creare una nuova classe (detta <strong>classe derivata</strong> o <em>figlia</em>) a partire da una classe già esistente (la <strong>classe base</strong> o <em>madre</em>), <strong>riutilizzandone</strong> attributi e metodi ed <strong>aggiungendone</strong> — o ridefinendone — altri. È il modo in cui la OOP evita di riscrivere codice già scritto per concetti che sono "casi particolari" di uno più generale: uno <em>Studente</em> è, prima di tutto, <em>una Persona</em>.</p>
     <pre class="code-panel active">class Persona
 {
@@ -1685,11 +1797,19 @@ int main()
       <div class="compare-card"><h4>Overload (sovraccarico)</h4><p>Più metodi/costruttori <strong>nella stessa classe</strong>, <strong>stesso nome</strong> ma <strong>parametri diversi</strong> (per numero o tipo). Il compilatore sceglie quale eseguire guardando gli argomenti passati alla chiamata.</p></div>
       <div class="compare-card"><h4>Override (sovrascrittura)</h4><p>Una classe derivata <strong>ridefinisce</strong> un metodo <strong>già esistente nella classe base</strong>, con lo <strong>stesso nome e la stessa "forma"</strong>: sostituisce il comportamento ereditato con uno specifico per la classe figlia.</p></div>
     </div>
+    <figure class="concept-fig">
+      <img src="img/oop-polimorfismo-camaleonte.jpg" alt="Camaleonte panther dai colori vivaci su un ramo" title="Fonte: Wikimedia Commons (CC BY-SA 3.0)" loading="lazy">
+      <figcaption>Il polimorfismo è un camaleonte: la "richiesta" è sempre la stessa (mimetizzati!), ma la risposta concreta dipende da CHI la riceve — Persona e Studente rispondono entrambi a saluta(), ciascuno a modo suo.</figcaption>
+    </figure>
     <p class="note">🔎 <strong>Approfondimento per chi vuole andare oltre</strong> (argomento avanzato, non necessario per iniziare): nell'esempio sopra, <code>studente1.saluta()</code> funziona correttamente perché <code>studente1</code> è dichiarato direttamente come <code>Studente</code>. Se però si usasse un puntatore o riferimento dichiarato di tipo <code>Persona</code> per contenere "in realtà" un oggetto <code>Studente</code>, chiamando <code>saluta()</code> su di esso si otterrebbe — senza ulteriori accorgimenti — la versione di <code>Persona</code>, non quella di <code>Studente</code>. Per ottenere invece il comportamento "giusto" in base al tipo effettivo dell'oggetto (il cosiddetto <strong>polimorfismo dinamico</strong>, il quarto pilastro della OOP), in <code>Persona</code> il metodo andrebbe dichiarato <code>virtual void saluta()</code>. È un meccanismo potente ma che richiede più esperienza: utile sapere fin d'ora che esiste, per non stupirsi il giorno in cui lo si incontra.</p>
   </div>
 
   <div class="lesson-block">
     <h2>I quattro pilastri della OOP, in sintesi</h2>
+    <figure class="concept-fig">
+      <img src="img/oop-astrazione-cruscotto-auto.jpg" alt="Volante e cruscotto di un'automobile visti dal posto di guida" title="Fonte: Wikimedia Commons (pubblico dominio)" loading="lazy">
+      <figcaption>L'astrazione, il pilastro che non abbiamo ancora illustrato: guidi un'auto usando volante, pedali e cruscotto (l'interfaccia pubblica) senza sapere come funziona il motore dentro il cofano (l'implementazione nascosta).</figcaption>
+    </figure>
     <table class="mini-table">
       <thead><tr><th>Pilastro</th><th>Cosa significa</th><th>Dove l'abbiamo visto</th></tr></thead>
       <tbody>

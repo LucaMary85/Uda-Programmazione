@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 150" width="220" height="150">
+  <rect x="0" y="0" width="220" height="150" fill="#ffffff"/>
+  <!-- pre-incremento -->
+  <text x="10" y="24" font-family="Consolas, Menlo, monospace" font-size="12" fill="#2540a8" font-weight="bold">++eta</text>
+  <rect x="10" y="34" width="70" height="26" rx="4" fill="#3454d1"/>
+  <text x="45" y="51" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#ffffff">incrementa</text>
+  <text x="90" y="51" font-family="sans-serif" font-size="14" fill="#5b6478">&#8594;</text>
+  <rect x="106" y="34" width="70" height="26" rx="4" fill="none" stroke="#3454d1" stroke-width="2.5"/>
+  <text x="141" y="51" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#2540a8">legge</text>
+
+  <!-- post-incremento -->
+  <text x="10" y="92" font-family="Consolas, Menlo, monospace" font-size="12" fill="#b45309" font-weight="bold">eta++</text>
+  <rect x="10" y="102" width="70" height="26" rx="4" fill="#f59e0b"/>
+  <text x="45" y="119" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#ffffff">legge</text>
+  <text x="90" y="119" font-family="sans-serif" font-size="14" fill="#5b6478">&#8594;</text>
+  <rect x="106" y="102" width="70" height="26" rx="4" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+  <text x="141" y="119" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#b45309">incrementa</text>
+</svg>

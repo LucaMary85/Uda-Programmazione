@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" width="200" height="160">
+  <rect x="0" y="0" width="200" height="160" fill="#ffffff"/>
+  <!-- sagoma persona stilizzata -->
+  <circle cx="100" cy="42" r="22" fill="none" stroke="#3454d1" stroke-width="4"/>
+  <path d="M55 140 C55 95 80 82 100 82 C120 82 145 95 145 140" fill="none" stroke="#3454d1" stroke-width="4"/>
+  <!-- braccio che indica il petto -->
+  <path d="M100 100 C88 108 92 118 100 120" fill="none" stroke="#2540a8" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="100" cy="120" r="4" fill="#2540a8"/>
+  <!-- fumetto -->
+  <rect x="118" y="60" width="66" height="30" rx="8" fill="#f59e0b"/>
+  <polygon points="126,90 118,104 134,90" fill="#f59e0b"/>
+  <text x="151" y="80" text-anchor="middle" font-family="Consolas, Menlo, monospace" font-size="13" fill="#ffffff" font-weight="bold">this-&gt;</text>
+</svg>
