@@ -896,7 +896,8 @@ int main()
       <thead><tr><th>Tipo</th><th>Contiene</th><th>Esempio</th></tr></thead>
       <tbody>
         <tr><td><code>int</code></td><td>numeri interi</td><td><code>int eta = 25;</code></td></tr>
-        <tr><td><code>double</code></td><td>numeri con la virgola</td><td><code>double altezza = 1.78;</code></td></tr>
+        <tr><td><code>float</code></td><td>numeri con la virgola (precisione singola)</td><td><code>float altezza = 1.78f;</code></td></tr>
+        <tr><td><code>double</code></td><td>numeri con la virgola (precisione doppia)</td><td><code>double altezza = 1.78;</code></td></tr>
         <tr><td><code>char</code></td><td>un singolo carattere</td><td><code>char sesso = 'M';</code></td></tr>
         <tr><td><code>bool</code></td><td>vero/falso</td><td><code>bool isOnline = true;</code></td></tr>
         <tr><td><code>string</code></td><td>una sequenza di caratteri (testo)</td><td><code>string nome = "Mario";</code></td></tr>
@@ -920,11 +921,23 @@ int main()
     <p class="note"><code>using std::string;</code> permette di scrivere <code>string</code> invece di <code>std::string</code> ogni volta, senza importare l'intero namespace <code>std</code> come farebbe <code>using namespace std;</code>.</p>
     <p class="warn">⚠️ Attenzione al <strong>troncamento</strong>: <code>int x = 10.3;</code> è sintatticamente valido, ma <code>x</code> memorizzerà <code>10</code>! Assegnare un valore "più preciso" (double) a un contenitore "meno preciso" (int) fa perdere la parte decimale, <strong>senza generare un errore</strong> di compilazione (al massimo un avviso/warning) — per questo è un bug subdolo, facile da non notare.</p>
 
+    <h3><code>float</code> vs <code>double</code>: qual è la differenza?</h3>
+    <p>Entrambi memorizzano numeri con la virgola (in gergo, <strong>numeri in virgola mobile</strong>), ma non sono la stessa cosa: differiscono per <strong>quanto spazio occupano in memoria</strong> e, di conseguenza, per <strong>quanto sono precisi</strong>.</p>
+    <table class="mini-table">
+      <thead><tr><th>Tipo</th><th>Spazio in memoria</th><th>Cifre decimali affidabili</th></tr></thead>
+      <tbody>
+        <tr><td><code>float</code></td><td>4 byte (precisione <em>singola</em>)</td><td>circa 6-7</td></tr>
+        <tr><td><code>double</code></td><td>8 byte (precisione <em>doppia</em> — il doppio di <code>float</code>, da cui il nome)</td><td>circa 15-16</td></tr>
+      </tbody>
+    </table>
+    <p>In C++, un <strong>letterale decimale</strong> scritto senza suffisso (es. <code>3.99</code>) è per default di tipo <code>double</code>: per assegnarlo a un <code>float</code> serve il suffisso <code>f</code> (es. <code>3.99f</code>), altrimenti il compilatore lo converte implicitamente da <code>double</code> a <code>float</code> (con un possibile avviso di perdita di precisione).</p>
+    <p class="note">🎓 <strong>Quale usare in pratica?</strong> Nella programmazione "normale" (non specializzata in grafica 3D, calcolo scientifico su grandi volumi di dati o sistemi embedded con memoria molto limitata) si usa quasi sempre <code>double</code>: la differenza di 4 byte per variabile è irrilevante sull'hardware moderno, mentre la precisione maggiore evita errori di arrotondamento fastidiosi nei calcoli. <code>float</code> ha senso quando si devono gestire <strong>enormi quantità</strong> di numeri decimali (es. milioni di vertici in un motore grafico) e il risparmio di memoria diventa significativo.</p>
+
     <h3>Perché <code>int</code> si scrive da solo, ma <code>string</code> ha bisogno di <code>std::</code>?</h3>
-    <p>Guardando gli esempi sopra, sorge una domanda naturale: perché scriviamo semplicemente <code>int</code>, <code>double</code>, <code>char</code>, <code>bool</code>, ma per il testo dobbiamo scrivere <code>std::string</code> (o, dopo un <code>using std::string;</code>, almeno includere <code>&lt;string&gt;</code>)? La risposta è che <strong><code>int</code>, <code>double</code>, <code>char</code> e <code>bool</code> non sono la stessa "categoria di cosa" di <code>string</code></strong>:</p>
+    <p>Guardando gli esempi sopra, sorge una domanda naturale: perché scriviamo semplicemente <code>int</code>, <code>float</code>, <code>double</code>, <code>char</code>, <code>bool</code>, ma per il testo dobbiamo scrivere <code>std::string</code> (o, dopo un <code>using std::string;</code>, almeno includere <code>&lt;string&gt;</code>)? La risposta è che <strong><code>int</code>, <code>float</code>, <code>double</code>, <code>char</code> e <code>bool</code> non sono la stessa "categoria di cosa" di <code>string</code></strong>:</p>
     <div class="compare-grid">
       <div class="compare-card">
-        <h4>int, double, char, bool</h4>
+        <h4>int, float, double, char, bool</h4>
         <p><strong>Tipi primitivi (o fondamentali)</strong>: fanno parte del <em>nucleo del linguaggio</em> C++ stesso, esattamente come le parole chiave <code>if</code> o <code>while</code>. Il compilatore li conosce "di fabbrica": non servono <code>#include</code> né prefissi di namespace, perché non appartengono a nessuna libreria — sono il linguaggio.</p>
       </div>
       <div class="compare-card">
@@ -1428,6 +1441,42 @@ class Cartella    // dati + azioni (metodi) che operano su quei dati
     void rinominaCartella();
 };</pre>
     <p class="note"><strong>Unica differenza tecnica</strong> tra <code>struct</code> e <code>class</code> in C++: i membri di una <code>struct</code> sono <strong>pubblici di default</strong>, quelli di una <code>class</code> sono <strong>privati di default</strong> (vedremo tra poco cosa significa "pubblico" e "privato"). A parte questo dettaglio, sono la stessa cosa: la differenza d'uso è solo una convenzione che comunica l'intento — "questo è un semplice contenitore di dati" contro "questa è una classe con un comportamento".</p>
+    <p>Vediamo il passaggio da struct a class su un esempio completo, con un vero comportamento: una scheda libro da stampare a schermo.</p>
+    <pre class="code-panel active">// Prima versione: una struct (solo dati) e una funzione ESTERNA che la usa
+struct LibroStruct {
+    string titolo;
+    string autore;
+    int anno;
+};
+
+void stampaScheda(LibroStruct l) {
+    cout &lt;&lt; l.titolo &lt;&lt; " di " &lt;&lt; l.autore &lt;&lt; " (" &lt;&lt; l.anno &lt;&lt; ")" &lt;&lt; endl;
+}
+
+// Seconda versione: una class che incapsula dati E comportamento insieme
+class Libro {
+    public:
+        string titolo;
+        string autore;
+        int anno;
+
+        void stampaScheda() { // stesso identico calcolo di prima, ma ora e' un METODO della classe
+            cout &lt;&lt; titolo &lt;&lt; " di " &lt;&lt; autore &lt;&lt; " (" &lt;&lt; anno &lt;&lt; ")" &lt;&lt; endl;
+        }
+};
+
+int main() {
+    LibroStruct l1 = {"Il nome della rosa", "Umberto Eco", 1980};
+    stampaScheda(l1); // con la struct, il "comportamento" resta fuori, come funzione a parte
+
+    Libro l2;
+    l2.titolo = "Il nome della rosa";
+    l2.autore = "Umberto Eco";
+    l2.anno = 1980;
+    l2.stampaScheda(); // il comportamento e' "dentro" l'oggetto
+    return 0;
+}</pre>
+    <p class="note">Il dato (<code>titolo</code>, <code>autore</code>, <code>anno</code>) non è cambiato: quello che cambia è <em>dove vive il comportamento</em>. Con la <code>struct</code>, <code>stampaScheda</code> è una funzione a parte che deve ricevere il libro come parametro; con la <code>class</code>, lo stesso comportamento diventa un metodo richiamabile direttamente sull'oggetto (<code>l2.stampaScheda()</code>). Questo è il cuore dell'<strong>incapsulamento</strong>, il primo dei quattro pilastri della OOP che vedremo nella sezione <button class="link-btn" data-goto="cpp-oop">C++ OOP</button>.</p>
   </div>
 
   <div class="lesson-block">
