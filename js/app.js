@@ -4,7 +4,25 @@
   const views = document.querySelectorAll(".view");
   const hamburger = document.getElementById("hamburger");
   const mainnav = document.getElementById("mainnav");
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Rimuove la classe di transizione a fine animazione CSS, con un timeout
+  // di sicurezza per i casi in cui "animationend" non scatti mai (pagina in
+  // background con l'animazione sospesa, prefers-reduced-motion attivato a
+  // metà sessione dopo che la classe è già stata aggiunta, ecc.): senza
+  // questo fallback la vista uscente resterebbe bloccata per sempre come
+  // overlay posizionato in absolute.
+  function cleanupAfterAnimation(el, className, fallbackMs) {
+    let done = false;
+    const timer = setTimeout(finish, fallbackMs);
+    function finish() {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      el.classList.remove(className);
+      el.removeEventListener("animationend", finish);
+    }
+    el.addEventListener("animationend", finish, { once: true });
+  }
 
   function goTo(target) {
     const newView = document.getElementById("view-" + target);
@@ -18,6 +36,10 @@
       return;
     }
 
+    // Controllato a ogni chiamata (non messo in cache): l'utente può
+    // attivare "riduci animazioni" anche a sessione già avviata.
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
     if (reduceMotion) {
       views.forEach((v) => v.classList.toggle("active", v === newView));
       window.scrollTo({ top: 0, behavior: "auto" });
@@ -28,25 +50,11 @@
     if (oldView) {
       oldView.classList.remove("active");
       oldView.classList.add("view-exit");
-      oldView.addEventListener(
-        "animationend",
-        function handler() {
-          oldView.classList.remove("view-exit");
-          oldView.removeEventListener("animationend", handler);
-        },
-        { once: true }
-      );
+      cleanupAfterAnimation(oldView, "view-exit", 500);
     }
 
     newView.classList.add("active", "view-enter");
-    newView.addEventListener(
-      "animationend",
-      function handler() {
-        newView.classList.remove("view-enter");
-        newView.removeEventListener("animationend", handler);
-      },
-      { once: true }
-    );
+    cleanupAfterAnimation(newView, "view-enter", 700);
 
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (window.appRevealCheck) window.appRevealCheck();
