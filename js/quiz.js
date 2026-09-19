@@ -7,7 +7,7 @@
   const printArea = document.getElementById("quiz-print-area");
   if (!startBtn) return;
 
-  const CAT_LABELS = { problemi: "Problemi & Algoritmi", flowchart: "Flow Chart", cicli: "Cicli", all: "Tutti gli argomenti" };
+  const CAT_LABELS = { problemi: "Problemi & Algoritmi", flowchart: "Flow Chart", cicli: "Cicli", cpp: "C++ Procedurale", "cpp-oop": "C++ OOP", all: "Tutti gli argomenti" };
 
   let quiz = { questions: [], index: 0, answers: [] };
 
