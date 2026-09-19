@@ -97,7 +97,7 @@
       <p>${ex.statement}</p>
       <details class="reveal">
         <summary>Mostra soluzione</summary>
-        <pre style="white-space:pre-wrap;background:#f1f5f9;padding:10px 14px;border-radius:8px;font-size:0.88rem;">${ex.solution}</pre>
+        <pre style="white-space:pre-wrap;background:#05080f;color:#d1d9ff;border:1px solid rgba(34,211,238,0.18);padding:10px 14px;border-radius:8px;font-size:0.88rem;font-family:'JetBrains Mono','Consolas',monospace;">${ex.solution}</pre>
       </details>
     </div>
   `).join("");

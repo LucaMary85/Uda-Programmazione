@@ -48,7 +48,7 @@
 
   function renderRow(steps) {
     return steps
-      .map((s) => `<span style="display:inline-block;margin:2px;padding:3px 8px;border-radius:6px;background:${s.divides ? "#dcfce7" : "#f1f5f9"};color:${s.divides ? "#166534" : "#64748b"};font-size:0.82rem;">${s.d} ${s.divides ? "✔" : "✘"}</span>`)
+      .map((s) => `<span style="display:inline-block;margin:2px;padding:3px 8px;border-radius:6px;background:${s.divides ? "rgba(52,211,153,0.16)" : "rgba(148,163,184,0.1)"};color:${s.divides ? "#6ee7b7" : "#94a3b8"};font-size:0.82rem;">${s.d} ${s.divides ? "✔" : "✘"}</span>`)
       .join("");
   }
 

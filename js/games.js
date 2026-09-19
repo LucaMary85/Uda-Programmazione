@@ -261,8 +261,8 @@ createReorderGame({ listId: "loop-trace-list", shuffleBtnId: "loop-trace-shuffle
   function finishRound(correct, correctText, explain) {
     if (correct) score++;
     document.getElementById("lg-feedback").innerHTML = correct
-      ? `<p style="color:#166534;font-weight:700;">✔ Corretto!</p>${explain ? `<p class="note">${explain}</p>` : ""}`
-      : `<p style="color:#991b1b;font-weight:700;">✘ Sbagliato, la risposta era ${correctText}.</p>${explain ? `<p class="note">${explain}</p>` : ""}`;
+      ? `<p style="color:#6ee7b7;font-weight:700;">✔ Corretto!</p>${explain ? `<p class="note">${explain}</p>` : ""}`
+      : `<p style="color:#fca5a5;font-weight:700;">✘ Sbagliato, la risposta era ${correctText}.</p>${explain ? `<p class="note">${explain}</p>` : ""}`;
     round++;
     setTimeout(() => {
       if (round >= total) endGame();
@@ -328,8 +328,8 @@ createReorderGame({ listId: "loop-trace-list", shuffleBtnId: "loop-trace-shuffle
     const correct = i === current.correct;
     if (correct) score++;
     document.getElementById("lc-feedback").innerHTML = correct
-      ? `<p style="color:#166534;font-weight:700;">✔ Corretto!</p><p class="note">${current.explain}</p>`
-      : `<p style="color:#991b1b;font-weight:700;">✘ Sbagliato, la risposta era "${current.options[current.correct]}".</p><p class="note">${current.explain}</p>`;
+      ? `<p style="color:#6ee7b7;font-weight:700;">✔ Corretto!</p><p class="note">${current.explain}</p>`
+      : `<p style="color:#fca5a5;font-weight:700;">✘ Sbagliato, la risposta era "${current.options[current.correct]}".</p><p class="note">${current.explain}</p>`;
     round++;
     setTimeout(() => {
       if (round >= queue.length) endGame();
