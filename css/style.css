@@ -386,6 +386,23 @@ body.js-reveal :is(.card-grid, .exercises-grid, .approach-grid, .history-grid, .
 .lesson-block h3 { font-size: 1.1rem; color: var(--primary-dark); }
 .lesson-block p { margin: 10px 0; }
 
+/* ---------- Numerazione progressiva degli argomenti ---------- */
+/* Ogni sezione-lezione (Problemi, Algoritmi, Flow Chart, Cicli, C++, C++ OOP)
+   numera i propri argomenti (i titoli h2 dei lesson-block) nell'ordine in cui
+   compaiono nel markup: cambiare l'ordine dei blocchi aggiorna automaticamente
+   i numeri, senza doverli scrivere a mano. Non si applica a Giochi/Verifiche/
+   Esercizi, che hanno una propria numerazione testuale (es. "Gioco 1"). */
+:is(#view-problemi, #view-algoritmi, #view-flowchart, #view-cicli, #view-cpp, #view-cpp-oop) {
+  counter-reset: argomento;
+}
+:is(#view-problemi, #view-algoritmi, #view-flowchart, #view-cicli, #view-cpp, #view-cpp-oop) > .lesson-block > h2 {
+  counter-increment: argomento;
+}
+:is(#view-problemi, #view-algoritmi, #view-flowchart, #view-cicli, #view-cpp, #view-cpp-oop) > .lesson-block > h2::before {
+  content: counter(argomento) ". ";
+  color: var(--primary);
+}
+
 .definition {
   background: rgba(var(--accent-rgb), 0.09);
   border-left: 4px solid var(--accent);

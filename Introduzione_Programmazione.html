@@ -1019,6 +1019,62 @@ std::cout &lt;&lt; "L'area di un cerchio si calcola con PI = " &lt;&lt; PI &lt;&
   </div>
 
   <div class="lesson-block">
+    <h2>Conversioni di tipo (casting)</h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-cast-cambio-valuta.jpg" alt="Cartello con i tassi di cambio valuta esposto a uno sportello" title="Fonte: Wikimedia Commons (CC BY-SA 4.0)" loading="lazy">
+      <figcaption>Il cast è cambiare valuta a uno sportello: static_cast&lt;...&gt; è farlo dichiarando consapevolmente cosa vuoi ottenere; una conversione implicita avviene da sola, senza che tu te ne accorga — a volte perdendoci qualcosa, come nel troncamento.</figcaption>
+    </figure>
+    <p>Abbiamo già incontrato una conversione <strong>implicita</strong> parlando del troncamento (<code>int x = 10.3;</code>): il compilatore converte automaticamente il <code>double</code> in <code>int</code>, senza che sia stato chiesto esplicitamente, e senza avvisare in modo evidente. Quando invece si vuole essere <strong>chiari ed espliciti</strong> su una conversione voluta, si usa <code>static_cast&lt;NuovoTipo&gt;(espressione)</code>:</p>
+    <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using std::string;
+
+string x = "65";
+float y = 3.99;
+
+std::cout &lt;&lt; x &lt;&lt; std::endl;                              // 65
+std::cout &lt;&lt; static_cast&lt;int&gt;(y) &lt;&lt; std::endl;             // 3  (il cast TRONCA, non arrotonda: 3.99 → 3)
+std::cout &lt;&lt; static_cast&lt;char&gt;(std::stoi(x)) &lt;&lt; std::endl;  // A</pre>
+    <div class="callout-grid">
+      <div class="callout"><strong><code>static_cast&lt;int&gt;(y)</code>:</strong> converte esplicitamente <code>y</code> (un <code>float</code>) in <code>int</code>, troncando la parte decimale — stesso effetto del troncamento implicito, ma dichiarato apertamente nel codice: chi legge capisce subito che è voluto.</div>
+      <div class="callout"><strong><code>std::stoi(x)</code>:</strong> ("string to int") converte una <code>string</code> che rappresenta un numero (qui <code>"65"</code>) nel corrispondente valore <code>int</code> (<code>65</code>). Richiede <code>#include &lt;string&gt;</code>.</div>
+      <div class="callout"><strong><code>static_cast&lt;char&gt;(65)</code>:</strong> interpreta il numero 65 come <strong>codice ASCII</strong> e lo converte nel carattere corrispondente: il codice ASCII 65 corrisponde alla lettera <code>'A'</code>. Un buon momento per mostrare (o far cercare) una tabella ASCII in classe!</div>
+    </div>
+    <p class="note">🎓 <strong>Perché insegnarlo:</strong> il casting esplicito rende visibile un'operazione che altrimenti avverrebbe "di nascosto" (come nel troncamento). Abituare gli studenti a scrivere <code>static_cast&lt;...&gt;(...)</code> quando una conversione è intenzionale è una buona pratica che previene molti bug legati a conversioni implicite indesiderate.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Input e output: <code>cin</code> e <code>cout</code></h2>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-cin-cout-tubi.svg" alt="Diagramma: un tubo verde etichettato cin entra nel programma da sinistra, un tubo arancione etichettato cout esce a destra" loading="lazy">
+      <figcaption>cin e cout sono due tubi in direzioni opposte: cin fa entrare dati da tastiera nel programma, cout li fa uscire verso lo schermo — le doppie frecce puntano proprio nel verso del flusso.</figcaption>
+    </figure>
+    <p>Per leggere dati inseriti dall'utente da tastiera si usa <code>std::cin &gt;&gt; variabile;</code> (nota il verso delle frecce, opposto a quello di <code>cout</code>).</p>
+    <pre class="code-panel active">#include &lt;iostream&gt;
+#include &lt;string&gt;
+using std::string;
+
+int main()
+{
+    string nome, cognome;
+    int eta;
+
+    std::cout &lt;&lt; "Scrivi il nome: ";
+    std::cin &gt;&gt; nome;
+    std::cout &lt;&lt; "Scrivi il cognome: ";
+    std::cin &gt;&gt; cognome;
+    std::cout &lt;&lt; "Scrivi l'età: ";
+    std::cin &gt;&gt; eta;
+
+    std::cout &lt;&lt; "Ciao " &lt;&lt; nome &lt;&lt; " " &lt;&lt; cognome
+               &lt;&lt; ", hai " &lt;&lt; eta &lt;&lt; " anni!" &lt;&lt; std::endl;
+    return 0;
+}</pre>
+    <p class="warn">⚠️ <code>std::cin &gt;&gt; variabile;</code> legge <strong>una sola "parola"</strong>: si ferma al primo spazio, tabulazione o "a capo". Se l'utente scrivesse un nome composto come <code>"Anna Maria"</code>, <code>cin &gt;&gt; nome</code> leggerebbe solo <code>"Anna"</code>, lasciando <code>"Maria"</code> in attesa di essere letto dalla prossima istruzione di input! Per leggere una riga intera, spazi compresi, si usa invece <code>std::getline(std::cin, nome);</code>.</p>
+    <p class="note">Anche gli output si possono concatenare in un'unica istruzione, mettendo più <code>&lt;&lt;</code> in fila come nell'esempio: il compilatore li esegue da sinistra a destra, uno dopo l'altro, sullo stesso flusso di output.</p>
+  </div>
+
+  <div class="lesson-block">
     <h2>Operatori aritmetici e di assegnazione</h2>
     <figure class="concept-fig concept-fig-icon">
       <img src="img/cpp-incremento-pre-post.svg" alt="Diagramma: pre-incremento incrementa e poi legge, post-incremento legge e poi incrementa" loading="lazy">
@@ -1072,60 +1128,6 @@ std::cout &lt;&lt; condizione2 &lt;&lt; std::endl; // true
 std::cout &lt;&lt; condizione3 &lt;&lt; std::endl; // false</pre>
     <p class="note">Senza <code>std::boolalpha</code>, <code>cout</code> stamperebbe i <code>bool</code> come numeri: <code>1</code> per <code>true</code> e <code>0</code> per <code>false</code>. Internamente, del resto, un <code>bool</code> <em>è</em> un numero (0 o 1): <code>std::boolalpha</code> serve solo a renderlo più leggibile a video.</p>
     <p class="note">🎓 <strong>Dettaglio utile da sapere:</strong> gli operatori <code>&amp;&amp;</code> e <code>||</code> in C++ sono <em>"a corto circuito"</em> (<em>short-circuit</em>): in <code>a &amp;&amp; b</code>, se <code>a</code> è già <code>false</code>, <code>b</code> non viene nemmeno valutato (il risultato è comunque <code>false</code>); allo stesso modo, in <code>a || b</code>, se <code>a</code> è già <code>true</code>, <code>b</code> non viene valutato. Non è solo un'ottimizzazione: è anche un meccanismo usato spesso di proposito, ad esempio per evitare di valutare un'espressione "pericolosa" quando la prima condizione la rende superflua.</p>
-  </div>
-
-  <div class="lesson-block">
-    <h2>L'operatore ternario</h2>
-    <figure class="concept-fig concept-fig-icon">
-      <img src="img/cpp-ternario-scorciatoia.svg" alt="Diagramma: un blocco if/else esteso si comprime in un'unica riga cond ? A : B" loading="lazy">
-      <figcaption>Il ternario è un bivio compresso in una riga sola: chiede la direzione e sceglie subito, senza fermarsi a scrivere un cartello if/else per esteso.</figcaption>
-    </figure>
-    <p>Per scegliere fra due valori in base a una condizione, quando la scelta serve <strong>dentro un'espressione</strong> (es. per assegnare una variabile o per stampare direttamente un risultato), C++ offre una scorciatoia più compatta di un <code>if</code>/<code>else</code> completo: l'<strong>operatore ternario</strong> <code>condizione ? valoreSeVero : valoreSeFalso</code>.</p>
-    <pre class="code-panel active">int numero1 = 51;
-
-// 51 è dispari (51 % 2 vale 1, non 0), quindi la condizione è falsa
-string tipoNumero = (numero1 % 2 == 0) ? "pari" : "dispari";
-
-std::cout &lt;&lt; tipoNumero &lt;&lt; std::endl; // dispari</pre>
-    <p>È equivalente a scrivere:</p>
-    <pre class="code-panel active">string tipoNumero;
-if (numero1 % 2 == 0) {
-    tipoNumero = "pari";
-} else {
-    tipoNumero = "dispari";
-}</pre>
-    <p class="warn">⚠️ Il ternario funziona bene per <strong>assegnare un valore a una variabile</strong> o per <strong>produrre direttamente un output</strong>, ma <strong>non</strong> si può usare per eseguire un'istruzione di input come <code>std::cin</code>: per una logica che coinvolge la lettura di dati serve un <code>if</code>/<code>else</code> vero e proprio.</p>
-  </div>
-
-  <div class="lesson-block">
-    <h2>Input e output: <code>cin</code> e <code>cout</code></h2>
-    <figure class="concept-fig concept-fig-icon">
-      <img src="img/cpp-cin-cout-tubi.svg" alt="Diagramma: un tubo verde etichettato cin entra nel programma da sinistra, un tubo arancione etichettato cout esce a destra" loading="lazy">
-      <figcaption>cin e cout sono due tubi in direzioni opposte: cin fa entrare dati da tastiera nel programma, cout li fa uscire verso lo schermo — le doppie frecce puntano proprio nel verso del flusso.</figcaption>
-    </figure>
-    <p>Per leggere dati inseriti dall'utente da tastiera si usa <code>std::cin &gt;&gt; variabile;</code> (nota il verso delle frecce, opposto a quello di <code>cout</code>).</p>
-    <pre class="code-panel active">#include &lt;iostream&gt;
-#include &lt;string&gt;
-using std::string;
-
-int main()
-{
-    string nome, cognome;
-    int eta;
-
-    std::cout &lt;&lt; "Scrivi il nome: ";
-    std::cin &gt;&gt; nome;
-    std::cout &lt;&lt; "Scrivi il cognome: ";
-    std::cin &gt;&gt; cognome;
-    std::cout &lt;&lt; "Scrivi l'età: ";
-    std::cin &gt;&gt; eta;
-
-    std::cout &lt;&lt; "Ciao " &lt;&lt; nome &lt;&lt; " " &lt;&lt; cognome
-               &lt;&lt; ", hai " &lt;&lt; eta &lt;&lt; " anni!" &lt;&lt; std::endl;
-    return 0;
-}</pre>
-    <p class="warn">⚠️ <code>std::cin &gt;&gt; variabile;</code> legge <strong>una sola "parola"</strong>: si ferma al primo spazio, tabulazione o "a capo". Se l'utente scrivesse un nome composto come <code>"Anna Maria"</code>, <code>cin &gt;&gt; nome</code> leggerebbe solo <code>"Anna"</code>, lasciando <code>"Maria"</code> in attesa di essere letto dalla prossima istruzione di input! Per leggere una riga intera, spazi compresi, si usa invece <code>std::getline(std::cin, nome);</code>.</p>
-    <p class="note">Anche gli output si possono concatenare in un'unica istruzione, mettendo più <code>&lt;&lt;</code> in fila come nell'esempio: il compilatore li esegue da sinistra a destra, uno dopo l'altro, sullo stesso flusso di output.</p>
   </div>
 
   <div class="lesson-block">
@@ -1185,6 +1187,29 @@ switch (giorno) {
         break;
 }</pre>
     <p class="note">Qui i <code>case 1</code>...<code>case 5</code> non hanno un <code>break</code> fra loro: "cadono" tutti nello stesso blocco di codice, che viene eseguito una sola volta indipendentemente da quale dei cinque valori sia stato inserito. È lo stesso meccanismo di prima (il fall-through), ma usato consapevolmente come strumento, non subito come errore.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>L'operatore ternario</h2>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-ternario-scorciatoia.svg" alt="Diagramma: un blocco if/else esteso si comprime in un'unica riga cond ? A : B" loading="lazy">
+      <figcaption>Il ternario è un bivio compresso in una riga sola: chiede la direzione e sceglie subito, senza fermarsi a scrivere un cartello if/else per esteso.</figcaption>
+    </figure>
+    <p>Per scegliere fra due valori in base a una condizione, quando la scelta serve <strong>dentro un'espressione</strong> (es. per assegnare una variabile o per stampare direttamente un risultato), C++ offre una scorciatoia più compatta di un <code>if</code>/<code>else</code> completo: l'<strong>operatore ternario</strong> <code>condizione ? valoreSeVero : valoreSeFalso</code>.</p>
+    <pre class="code-panel active">int numero1 = 51;
+
+// 51 è dispari (51 % 2 vale 1, non 0), quindi la condizione è falsa
+string tipoNumero = (numero1 % 2 == 0) ? "pari" : "dispari";
+
+std::cout &lt;&lt; tipoNumero &lt;&lt; std::endl; // dispari</pre>
+    <p>È equivalente a scrivere:</p>
+    <pre class="code-panel active">string tipoNumero;
+if (numero1 % 2 == 0) {
+    tipoNumero = "pari";
+} else {
+    tipoNumero = "dispari";
+}</pre>
+    <p class="warn">⚠️ Il ternario funziona bene per <strong>assegnare un valore a una variabile</strong> o per <strong>produrre direttamente un output</strong>, ma <strong>non</strong> si può usare per eseguire un'istruzione di input come <code>std::cin</code>: per una logica che coinvolge la lettura di dati serve un <code>if</code>/<code>else</code> vero e proprio.</p>
   </div>
 
   <div class="lesson-block">
@@ -1253,6 +1278,85 @@ for (int i = 0; i &lt; 10; i++) {
     std::cout &lt;&lt; "iterazione numero: " &lt;&lt; i &lt;&lt; std::endl; // stampa 0,1,2,3,4,6,7,8,9
 }</pre>
     <p class="note">Sia <code>break</code> che <code>continue</code> agiscono solo sul ciclo <strong>più interno</strong> in cui si trovano: dentro un ciclo annidato in un altro, non hanno effetto su quello esterno.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Array e vettori</h2>
+    <p>Quando servono <strong>più valori dello stesso tipo</strong> raggruppati insieme, si usano array o vettori.</p>
+    <h3>Array — dimensione fissa</h3>
+    <figure class="concept-fig">
+      <img src="img/cpp-array-scatola-uova.jpg" alt="Scatola di uova di quaglia aperta, con gli scomparti fissi ben visibili" title="Fonte: Wikimedia Commons (CC0)" loading="lazy">
+      <figcaption>Un array è una scatola di uova: un numero fisso di scomparti, numerati, deciso una volta per tutte alla creazione.</figcaption>
+    </figure>
+    <p>Un <strong>array</strong> ha una lunghezza decisa alla creazione e non può più cambiare: non si possono aggiungere o togliere elementi. Gli elementi si numerano a partire da <strong>0</strong> (non da 1): in un array di 5 elementi, gli indici validi vanno da <code>0</code> a <code>4</code>.</p>
+    <pre class="code-panel active">double voti_storia[] = {8.5, 9, 8.2, 10, 7};
+
+// scorrimento con for classico (indice esplicito)
+for (int i = 0; i &lt; 5; i++) {
+    std::cout &lt;&lt; voti_storia[i] &lt;&lt; std::endl;
+}
+
+// scorrimento con range-based for
+for (double voto : voti_storia) {
+    std::cout &lt;&lt; voto &lt;&lt; std::endl;
+}</pre>
+    <p class="warn">⚠️ C++ <strong>non controlla</strong> automaticamente se un indice è valido: scrivere <code>voti_storia[10]</code> su un array di 5 elementi non dà necessariamente un errore evidente, ma legge (o scrive!) una zona di memoria che non appartiene all'array, con effetti imprevedibili. È un errore subdolo, diverso da altri linguaggi più "protettivi" da questo punto di vista.</p>
+    <h3>Vector — dimensione dinamica</h3>
+    <figure class="concept-fig concept-fig-icon">
+      <img src="img/cpp-vector-cartella-soffietto.svg" alt="Disegno stilizzato di una cartella a soffietto espandibile" loading="lazy">
+      <figcaption>Un vector è una cartella a soffietto estensibile: puoi continuare ad aggiungere scomparti (push_back) o toglierne (pop_back) mentre lo usi.</figcaption>
+    </figure>
+    <p>Un <code>std::vector</code> è come un array, ma può <strong>crescere o ridursi</strong> durante l'esecuzione del programma: è la struttura da preferire quando non si conosce in anticipo quanti elementi serviranno.</p>
+    <pre class="code-panel active">#include &lt;vector&gt;
+using std::vector;
+
+vector&lt;int&gt; numeri = {10, 20, 30};
+numeri[0] = 100;          // modifica un elemento esistente
+numeri.push_back(50);     // aggiunge un elemento in fondo → {100, 20, 30, 50}
+numeri.pop_back();        // rimuove l'ultimo elemento    → {100, 20, 30}
+
+for (int i = 0; i &lt; numeri.size(); i++) {
+    std::cout &lt;&lt; numeri[i] &lt;&lt; std::endl;
+}</pre>
+    <p class="note"><code>numeri.size()</code> restituisce il numero di elementi attualmente presenti nel vettore: utile come condizione del ciclo, dato che — a differenza dell'array — può cambiare durante l'esecuzione. Altri metodi utili: <code>numeri.insert(posizione, valore)</code> per inserire in un punto preciso, <code>numeri.erase(posizione)</code> per rimuovere un elemento specifico, <code>numeri.clear()</code> per svuotarlo del tutto.</p>
+  </div>
+
+  <div class="lesson-block">
+    <h2>Le stringhe: operazioni utili</h2>
+    <figure class="concept-fig">
+      <img src="img/cpp-stringhe-collana-lettere.jpg" alt="Tessere del gioco Scrabble allineate una dopo l'altra a formare una parola" title="Fonte: Wikimedia Commons (CC BY-SA 3.0)" loading="lazy">
+      <figcaption>Una string è una fila di tessere (i caratteri) allineate una dietro l'altra: length() conta le tessere, substr() ne stacca un pezzo, find() cerca dove inizia una sequenza uguale a un'altra.</figcaption>
+    </figure>
+    <p>Una <code>string</code> non è solo "del testo": la libreria standard mette a disposizione diversi <strong>metodi</strong> per lavorarci, molto usati nella pratica:</p>
+    <pre class="code-panel active">#include &lt;string&gt;
+using std::string;
+
+string nome = "Luca";
+string cognome = "Rossi";
+string nomeCompleto = nome + " " + cognome; // concatenazione con "+": "Luca Rossi"
+
+std::cout &lt;&lt; nomeCompleto &lt;&lt; std::endl;              // Luca Rossi
+std::cout &lt;&lt; nomeCompleto.length() &lt;&lt; std::endl;      // 10 (numero di caratteri, spazio incluso)
+std::cout &lt;&lt; nome[nome.length() - 1] &lt;&lt; std::endl;    // 'a' (ultimo carattere di "Luca": indici da 0 a length()-1)
+std::cout &lt;&lt; nomeCompleto.find("Rossi") &lt;&lt; std::endl;  // 5 (indice del carattere dove inizia "Rossi")
+std::cout &lt;&lt; nomeCompleto.substr(5) &lt;&lt; std::endl;      // "Rossi" (sottostringa dal carattere 5 fino alla fine)
+std::cout &lt;&lt; nomeCompleto.empty() &lt;&lt; std::endl;        // 0 → false, la stringa non è vuota
+
+nomeCompleto.append(" Jr.");                            // modifica nomeCompleto: ora vale "Luca Rossi Jr."
+std::cout &lt;&lt; nomeCompleto &lt;&lt; std::endl;                // Luca Rossi Jr.</pre>
+    <table class="mini-table">
+      <thead><tr><th>Metodo/operatore</th><th>Cosa fa</th></tr></thead>
+      <tbody>
+        <tr><td><code>a + b</code></td><td>concatena due stringhe (o una stringa e un carattere) in una nuova stringa</td></tr>
+        <tr><td><code>s.length()</code></td><td>numero di caratteri contenuti in <code>s</code></td></tr>
+        <tr><td><code>s[i]</code></td><td>il carattere alla posizione <code>i</code> (indici da 0)</td></tr>
+        <tr><td><code>s.find(sottostringa)</code></td><td>indice della prima occorrenza, oppure un valore speciale se non trovata</td></tr>
+        <tr><td><code>s.substr(inizio)</code></td><td>sottostringa dalla posizione <code>inizio</code> fino alla fine</td></tr>
+        <tr><td><code>s.append(altro)</code></td><td>aggiunge <code>altro</code> in fondo a <code>s</code>, modificandola</td></tr>
+        <tr><td><code>s.empty()</code></td><td><code>true</code> se la stringa non contiene nessun carattere</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Una <code>string</code> è, concettualmente, una sequenza di <code>char</code> indicizzabile come un array (ecco perché <code>nome[nome.length() - 1]</code> funziona): a differenza di un array però gestisce da sola la propria dimensione, che può cambiare (come con <code>append</code>).</p>
   </div>
 
   <div class="lesson-block">
@@ -1372,110 +1476,6 @@ int main() {
   </div>
 
   <div class="lesson-block">
-    <h2>Array e vettori</h2>
-    <p>Quando servono <strong>più valori dello stesso tipo</strong> raggruppati insieme, si usano array o vettori.</p>
-    <h3>Array — dimensione fissa</h3>
-    <figure class="concept-fig">
-      <img src="img/cpp-array-scatola-uova.jpg" alt="Scatola di uova di quaglia aperta, con gli scomparti fissi ben visibili" title="Fonte: Wikimedia Commons (CC0)" loading="lazy">
-      <figcaption>Un array è una scatola di uova: un numero fisso di scomparti, numerati, deciso una volta per tutte alla creazione.</figcaption>
-    </figure>
-    <p>Un <strong>array</strong> ha una lunghezza decisa alla creazione e non può più cambiare: non si possono aggiungere o togliere elementi. Gli elementi si numerano a partire da <strong>0</strong> (non da 1): in un array di 5 elementi, gli indici validi vanno da <code>0</code> a <code>4</code>.</p>
-    <pre class="code-panel active">double voti_storia[] = {8.5, 9, 8.2, 10, 7};
-
-// scorrimento con for classico (indice esplicito)
-for (int i = 0; i &lt; 5; i++) {
-    std::cout &lt;&lt; voti_storia[i] &lt;&lt; std::endl;
-}
-
-// scorrimento con range-based for
-for (double voto : voti_storia) {
-    std::cout &lt;&lt; voto &lt;&lt; std::endl;
-}</pre>
-    <p class="warn">⚠️ C++ <strong>non controlla</strong> automaticamente se un indice è valido: scrivere <code>voti_storia[10]</code> su un array di 5 elementi non dà necessariamente un errore evidente, ma legge (o scrive!) una zona di memoria che non appartiene all'array, con effetti imprevedibili. È un errore subdolo, diverso da altri linguaggi più "protettivi" da questo punto di vista.</p>
-    <h3>Vector — dimensione dinamica</h3>
-    <figure class="concept-fig concept-fig-icon">
-      <img src="img/cpp-vector-cartella-soffietto.svg" alt="Disegno stilizzato di una cartella a soffietto espandibile" loading="lazy">
-      <figcaption>Un vector è una cartella a soffietto estensibile: puoi continuare ad aggiungere scomparti (push_back) o toglierne (pop_back) mentre lo usi.</figcaption>
-    </figure>
-    <p>Un <code>std::vector</code> è come un array, ma può <strong>crescere o ridursi</strong> durante l'esecuzione del programma: è la struttura da preferire quando non si conosce in anticipo quanti elementi serviranno.</p>
-    <pre class="code-panel active">#include &lt;vector&gt;
-using std::vector;
-
-vector&lt;int&gt; numeri = {10, 20, 30};
-numeri[0] = 100;          // modifica un elemento esistente
-numeri.push_back(50);     // aggiunge un elemento in fondo → {100, 20, 30, 50}
-numeri.pop_back();        // rimuove l'ultimo elemento    → {100, 20, 30}
-
-for (int i = 0; i &lt; numeri.size(); i++) {
-    std::cout &lt;&lt; numeri[i] &lt;&lt; std::endl;
-}</pre>
-    <p class="note"><code>numeri.size()</code> restituisce il numero di elementi attualmente presenti nel vettore: utile come condizione del ciclo, dato che — a differenza dell'array — può cambiare durante l'esecuzione. Altri metodi utili: <code>numeri.insert(posizione, valore)</code> per inserire in un punto preciso, <code>numeri.erase(posizione)</code> per rimuovere un elemento specifico, <code>numeri.clear()</code> per svuotarlo del tutto.</p>
-  </div>
-
-  <div class="lesson-block">
-    <h2>Le stringhe: operazioni utili</h2>
-    <figure class="concept-fig">
-      <img src="img/cpp-stringhe-collana-lettere.jpg" alt="Tessere del gioco Scrabble allineate una dopo l'altra a formare una parola" title="Fonte: Wikimedia Commons (CC BY-SA 3.0)" loading="lazy">
-      <figcaption>Una string è una fila di tessere (i caratteri) allineate una dietro l'altra: length() conta le tessere, substr() ne stacca un pezzo, find() cerca dove inizia una sequenza uguale a un'altra.</figcaption>
-    </figure>
-    <p>Una <code>string</code> non è solo "del testo": la libreria standard mette a disposizione diversi <strong>metodi</strong> per lavorarci, molto usati nella pratica:</p>
-    <pre class="code-panel active">#include &lt;string&gt;
-using std::string;
-
-string nome = "Luca";
-string cognome = "Rossi";
-string nomeCompleto = nome + " " + cognome; // concatenazione con "+": "Luca Rossi"
-
-std::cout &lt;&lt; nomeCompleto &lt;&lt; std::endl;              // Luca Rossi
-std::cout &lt;&lt; nomeCompleto.length() &lt;&lt; std::endl;      // 10 (numero di caratteri, spazio incluso)
-std::cout &lt;&lt; nome[nome.length() - 1] &lt;&lt; std::endl;    // 'a' (ultimo carattere di "Luca": indici da 0 a length()-1)
-std::cout &lt;&lt; nomeCompleto.find("Rossi") &lt;&lt; std::endl;  // 5 (indice del carattere dove inizia "Rossi")
-std::cout &lt;&lt; nomeCompleto.substr(5) &lt;&lt; std::endl;      // "Rossi" (sottostringa dal carattere 5 fino alla fine)
-std::cout &lt;&lt; nomeCompleto.empty() &lt;&lt; std::endl;        // 0 → false, la stringa non è vuota
-
-nomeCompleto.append(" Jr.");                            // modifica nomeCompleto: ora vale "Luca Rossi Jr."
-std::cout &lt;&lt; nomeCompleto &lt;&lt; std::endl;                // Luca Rossi Jr.</pre>
-    <table class="mini-table">
-      <thead><tr><th>Metodo/operatore</th><th>Cosa fa</th></tr></thead>
-      <tbody>
-        <tr><td><code>a + b</code></td><td>concatena due stringhe (o una stringa e un carattere) in una nuova stringa</td></tr>
-        <tr><td><code>s.length()</code></td><td>numero di caratteri contenuti in <code>s</code></td></tr>
-        <tr><td><code>s[i]</code></td><td>il carattere alla posizione <code>i</code> (indici da 0)</td></tr>
-        <tr><td><code>s.find(sottostringa)</code></td><td>indice della prima occorrenza, oppure un valore speciale se non trovata</td></tr>
-        <tr><td><code>s.substr(inizio)</code></td><td>sottostringa dalla posizione <code>inizio</code> fino alla fine</td></tr>
-        <tr><td><code>s.append(altro)</code></td><td>aggiunge <code>altro</code> in fondo a <code>s</code>, modificandola</td></tr>
-        <tr><td><code>s.empty()</code></td><td><code>true</code> se la stringa non contiene nessun carattere</td></tr>
-      </tbody>
-    </table>
-    <p class="note">Una <code>string</code> è, concettualmente, una sequenza di <code>char</code> indicizzabile come un array (ecco perché <code>nome[nome.length() - 1]</code> funziona): a differenza di un array però gestisce da sola la propria dimensione, che può cambiare (come con <code>append</code>).</p>
-  </div>
-
-  <div class="lesson-block">
-    <h2>Conversioni di tipo (casting)</h2>
-    <figure class="concept-fig">
-      <img src="img/cpp-cast-cambio-valuta.jpg" alt="Cartello con i tassi di cambio valuta esposto a uno sportello" title="Fonte: Wikimedia Commons (CC BY-SA 4.0)" loading="lazy">
-      <figcaption>Il cast è cambiare valuta a uno sportello: static_cast&lt;...&gt; è farlo dichiarando consapevolmente cosa vuoi ottenere; una conversione implicita avviene da sola, senza che tu te ne accorga — a volte perdendoci qualcosa, come nel troncamento.</figcaption>
-    </figure>
-    <p>Abbiamo già incontrato una conversione <strong>implicita</strong> parlando del troncamento (<code>int x = 10.3;</code>): il compilatore converte automaticamente il <code>double</code> in <code>int</code>, senza che sia stato chiesto esplicitamente, e senza avvisare in modo evidente. Quando invece si vuole essere <strong>chiari ed espliciti</strong> su una conversione voluta, si usa <code>static_cast&lt;NuovoTipo&gt;(espressione)</code>:</p>
-    <pre class="code-panel active">#include &lt;iostream&gt;
-#include &lt;string&gt;
-using std::string;
-
-string x = "65";
-float y = 3.99;
-
-std::cout &lt;&lt; x &lt;&lt; std::endl;                              // 65
-std::cout &lt;&lt; static_cast&lt;int&gt;(y) &lt;&lt; std::endl;             // 3  (il cast TRONCA, non arrotonda: 3.99 → 3)
-std::cout &lt;&lt; static_cast&lt;char&gt;(std::stoi(x)) &lt;&lt; std::endl;  // A</pre>
-    <div class="callout-grid">
-      <div class="callout"><strong><code>static_cast&lt;int&gt;(y)</code>:</strong> converte esplicitamente <code>y</code> (un <code>float</code>) in <code>int</code>, troncando la parte decimale — stesso effetto del troncamento implicito, ma dichiarato apertamente nel codice: chi legge capisce subito che è voluto.</div>
-      <div class="callout"><strong><code>std::stoi(x)</code>:</strong> ("string to int") converte una <code>string</code> che rappresenta un numero (qui <code>"65"</code>) nel corrispondente valore <code>int</code> (<code>65</code>). Richiede <code>#include &lt;string&gt;</code>.</div>
-      <div class="callout"><strong><code>static_cast&lt;char&gt;(65)</code>:</strong> interpreta il numero 65 come <strong>codice ASCII</strong> e lo converte nel carattere corrispondente: il codice ASCII 65 corrisponde alla lettera <code>'A'</code>. Un buon momento per mostrare (o far cercare) una tabella ASCII in classe!</div>
-    </div>
-    <p class="note">🎓 <strong>Perché insegnarlo:</strong> il casting esplicito rende visibile un'operazione che altrimenti avverrebbe "di nascosto" (come nel troncamento). Abituare gli studenti a scrivere <code>static_cast&lt;...&gt;(...)</code> quando una conversione è intenzionale è una buona pratica che previene molti bug legati a conversioni implicite indesiderate.</p>
-  </div>
-
-  <div class="lesson-block">
     <h2>Le strutture (<code>struct</code>)</h2>
     <figure class="concept-fig">
       <img src="img/cpp-struct-scheda-anagrafica.jpg" alt="Vista interna di uno schedario a cassetti con schede catalografiche" title="Fonte: Wikimedia Commons (CC BY-SA 4.0)" loading="lazy">
@@ -1500,7 +1500,7 @@ int main()
 
   <div class="lesson-block">
     <h2>Mettiamo tutto insieme</h2>
-    <p>Ora che abbiamo visto variabili, costanti, operatori, input/output, selezioni, cicli, funzioni, scope, puntatori, array/vettori, stringhe, casting e strutture, possiamo scrivere in C++ qualunque algoritmo già progettato con pseudocodice o flow chart nelle sezioni precedenti.</p>
+    <p>Ora che abbiamo visto variabili, costanti, casting, input/output, operatori, selezioni, cicli, array/vettori, stringhe, funzioni, scope, puntatori e strutture, possiamo scrivere in C++ qualunque algoritmo già progettato con pseudocodice o flow chart nelle sezioni precedenti.</p>
     <p>👉 Per esercitarti risolvendo in C++ procedurale gli stessi problemi già visti come flow chart, vai alla pagina <a href="esercizi-cpp-procedurale.html">Esercizi → C++ procedurale</a>.</p>
   </div>
 </section>
